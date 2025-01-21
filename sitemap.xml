@@ -3,28 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/categories/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/p/test-chinese/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/post/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/categories/test/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/categories/%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/page/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hongyun-yu.github.io/Hugo-dev/categories/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/tags/css/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
@@ -36,6 +24,9 @@
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/p/markdown-syntax-guide/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hongyun-yu.github.io/Hugo-dev/post/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/categories/syntax/</loc>
@@ -56,6 +47,9 @@
     <loc>https://hongyun-yu.github.io/Hugo-dev/tags/tag-with-whitespaces/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://hongyun-yu.github.io/Hugo-dev/categories/test/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/categories/test-with-whitespaces/</loc>
     <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
@@ -72,6 +66,10 @@
     <lastmod>2019-03-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/p/</loc>
+  </url><url>
+    <loc>https://hongyun-yu.github.io/Hugo-dev/p/test-chinese/</loc>
+  </url><url>
+    <loc>https://hongyun-yu.github.io/Hugo-dev/categories/%E6%B5%8B%E8%AF%95/</loc>
   </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/%E5%85%B3%E4%BA%8E/</loc>
   </url><url>
