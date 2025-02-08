@@ -9,13 +9,13 @@
         <copyright>Hongyun</copyright>
         <lastBuildDate>Wed, 22 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hongyun-yu.github.io/Hugo-dev/categories/%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>计算机网络总复习</title>
-        <link>https://hongyun-yu.github.io/Hugo-dev/p/test/</link>
+        <link>https://hongyun-yu.github.io/Hugo-dev/p/test-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</link>
         <pubDate>Wed, 22 Jan 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://hongyun-yu.github.io/Hugo-dev/p/test/</guid>
-        <description>&lt;h1 id=&#34;zybJa&#34;&gt;计算机网络与互联网络&lt;/h1&gt;
-&lt;h2 id=&#34;WGLht&#34;&gt;什么是互联网络&lt;/h2&gt;
-&lt;ul&gt;
+        <guid>https://hongyun-yu.github.io/Hugo-dev/p/test-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/</guid>
+        <description>&lt;img src="https://hongyun-yu.github.io/Hugo-dev/1678280510635.png" alt="Featured image of post 计算机网络总复习" /&gt;&lt;h1 id=&#34;计算机网络与互联网络&#34;&gt;计算机网络与互联网络
+&lt;/h1&gt;&lt;h2 id=&#34;什么是互联网络&#34;&gt;什么是互联网络
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;从构成的角度来看&lt;/strong&gt;：
 &lt;ul&gt;
 &lt;li&gt;互联网络由点和边构成。其中，点包括端系统（涵盖网络应用）以及路由器；边则是链路。简单来说，互联网络其实是网络的网络，众多不同的网络相互连接，形成了一个庞大复杂的体系。&lt;/li&gt;
@@ -23,20 +23,31 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;从服务的角度来看&lt;/strong&gt;：
 &lt;ul&gt;
-&lt;li&gt;互联网络是一种能够为应用提供通信服务的&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;通信架构&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;。在这个架构里，有连接且可靠的服务与无连接的不可靠服务相互配合，共同支撑各类&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;应用&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;开展通信服务。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;协议&lt;/strong&gt;：指对等层实体在通信过程中所遵循的规则的集合，这一集合可以从**&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;语法、语义及时序&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;**三个方面去理解。&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;语法&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;规定了数据与控制信息的结构或格式；&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;语义&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;说明了需要发出何种控制信息，完成何种动作以及做出何种响应；&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;时序&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;则明确了事件实现顺序的详细说明。&lt;/li&gt;
+&lt;li&gt;互联网络是一种能够为应用提供通信服务的通信架构。在这个架构里，有连接且可靠的服务与无连接的不可靠服务相互配合，共同支撑各类应用开展通信服务。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;协议&lt;/strong&gt;：指对等层实体在通信过程中所遵循的规则的集合，这一集合可以从&lt;strong&gt;语法、语义及时序&lt;/strong&gt;三个方面去理解。&lt;strong&gt;语法&lt;/strong&gt;规定了数据与控制信息的结构或格式；&lt;strong&gt;语义&lt;/strong&gt;说明了需要发出何种控制信息，完成何种动作以及做出何种响应；&lt;strong&gt;时序&lt;/strong&gt;则明确了事件实现顺序的详细说明。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;Xm2Gd&#34;&gt;网络边缘&lt;/h2&gt;
-+ **网络的结构**：
-    - 网络整体结构分为网络边缘与网络核心两大部分，还涉及接入网络与通信链路。网络边缘包括运行应用的端系统，重点在于&lt;font style=&#34;color:#DF2A3F;&#34;&gt;端系统中的应用交互方式 &lt;/font&gt;；网络核心则由路由器组成。
-+ **&lt;font style=&#34;color:#DF2A3F;&#34;&gt;网络边缘的应用交互方式&lt;/font&gt;**&lt;font style=&#34;color:#DF2A3F;&#34;&gt;：&lt;/font&gt;
-    - **C/S 模式（客户端 / 服务器模式）**：其特点在于，客户端向服务器发起请求，服务器响应请求并为客户端提供服务。服务器往往具备强大的处理能力与丰富的数据资源，客户端则相对轻量化，依赖服务器获取数据与执行复杂运算，常见于网页浏览、邮件收发等应用场景。
-    - **P2P 模式（对等模式）**：这种模式下，各个端系统地位平等，既可以作为客户端向其他节点请求资源，也能充当服务器为其他节点提供资源。它无需依赖集中式服务器，有较强的扩展性与容错性，常用于文件共享、流媒体直播等应用。
-+ **网络的服务**：
-    - **面向连接的服务**：这类服务在通信前会先建立连接，整个通信过程数据传输稳定、可靠，能保证数据按序到达接收方，不过建立连接与拆除连接会带来额外开销。
-    - **无连接的服务**：通信时无需事先建立连接，直接发送数据报，传输效率较高，但无法保证数据一定能可靠、有序地到达接收方。
+&lt;h2 id=&#34;网络边缘&#34;&gt;网络边缘
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;网络的结构&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;网络整体结构分为网络边缘与网络核心两大部分，还涉及接入网络与通信链路。网络边缘包括运行应用的端系统，重点在于&lt;font style=&#34;color:#DF2A3F;&#34;&gt;端系统中的应用交互方式 &lt;/font&gt;；网络核心则由路由器组成。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;网络边缘的应用交互方式&lt;/font&gt;&lt;/strong&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;：&lt;/font&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;C/S 模式（客户端 / 服务器模式）&lt;/strong&gt;：其特点在于，客户端向服务器发起请求，服务器响应请求并为客户端提供服务。服务器往往具备强大的处理能力与丰富的数据资源，客户端则相对轻量化，依赖服务器获取数据与执行复杂运算，常见于网页浏览、邮件收发等应用场景。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;P2P 模式（对等模式）&lt;/strong&gt;：这种模式下，各个端系统地位平等，既可以作为客户端向其他节点请求资源，也能充当服务器为其他节点提供资源。它无需依赖集中式服务器，有较强的扩展性与容错性，常用于文件共享、流媒体直播等应用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;网络的服务&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;面向连接的服务&lt;/strong&gt;：这类服务在通信前会先建立连接，整个通信过程数据传输稳定、可靠，能保证数据按序到达接收方，不过建立连接与拆除连接会带来额外开销。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;无连接的服务&lt;/strong&gt;：通信时无需事先建立连接，直接发送数据报，传输效率较高，但无法保证数据一定能可靠、有序地到达接收方。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;JXpGw&#34;&gt; 网络核心&lt;/h2&gt;
 + **网络核心**
     - **组成**：网络交换设备，如路由器 + 链路。
