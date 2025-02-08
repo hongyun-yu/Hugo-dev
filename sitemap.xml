@@ -11,10 +11,7 @@
     <loc>https://hongyun-yu.github.io/Hugo-dev/post/</loc>
     <lastmod>2025-01-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/categories/test/</loc>
-    <lastmod>2025-01-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/categories/%E6%B5%8B%E8%AF%95/</loc>
+    <loc>https://hongyun-yu.github.io/Hugo-dev/categories/%E9%83%A8%E7%BD%B2%E6%B5%8B%E8%AF%95/</loc>
     <lastmod>2025-01-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/p/test-bushu/</loc>
@@ -50,25 +47,13 @@
     <loc>https://hongyun-yu.github.io/Hugo-dev/categories/themes/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/p/placeholder-text/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/tags/tag-with-whitespaces/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/categories/test-with-whitespaces/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/tags/text/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/p/math-typesetting/</loc>
-    <lastmod>2019-03-08T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/tags/emoji/</loc>
     <lastmod>2019-03-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/p/emoji-support/</loc>
+    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hongyun-yu.github.io/Hugo-dev/categories/test/</loc>
     <lastmod>2019-03-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/%E5%85%B3%E4%BA%8E/</loc>
