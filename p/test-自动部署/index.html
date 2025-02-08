@@ -267,6 +267,51 @@
   <ol>
     <li><a href="#什么是互联网络">什么是互联网络</a></li>
     <li><a href="#网络边缘">网络边缘</a></li>
+    <li><a href="#网络核心">网络核心</a></li>
+    <li><a href="#网络接入与物理介质">网络接入与物理介质</a></li>
+    <li><a href="#互联网络结构与-isp">互联网络结构与 ISP</a>
+      <ol>
+        <li><a href="#近似层次型结构">近似层次型结构</a></li>
+        <li><a href="#isp-之间的连接">ISP 之间的连接</a></li>
+        <li><a href="#内容提供商网络">内容提供商网络</a></li>
+      </ol>
+    </li>
+    <li><a href="#分组交换网络中的延迟与丢失">分组交换网络中的延迟与丢失</a>
+      <ol>
+        <li><a href="#延迟的-4-个原因计算font-stylecolordf2a3f---掌握font">延迟的 4 个原因（计算）<font style="color:#DF2A3F;"> - 掌握</font></a></li>
+        <li><a href="#流量强度0-1与排队延迟正相关lar-font-stylecolordf2a3f--掌握font">流量强度（0-1，与排队延迟正相关）：La/R <font style="color:#DF2A3F;">- 掌握</font></a></li>
+        <li><a href="#丢失原因">丢失原因：</a></li>
+        <li><a href="#吞吐量font-stylecolor74b602--了解font">吞吐量<font style="color:#74B602;"> -了解</font></a></li>
+      </ol>
+    </li>
+    <li><a href="#协议层次与服务模型">协议层次与服务模型</a>
+      <ol>
+        <li><a href="#为什么要分层">为什么要分层</a></li>
+        <li><a href="#网络比较复杂分层实现比较容易设计调试实现">网络比较复杂，分层实现比较容易设计、调试、实现。</a></li>
+        <li><a href="#一些术语和概念font-stylecolor74b602-理解font">一些术语和概念<font style="color:#74B602;">-理解</font></a></li>
+        <li><a href="#互联网络分层模型及每一层的功能font-stylecolor74b602-理解font">互联网络分层模型及每一层的功能<font style="color:#74B602;">-理解</font></a></li>
+        <li><a href="#封装和解封">封装和解封</a></li>
+      </ol>
+    </li>
+    <li><a href="#历史font-stylecolor74b602-了解font">历史<font style="color:#74B602;">-了解</font></a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#网络应用原理">网络应用原理</a></li>
+    <li><a href="#web-和-http">WEB 和 HTTP</a>
+      <ol>
+        <li><a href="#web-应用包括">WEB 应用包括</a></li>
+        <li><a href="#术语">术语</a></li>
+        <li><a href="#font-stylecolordf2a3fhttp-协议font"><font style="color:#DF2A3F;">HTTP 协议</font></a></li>
+        <li><a href="#font-stylecolordf2a3fhttp-10-到-http-11-再到-http-20-的演变font"><font style="color:#DF2A3F;">HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0 的演变</font></a>
+          <ol>
+            <li><a href="#http-10">HTTP 1.0</a></li>
+            <li><a href="#http-11">HTTP 1.1</a></li>
+            <li><a href="#http-20">HTTP 2.0</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -383,164 +428,294 @@
 </ul>
 </li>
 </ul>
-<h2 id="JXpGw"> 网络核心</h2>
-+ **网络核心**
-    - **组成**：网络交换设备，如路由器 + 链路。
-    - **功能**：数据交换。
-+ **数据交换方式及比较**
-    - **分组交换**：存储转发方式，统计复用。<font style="color:#74B602;">理解</font>
-        * VC（虚电路）
-        * Datagram（数据报）
-    - **线路交换**
-        * FDM（频分复用）
-        * TDM（时分复用）
-        * WDM（波分复用）
-<h2 id="X5a62">网络接入与物理介质</h2>
-+ 网络接入是指将端系统连接到边缘路由器的链路或网络。
-+ 住宅接入采用点到点接入方式，具体包括：
-    - ADSL（非对称数字用户线路）
-    - HFC（混合光纤同轴电缆）
-    - Cable Modem（电缆调制解调器）
-    - Home Networks（家庭网络）
-+ 机构接入：LAN
-    - 以太网
-    - WLAN（无线网）
-+ 物理链路（第 0 层）
-    - 导向型介质（有型，光纤等）
-    - 非导向型介质（无形，电磁波、光信号等）
-+ 常用介质
-    - TP 双绞线
-    - 同轴电缆
-    - 光纤
-    - Radio（电磁波信号）
-<h2 id="GF60Y"> 互联网络结构与 ISP</h2>
-<h3 id="aa20322b">近似层次型结构</h3>
-+ T - 1 ISP
-+ T - 2 ISP (Regional ISP)
-+ Local ISP
-<h3 id="58575eb4">ISP 之间的连接</h3>
-+ 对等连接
-+ IXP（<font style="color:rgba(0, 0, 0, 0.85);">互联网交换点</font>）
-<h3 id="e47bd55e">内容提供商网络</h3>
-+ 在全球部署 DC（数据中心）
-+ 内容提供商网络在多处与各个 ISP 相联
-+ 内容提供商自己部署网络将全球的 DC 相联
-    - 内容提供商 DC 自己之间的访问，通过自己部署的专网
-    - 用户接入后通过离用户最近的 DC 为之服务
-<h2 id="LTDUR"> 分组交换网络中的延迟与丢失</h2>
-<h3 id="074fb489">延迟的 4 个原因（计算）<font style="color:#DF2A3F;"> - 掌握</font></h3>
-+ 处理延迟
-+ 排队延迟
-+ 传输延迟
-+ 传播延迟
+<h2 id="网络核心">网络核心
+</h2><ul>
+<li><strong>网络核心</strong>
+<ul>
+<li><strong>组成</strong>：网络交换设备，如路由器 + 链路。</li>
+<li><strong>功能</strong>：数据交换。</li>
+</ul>
+</li>
+<li><strong>数据交换方式及比较</strong>
+<ul>
+<li><strong>分组交换</strong>：存储转发方式，统计复用。<font style="color:#74B602;">理解</font>
+<ul>
+<li>VC（虚电路）</li>
+<li>Datagram（数据报）</li>
+</ul>
+</li>
+<li><strong>线路交换</strong>
+<ul>
+<li>FDM（频分复用）</li>
+<li>TDM（时分复用）</li>
+<li>WDM（波分复用）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="网络接入与物理介质">网络接入与物理介质
+</h2><ul>
+<li>网络接入是指将端系统连接到边缘路由器的链路或网络。</li>
+<li>住宅接入采用点到点接入方式，具体包括：
+<ul>
+<li>ADSL（非对称数字用户线路）</li>
+<li>HFC（混合光纤同轴电缆）</li>
+<li>Cable Modem（电缆调制解调器）</li>
+<li>Home Networks（家庭网络）</li>
+</ul>
+</li>
+<li>机构接入：LAN
+<ul>
+<li>以太网</li>
+<li>WLAN（无线网）</li>
+</ul>
+</li>
+<li>物理链路（第 0 层）
+<ul>
+<li>导向型介质（有型，光纤等）</li>
+<li>非导向型介质（无形，电磁波、光信号等）</li>
+</ul>
+</li>
+<li>常用介质
+<ul>
+<li>TP 双绞线</li>
+<li>同轴电缆</li>
+<li>光纤</li>
+<li>Radio（电磁波信号）</li>
+</ul>
+</li>
+</ul>
+<h2 id="互联网络结构与-isp">互联网络结构与 ISP
+</h2><h3 id="近似层次型结构">近似层次型结构
+</h3><ul>
+<li>T - 1 ISP</li>
+<li>T - 2 ISP (Regional ISP)</li>
+<li>Local ISP</li>
+</ul>
+<h3 id="isp-之间的连接">ISP 之间的连接
+</h3><ul>
+<li>对等连接</li>
+<li>IXP（<font style="color:rgba(0, 0, 0, 0.85);">互联网交换点</font>）</li>
+</ul>
+<h3 id="内容提供商网络">内容提供商网络
+</h3><ul>
+<li>在全球部署 DC（数据中心）</li>
+<li>内容提供商网络在多处与各个 ISP 相联</li>
+<li>内容提供商自己部署网络将全球的 DC 相联
+<ul>
+<li>内容提供商 DC 自己之间的访问，通过自己部署的专网</li>
+<li>用户接入后通过离用户最近的 DC 为之服务</li>
+</ul>
+</li>
+</ul>
+<h2 id="分组交换网络中的延迟与丢失">分组交换网络中的延迟与丢失
+</h2><h3 id="延迟的-4-个原因计算font-stylecolordf2a3f---掌握font">延迟的 4 个原因（计算）<font style="color:#DF2A3F;"> - 掌握</font>
+</h3><ul>
+<li>处理延迟</li>
+<li>排队延迟</li>
+<li>传输延迟</li>
+<li>传播延迟</li>
+</ul>
 <p>例如：n 段，分组 L，R，传播延迟 d 每段如何计算总体延迟；</p>
-<h3 id="fbb64f3c">流量强度（0-1，与排队延迟正相关）：La/R <font style="color:#DF2A3F;">- 掌握</font></h3>
-+ 排队延迟   依赖**<font style="color:#DF2A3F;">流量强度的公式</font>**；
-<h3 id="9a253976">丢失原因：<font style="color:#DF2A3F;"></font></h3>
-+ 缓冲区溢出 + 出错没通过校验
-<h3 id="284df07c">吞吐量<font style="color:#74B602;"> -了解</font></h3>
-+ 瞬间吞吐量
-+ 平均吞吐量
+<h3 id="流量强度0-1与排队延迟正相关lar-font-stylecolordf2a3f--掌握font">流量强度（0-1，与排队延迟正相关）：La/R <font style="color:#DF2A3F;">- 掌握</font>
+</h3><ul>
+<li>排队延迟   依赖**<font style="color:#DF2A3F;">流量强度的公式</font>**；</li>
+</ul>
+<h3 id="丢失原因">丢失原因：
+</h3><ul>
+<li>缓冲区溢出 + 出错没通过校验</li>
+</ul>
+<h3 id="吞吐量font-stylecolor74b602--了解font">吞吐量<font style="color:#74B602;"> -了解</font>
+</h3><ul>
+<li>瞬间吞吐量</li>
+<li>平均吞吐量</li>
+</ul>
 <p>瓶颈链路决定了主机之间的吞吐量（从每段链路获得的大致带宽是 1/N，瓶颈链路是所有链路段中获得带宽最小的）。</p>
-<h2 id="BfYsO">协议层次与服务模型</h2>
-<h3 id="1d7619ed">为什么要分层</h3>
-+ 网络比较复杂，分层实现比较容易设计、调试、实现。
-+ 分层：将复杂的网络功能划分成功能明确的层次，<font style="color:#DF2A3F;">上层利用下层提供的服务来实现本层的协议，从而为上层提供更复杂的功能。</font>
-<h3 id="a5ae54da">一些术语和概念<font style="color:#74B602;">-理解</font></h3>
-+ 服务、服务访问原语、服务访问点
-+ 面向连接的服务、无连接的服务
-+ 协议、协议数据单元 PDU
-+ 服务（垂直）和协议（水平）之间的关系（区别与联系）
-    - 服务利用了下层协议的实现，为上层提供服务
-    - 协议的实现依靠下层服务
-<h3 id="7f122534">互联网络分层模型及每一层的功能<font style="color:#74B602;">-理解</font></h3>
-+ 应用层
-+ 传输层
-+ 网络层（端到端，路由和转发）
-+ 链路层（点到点，帧为单位）
-+ 物理层（物理信号）
-<h3 id="b9fed914">封装和解封</h3>
-<h2 id="Kn2fE"> 历史<font style="color:#74B602;">-了解</font></h2>
-+ ARPANET：美国军方资助的分组交换实验网，由于 TCP/IP 架构的包容性、免费使用、架构便于应用创新吸引更多的用户等原因，用户数量、节点数量和应用数量越来越多。
-+ NSF 建立 ARPANET 的访问网。
-+ 民用网络从军用网络脱开，成为现在的互联网。
-<p>术语：IETF（<code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.85);&quot;&gt;</code>互联网工程任务组<code>&lt;/font&gt;</code>）（ITU（<code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.85);&quot;&gt;</code>国际电信联盟<code>&lt;/font&gt;</code>），IEEE（<code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.85);&quot;&gt;</code>电气电子工程师协会 <code>&lt;/font&gt;</code>）），RFC（<code>&lt;font style=&quot;color:rgba(0, 0, 0, 0.85);&quot;&gt;</code>请求评论，是一系列关于互联网技术的文件<code>&lt;/font&gt;</code>）。</p>
-<h1 id="33f165bc"> 应用层</h1>
-原理 + 应用实例 + SOCKET 编程
+<h2 id="协议层次与服务模型">协议层次与服务模型
+</h2><h3 id="为什么要分层">为什么要分层
+</h3><h3 id="网络比较复杂分层实现比较容易设计调试实现">网络比较复杂，分层实现比较容易设计、调试、实现。
+</h3><ul>
+<li>分层：将复杂的网络功能划分成功能明确的层次，<font style="color:#DF2A3F;">上层利用下层提供的服务来实现本层的协议，从而为上层提供更复杂的功能。</font></li>
+</ul>
+<h3 id="一些术语和概念font-stylecolor74b602-理解font">一些术语和概念<font style="color:#74B602;">-理解</font>
+</h3><ul>
+<li>服务、服务访问原语、服务访问点</li>
+<li>面向连接的服务、无连接的服务</li>
+<li>协议、协议数据单元 PDU</li>
+<li>服务（垂直）和协议（水平）之间的关系（区别与联系）
+<ul>
+<li>服务利用了下层协议的实现，为上层提供服务</li>
+<li>协议的实现依靠下层服务</li>
+</ul>
+</li>
+</ul>
+<h3 id="互联网络分层模型及每一层的功能font-stylecolor74b602-理解font">互联网络分层模型及每一层的功能<font style="color:#74B602;">-理解</font>
+</h3><ul>
+<li>应用层</li>
+<li>传输层</li>
+<li>网络层（端到端，路由和转发）</li>
+<li>链路层（点到点，帧为单位）</li>
+<li>物理层（物理信号）</li>
+</ul>
+<h3 id="封装和解封">封装和解封
+</h3><h2 id="历史font-stylecolor74b602-了解font">历史<font style="color:#74B602;">-了解</font>
+</h2><ul>
+<li>ARPANET：美国军方资助的分组交换实验网，由于 TCP/IP 架构的包容性、免费使用、架构便于应用创新吸引更多的用户等原因，用户数量、节点数量和应用数量越来越多。</li>
+<li>NSF 建立 ARPANET 的访问网。</li>
+<li>民用网络从军用网络脱开，成为现在的互联网。</li>
+</ul>
+<p>术语：IETF（互联网工程任务组）, ITU(国际电信联盟），IEEE（电气电子工程师协会 ），RFC（请求评论，是一系列关于互联网技术的文件）。</p>
+<h1 id="应用层">应用层
+</h1><p>原理 + 应用实例 + SOCKET 编程</p>
 <p>应用的开发只集中在端系统上，对路由器没有任何改变，这鼓励了互联网架构下的应用创新。</p>
-<h2 id="JF5uK">网络应用原理</h2>
-1. **应用架构**
-    - C/S（客户端 / 服务器）
-    - P2P（对等网络）
-    - 混合架构
-2. **进程间通信**
-    - 同主机：操作系统定义的通信方法
-    - 不同主机：利用网络提供的架构（Socket）交换报文
-3. **SOCKET**
-    - 一个整数，OS 用于标示应用通信关系所采用的本地标示
-    - **TCP：**连接的本地标示
-    - **UDP：**端节点的本地标示
-4. **进程编址**
-    - I**P + PORT**（本质上在传输层应用了端口号，用于区分应用，TCP 和 UDP 使用端口号的方式不同）
-5. **应用所需要的服务需要考虑的因素（网络所提供服务的主要指标）**
-    - 丢失率可靠性
-    - 延迟、延迟差（抖动）
-    - 带宽
-    - 安全性
-6. **传输层协议**
-    - **TCP 提供的服务特性**：可靠字节流服务，面向连接，流量控制，拥塞控制
-    - **UDP 提供的服务特性**：无连接，不可靠的服务
+<h2 id="网络应用原理">网络应用原理
+</h2><ol>
+<li><strong>应用架构</strong>
+<ul>
+<li>C/S（客户端 / 服务器）</li>
+<li>P2P（对等网络）</li>
+<li>混合架构</li>
+</ul>
+</li>
+<li><strong>进程间通信</strong>
+<ul>
+<li>同主机：操作系统定义的通信方法</li>
+<li>不同主机：利用网络提供的架构（Socket）交换报文</li>
+</ul>
+</li>
+<li><strong>SOCKET</strong>
+<ul>
+<li>一个整数，OS 用于标示应用通信关系所采用的本地标示</li>
+<li>**TCP：**连接的本地标示</li>
+<li>**UDP：**端节点的本地标示</li>
+</ul>
+</li>
+<li><strong>进程编址</strong>
+<ul>
+<li>I<strong>P + PORT</strong>（本质上在传输层应用了端口号，用于区分应用，TCP 和 UDP 使用端口号的方式不同）</li>
+</ul>
+</li>
+<li><strong>应用所需要的服务需要考虑的因素（网络所提供服务的主要指标）</strong>
+<ul>
+<li>丢失率可靠性</li>
+<li>延迟、延迟差（抖动）</li>
+<li>带宽</li>
+<li>安全性</li>
+</ul>
+</li>
+<li><strong>传输层协议</strong>
+<ul>
+<li><strong>TCP 提供的服务特性</strong>：可靠字节流服务，面向连接，流量控制，拥塞控制</li>
+<li><strong>UDP 提供的服务特性</strong>：无连接，不可靠的服务</li>
+</ul>
+</li>
+</ol>
 <p>都能够提供进程的标示，区分不同的进程</p>
-<h2 id="PYFlX"> WEB 和 HTTP</h2>
-<h3 id="1c338c93">WEB 应用包括</h3>
-+ HTTP 协议
-+ HTML
-+ CLIENT（客户端），SERVER（服务器）
-<h3 id="6942afc6">术语</h3>
-+ 网页
-+ 对象
-+ 引用 URL
-<h3 id="350f69b8"><font style="color:#DF2A3F;">HTTP 协议</font></h3>
-+ 定义了 C（客户端）和 S（服务器）之间通信的报文格式、解释和时序。
-+ HTTP 连接
-    - 持续性连接
-    - 非持续性连接
-+ 往返延迟 RTT 和对象的抓取时间
-<h3 id="6cee033d"><font style="color:#DF2A3F;">HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0 的演变</font></h3>
-<h4 id="bfea4fa9">HTTP 1.0</h4>
-1. **基本特点**
-    - **无状态协议**：每个请求都是独立的，服务器不会在不同请求之间保留状态信息。
-    - **简单的请求 - 响应模型**：客户端发起请求，服务器响应请求，一次请求对应一次响应。
-    - **支持多种请求方法**：如 GET、POST、HEAD 等。
-2. **局限性**
-    - **连接管理效率低**：每对请求 - 响应都需要建立一个新的 TCP 连接，这导致了较高的连接建立开销，特别是在请求大量小文件时。
-    - **缺乏对缓存的充分支持**：缓存机制比较简单，没有很好地处理资源更新和验证的问题。
-<h4 id="38025ad3">HTTP 1.1</h4>
-1. **改进之处**
-    - **持久连接（Keep - Alive）**
-        * 允许在一个 TCP 连接上进行多次请求 - 响应交互，减少了建立连接的开销。
-        * 客户端和服务器可以通过`Connection: keep - alive`头字段来协商保持连接。
-    - **管道化（Pipelining）**
-        * 允许客户端在等待第一个请求的响应时，发送第二个请求，进一步提高了性能。
-    - **增强的缓存机制**
-        * 引入了更多的缓存控制头字段，如`Cache - Control`、`ETag`和`If - Modified - Since`等，使得缓存管理更加灵活和高效。
-    - **分块传输编码（Chunked Transfer Coding）**
-        * 允许服务器在不知道内容长度的情况下，分块发送响应内容，适用于动态生成内容的情况。
-2. **局限性**
-    - **头部信息冗余**：每个请求和响应都携带完整的头部信息，在大量请求时，头部数据的传输会造成性能瓶颈。
-    - **队首阻塞（Head - of - line Blocking）**：在管道化连接中，如果一个请求被阻塞，后续的请求都要等待，即使后续请求不需要依赖前面被阻塞的请求。
-<h4 id="b42a0bac">HTTP 2.0</h4>
-1. **主要特性**
-    - **二进制分帧层（Binary Framing Layer）**
-        * HTTP 2.0 将所有传输的信息分割为更小的帧，并对帧进行二进制编码。这使得协议更加紧凑和高效。
-        * 通过帧的形式，实现了在一个 TCP 连接上多路复用多个请求和响应，避免了 HTTP 1.1 中的队首阻塞问题。
-    - **头部压缩（Header Compression）**
-        * 使用 HPACK 算法对头部信息进行压缩，减少了头部数据的传输量。
-        * 对于重复的头部字段，可以只传输差异部分，进一步提高了压缩效率。
-    - **服务器推送（Server Push）**
-        * 服务器可以在客户端没有请求的情况下，主动向客户端推送资源。例如，当客户端请求 HTML 页面时，服务器可以同时推送页面所需的 CSS 和 JavaScript 文件，减少客户端的等待时间。
-2. **性能提升**
-    - HTTP 2.0 通过上述特性，在网络性能上有了显著提升，特别是在处理大量小资源和高并发请求时表现出色。
+<h2 id="web-和-http">WEB 和 HTTP
+</h2><h3 id="web-应用包括">WEB 应用包括
+</h3><ul>
+<li>HTTP 协议</li>
+<li>HTML</li>
+<li>CLIENT（客户端），SERVER（服务器）</li>
+</ul>
+<h3 id="术语">术语
+</h3><ul>
+<li>网页</li>
+<li>对象</li>
+<li>引用 URL</li>
+</ul>
+<h3 id="font-stylecolordf2a3fhttp-协议font"><font style="color:#DF2A3F;">HTTP 协议</font>
+</h3><ul>
+<li>定义了 C（客户端）和 S（服务器）之间通信的报文格式、解释和时序。</li>
+<li>HTTP 连接
+<ul>
+<li>持续性连接</li>
+<li>非持续性连接</li>
+</ul>
+</li>
+<li>往返延迟 RTT 和对象的抓取时间</li>
+</ul>
+<h3 id="font-stylecolordf2a3fhttp-10-到-http-11-再到-http-20-的演变font"><font style="color:#DF2A3F;">HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0 的演变</font>
+</h3><h4 id="http-10">HTTP 1.0
+</h4><ol>
+<li><strong>基本特点</strong>
+<ul>
+<li><strong>无状态协议</strong>：每个请求都是独立的，服务器不会在不同请求之间保留状态信息。</li>
+<li><strong>简单的请求 - 响应模型</strong>：客户端发起请求，服务器响应请求，一次请求对应一次响应。</li>
+<li><strong>支持多种请求方法</strong>：如 GET、POST、HEAD 等。</li>
+</ul>
+</li>
+<li><strong>局限性</strong>
+<ul>
+<li><strong>连接管理效率低</strong>：每对请求 - 响应都需要建立一个新的 TCP 连接，这导致了较高的连接建立开销，特别是在请求大量小文件时。</li>
+<li><strong>缺乏对缓存的充分支持</strong>：缓存机制比较简单，没有很好地处理资源更新和验证的问题。</li>
+</ul>
+</li>
+</ol>
+<h4 id="http-11">HTTP 1.1
+</h4><ol>
+<li><strong>改进之处</strong>
+<ul>
+<li><strong>持久连接（Keep - Alive）</strong>
+<ul>
+<li>允许在一个 TCP 连接上进行多次请求 - 响应交互，减少了建立连接的开销。</li>
+<li>客户端和服务器可以通过<code>Connection: keep - alive</code>头字段来协商保持连接。</li>
+</ul>
+</li>
+<li><strong>管道化（Pipelining）</strong>
+<ul>
+<li>允许客户端在等待第一个请求的响应时，发送第二个请求，进一步提高了性能。</li>
+</ul>
+</li>
+<li><strong>增强的缓存机制</strong>
+<ul>
+<li>引入了更多的缓存控制头字段，如<code>Cache - Control</code>、<code>ETag</code>和<code>If - Modified - Since</code>等，使得缓存管理更加灵活和高效。</li>
+</ul>
+</li>
+<li><strong>分块传输编码（Chunked Transfer Coding）</strong>
+<ul>
+<li>允许服务器在不知道内容长度的情况下，分块发送响应内容，适用于动态生成内容的情况。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>局限性</strong>
+<ul>
+<li><strong>头部信息冗余</strong>：每个请求和响应都携带完整的头部信息，在大量请求时，头部数据的传输会造成性能瓶颈。</li>
+<li><strong>队首阻塞（Head - of - line Blocking）</strong>：在管道化连接中，如果一个请求被阻塞，后续的请求都要等待，即使后续请求不需要依赖前面被阻塞的请求。</li>
+</ul>
+</li>
+</ol>
+<h4 id="http-20">HTTP 2.0
+</h4><ol>
+<li><strong>主要特性</strong>
+<ul>
+<li><strong>二进制分帧层（Binary Framing Layer）</strong>
+<ul>
+<li>HTTP 2.0 将所有传输的信息分割为更小的帧，并对帧进行二进制编码。这使得协议更加紧凑和高效。</li>
+<li>通过帧的形式，实现了在一个 TCP 连接上多路复用多个请求和响应，避免了 HTTP 1.1 中的队首阻塞问题。</li>
+</ul>
+</li>
+<li><strong>头部压缩（Header Compression）</strong>
+<ul>
+<li>使用 HPACK 算法对头部信息进行压缩，减少了头部数据的传输量。</li>
+<li>对于重复的头部字段，可以只传输差异部分，进一步提高了压缩效率。</li>
+</ul>
+</li>
+<li><strong>服务器推送（Server Push）</strong>
+<ul>
+<li>服务器可以在客户端没有请求的情况下，主动向客户端推送资源。例如，当客户端请求 HTML 页面时，服务器可以同时推送页面所需的 CSS 和 JavaScript 文件，减少客户端的等待时间。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>性能提升</strong>
+<ul>
+<li>HTTP 2.0 通过上述特性，在网络性能上有了显著提升，特别是在处理大量小资源和高并发请求时表现出色。</li>
+</ul>
+</li>
+</ol>
 <p>从 HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0，协议不断进化，旨在解决前一版本的性能瓶颈，提高网络传输效率和用户体验。</p>
 <h3 id="5277f3b9"><font style="color:#DF2A3F;">从 SSL 到 HTTP/3.0（基于 UDP）的安全优化过程</font></h3>
 <h4 id="5ea8d79b">SSL（Secure Sockets Layer，安全套接层）</h4>
@@ -1055,9 +1230,9 @@
     - 无连接：以太网在传输数据时不需要事先建立连接。
     - 不可靠：数据传输过程中不保证数据的可靠到达。
 4. **访问控制技术。**
-    - **CSMA/CD****<font style="color:#DF2A3F;">（需掌握）</font>**：载波侦听多路访问 / 冲突检测，用于解决以太网中的冲突问题。
+    - **CSMA/CD** **<font style="color:#DF2A3F;">（需掌握）</font>**：载波侦听多路访问 / 冲突检测，用于解决以太网中的冲突问题。
         * 指数后退：在发生冲突后，设备会采用指数后退算法等待一段时间后再尝试发送。
-    - **CSMA/CA****<font style="color:#74B602;">（需理解）</font>**：载波侦听多路访问 / 冲突避免，适用于无线网络。
+    - **CSMA/CA ** **<font style="color:#74B602;">（需理解）</font>**：载波侦听多路访问 / 冲突避免，适用于无线网络。
 5. **编码。**
     - **Manchester 编码**：一种常用的编码方式。
 <h2 id="e4UIw"> HUB 和交换机</h2>
