@@ -6,8 +6,7 @@
         <description>Recent content on 羡余</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <copyright>Hongyun</copyright>
-        <lastBuildDate>Sat, 08 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hongyun-yu.github.io/Hugo-dev/index.xml" rel="self" type="application/rss+xml" /><item>
+        <copyright>Hongyun</copyright><atom:link href="https://hongyun-yu.github.io/Hugo-dev/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Markdown Syntax Guide</title>
         <link>https://hongyun-yu.github.io/Hugo-dev/p/markdown-syntax-guide/</link>
         <pubDate>Sat, 08 Feb 2025 00:00:00 +0000</pubDate>
