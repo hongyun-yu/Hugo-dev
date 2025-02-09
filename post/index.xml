@@ -567,39 +567,84 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;从 HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0，协议不断进化，旨在解决前一版本的性能瓶颈，提高网络传输效率和用户体验。&lt;/p&gt;
-&lt;h3 id=&#34;5277f3b9&#34;&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;从 SSL 到 HTTP/3.0（基于 UDP）的安全优化过程&lt;/font&gt;&lt;/h3&gt;
-&lt;h4 id=&#34;5ea8d79b&#34;&gt;SSL（Secure Sockets Layer，安全套接层）&lt;/h4&gt;
-1. **基本原理**
-    - SSL 是一种早期的网络安全协议，用于在客户端和服务器之间建立加密连接，确保数据在传输过程中的保密性、完整性和身份验证。
-    - 它通过握手过程来协商加密算法、密钥交换和身份验证方法。
-2. **局限性**
-    - **性能问题**
-        * SSL 的握手过程相对复杂，尤其是在早期版本中，这会导致较高的连接建立延迟。
-        * 对于每一个新的连接，都需要重新进行握手，这在高并发场景下会影响性能。
-    - **安全性逐渐减弱**
-        * 随着技术的发展，SSL 的一些加密算法和协议漏洞被发现，安全性逐渐不能满足现代网络安全的需求。
-&lt;h4 id=&#34;f690fab7&#34;&gt;TLS（Transport Layer Security，传输层安全）  
-&lt;/h4&gt;
-1. **与 SSL 的关系**
-    - TLS 是 SSL 的继任者，它在 SSL 的基础上进行了改进和扩展。TLS 的目标与 SSL 相同，即确保网络通信的安全，但在安全性和性能方面有了显著提升。
-2. **改进之处**
-    - **增强的加密算法**
-        * TLS 采用了更强大和更安全的加密算法，如 AES（Advanced Encryption Standard）等，以应对不断出现的安全威胁。
-    - **优化的握手过程**
-        * TLS 对握手过程进行了优化，例如引入了会话恢复机制。当客户端和服务器之前已经建立过连接，在一定条件下可以复用之前的会话参数，减少握手时间。
-&lt;h4 id=&#34;74511e35&#34;&gt;HTTP/3.0（基于 UDP 的 QUIC 协议）&lt;/h4&gt;
-1. **QUIC（Quick UDP Internet Connections）协议**
-    - HTTP/3.0 是基于 QUIC 协议的，而 QUIC 是基于 UDP 的。QUIC 旨在解决 TCP 和 TLS 在性能和安全性方面的一些问题。
-2. **安全特性**
-    - **集成加密**
-        * QUIC 将加密作为协议的核心部分，从一开始就对数据进行加密，避免了像 TCP + TLS 那样分两步进行加密的复杂性。
-    - **0 - RTT 连接建立（在某些情况下）**
-        * QUIC 允许在某些条件下实现 0 - RTT（Round - Trip Time）连接建立。例如，当客户端和服务器之前已经建立过连接并且缓存了相关的加密参数时，客户端可以立即发送应用数据，无需等待握手过程完成，大大减少了连接建立延迟。
-    - **前向纠错（Forward Error Correction，FEC）**
-        * QUIC 采用了 FEC 技术，通过在数据中添加冗余信息来恢复在传输过程中丢失的数据，减少了因丢包导致的数据重传，提高了传输效率和安全性。
+&lt;h3 id=&#34;从-ssl-到-http30基于-udp的安全优化过程&#34;&gt;从 SSL 到 HTTP/3.0（基于 UDP）的安全优化过程
+&lt;/h3&gt;&lt;h4 id=&#34;sslsecure-sockets-layer安全套接层&#34;&gt;SSL（Secure Sockets Layer，安全套接层）
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;基本原理&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;SSL 是一种早期的网络安全协议，用于在客户端和服务器之间建立加密连接，确保数据在传输过程中的保密性、完整性和身份验证。&lt;/li&gt;
+&lt;li&gt;它通过握手过程来协商加密算法、密钥交换和身份验证方法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;局限性&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;性能问题&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;SSL 的握手过程相对复杂，尤其是在早期版本中，这会导致较高的连接建立延迟。&lt;/li&gt;
+&lt;li&gt;对于每一个新的连接，都需要重新进行握手，这在高并发场景下会影响性能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全性逐渐减弱&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;随着技术的发展，SSL 的一些加密算法和协议漏洞被发现，安全性逐渐不能满足现代网络安全的需求。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;tlstransport-layer-security传输层安全&#34;&gt;TLS（Transport Layer Security，传输层安全）
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;与 SSL 的关系&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;TLS 是 SSL 的继任者，它在 SSL 的基础上进行了改进和扩展。TLS 的目标与 SSL 相同，即确保网络通信的安全，但在安全性和性能方面有了显著提升。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;改进之处&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;增强的加密算法&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;TLS 采用了更强大和更安全的加密算法，如 AES（Advanced Encryption Standard）等，以应对不断出现的安全威胁。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优化的握手过程&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;TLS 对握手过程进行了优化，例如引入了会话恢复机制。当客户端和服务器之前已经建立过连接，在一定条件下可以复用之前的会话参数，减少握手时间。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;http30基于-udp-的-quic-协议&#34;&gt;HTTP/3.0（基于 UDP 的 QUIC 协议）
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;QUIC（Quick UDP Internet Connections）协议&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;HTTP/3.0 是基于 QUIC 协议的，而 QUIC 是基于 UDP 的。QUIC 旨在解决 TCP 和 TLS 在性能和安全性方面的一些问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全特性&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;集成加密&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;QUIC 将加密作为协议的核心部分，从一开始就对数据进行加密，避免了像 TCP + TLS 那样分两步进行加密的复杂性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;0 - RTT 连接建立（在某些情况下）&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;QUIC 允许在某些条件下实现 0 - RTT（Round - Trip Time）连接建立。例如，当客户端和服务器之前已经建立过连接并且缓存了相关的加密参数时，客户端可以立即发送应用数据，无需等待握手过程完成，大大减少了连接建立延迟。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;前向纠错（Forward Error Correction，FEC）&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;QUIC 采用了 FEC 技术，通过在数据中添加冗余信息来恢复在传输过程中丢失的数据，减少了因丢包导致的数据重传，提高了传输效率和安全性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;从 SSL 到 HTTP/3.0（基于 UDP）的演变过程，是一个不断优化安全性能和网络传输效率的过程。HTTP/3.0 通过基于 UDP 的 QUIC 协议，在安全和性能方面都有了显著的提升。&lt;/p&gt;
-&lt;h3 id=&#34;aaec1aa9&#34;&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;报文格式&lt;/font&gt;&lt;/h3&gt;
-[Wireshark——抓包分析_wireshark抓包数据怎么看-CSDN博客](https://blog.csdn.net/qq_45951891/article/details/134217064)
+&lt;h3 id=&#34;报文格式&#34;&gt;报文格式
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_45951891/article/details/134217064&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Wireshark——抓包分析_wireshark抓包数据怎么看-CSDN博客&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;请求报文
 &lt;ul&gt;
@@ -612,53 +657,79 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;55ce44e9&#34;&gt;COOKIES（HTTP无状态-&gt;有状态）&lt;/h3&gt;
-&lt;h3 id=&#34;a3159496&#34;&gt;WEB 缓存&lt;/h3&gt;
-+ 作用：通过本地命中，减少这些对象的访问延迟；进一步减少接入链路的流量强度，从而降低派对延迟带来总体平均延迟的减少；减轻服务器的负担。
-+ 优点：通过一个实例，计算不要求。
-&lt;h2 id=&#34;XqWje&#34;&gt; FTP&lt;font style=&#34;color:#74B602;&#34;&gt;（不要求）&lt;/font&gt;&lt;/h2&gt;
-+ 作用：在 CS 之间传输文件。
-+ 构成：
-    - C（客户端）
-    - S（服务器）
-    - FTP
-+ FTP 的连接
-    - 控制连接（带外传输）
-    - 数据连接
-+ 命令和响应
-&lt;h2 id=&#34;Z0ilX&#34;&gt; EMAIL&lt;/h2&gt;
-&lt;h3 id=&#34;990f9287&#34;&gt;电子邮件应用的构成&lt;/h3&gt;
-+ 用户代理
-+ 邮件服务器
-+ SMTP（简单邮件传输协议）
-&lt;h3 id=&#34;7e01e3ae&#34;&gt;邮件报文格式解析&lt;/h3&gt;
-+ 报文头
-+ 报文体
-+ MIME（多用途互联网邮件扩展）：邮件多媒体扩展，可以在邮件中编解码多媒体内容。
-&lt;h3 id=&#34;2a213a09&#34;&gt;邮件存取协议&lt;/h3&gt;
-+ 作用
-+ 常用
-    - IMAP（互联网邮件访问协议）
-    - POP3（邮局协议版本 3）
-&lt;h2 id=&#34;Kti52&#34;&gt;DNS&lt;/h2&gt;
-&lt;h3 id=&#34;16c3179f&#34;&gt;DNS 作用&lt;/h3&gt;
-完成域名到 IP 地址的转换（还包括别名到正规名字、邮件服务器名字到正规名字转换等），是应用层面的互联网&lt;font style=&#34;color:#DF2A3F;&#34;&gt;基础设施&lt;/font&gt;，其他应用使用。
-&lt;h3 id=&#34;e95c1a4f&#34;&gt;二、DNS 的概念&lt;/h3&gt;
-+ 分布式、层次数据库
-+ 命名是分层的
-+ 域名信息存储和服务是分布式的，每个域名服务器担任一个区域 ZONE 的名字到 IP 地址的权威转换，也缓存名字 - IP 信息的转换。
-&lt;h3 id=&#34;9952e62d&#34;&gt;三、DNS 的构成&lt;/h3&gt;
-+ 解析器：本地应用
-+ 域名服务器
-+ DNS 协议
-    - 报文：请求和应答格式相同
-    - RR：资源记录
-&lt;h3 id=&#34;ed1a197f&#34;&gt;域名解析的过程&lt;/h3&gt;
-** (解析器 -&gt; 本地 DNS 服务器 -&gt; 上层域名服务器 -&gt;...-&gt; 权威名字服务器，返回)**
-&lt;p&gt;**    本地域名服务器、权限域名服务器、顶级域名服务器、根域名服务器**&lt;/p&gt;
+&lt;h3 id=&#34;cookieshttp无状态-有状态&#34;&gt;COOKIES（HTTP无状态-&amp;gt;有状态）
+&lt;/h3&gt;&lt;h3 id=&#34;web-缓存&#34;&gt;WEB 缓存
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;作用：通过本地命中，减少这些对象的访问延迟；进一步减少接入链路的流量强度，从而降低派对延迟带来总体平均延迟的减少；减轻服务器的负担。&lt;/li&gt;
+&lt;li&gt;优点：通过一个实例，计算不要求。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ftpfont-stylecolor74b602不要求font&#34;&gt;FTP&lt;font style=&#34;color:#74B602;&#34;&gt;（不要求）&lt;/font&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;作用：在 CS 之间传输文件。&lt;/li&gt;
+&lt;li&gt;构成：
 &lt;ul&gt;
-&lt;li&gt;递归解析：&lt;code&gt;&amp;lt;font style=&amp;quot;color:rgb(77, 77, 77);&amp;quot;&amp;gt;&lt;/code&gt;如果主机所询问的本地域名服务器不知道被查询的域名的IP地址，那么本地域名服务器就以DNS客户的身份，向其它根域名服务器继续发出查询请求报文(即替主机继续查询)，而不是让主机自己进行下一步查询。因此，递归查询返回的查询结果或者是所要查询的IP地址，或者是报错，表示无法查询到所需的IP地址。&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;迭代解析：&lt;code&gt;&amp;lt;font style=&amp;quot;color:rgb(77, 77, 77);&amp;quot;&amp;gt;&lt;/code&gt;当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么给出所要查询的IP地址，要么告诉本地服务器：“你下一步应当向哪一个域名服务器进行查询”。然后让本地服务器进行后续的查询。根域名服务器通常是把自己知道的顶级域名服务器的IP地址告诉本地域名服务器，让本地域名服务器再向顶级域名服务器查询。顶级域名服务器在收到本地域名服务器的查询请求后，要么给出所要查询的IP地址，要么告诉本地服务器下一步应当向哪一个权限域名服务器进行查询。最后，知道了所要解析的IP地址或报错，然后把这个结果返回给发起查询的主机。&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;C（客户端）&lt;/li&gt;
+&lt;li&gt;S（服务器）&lt;/li&gt;
+&lt;li&gt;FTP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FTP 的连接
+&lt;ul&gt;
+&lt;li&gt;控制连接（带外传输）&lt;/li&gt;
+&lt;li&gt;数据连接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;命令和响应&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;email&#34;&gt;EMAIL
+&lt;/h2&gt;&lt;h3 id=&#34;电子邮件应用的构成&#34;&gt;电子邮件应用的构成
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;用户代理&lt;/li&gt;
+&lt;li&gt;邮件服务器&lt;/li&gt;
+&lt;li&gt;SMTP（简单邮件传输协议）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;邮件报文格式解析&#34;&gt;邮件报文格式解析
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;报文头&lt;/li&gt;
+&lt;li&gt;报文体&lt;/li&gt;
+&lt;li&gt;MIME（多用途互联网邮件扩展）：邮件多媒体扩展，可以在邮件中编解码多媒体内容。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;邮件存取协议&#34;&gt;邮件存取协议
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;作用&lt;/li&gt;
+&lt;li&gt;常用
+&lt;ul&gt;
+&lt;li&gt;IMAP（互联网邮件访问协议）&lt;/li&gt;
+&lt;li&gt;POP3（邮局协议版本 3）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;dns&#34;&gt;DNS
+&lt;/h2&gt;&lt;h3 id=&#34;dns-作用&#34;&gt;DNS 作用
+&lt;/h3&gt;&lt;p&gt;完成域名到 IP 地址的转换（还包括别名到正规名字、邮件服务器名字到正规名字转换等），是应用层面的互联网&lt;font style=&#34;color:#DF2A3F;&#34;&gt;基础设施&lt;/font&gt;，其他应用使用。&lt;/p&gt;
+&lt;h3 id=&#34;二dns-的概念&#34;&gt;二、DNS 的概念
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;分布式、层次数据库&lt;/li&gt;
+&lt;li&gt;命名是分层的&lt;/li&gt;
+&lt;li&gt;域名信息存储和服务是分布式的，每个域名服务器担任一个区域 ZONE 的名字到 IP 地址的权威转换，也缓存名字 - IP 信息的转换。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;三dns-的构成&#34;&gt;三、DNS 的构成
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;解析器：本地应用&lt;/li&gt;
+&lt;li&gt;域名服务器&lt;/li&gt;
+&lt;li&gt;DNS 协议
+&lt;ul&gt;
+&lt;li&gt;报文：请求和应答格式相同&lt;/li&gt;
+&lt;li&gt;RR：资源记录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;域名解析的过程&#34;&gt;域名解析的过程
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;(解析器 -&amp;gt; 本地 DNS 服务器 -&amp;gt; 上层域名服务器 -&amp;gt;&amp;hellip;-&amp;gt; 权威名字服务器，返回)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;本地域名服务器、权限域名服务器、顶级域名服务器、根域名服务器&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;递归解析：如果主机所询问的本地域名服务器不知道被查询的域名的IP地址，那么本地域名服务器就以DNS客户的身份，向其它根域名服务器继续发出查询请求报文(即替主机继续查询)，而不是让主机自己进行下一步查询。因此，递归查询返回的查询结果或者是所要查询的IP地址，或者是报错，表示无法查询到所需的IP地址。&lt;/li&gt;
+&lt;li&gt;迭代解析：当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么给出所要查询的IP地址，要么告诉本地服务器：“你下一步应当向哪一个域名服务器进行查询”。然后让本地服务器进行后续的查询。根域名服务器通常是把自己知道的顶级域名服务器的IP地址告诉本地域名服务器，让本地域名服务器再向顶级域名服务器查询。顶级域名服务器在收到本地域名服务器的查询请求后，要么给出所要查询的IP地址，要么告诉本地服务器下一步应当向哪一个权限域名服务器进行查询。最后，知道了所要解析的IP地址或报错，然后把这个结果返回给发起查询的主机。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&#34;https://cdn.nlark.com/yuque/0/2025/png/42840982/1736144525748-a7a35972-1aeb-4e16-acae-ca23c1300d01.png&#34;
 	
@@ -668,284 +739,529 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;aa104381&#34;&gt;五、DNS 缓存&lt;/h3&gt;
-+ 作用
-+ 本地缓存 + 服务器缓存
-&lt;h2 id=&#34;yhjGC&#34;&gt; P2P&lt;font style=&#34;color:#74B602;&#34;&gt;（了解P2P 的概念和优势即可）&lt;/font&gt;&lt;/h2&gt;
-&lt;h3 id=&#34;c9a3e029&#34;&gt;P2P 概念&lt;/h3&gt;
-每个对等体即是客户端又是服务器；P2P 网络是这些 peer 构成的应用层面的逻辑网络。
-&lt;h3 id=&#34;b82106e3&#34;&gt;P2P 网络比 C/S 方式分发内容快的原因&lt;/h3&gt;
-这些 peer 节点参与到内容的上载，流量和服务都是分布式的，可扩展性。
-&lt;h3 id=&#34;7484950e&#34;&gt;典型 P2P 应用及其原理&lt;font style=&#34;color:#74B602;&#34;&gt;（不要求）&lt;/font&gt;&lt;/h3&gt;
-+ Napster：知道名词
-+ Gnutella：知道名词
-+ KaZaA：知道名词
-+ BT：知道名字
-+ DHT：
-&lt;h2 id=&#34;KgWZM&#34;&gt; 视频流化服务和 CDN&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;&lt;/h2&gt;
-&lt;h3 id=&#34;c45e33a9&#34;&gt;服务器向客户端进行视频流化的方式&lt;/h3&gt;
-+ UDP 流化
-+ http 流化
-+ DASH（Dynamic, Adaptive Streaming over HTTP）
-&lt;h3 id=&#34;f52e3a2a&#34;&gt;DASH 流化的过程&lt;/h3&gt;
-+ 客户端获取告示文件
-+ 客户端按照情况，向（可能是不同的）服务器请求不同视频质量的内容块，客户端智能
-&lt;h3 id=&#34;656cd913&#34;&gt;CDN&lt;/h3&gt;
-+ 单个服务器，或者服务器群向客户端提供海量内容并发服务的问题：扩展性差
-+ CDN 原理
-    - 应用层面的协作服务网络
-    - 在全网部署缓存节点，内容预先部署到 CDN 缓存节点上
-    - 用户请求通过域名解析重定向向离自己 “最近的节点” 请求内容
-+ 缓存节点放置的方式
-        * Enter Deep
-        * Bring Home
-&lt;h2 id=&#34;gb2YL&#34;&gt;TCP 的 SOCKET 编程 &lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;&lt;/h2&gt;
-&lt;h3 id=&#34;6b3aa2b0&#34;&gt;SOCKET 概念&lt;/h3&gt;
-+ TCP 连接的本地标示示，向这个 SOCKET 写就是发送给对方的进程；从 SOCKET 中读，就是读取对方发送过来的数据。
-&lt;h3 id=&#34;8876a791&#34;&gt;SOCKET API&lt;/h3&gt;
-+ 创建
-+ 使用（读和写）
-+ 关闭
-&lt;h3 id=&#34;fc7a72a4&#34;&gt;TCP SOCKET 数据传输的特点&lt;/h3&gt;
-+ 面向连接，可靠字节流服务
-&lt;h3 id=&#34;baf984a4&#34;&gt;TCP SOCKET 编程&lt;/h3&gt;
-+ **建立 SOCKET**
-    - 客户端 TCP 实体动作：和服务器端的 TCP 实体握手沟通。
-    - 服务器端的动作
-    - 三次握手
-+ 使用 SOCKET
-+ 关闭 SOCKET
-&lt;h2 id=&#34;nIakL&#34;&gt;UDP 的 SOCKET 编程 &lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;&lt;/h2&gt;
-+ UDP SOCKET数据传输的特点
-+ 编程&lt;font style=&#34;color:#74B602;&#34;&gt; 不要求&lt;/font&gt;
-    -   建立SOCKET（之前客户端 UDP 实体和服务器不用握手，不为之后的通信做准备）
-    -   使用
-    -   关闭
-&lt;h1 id=&#34;fe50615c&#34;&gt;传输层&lt;/h1&gt;
-&lt;h2 id=&#34;97c86295&#34;&gt;传输层服务&lt;/h2&gt;
-&lt;h3 id=&#34;31c6c758&#34;&gt;传输服务&lt;/h3&gt;
-+ 能够使端系统应用之间进行逻辑通信。
-+ 传输协议：运行于端系统的 2 个对等传输层实体相互通信应该遵守的规则集合。
-+ 传输服务和网络服务的区别
-    - 网络服务：主机到主机的通信。
-    - 传输服务：进程到进程的通信。
-&lt;h3 id=&#34;7152af94&#34;&gt;互联网络传输层协议&lt;/h3&gt;
-+ TCP：有连接，可靠保序数传服务。
-+ UDP：无连接，不可靠，不保序的数传服务。
-&lt;h2 id=&#34;ae27c6f4&#34;&gt;复用与解复用&lt;/h2&gt;
-&lt;h3 id=&#34;0924507c&#34;&gt;复用&lt;/h3&gt;
-+ 源端多个上层应用收集数据：应用报文，封装报文。
-&lt;h3 id=&#34;2f534aa0&#34;&gt;解复用&lt;/h3&gt;
-+ 接收端将数据按照端口号（结合 IP 地址）给相应的 SOCKET 对应的应用。
-&lt;h3 id=&#34;7a8f164e&#34;&gt;复用和解复用的工作原理：IP PORT&lt;/h3&gt;
-+ TCP 有连接情况：SOCKETS 为 4 元组。
-+ UDP 无连接情况：SOCKETS 为 2 元组。
-&lt;h2 id=&#34;re2yv&#34;&gt;无连接传输层协议 UDP&lt;/h2&gt;
-+ **UDP 的必要性**：有些应用对实时性比较在乎，对可靠性要求不高。
-+ **UDP 报文（无连接的，因此叫做 UDP 数据报）格式**。（头部 + 载荷）
-+ **UDP 报文校验和的计算（Check Sum）  **&lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;
-&lt;h2 id=&#34;C6tW6&#34;&gt;可靠数据传输原理&lt;/h2&gt;
-+ **协议演进的方式讲解如何进行 rdt**
-    - 加入一些假设，简单的协议可以提供 rdt 服务。
-    - 去掉一些假设，需要协议实体做相应的变化从而能够进行 rdt。
-+ **技术机制 ****&lt;font style=&#34;color:#74B602;&#34;&gt; &lt;/font&gt;**&lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;
-    - 校验和，正向确认，反向确认。
-    - 序号：检查重复。
-    - 只有正向确认的机制。
-    - 检错重发和超时重发：处理丢失。
-        * 滑动窗口
-&lt;h3 id=&#34;659b54b9&#34;&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;RDT（Reliable Data Transfer，可靠数据传输）1.0、2.0、3.0 的功能特点&lt;/font&gt;&lt;/h3&gt;
-[计算机网络（14）——可靠数据传输原理_rdt3.0接收方fsm-CSDN博客](https://blog.csdn.net/qq_39583450/article/details/113481150)
-&lt;h4 id=&#34;63dcc270&#34;&gt;RDT 1.0&lt;/h4&gt;
-1. **解决错误问题**
-    - **基本原理**
-        * RDT 1.0 假设底层信道完全可靠，不会出现比特差错，也不会丢失分组。
-        * 在这种理想情况下，发送方只需将数据发送出去，接收方就能无误地接收到数据。
-    - **工作机制**
-        * 发送方：简单地将数据发送给接收方，无需考虑数据是否丢失或损坏。
-        * 接收方：接收数据并进行处理，不需要反馈机制来确认数据是否正确接收。
-&lt;h4 id=&#34;298bd624&#34;&gt;RDT 2.0&lt;/h4&gt;
-1. **解决序号 / 时序问题**
-    - **基本原理**
-        * RDT 2.0 考虑到了底层信道可能出现比特差错的情况，但仍然假设分组不会丢失。
-        * 为了检测和纠正错误，引入了差错检测码（如校验和）和确认（ACK）与否认（NAK）机制。
-    - **工作机制**
-        * 发送方：
-            + 发送带有差错检测码的数据分组。
-            + 等待接收方的 ACK 或 NAK 反馈。如果收到 ACK，则继续发送下一个分组；如果收到 NAK，则重发当前分组。
-        * 接收方：
-            + 接收数据分组并检查差错检测码。
-            + 如果数据无误，发送 ACK 给发送方；如果检测到错误，发送 NAK 给发送方。
-&lt;h4 id=&#34;bd52b016&#34;&gt;RDT 3.0&lt;/h4&gt;
-1. **解决超时 / 重复问题**
-    - **基本原理**
-        * RDT 3.0 在 RDT 2.0 的基础上，进一步考虑了分组可能丢失的情况。
-        * 为了处理分组丢失问题，引入了定时器机制。
-    - **工作机制**
-        * 发送方：
-            + 发送数据分组后启动定时器。
-            + 如果在定时器超时前收到 ACK，则取消定时器并发送下一个分组。
-            + 如果定时器超时，无论是否收到 NAK，都重发当前分组。
-        * 接收方：
-            + 与 RDT 2.0 类似，接收数据分组，检查差错检测码，发送 ACK 或 NAK。
-            + 如果收到重复的分组（由于发送方超时重发），仍然发送 ACK 给发送方，以避免发送方不断重发。
+&lt;h3 id=&#34;五dns-缓存&#34;&gt;五、DNS 缓存
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;作用&lt;/li&gt;
+&lt;li&gt;本地缓存 + 服务器缓存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;p2pfont-stylecolor74b602了解p2p-的概念和优势即可font&#34;&gt;P2P&lt;font style=&#34;color:#74B602;&#34;&gt;（了解P2P 的概念和优势即可）&lt;/font&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;p2p-概念&#34;&gt;P2P 概念
+&lt;/h3&gt;&lt;p&gt;每个对等体即是客户端又是服务器；P2P 网络是这些 peer 构成的应用层面的逻辑网络。&lt;/p&gt;
+&lt;h3 id=&#34;p2p-网络比-cs-方式分发内容快的原因&#34;&gt;P2P 网络比 C/S 方式分发内容快的原因
+&lt;/h3&gt;&lt;p&gt;这些 peer 节点参与到内容的上载，流量和服务都是分布式的，可扩展性。&lt;/p&gt;
+&lt;h3 id=&#34;典型-p2p-应用及其原理font-stylecolor74b602不要求font&#34;&gt;典型 P2P 应用及其原理&lt;font style=&#34;color:#74B602;&#34;&gt;（不要求）&lt;/font&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Napster：知道名词&lt;/li&gt;
+&lt;li&gt;Gnutella：知道名词&lt;/li&gt;
+&lt;li&gt;KaZaA：知道名词&lt;/li&gt;
+&lt;li&gt;BT：知道名字&lt;/li&gt;
+&lt;li&gt;DHT：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;视频流化服务和-cdnfont-stylecolor74b602了解font&#34;&gt;视频流化服务和 CDN&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;服务器向客户端进行视频流化的方式&#34;&gt;服务器向客户端进行视频流化的方式
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;UDP 流化&lt;/li&gt;
+&lt;li&gt;http 流化&lt;/li&gt;
+&lt;li&gt;DASH（Dynamic, Adaptive Streaming over HTTP）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;dash-流化的过程&#34;&gt;DASH 流化的过程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;客户端获取告示文件&lt;/li&gt;
+&lt;li&gt;客户端按照情况，向（可能是不同的）服务器请求不同视频质量的内容块，客户端智能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;cdn&#34;&gt;CDN
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;单个服务器，或者服务器群向客户端提供海量内容并发服务的问题：扩展性差&lt;/li&gt;
+&lt;li&gt;CDN 原理
+&lt;ul&gt;
+&lt;li&gt;应用层面的协作服务网络&lt;/li&gt;
+&lt;li&gt;在全网部署缓存节点，内容预先部署到 CDN 缓存节点上&lt;/li&gt;
+&lt;li&gt;用户请求通过域名解析重定向向离自己 “最近的节点” 请求内容&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;缓存节点放置的方式
+* Enter Deep
+* Bring Home&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tcp-的-socket-编程-font-stylecolor74b602理解font&#34;&gt;TCP 的 SOCKET 编程 &lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;socket-概念&#34;&gt;SOCKET 概念
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;TCP 连接的本地标示示，向这个 SOCKET 写就是发送给对方的进程；从 SOCKET 中读，就是读取对方发送过来的数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;socket-api&#34;&gt;SOCKET API
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;创建&lt;/li&gt;
+&lt;li&gt;使用（读和写）&lt;/li&gt;
+&lt;li&gt;关闭&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;tcp-socket-数据传输的特点&#34;&gt;TCP SOCKET 数据传输的特点
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;面向连接，可靠字节流服务&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;tcp-socket-编程&#34;&gt;TCP SOCKET 编程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;建立 SOCKET&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端 TCP 实体动作：和服务器端的 TCP 实体握手沟通。&lt;/li&gt;
+&lt;li&gt;服务器端的动作&lt;/li&gt;
+&lt;li&gt;三次握手&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;使用 SOCKET&lt;/li&gt;
+&lt;li&gt;关闭 SOCKET&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;udp-的-socket-编程-font-stylecolor74b602理解font&#34;&gt;UDP 的 SOCKET 编程 &lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;UDP SOCKET数据传输的特点&lt;/li&gt;
+&lt;li&gt;编程&lt;font style=&#34;color:#74B602;&#34;&gt; 不要求&lt;/font&gt;
+&lt;ul&gt;
+&lt;li&gt;建立SOCKET（之前客户端 UDP 实体和服务器不用握手，不为之后的通信做准备）&lt;/li&gt;
+&lt;li&gt;使用&lt;/li&gt;
+&lt;li&gt;关闭&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;传输层&#34;&gt;传输层
+&lt;/h1&gt;&lt;h2 id=&#34;传输层服务&#34;&gt;传输层服务
+&lt;/h2&gt;&lt;h3 id=&#34;传输服务&#34;&gt;传输服务
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;能够使端系统应用之间进行逻辑通信。&lt;/li&gt;
+&lt;li&gt;传输协议：运行于端系统的 2 个对等传输层实体相互通信应该遵守的规则集合。&lt;/li&gt;
+&lt;li&gt;传输服务和网络服务的区别
+&lt;ul&gt;
+&lt;li&gt;网络服务：主机到主机的通信。&lt;/li&gt;
+&lt;li&gt;传输服务：进程到进程的通信。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;互联网络传输层协议&#34;&gt;互联网络传输层协议
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;TCP：有连接，可靠保序数传服务。&lt;/li&gt;
+&lt;li&gt;UDP：无连接，不可靠，不保序的数传服务。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;复用与解复用&#34;&gt;复用与解复用
+&lt;/h2&gt;&lt;h3 id=&#34;复用&#34;&gt;复用
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;源端多个上层应用收集数据：应用报文，封装报文。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;解复用&#34;&gt;解复用
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;接收端将数据按照端口号（结合 IP 地址）给相应的 SOCKET 对应的应用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;复用和解复用的工作原理ip-port&#34;&gt;复用和解复用的工作原理：IP PORT
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;TCP 有连接情况：SOCKETS 为 4 元组。&lt;/li&gt;
+&lt;li&gt;UDP 无连接情况：SOCKETS 为 2 元组。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;无连接传输层协议-udp&#34;&gt;无连接传输层协议 UDP
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;UDP 的必要性&lt;/strong&gt;：有些应用对实时性比较在乎，对可靠性要求不高。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UDP 报文（无连接的，因此叫做 UDP 数据报）格式&lt;/strong&gt;。（头部 + 载荷）&lt;/li&gt;
+&lt;li&gt;**UDP 报文校验和的计算（Check Sum）  **&lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;可靠数据传输原理&#34;&gt;可靠数据传输原理
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;协议演进的方式讲解如何进行 rdt&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;加入一些假设，简单的协议可以提供 rdt 服务。&lt;/li&gt;
+&lt;li&gt;去掉一些假设，需要协议实体做相应的变化从而能够进行 rdt。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;**技术机制 ** &lt;strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt; &lt;/font&gt;&lt;/strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;
+&lt;ul&gt;
+&lt;li&gt;校验和，正向确认，反向确认。&lt;/li&gt;
+&lt;li&gt;序号：检查重复。&lt;/li&gt;
+&lt;li&gt;只有正向确认的机制。&lt;/li&gt;
+&lt;li&gt;检错重发和超时重发：处理丢失。
+&lt;ul&gt;
+&lt;li&gt;滑动窗口&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;font-stylecolordf2a3frdtreliable-data-transfer可靠数据传输102030-的功能特点font&#34;&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;RDT（Reliable Data Transfer，可靠数据传输）1.0、2.0、3.0 的功能特点&lt;/font&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_39583450/article/details/113481150&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;计算机网络（14）——可靠数据传输原理_rdt3.0接收方fsm-CSDN博客&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;rdt-10&#34;&gt;RDT 1.0
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;解决错误问题&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;基本原理&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;RDT 1.0 假设底层信道完全可靠，不会出现比特差错，也不会丢失分组。&lt;/li&gt;
+&lt;li&gt;在这种理想情况下，发送方只需将数据发送出去，接收方就能无误地接收到数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工作机制&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;发送方：简单地将数据发送给接收方，无需考虑数据是否丢失或损坏。&lt;/li&gt;
+&lt;li&gt;接收方：接收数据并进行处理，不需要反馈机制来确认数据是否正确接收。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;rdt-20&#34;&gt;RDT 2.0
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;解决序号 / 时序问题&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;基本原理&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;RDT 2.0 考虑到了底层信道可能出现比特差错的情况，但仍然假设分组不会丢失。&lt;/li&gt;
+&lt;li&gt;为了检测和纠正错误，引入了差错检测码（如校验和）和确认（ACK）与否认（NAK）机制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工作机制&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;发送方：
+&lt;ul&gt;
+&lt;li&gt;发送带有差错检测码的数据分组。&lt;/li&gt;
+&lt;li&gt;等待接收方的 ACK 或 NAK 反馈。如果收到 ACK，则继续发送下一个分组；如果收到 NAK，则重发当前分组。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;接收方：
+&lt;ul&gt;
+&lt;li&gt;接收数据分组并检查差错检测码。&lt;/li&gt;
+&lt;li&gt;如果数据无误，发送 ACK 给发送方；如果检测到错误，发送 NAK 给发送方。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;rdt-30&#34;&gt;RDT 3.0
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;解决超时 / 重复问题&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;基本原理&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;RDT 3.0 在 RDT 2.0 的基础上，进一步考虑了分组可能丢失的情况。&lt;/li&gt;
+&lt;li&gt;为了处理分组丢失问题，引入了定时器机制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工作机制&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;发送方：
+&lt;ul&gt;
+&lt;li&gt;发送数据分组后启动定时器。&lt;/li&gt;
+&lt;li&gt;如果在定时器超时前收到 ACK，则取消定时器并发送下一个分组。&lt;/li&gt;
+&lt;li&gt;如果定时器超时，无论是否收到 NAK，都重发当前分组。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;接收方：
+&lt;ul&gt;
+&lt;li&gt;与 RDT 2.0 类似，接收数据分组，检查差错检测码，发送 ACK 或 NAK。&lt;/li&gt;
+&lt;li&gt;如果收到重复的分组（由于发送方超时重发），仍然发送 ACK 给发送方，以避免发送方不断重发。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;RDT 协议从 1.0 到 3.0 不断演进，逐步解决了可靠数据传输过程中的各种实际问题，从假设理想信道到考虑比特差错、分组丢失等情况，通过增加差错检测、确认机制、定时器等手段来确保数据的可靠传输。&lt;/p&gt;
-&lt;h3 id=&#34;7bc77e9b&#34;&gt;利用率计算&lt;font style=&#34;color:#74B602;&#34;&gt; 了解&lt;/font&gt;&lt;/h3&gt;
-    - 停止等待技术：链路带宽延迟积（容量）效率低。
-    - 管道技术：在未经对方确认的情况下，可以连续发送多个 PDU。
-        * GBN：发送窗口大于 1，接收窗口 = 1（只能顺序接收；发送方只设置一个超时定时器，一旦出错，返回到出错的那一个 PDU 重发）。
-        * SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送方为每个发送出去的 PDU 设置超时定时器，哪个超时重发哪个）。
-&lt;h2 id=&#34;WgkQh&#34;&gt;有连接传输层协议：TCP&lt;/h2&gt;
-&lt;h3 id=&#34;PzrWT&#34;&gt;TCP 服务特性&lt;/h3&gt;
-+ 点对点：可靠保序字节流；管道（在未加确认情况下一次次传多个未经确认的段）；缓冲；全双工；面向连接；流控制。
-&lt;h3 id=&#34;Y1waf&#34;&gt;TCP 段结构&lt;/h3&gt;
-+ 各个字段的作用。
-+ 连接建立时协商好双方的起始序号；
-+ 序号是首字节在字节流的偏移量；
-+ 确认：是对顺序收到的最后一个字节 + 1。
-&lt;h3 id=&#34;07810658&#34;&gt;RTT 时间估计和重发超时时间估计&lt;/h3&gt;
-1. **移动平均计算**
-    - 平均往返延迟。
-    - 当前往返延迟采样值与平均值的偏差。
-    - 平均值 + 4 偏差。
-&lt;h3 id=&#34;a46882bd&#34;&gt;TCP 的可靠数据传输原理&lt;/h3&gt;
-1. **快速重传**
-    - 在没有超时情况下，收到对方对于某一个段的重复三次（一共 4 个）ACK。
-&lt;h3 id=&#34;4e8ad694&#34;&gt;流量控制&lt;/h3&gt;
-1. **流控目的**
-    - 防止淹没接收方。
-2. **流控手段**
-    - 将接收窗口大小捎带方式传递给发送端。
-&lt;h3 id=&#34;a37334da&#34;&gt;TCP 连接管理 &lt;font style=&#34;color:#74B602;&#34;&gt; 理解&lt;/font&gt;&lt;/h3&gt;
-1. **连接建立**
-    - 3 次握手技术，对双方选择的初始序号给予确认，准备好缓冲区。
-    - 第一次握手：SYN = 1，ACK = 0：发起端的序号。
-    - 第二次握手：`syn = 1`，`ack = 1`，被呼叫方的序号。
-    - 第三次握手：`(syn = 0) ack = 1`。
-2. **连接拆除**
-    - 存在 2 军问题不完美（也不存在完美释放连接的方案，用定时器凑合解决）。
-    - 连接状态及其变迁。
-&lt;h2 id=&#34;tP6uc&#34;&gt;拥塞控制原理&lt;/h2&gt;
-1. **拥塞的概念**
-    - 解释什么是拥塞，以及为什么会发生拥塞。
-2. **拥塞控制目的**
-3. **拥塞控制手段****&lt;font style=&#34;color:#74B602;&#34;&gt;  理解&lt;/font&gt;**
-    - 端到端的拥塞控制：**TCP** 采用这种方式。
-    - 网络辅助的拥塞控制：**ATM** 网络标志和携带拥塞信息，反馈给主机&lt;font style=&#34;color:#74B602;&#34;&gt;（不要求）&lt;/font&gt;。
-&lt;h2 id=&#34;wSjkd&#34;&gt;TCP 的拥塞控制原理&lt;/h2&gt;
-&lt;h3 id=&#34;x7QjF&#34;&gt;TCP 拥塞控制原理&lt;font style=&#34;color:#DF2A3F;&#34;&gt;（需掌握）&lt;/font&gt;&lt;/h3&gt;
-1. **检测拥塞**
-    - 超时（拥塞，存在误判的可能性，但概率比较低）。
-    - 三个冗余 ACK（轻微拥塞）。
-2. **拥塞控制机制**
-    - AIMD（加性增&lt;font style=&#34;color:#F1A2AB;&#34;&gt;1&lt;/font&gt;、乘性减&lt;font style=&#34;color:#F1A2AB;&#34;&gt;半&lt;/font&gt;）、慢启动&lt;font style=&#34;color:#F1A2AB;&#34;&gt;（加倍）&lt;/font&gt;、超时之后的保守策略。
-&lt;h3 id=&#34;A7gNi&#34;&gt;TCP 拥塞控制的 2 种算法&lt;/h3&gt;
-1. **Tahoe**
-    - 超时事件和 3 个冗余 ACK 处理一样的，不要求。
-2. **reno 算法****&lt;font style=&#34;color:#DF2A3F;&#34;&gt;（需掌握）&lt;/font&gt;**
-    - 超时事件发生和 3 个冗余 ACK 处理不一样。
-&lt;h3 id=&#34;LvuuB&#34;&gt;平均延迟和超时定时器时间的设置&lt;/h3&gt;
-1. **JACSON 算法（具体初始化和迭代算法，****&lt;font style=&#34;color:#74B602;&#34;&gt;不要求&lt;/font&gt;****）**
-    - 平均往返延迟公式。
-    - Dev 算法：第一个超时时间 = 延迟的 1/2，初值设置；后面按公式。
-    - 超时时间设置：es + 4dev。
-&lt;h3 id=&#34;YbP6k&#34;&gt;TCP 公平性：&lt;font style=&#34;color:#74B602;&#34;&gt;了解&lt;/font&gt;&lt;/h3&gt;
-&lt;h3 id=&#34;Yq6kU&#34;&gt;TCP 的吞吐量计算：&lt;font style=&#34;color:#74B602;&#34;&gt;不要求&lt;/font&gt;。&lt;/h3&gt;
-&lt;h1 id=&#34;PXOWM&#34;&gt;网络层之数据平面&lt;/h1&gt;
-&lt;h2 id=&#34;rbeyM&#34;&gt;简介&lt;/h2&gt;
-&lt;h3 id=&#34;hedNW&#34;&gt;网络层的主要服务和功能&lt;/h3&gt;
-1. **服务**
-    - 向传输层提供主机到主机的段传输服务。
-2. **功能 1—— 转发，数据平面功能**
-    - 从路由器的一个端口流入，从另外一个端口流出。
-3. **功能 2—— 路由，控制平面的功能**
-    - 决定从源到目的的路径。
-    - 两个功能相互配合将数据报从源传送到目标主机；关联是转发表、流表。
-&lt;h3 id=&#34;oXdnl&#34;&gt;实现网络层功能的两种方式&lt;/h3&gt;
-1. **传统方式**
-    - 控制平面和数据平面功能垂直集成在每个设备上（路由器）。
-    - 控制平面功能：路由协议实体分布式地计算路由表。
-    - 数据平面的功能：IP 协议按照路由表进行分组的转发。
-2. **SDN 通用转发方式**
-    - 控制平面和数据平面分离，在不同设备上实现。
-    - SDN 控制器集中式计算、下发流表实现控制平面功能。
-    - SDN 分组交换机按照流表对到来的分组进行转发，实现数据平面的功能。
-&lt;h3 id=&#34;f9hzw&#34;&gt;网络层提供服务的一些重要指标&lt;/h3&gt;
-    - 带宽
-    - 延迟、延迟差
-    - 丢包与否
-    - 丢包率
-&lt;h2 id=&#34;LJqZq&#34;&gt;路由器结构和工作原理&lt;/h2&gt;
-&lt;h3 id=&#34;qT81r&#34;&gt;路由器的 2 大功能&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;&lt;/h3&gt;
-1. **路由协议**
-    - 结果形成路由表（转发表）。
-2. **转发分组**
-    - 使用转发表转发分组，交换。
-&lt;h3 id=&#34;sabMR&#34;&gt;构成&lt;/h3&gt;
-1. **输入端口**
-    - 线路终端实现物理层功能，链路协议实体实现链路层功能，网络层功能实现分布式分组转发。
-    - 最长前缀匹配。
-2. **交换结构**
-    - 基于内存的，基于 bus 的，基于 CROSSBAR 的。
-3. **输出端口**
-    - 网络层可以实现分组的调度：FIFO，RR，WFQ。
-    - 调度支持对多媒体分组等优先级分组的传输支持。
-4. **路由处理器**
-    - 控制各部分协调工作。
-&lt;h2 id=&#34;pFRZc&#34;&gt;互联网网络层协议&lt;/h2&gt;
-&lt;h3 id=&#34;SD3Vw&#34;&gt;IP 网络提供的服务模型：尽力而为&lt;/h3&gt;
-+ 包括含义：丢包、乱序、不可靠、（可能包括重复）。
-&lt;h3 id=&#34;SSFFW&#34;&gt;网络层构成&lt;/h3&gt;
-1. **协议**
-    - IP 协议、路由选择协议、ICMP 协议
-    - 转发表
-2. **IP 数据报格式**
-    - 各个字段的作用
-    - 分片和重组 &lt;font style=&#34;color:#DF2A3F;&#34;&gt;- 掌握&lt;/font&gt;
-        * 一个分组的总体大小超过了转发链路的 MTU，因此要切片。
-        * **到目标主机重组。**
-3. **IP 编址**
-    - IP 地址：主机或路由器和网络接口的标识。
-    - 子网
-        * 在一个子网内的设备之间的通信有 2 个特点：1）通信无需借助路由器；2）子网前缀一样。
-    - IP 地址分类：ABC（单步）  D（多步）  E（预留）
-    - 特殊 IP 地址（内网、全0、全1）
-    - 子网掩码和 CIDR
-4. **NAT ****&lt;font style=&#34;color:#74B602;&#34;&gt;不要求&lt;/font&gt;**
-5. DHCP 协议：上网主机获得 IP、掩码、默认网关和 local name server。
-6. 路由聚集：连续的子网前缀的子网可达信息可以做聚集，减少向外部传输路由的数量，减少路由计算的负担。支持大概的路由聚集，与此对应的是最长前缀匹配的措施。
-7. IPV 6：
-    1. 格式（固定头部长度 40B ），地址：128 bits
-    2. 变化（32-&gt;128）
-    3. IPV4 到 IPV6 的迁移
-        1. 隧道
-&lt;h2 id=&#34;cphVj&#34;&gt;通用转发和 SDN&lt;/h2&gt;
-&lt;h3 id=&#34;tQLPw&#34;&gt;SDN 方式控制平面和数据平面分离的优点&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;&lt;/h3&gt;
-1. 集中在控制器上实现控制逻辑，网络可编程，可以实现各种复杂的网络功能、新功能（一次部署，持续升级）、方便管理。
-2. 形成开发生态（控制器、分组交换机、网络应用，在一个开放的框架下协作）。
-&lt;h4 id=&#34;72472f8e&#34;&gt;SDN 分组交换机按照计算出的流表进行分组转发、通用、便于升级。&lt;/h4&gt;
-&lt;h4 id=&#34;b66c30f4&#34;&gt;分组交换机工作原理&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;&lt;/h4&gt;
-1. 模式匹配 + 行动（不仅仅是转发，还可以组播、泛洪、修改字段和阻塞等）。
-2. 进来分组，按照各级字段匹配流表，按照相应的行动动作分组。
-3. 按照优先权进行判断；之后，统计计数。
-&lt;h1 id=&#34;dGwKt&#34;&gt; 网络层之控制平面&lt;/h1&gt;
-&lt;h2 id=&#34;xnNII&#34;&gt; 概述&lt;/h2&gt;
-1. **两种方式实现控制平面功能**
-    - 传统方式：在每个路由器上分布式实现路由功能。
-    - SDN 方式：在 SDN 控制器上由网络应用集中式计算、生成流表。
-&lt;h2 id=&#34;QoE7d&#34;&gt;路由选择算法&lt;/h2&gt;
-1. **路由目标**
-    - 根据收集到的路由信息（拓扑、链路代价等）计算出源到目标较好的路径，代价比较低的路径。
-    - 主机 - 主机的路径 == 路由器到路由器的路径。
-    - 路由目标实际上是计算出节点的汇集树。
-    - 路由原则：完整正确、简单、健壮、稳定公平、最优（次优）。
-2. **路由分类**
-    - 静态和动态（自适应）。
-    - 局部和全局的。
+&lt;h3 id=&#34;利用率计算font-stylecolor74b602-了解font&#34;&gt;利用率计算&lt;font style=&#34;color:#74B602;&#34;&gt; 了解&lt;/font&gt;
+&lt;/h3&gt;&lt;p&gt;停止等待技术：链路带宽延迟积（容量）效率低。
+管道技术：在未经对方确认的情况下，可以连续发送多个 PDU。
+GBN：发送窗口大于 1，接收窗口 = 1（只能顺序接收；发送方只设置一个超时定时器，一旦出错，返回到出错的那一个 PDU 重发）。
+SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送方为每个发送出去的 PDU 设置超时定时器，哪个超时重发哪个）。&lt;/p&gt;
+&lt;h2 id=&#34;有连接传输层协议tcp&#34;&gt;有连接传输层协议：TCP
+&lt;/h2&gt;&lt;h3 id=&#34;tcp-服务特性&#34;&gt;TCP 服务特性
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;点对点：可靠保序字节流；管道（在未加确认情况下一次次传多个未经确认的段）；缓冲；全双工；面向连接；流控制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;tcp-段结构&#34;&gt;TCP 段结构
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;各个字段的作用。&lt;/li&gt;
+&lt;li&gt;连接建立时协商好双方的起始序号；&lt;/li&gt;
+&lt;li&gt;序号是首字节在字节流的偏移量；&lt;/li&gt;
+&lt;li&gt;确认：是对顺序收到的最后一个字节 + 1。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;rtt-时间估计和重发超时时间估计&#34;&gt;RTT 时间估计和重发超时时间估计
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;移动平均计算&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;平均往返延迟。&lt;/li&gt;
+&lt;li&gt;当前往返延迟采样值与平均值的偏差。&lt;/li&gt;
+&lt;li&gt;平均值 + 4 偏差。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;tcp-的可靠数据传输原理&#34;&gt;TCP 的可靠数据传输原理
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;快速重传&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;在没有超时情况下，收到对方对于某一个段的重复三次（一共 4 个）ACK。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;流量控制&#34;&gt;流量控制
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;流控目的&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;防止淹没接收方。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;流控手段&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;将接收窗口大小捎带方式传递给发送端。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;tcp-连接管理-font-stylecolor74b602-理解font&#34;&gt;TCP 连接管理 &lt;font style=&#34;color:#74B602;&#34;&gt; 理解&lt;/font&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;连接建立&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;3 次握手技术，对双方选择的初始序号给予确认，准备好缓冲区。&lt;/li&gt;
+&lt;li&gt;第一次握手：SYN = 1，ACK = 0：发起端的序号。&lt;/li&gt;
+&lt;li&gt;第二次握手：&lt;code&gt;syn = 1&lt;/code&gt;，&lt;code&gt;ack = 1&lt;/code&gt;，被呼叫方的序号。&lt;/li&gt;
+&lt;li&gt;第三次握手：&lt;code&gt;(syn = 0) ack = 1&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;连接拆除&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;存在 2 军问题不完美（也不存在完美释放连接的方案，用定时器凑合解决）。&lt;/li&gt;
+&lt;li&gt;连接状态及其变迁。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;拥塞控制原理&#34;&gt;拥塞控制原理
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;拥塞的概念&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;解释什么是拥塞，以及为什么会发生拥塞。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;拥塞控制目的&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;拥塞控制手段&lt;/strong&gt;**&lt;font style=&#34;color:#74B602;&#34;&gt;  理解&lt;/font&gt;**
+&lt;ul&gt;
+&lt;li&gt;端到端的拥塞控制：&lt;strong&gt;TCP&lt;/strong&gt; 采用这种方式。&lt;/li&gt;
+&lt;li&gt;网络辅助的拥塞控制：&lt;strong&gt;ATM&lt;/strong&gt; 网络标志和携带拥塞信息，反馈给主机&lt;font style=&#34;color:#74B602;&#34;&gt;（不要求）&lt;/font&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;tcp-的拥塞控制原理&#34;&gt;TCP 的拥塞控制原理
+&lt;/h2&gt;&lt;h3 id=&#34;tcp-拥塞控制原理font-stylecolordf2a3f需掌握font&#34;&gt;TCP 拥塞控制原理&lt;font style=&#34;color:#DF2A3F;&#34;&gt;（需掌握）&lt;/font&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;检测拥塞&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;超时（拥塞，存在误判的可能性，但概率比较低）。&lt;/li&gt;
+&lt;li&gt;三个冗余 ACK（轻微拥塞）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;拥塞控制机制&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;AIMD（加性增&lt;font style=&#34;color:#F1A2AB;&#34;&gt;1&lt;/font&gt;、乘性减&lt;font style=&#34;color:#F1A2AB;&#34;&gt;半&lt;/font&gt;）、慢启动&lt;font style=&#34;color:#F1A2AB;&#34;&gt;（加倍）&lt;/font&gt;、超时之后的保守策略。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;tcp-拥塞控制的-2-种算法&#34;&gt;TCP 拥塞控制的 2 种算法
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Tahoe&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;超时事件和 3 个冗余 ACK 处理一样的，不要求。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;reno 算法&lt;/strong&gt; &lt;strong&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;（需掌握）&lt;/font&gt;&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;超时事件发生和 3 个冗余 ACK 处理不一样。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;平均延迟和超时定时器时间的设置&#34;&gt;平均延迟和超时定时器时间的设置
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;**JACSON 算法（具体初始化和迭代算法， ** &lt;strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt;不要求&lt;/font&gt;&lt;/strong&gt; &lt;strong&gt;）&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;平均往返延迟公式。&lt;/li&gt;
+&lt;li&gt;Dev 算法：第一个超时时间 = 延迟的 1/2，初值设置；后面按公式。&lt;/li&gt;
+&lt;li&gt;超时时间设置：es + 4dev。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;tcp-公平性font-stylecolor74b602了解font&#34;&gt;TCP 公平性：&lt;font style=&#34;color:#74B602;&#34;&gt;了解&lt;/font&gt;
+&lt;/h3&gt;&lt;h3 id=&#34;tcp-的吞吐量计算font-stylecolor74b602不要求font&#34;&gt;TCP 的吞吐量计算：&lt;font style=&#34;color:#74B602;&#34;&gt;不要求&lt;/font&gt;。
+&lt;/h3&gt;&lt;h1 id=&#34;网络层之数据平面&#34;&gt;网络层之数据平面
+&lt;/h1&gt;&lt;h2 id=&#34;简介&#34;&gt;简介
+&lt;/h2&gt;&lt;h3 id=&#34;网络层的主要服务和功能&#34;&gt;网络层的主要服务和功能
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;服务&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;向传输层提供主机到主机的段传输服务。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;功能 1—— 转发，数据平面功能&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;从路由器的一个端口流入，从另外一个端口流出。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;功能 2—— 路由，控制平面的功能&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;决定从源到目的的路径。&lt;/li&gt;
+&lt;li&gt;两个功能相互配合将数据报从源传送到目标主机；关联是转发表、流表。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;实现网络层功能的两种方式&#34;&gt;实现网络层功能的两种方式
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;传统方式&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;控制平面和数据平面功能垂直集成在每个设备上（路由器）。&lt;/li&gt;
+&lt;li&gt;控制平面功能：路由协议实体分布式地计算路由表。&lt;/li&gt;
+&lt;li&gt;数据平面的功能：IP 协议按照路由表进行分组的转发。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SDN 通用转发方式&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;控制平面和数据平面分离，在不同设备上实现。&lt;/li&gt;
+&lt;li&gt;SDN 控制器集中式计算、下发流表实现控制平面功能。&lt;/li&gt;
+&lt;li&gt;SDN 分组交换机按照流表对到来的分组进行转发，实现数据平面的功能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;网络层提供服务的一些重要指标&#34;&gt;网络层提供服务的一些重要指标
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;带宽&lt;/li&gt;
+&lt;li&gt;延迟、延迟差&lt;/li&gt;
+&lt;li&gt;丢包与否&lt;/li&gt;
+&lt;li&gt;丢包率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;路由器结构和工作原理&#34;&gt;路由器结构和工作原理
+&lt;/h2&gt;&lt;h3 id=&#34;路由器的-2-大功能font-stylecolor74b602需理解font&#34;&gt;路由器的 2 大功能&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;路由协议&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;结果形成路由表（转发表）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;转发分组&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;使用转发表转发分组，交换。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;构成&#34;&gt;构成
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;输入端口&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;线路终端实现物理层功能，链路协议实体实现链路层功能，网络层功能实现分布式分组转发。&lt;/li&gt;
+&lt;li&gt;最长前缀匹配。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;交换结构&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;基于内存的，基于 bus 的，基于 CROSSBAR 的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;输出端口&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;网络层可以实现分组的调度：FIFO，RR，WFQ。&lt;/li&gt;
+&lt;li&gt;调度支持对多媒体分组等优先级分组的传输支持。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;路由处理器&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;控制各部分协调工作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;互联网网络层协议&#34;&gt;互联网网络层协议
+&lt;/h2&gt;&lt;h3 id=&#34;ip-网络提供的服务模型尽力而为&#34;&gt;IP 网络提供的服务模型：尽力而为
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;包括含义：丢包、乱序、不可靠、（可能包括重复）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;网络层构成&#34;&gt;网络层构成
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;协议&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;IP 协议、路由选择协议、ICMP 协议&lt;/li&gt;
+&lt;li&gt;转发表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IP 数据报格式&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;各个字段的作用&lt;/li&gt;
+&lt;li&gt;分片和重组 &lt;font style=&#34;color:#DF2A3F;&#34;&gt;- 掌握&lt;/font&gt;
+&lt;ul&gt;
+&lt;li&gt;一个分组的总体大小超过了转发链路的 MTU，因此要切片。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;到目标主机重组。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IP 编址&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;IP 地址：主机或路由器和网络接口的标识。&lt;/li&gt;
+&lt;li&gt;子网
+&lt;ul&gt;
+&lt;li&gt;在一个子网内的设备之间的通信有 2 个特点：1）通信无需借助路由器；2）子网前缀一样。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;IP 地址分类：ABC（单步）  D（多步）  E（预留）&lt;/li&gt;
+&lt;li&gt;特殊 IP 地址（内网、全0、全1）&lt;/li&gt;
+&lt;li&gt;子网掩码和 CIDR&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;**NAT ** &lt;strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt;不要求&lt;/font&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;DHCP 协议：上网主机获得 IP、掩码、默认网关和 local name server。&lt;/li&gt;
+&lt;li&gt;路由聚集：连续的子网前缀的子网可达信息可以做聚集，减少向外部传输路由的数量，减少路由计算的负担。支持大概的路由聚集，与此对应的是最长前缀匹配的措施。&lt;/li&gt;
+&lt;li&gt;IPV 6：
+&lt;ol&gt;
+&lt;li&gt;格式（固定头部长度 40B ），地址：128 bits&lt;/li&gt;
+&lt;li&gt;变化（32-&amp;gt;128）&lt;/li&gt;
+&lt;li&gt;IPV4 到 IPV6 的迁移
+&lt;ol&gt;
+&lt;li&gt;隧道&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;通用转发和-sdn&#34;&gt;通用转发和 SDN
+&lt;/h2&gt;&lt;h3 id=&#34;sdn-方式控制平面和数据平面分离的优点font-stylecolor74b602需理解font&#34;&gt;SDN 方式控制平面和数据平面分离的优点&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;集中在控制器上实现控制逻辑，网络可编程，可以实现各种复杂的网络功能、新功能（一次部署，持续升级）、方便管理。&lt;/li&gt;
+&lt;li&gt;形成开发生态（控制器、分组交换机、网络应用，在一个开放的框架下协作）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;sdn-分组交换机按照计算出的流表进行分组转发通用便于升级&#34;&gt;SDN 分组交换机按照计算出的流表进行分组转发、通用、便于升级。
+&lt;/h4&gt;&lt;h4 id=&#34;分组交换机工作原理font-stylecolor74b602需理解font&#34;&gt;分组交换机工作原理&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;模式匹配 + 行动（不仅仅是转发，还可以组播、泛洪、修改字段和阻塞等）。&lt;/li&gt;
+&lt;li&gt;进来分组，按照各级字段匹配流表，按照相应的行动动作分组。&lt;/li&gt;
+&lt;li&gt;按照优先权进行判断；之后，统计计数。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;网络层之控制平面&#34;&gt;网络层之控制平面
+&lt;/h1&gt;&lt;h2 id=&#34;概述&#34;&gt;概述
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;两种方式实现控制平面功能&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;传统方式：在每个路由器上分布式实现路由功能。&lt;/li&gt;
+&lt;li&gt;SDN 方式：在 SDN 控制器上由网络应用集中式计算、生成流表。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;路由选择算法&#34;&gt;路由选择算法
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;路由目标&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;根据收集到的路由信息（拓扑、链路代价等）计算出源到目标较好的路径，代价比较低的路径。&lt;/li&gt;
+&lt;li&gt;主机 - 主机的路径 == 路由器到路由器的路径。&lt;/li&gt;
+&lt;li&gt;路由目标实际上是计算出节点的汇集树。&lt;/li&gt;
+&lt;li&gt;路由原则：完整正确、简单、健壮、稳定公平、最优（次优）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;路由分类&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;静态和动态（自适应）。&lt;/li&gt;
+&lt;li&gt;局部和全局的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_53144843/article/details/121254000&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;路由算法(Dijkstra, Bellman-Ford算法)_bellmanford算法和dijkstra-CSDN博客&lt;/a&gt;&lt;/p&gt;
 &lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;&lt;strong&gt;LS 算法（链路状态）****&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;（需掌握）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/strong&gt;
+&lt;li&gt;&lt;strong&gt;LS 算法（链路状态）&lt;/strong&gt; &lt;strong&gt;（需掌握）&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;全局的路由选择算法，工作原理&lt;/li&gt;
 &lt;li&gt;每个节点收集邻居信息，生成 LS；LS 全网泛洪。&lt;/li&gt;
@@ -953,7 +1269,7 @@
 &lt;li&gt;按照最短路径算法算出到其他节点的最优路径。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;DV 算法（距离矢量）****&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;（需掌握）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/strong&gt;
+&lt;li&gt;&lt;strong&gt;DV 算法（距离矢量）&lt;/strong&gt; &lt;strong&gt;（需掌握）&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;局部的路由选择算法，工作原理&lt;/li&gt;
 &lt;li&gt;每个节点维护到所有其他节点的下一跳和代价。&lt;/li&gt;
@@ -961,10 +1277,10 @@
 &lt;li&gt;按照 Bellman-Ford 不断迭代生成到所有目标的代价和相应的下一跳&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;**层次路由 **&lt;strong&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;理解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/strong&gt;
+&lt;li&gt;**层次路由 ** &lt;strong&gt;理解&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;一个平面解决路由的问题：计算、传输和存储路由信息的量太大，不具备可扩展性，也不满足不同网络运营方不同的管理需求&lt;/li&gt;
-&lt;li&gt;分成 AS, AS 内部之间的节点路由由**&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;内部网关协议&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;**解决：AS 之间的路由，分层解决（路由到网关，由网关路由到目标网关&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;（外部网关协议）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;，到了目标 AS 内部，采用 AS 内部的路由解决）&lt;/li&gt;
+&lt;li&gt;分成 AS, AS 内部之间的节点路由由&lt;strong&gt;内部网关协议&lt;/strong&gt;解决：AS 之间的路由，分层解决（路由到网关，由网关路由到目标网关（外部网关协议），到了目标 AS 内部，采用 AS 内部的路由解决）&lt;/li&gt;
 &lt;li&gt;优势：分层路由，解决了规模性问题，管理性问题&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -1008,92 +1324,165 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;静态路由和动态路由适用于不同的网络场景，简单、稳定的网络更适合静态路由，而复杂多变、规模较大的网络则要依靠动态路由来保障高效的数据传输。&lt;/p&gt;
-&lt;h2 id=&#34;V7KVk&#34;&gt; 互联网的路由协议&lt;/h2&gt;
-&lt;h3 id=&#34;zZg29&#34;&gt;路由协议分类&lt;/h3&gt;
-1. **内部网关协议 IGP**
-    - RIP
-    - OSPF：AS 内部支持分层路由，同时支持多种代价。
-    - IGRP
-2. **外部网关协议 EGP**
-    - BGP
-&lt;h3 id=&#34;MEsXm&#34;&gt;网关路由器参与 AS 内部路由计算，收集 AS 内部子网可达信息&lt;/h3&gt;
-1. 网关路由器通过 AS 间路由向其他 AS 网关通告子网可达信息。
-2. 网关路由器还转发 “过手” 子网可达信息，但是 AS 路径要加上它自己 AS 编号（防止形成环路）。
-3. 网关路由器通过 i - BGP 向 AS 内部所有路由节点通告收集到的子网可达信息。
-4. 内部路由器，通过 AS 内路由和 AS 间路由共同决定向 AS 外部子网的下一跳（内部网关协议决定如何去往网关，外部网关协议决定通过那个网关可到达 AS 外部子网）。
-&lt;h3 id=&#34;oLOe8&#34;&gt;内部网关协议和外部网关协议的对比&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;&lt;/h3&gt;
-1. 内部网关协议重视效率，性能。
-2. 外部网关协议重视策略：经济策略和政治策略
-&lt;h2 id=&#34;lE6fJ&#34;&gt;SDN 控制平面&lt;/h2&gt;
-+ 在控制器上集中实现控制功能。
-+ 控制器和 SDN 交换机按照`openflow`等南向接口协议等下发流表，上报设备状态。
-+ SDN 控制器按照北向接口和网络应用打交道。
-&lt;h2 id=&#34;xt29N&#34;&gt; ICMP 协议&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;&lt;/h2&gt;
-+ 作用：包括错误、`echo`请求和应答。
-+ 报文类型。
-&lt;h1 id=&#34;M6VMx&#34;&gt; 数据链路层与局域网&lt;/h1&gt;
-&lt;h2 id=&#34;s0Xze&#34;&gt;引论&lt;/h2&gt;
-1. **链路层提供的服务**
-    - 成帧、链路存取控制（链路访问控制）。
-    - 在相邻节点间进行可靠数据传递。
-    - 流量控制。
-    - 检错。
-    - 纠错。
-    - 全双工和半双工服务。
-2. **链路层网络节点的连接方式**
-    - 点到点方式：比较适合广域。
-    - 多点连接的方式：比较适合局域、联网方便，但是需要解决 MAC 问题。
-&lt;h2 id=&#34;GXdDp&#34;&gt;检错与纠错&lt;/h2&gt;
-1. **检错原理**
-    - 奇偶校验。
-    - CRC（循环冗余校验）&lt;font style=&#34;color:#DF2A3F;&#34;&gt; - 掌握&lt;/font&gt;
-        * 原理。
-        * 生成多项式。
-        * 冗余位计算方法以及验证方法。
-&lt;h2 id=&#34;qAtOD&#34;&gt;多路访问协议&lt;/h2&gt;
-+ **MAC 的必要性**
-+ **MAP**
-+ **信道划分**
-    - **TDMA**
-    - **FDMA**
-    - **CDMA**：删掉
-+ **RAP：随机访问协议**
-    - **slotted ALOHA**
-    - **ALOHA**
-    - **CSMA**，**&lt;font style=&#34;background-color:#FBF5CB;&#34;&gt;CSMA/CD（至少 2t 长度帧），CSMA/CA&lt;/font&gt;**
-+ **轮转协议：不要求**
-+ **令牌协议**
-&lt;h2 id=&#34;MF7ao&#34;&gt; 链路层编地址&lt;/h2&gt;
-+ **MAC 地址（48位）**
-    - **格式**
-    - **分配**
-+ **MAC 地址和网络层 IP 地址的区别**
-    - **层次不同**
-    - **MAC 地址平面的，用于标示一个物理网络的不同站点；IP 是可以聚集的，便于计算路由**
-+ **ARP 协议**
-    - **目的：物理网络范围内 IP 地址到 MAC 地址的转换**
-    - **工作原理：广播查询，单播应答**
-&lt;h2 id=&#34;GoVId&#34;&gt;以太网&lt;/h2&gt;
-1. **IEEE802.3 标准，链路层和相应的物理层。**
-2. **以太网的帧结构。**
-3. **向上提供服务的特点。**
-    - 无连接：以太网在传输数据时不需要事先建立连接。
-    - 不可靠：数据传输过程中不保证数据的可靠到达。
-4. **访问控制技术。**
-    - **CSMA/CD** **&lt;font style=&#34;color:#DF2A3F;&#34;&gt;（需掌握）&lt;/font&gt;**：载波侦听多路访问 / 冲突检测，用于解决以太网中的冲突问题。
-        * 指数后退：在发生冲突后，设备会采用指数后退算法等待一段时间后再尝试发送。
-    - **CSMA/CA ** **&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;**：载波侦听多路访问 / 冲突避免，适用于无线网络。
-5. **编码。**
-    - **Manchester 编码**：一种常用的编码方式。
-&lt;h2 id=&#34;e4UIw&#34;&gt; HUB 和交换机&lt;/h2&gt;
-1. **HUB 连接方式的问题。**
-    - 无法隔离冲突，在一个冲突域之中：使用 HUB 连接设备时，所有连接的设备处于同一个冲突域，容易产生冲突。
-2. **交换机的工作原理。**
-    - 选择性转发：交换机可以根据目的地址有选择地转发数据。
-    - 自学习：交换机能够自动学习连接设备的 MAC 地址。
-    - 流量隔离：交换机可以隔离不同端口的流量，减少冲突。
-    - 专用接入：交换机提供专用的接入端口。
-3. **路由器和交换机的区别****&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;**
+&lt;h2 id=&#34;互联网的路由协议&#34;&gt;互联网的路由协议
+&lt;/h2&gt;&lt;h3 id=&#34;路由协议分类&#34;&gt;路由协议分类
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;内部网关协议 IGP&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;RIP&lt;/li&gt;
+&lt;li&gt;OSPF：AS 内部支持分层路由，同时支持多种代价。&lt;/li&gt;
+&lt;li&gt;IGRP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;外部网关协议 EGP&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;BGP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;网关路由器参与-as-内部路由计算收集-as-内部子网可达信息&#34;&gt;网关路由器参与 AS 内部路由计算，收集 AS 内部子网可达信息
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;网关路由器通过 AS 间路由向其他 AS 网关通告子网可达信息。&lt;/li&gt;
+&lt;li&gt;网关路由器还转发 “过手” 子网可达信息，但是 AS 路径要加上它自己 AS 编号（防止形成环路）。&lt;/li&gt;
+&lt;li&gt;网关路由器通过 i - BGP 向 AS 内部所有路由节点通告收集到的子网可达信息。&lt;/li&gt;
+&lt;li&gt;内部路由器，通过 AS 内路由和 AS 间路由共同决定向 AS 外部子网的下一跳（内部网关协议决定如何去往网关，外部网关协议决定通过那个网关可到达 AS 外部子网）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;内部网关协议和外部网关协议的对比font-stylecolor74b602了解font&#34;&gt;内部网关协议和外部网关协议的对比&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;内部网关协议重视效率，性能。&lt;/li&gt;
+&lt;li&gt;外部网关协议重视策略：经济策略和政治策略&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;sdn-控制平面&#34;&gt;SDN 控制平面
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;在控制器上集中实现控制功能。&lt;/li&gt;
+&lt;li&gt;控制器和 SDN 交换机按照&lt;code&gt;openflow&lt;/code&gt;等南向接口协议等下发流表，上报设备状态。&lt;/li&gt;
+&lt;li&gt;SDN 控制器按照北向接口和网络应用打交道。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;icmp-协议font-stylecolor74b602了解font&#34;&gt;ICMP 协议&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;作用：包括错误、&lt;code&gt;echo&lt;/code&gt;请求和应答。&lt;/li&gt;
+&lt;li&gt;报文类型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;数据链路层与局域网&#34;&gt;数据链路层与局域网
+&lt;/h1&gt;&lt;h2 id=&#34;引论&#34;&gt;引论
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;链路层提供的服务&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;成帧、链路存取控制（链路访问控制）。&lt;/li&gt;
+&lt;li&gt;在相邻节点间进行可靠数据传递。&lt;/li&gt;
+&lt;li&gt;流量控制。&lt;/li&gt;
+&lt;li&gt;检错。&lt;/li&gt;
+&lt;li&gt;纠错。&lt;/li&gt;
+&lt;li&gt;全双工和半双工服务。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;链路层网络节点的连接方式&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;点到点方式：比较适合广域。&lt;/li&gt;
+&lt;li&gt;多点连接的方式：比较适合局域、联网方便，但是需要解决 MAC 问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;检错与纠错&#34;&gt;检错与纠错
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;检错原理&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;奇偶校验。&lt;/li&gt;
+&lt;li&gt;CRC（循环冗余校验）&lt;font style=&#34;color:#DF2A3F;&#34;&gt; - 掌握&lt;/font&gt;
+&lt;ul&gt;
+&lt;li&gt;原理。&lt;/li&gt;
+&lt;li&gt;生成多项式。&lt;/li&gt;
+&lt;li&gt;冗余位计算方法以及验证方法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;多路访问协议&#34;&gt;多路访问协议
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;MAC 的必要性&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MAP&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;信道划分&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;TDMA&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;FDMA&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CDMA&lt;/strong&gt;：删掉&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;RAP：随机访问协议&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;slotted ALOHA&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ALOHA&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSMA&lt;/strong&gt;，&lt;strong&gt;&lt;font style=&#34;background-color:#FBF5CB;&#34;&gt;CSMA/CD（至少 2t 长度帧），CSMA/CA&lt;/font&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;轮转协议：不要求&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;令牌协议&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;链路层编地址&#34;&gt;链路层编地址
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;MAC 地址（48位）&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;格式&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分配&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MAC 地址和网络层 IP 地址的区别&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;层次不同&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MAC 地址平面的，用于标示一个物理网络的不同站点；IP 是可以聚集的，便于计算路由&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ARP 协议&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;目的：物理网络范围内 IP 地址到 MAC 地址的转换&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工作原理：广播查询，单播应答&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;以太网&#34;&gt;以太网
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;IEEE802.3 标准，链路层和相应的物理层。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;以太网的帧结构。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;向上提供服务的特点。&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;无连接：以太网在传输数据时不需要事先建立连接。&lt;/li&gt;
+&lt;li&gt;不可靠：数据传输过程中不保证数据的可靠到达。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;访问控制技术。&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CSMA/CD&lt;/strong&gt; &lt;strong&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;（需掌握）&lt;/font&gt;&lt;/strong&gt;：载波侦听多路访问 / 冲突检测，用于解决以太网中的冲突问题。
+&lt;ul&gt;
+&lt;li&gt;指数后退：在发生冲突后，设备会采用指数后退算法等待一段时间后再尝试发送。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;**CSMA/CA ** &lt;strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;&lt;/strong&gt;：载波侦听多路访问 / 冲突避免，适用于无线网络。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;编码。&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Manchester 编码&lt;/strong&gt;：一种常用的编码方式。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;hub-和交换机&#34;&gt;HUB 和交换机
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;HUB 连接方式的问题。&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;无法隔离冲突，在一个冲突域之中：使用 HUB 连接设备时，所有连接的设备处于同一个冲突域，容易产生冲突。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;交换机的工作原理。&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;选择性转发：交换机可以根据目的地址有选择地转发数据。&lt;/li&gt;
+&lt;li&gt;自学习：交换机能够自动学习连接设备的 MAC 地址。&lt;/li&gt;
+&lt;li&gt;流量隔离：交换机可以隔离不同端口的流量，减少冲突。&lt;/li&gt;
+&lt;li&gt;专用接入：交换机提供专用的接入端口。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;路由器和交换机的区别&lt;/strong&gt; &lt;strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
         </item>
         
