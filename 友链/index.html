@@ -6,14 +6,14 @@
 
 <link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/%E5%8F%8B%E9%93%BE/'>
 
-<link rel="stylesheet" href="/Hugo-dev/scss/style.min.ad66161a43bef8e2e3260144551ddbcb92c0809fe5ae8471a39ec6cb9736fe3f.css"><meta property='og:title' content="友链">
+<link rel="stylesheet" href="/Hugo-dev/scss/style.min.a17ff96e350c7655f8531430270bc0b7cf6e5fd1fe7d7cf20fb7be9fb2a19b75.css"><meta property='og:title' content="友链">
 <meta property='og:description' content="To use this feature, add links section to frontmatter. This page&rsquo;s frontmatter: 1 2 3 4 5 6 7 8 9 links: - title: GitHub description: GitHub is the world&#39;s largest software development platform. website: https://github.com image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png - title: TypeScript description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. website: https://www.typescriptlang.org image: ts-logo-128.jpg image field accepts both local and external images.">
 <meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/%E5%8F%8B%E9%93%BE/'>
 <meta property='og:site_name' content='羡余'>
 <meta property='og:type' content='article'><meta property='article:section' content='Page' /><meta property='article:modified_time' content='2025-01-21T20:11:49&#43;08:00'/>
 <meta name="twitter:title" content="友链">
 <meta name="twitter:description" content="To use this feature, add links section to frontmatter. This page&rsquo;s frontmatter: 1 2 3 4 5 6 7 8 9 links: - title: GitHub description: GitHub is the world&#39;s largest software development platform. website: https://github.com image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png - title: TypeScript description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. website: https://www.typescriptlang.org image: ts-logo-128.jpg image field accepts both local and external images.">
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
 
   
 
@@ -253,13 +253,14 @@ opacity: 0.5; /* 设置半透明 */</svg>
 
 
 
-                        <span>暗色模式</span>
+                        <span>深色模式</span>
                     </li>
                 
             </ol>
         </li>
     </ol>
 </aside>
+
 
     
 
@@ -279,12 +280,11 @@ opacity: 0.5; /* 设置半透明 */</svg>
     </div>
 
     
-    
-    
-    
+
 
     
 </div>
+
 
 </header>
 
@@ -335,7 +335,7 @@ opacity: 0.5; /* 设置半透明 */</svg>
 
 
         <span>
-            最后更新于 Jan 21, 2025 20:11 &#43;0800
+            最后更新于 2025-01-21 20:11 &#43;0800
         </span>
     </section></footer>
 
@@ -434,6 +434,29 @@ opacity: 0.5; /* 设置半透明 */</svg>
         主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="wordcount">
+    <p>13.88k 字
+        <br>3篇文章
+    </p>
+</section>
 
 
     
@@ -906,6 +929,26 @@ opacity: 0.5; /* 设置半透明 */</svg>
     }
   </script>
   
+    // 增加加载进度条
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
     </body>
 </html>
 

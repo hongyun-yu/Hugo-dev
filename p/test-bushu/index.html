@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/p/test-bushu/'>
 
-<link rel="stylesheet" href="/Hugo-dev/scss/style.min.ad66161a43bef8e2e3260144551ddbcb92c0809fe5ae8471a39ec6cb9736fe3f.css"><meta property='og:title' content="计算机网络总复习">
+<link rel="stylesheet" href="/Hugo-dev/scss/style.min.a17ff96e350c7655f8531430270bc0b7cf6e5fd1fe7d7cf20fb7be9fb2a19b75.css"><meta property='og:title' content="计算机网络总复习">
 <meta property='og:description' content="计算机网络">
 <meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/test-bushu/'>
 <meta property='og:site_name' content='羡余'>
@@ -14,7 +14,7 @@
 <meta name="twitter:title" content="计算机网络总复习">
 <meta name="twitter:description" content="计算机网络"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://www.helloimg.com/i/2025/02/08/67a74cc6008c5.jpg' />
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
 
   
 
@@ -254,13 +254,14 @@ opacity: 0.5; /* 设置半透明 */</svg>
 
 
 
-                        <span>暗色模式</span>
+                        <span>深色模式</span>
                     </li>
                 
             </ol>
         </li>
     </ol>
 </aside>
+
 
     <aside class="sidebar right-sidebar sticky">
         
@@ -535,13 +536,10 @@ opacity: 0.5; /* 设置半透明 */</svg>
     </div>
 
     
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <footer class="article-time">
+            
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
   <circle cx="18" cy="18" r="4" />
@@ -550,16 +548,25 @@ opacity: 0.5; /* 设置半透明 */</svg>
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2025-01-22</time>
-            </div>
-        
+                    <time class="article-time--published">2025-01-22</time>
+                </div>
+            
 
-        
-    </footer>
+            
+            
+                        最后修改:
+                        <time class="article-time--updated" datetime="2025-02-15 13:21:37 &#43;0800 &#43;0800" title="2025-02-15 13:21:37 &#43;0800 &#43;0800">
+                            2025-02-15
+                        </time>
+
+            
+        </footer>
     
+
 
     
 </div>
+
 
 </header>
 
@@ -1823,7 +1830,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 
 
         <span>
-            最后更新于 Feb 15, 2025 13:21 &#43;0800
+            最后更新于 2025-02-15 13:21 &#43;0800
         </span>
     </section></footer>
 
@@ -1926,6 +1933,29 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
         主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="wordcount">
+    <p>13.88k 字
+        <br>3篇文章
+    </p>
+</section>
 
 
     
@@ -2398,6 +2428,26 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
     }
   </script>
   
+    // 增加加载进度条
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
     </body>
 </html>
 
