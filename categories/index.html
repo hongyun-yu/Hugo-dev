@@ -495,50 +495,7 @@ opacity: 0.5; /* 设置半透明 */</svg>
         document.head.appendChild(customFont);
     }());
 </script>
-<script>
-  
-  const cssPath = "https://hongyun-yu.github.io/Hugo-dev/waifu/waifu.css"
-  const tipsJsonPath = "https://hongyun-yu.github.io/Hugo-dev/waifu/waifu-tips.json"
-  
-  const live2d_path = "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
 
-  
-  function loadExternalResource(url, type) {
-      return new Promise((resolve, reject) => {
-          let tag;
-          if (type === "css") {
-              tag = document.createElement("link");
-              tag.rel = "stylesheet";
-              tag.href = url;
-          }
-          else if (type === "js") {
-              tag = document.createElement("script");
-              tag.src = url;
-          }
-          if (tag) {
-              tag.onload = () => resolve(url);
-              tag.onerror = () => reject(url);
-              document.head.appendChild(tag);
-          }
-      });
-  }
-
-  
-  if (screen.width >= 768) {
-      Promise.all([
-          loadExternalResource(cssPath, "css"),
-          loadExternalResource(live2d_path + "live2d.min.js", "js"),
-          loadExternalResource(live2d_path + "waifu-tips.js", "js")
-      ]).then(() => {
-          
-          initWidget({
-              waifuPath: tipsJsonPath,
-              cdnPath: "https://fastly.jsdelivr.net/gh/hongyun-yu/Hugo-dev@v1.0.0/live2d_api/",
-              tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
-          });
-      });
-  }
-</script>
     </body>
 </html>
 
