@@ -15,15 +15,18 @@
 }
 
 #waifu-toggle.waifu-toggle-active {
+	/* margin-left: -50px; */
 	margin-right: -40px;
 }
 
 #waifu-toggle.waifu-toggle-active:hover {
+	 /* margin-left: -30px; */
 	margin-left: -20px;
 }
 
 #waifu {
 	bottom: -1000px;
+	/* left: 0; */
 	right: 10px;
 	line-height: 0;
 	margin-bottom: -10px;
@@ -82,6 +85,7 @@
 	opacity: 0;
 	position: absolute;
 	margin-left: 260px;
+	 /* right: -10px; */
 	top: 70px;
 	transition: opacity 1s;
 }
