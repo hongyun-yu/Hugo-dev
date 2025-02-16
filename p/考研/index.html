@@ -6,25 +6,7 @@
 
 <link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/p/%E8%80%83%E7%A0%94/'>
 
-<link rel="stylesheet" href="/Hugo-dev/scss/style.min.310f1d8f5acfeca193e3f9a46e16db5ee6842645906f7835d6541ab33d79556a.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-
-<script>
-    
-    $(window).scroll(function() {
-    if ($(this).scrollTop()) {
-        $('#back-to-top').fadeIn();
-    } else {
-        $('#back-to-top').fadeOut();
-    }
-    });
-
-    
-    $('#back-to-top').click(function() {
-    $('html, body').animate({scrollTop: 0}, 1000);
-    return false;
-    });
-</script>
-<meta property='og:title' content="考研-基本常识">
+<link rel="stylesheet" href="/Hugo-dev/scss/style.min.30f0c8d6cdc4e967256c31d8f5a5e56368f740b7c269c10fb284a52b0dc52ee3.css"><meta property='og:title' content="考研-基本常识">
 <meta property='og:description' content="考研">
 <meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E8%80%83%E7%A0%94/'>
 <meta property='og:site_name' content='羡余'>
@@ -908,53 +890,6 @@ bilibili、知乎、小红书、抖音</li>
     });
 </script>
 
-
-
-<style>
-    #backTopBtn {
-        display: none;
-        position: fixed;
-        bottom: 30px;
-        z-index: 99;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
-        background-image: url(https://hongyun-yu.github.io/Hugo-dev/icons/backTop.svg);
-    }
-</style>
-
-<script>
-    
-
-    function initScrollTop() {
-        let rightSideBar = document.querySelector(".right-sidebar");
-        if (!rightSideBar) {
-            return;
-        }
-        
-        let btn = document.createElement("div");
-        btn.id = "backTopBtn";
-        btn.onclick = backToTop
-        rightSideBar.appendChild(btn)
-        
-        window.onscroll = function() {
-            
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                btn.style.display = "block";
-            } else {
-                btn.style.display = "none";
-            }
-        };
-    }
-
-    
-
-    function backToTop(){
-        window.scrollTo({ top: 0, behavior: "smooth" })
-    }
-
-    initScrollTop();
-</script>
 
     </body>
 </html>
