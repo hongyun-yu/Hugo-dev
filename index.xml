@@ -12,24 +12,24 @@
         <pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E8%80%83%E7%A0%94/</guid>
-        <description>&lt;img src="https://ts1.cn.mm.bing.net/th/id/R-C.d134a087fe96d33aa3136d053d8a1739?rik=5l1ykcWFUmYa%2fA&amp;riu=http%3a%2f%2fwww.sailmet.com%2fContent%2fImages%2fnews%2f202109%2f973bdd5bc42343e8a01c74e0379741c2.jpeg&amp;ehk=Q7kbLfhIbUtgk3DM7xbzG9bN0knEOtWjZHnz%2bsC2Y5g%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0 - 考研" alt="Featured image of post 考研-基本常识" /&gt;&lt;h1 id=&#34;1-考研基本常识&#34;&gt;1 考研基本常识
-&lt;/h1&gt;&lt;h2 id=&#34;11-考研届数&#34;&gt;1.1 考研届数
-&lt;/h2&gt;&lt;p&gt;XX考研（ &lt;strong&gt;研究生入学年份&lt;/strong&gt; ）&lt;/p&gt;
-&lt;h2 id=&#34;12-报名条件&#34;&gt;1.2 报名条件
-&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;考前&lt;/strong&gt;确定学校与专业&lt;/p&gt;
-&lt;h2 id=&#34;13-报考条件&#34;&gt;1.3 报考条件
-&lt;/h2&gt;&lt;p&gt;本科&lt;strong&gt;双证&lt;/strong&gt; （毕业证、学位证）（应届或毕业后均可）、专科不提&lt;/p&gt;
-&lt;h2 id=&#34;14-考试时间&#34;&gt;1.4 考试时间
-&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;12月中下旬&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;15-初试考试科目-500分&#34;&gt;1.5 初试考试科目 &lt;strong&gt;500分&lt;/strong&gt;
-&lt;/h2&gt;&lt;ul&gt;
+        <description>&lt;img src="https://ts1.cn.mm.bing.net/th/id/R-C.d134a087fe96d33aa3136d053d8a1739?rik=5l1ykcWFUmYa%2fA&amp;riu=http%3a%2f%2fwww.sailmet.com%2fContent%2fImages%2fnews%2f202109%2f973bdd5bc42343e8a01c74e0379741c2.jpeg&amp;ehk=Q7kbLfhIbUtgk3DM7xbzG9bN0knEOtWjZHnz%2bsC2Y5g%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0 - 考研" alt="Featured image of post 考研-基本常识" /&gt;&lt;h2 id=&#34;考研基本常识&#34;&gt;考研基本常识
+&lt;/h2&gt;&lt;h3 id=&#34;考研届数&#34;&gt;考研届数
+&lt;/h3&gt;&lt;p&gt;XX考研（ &lt;strong&gt;研究生入学年份&lt;/strong&gt; ）&lt;/p&gt;
+&lt;h3 id=&#34;报名条件&#34;&gt;报名条件
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;考前&lt;/strong&gt;确定学校与专业&lt;/p&gt;
+&lt;h3 id=&#34;报考条件&#34;&gt;报考条件
+&lt;/h3&gt;&lt;p&gt;本科&lt;strong&gt;双证&lt;/strong&gt; （毕业证、学位证）（应届或毕业后均可）、专科不提&lt;/p&gt;
+&lt;h3 id=&#34;考试时间&#34;&gt;考试时间
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;12月中下旬&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;初试考试科目-500分&#34;&gt;初试考试科目 &lt;strong&gt;500分&lt;/strong&gt;
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;政治（马原、毛中特、习思想、史纲、思修、时政等）	&lt;strong&gt;100分&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;外语（完形填空、阅读、翻译和写作，口语和听力部分在复试考察）&lt;strong&gt;100分&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;数学	&lt;strong&gt;150分&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;专业课（408统考 or 自命题） 	&lt;strong&gt;150分&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;16-复试考试科目&#34;&gt;1.6 复试考试科目
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;复试考试科目&#34;&gt;复试考试科目
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;笔试
 &lt;ul&gt;
 &lt;li&gt;专业知识&lt;/li&gt;
@@ -44,8 +44,8 @@
 &lt;/li&gt;
 &lt;li&gt;复录比：常见 1.2 : 1 、 1.5 : 1&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;17-各类分数线&#34;&gt;1.7 各类分数线
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;各类分数线&#34;&gt;各类分数线
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;国家线
 &lt;ul&gt;
 &lt;li&gt;总分和单科达到一定分数才能参加复试&lt;/li&gt;
@@ -58,8 +58,8 @@
 &lt;li&gt;院校专业线&lt;/li&gt;
 &lt;li&gt;自划线（985院校）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;18-学硕与专硕&#34;&gt;1.8 学硕与专硕
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;学硕与专硕&#34;&gt;学硕与专硕
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;培养目标与毕业要求&lt;/p&gt;
 &lt;/li&gt;
@@ -81,16 +81,16 @@
 &lt;img src=&#34;images\image-20250215110500710.png&#34; alt=&#34;image-20250215110500710&#34; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;19-全日制与非全日制的差别&#34;&gt;1.9 全日制与非全日制的差别
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;19-全日制与非全日制的差别&#34;&gt;1.9 全日制与非全日制的差别
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;学习方式&lt;/li&gt;
 &lt;li&gt;双证区别&lt;/li&gt;
 &lt;li&gt;学费和其他支持
 全日制有更多支持&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;2-考研信息源&#34;&gt;2 考研信息源
-&lt;/h1&gt;&lt;h2 id=&#34;21-官方信息源&#34;&gt;2.1 官方信息源
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id=&#34;考研信息源&#34;&gt;考研信息源
+&lt;/h2&gt;&lt;h3 id=&#34;官方信息源&#34;&gt;官方信息源
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://yz.chsi.com.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;中国研究生招生信息网&lt;/a&gt;
 &lt;strong&gt;考研官方平台&lt;/strong&gt;&lt;/li&gt;
@@ -99,8 +99,8 @@
 &lt;li&gt;报考专业所在院系公众号
 个性化信息和数据推送，学长学姐&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;22-非官方信息源&#34;&gt;2.2 非官方信息源
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;非官方信息源&#34;&gt;非官方信息源
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;考研教育机构
 信息二道贩子，注意信息交叉验证&lt;/li&gt;
 &lt;li&gt;社交媒体与论坛、已上岸的学长学姐
@@ -110,15 +110,15 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kkdaxue.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;框框大学&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;3-考研时间线&#34;&gt;3 考研时间线
-&lt;/h1&gt;&lt;h2 id=&#34;31-大一大二&#34;&gt;3.1 大一大二
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id=&#34;考研时间线&#34;&gt;考研时间线
+&lt;/h2&gt;&lt;h3 id=&#34;大一大二&#34;&gt;大一大二
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;初步认知与目标设定&lt;/li&gt;
 &lt;li&gt;学业基础巩固&lt;/li&gt;
 &lt;li&gt;参与学术活动与社团&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;32-大三&#34;&gt;3.2 大三
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;大三&#34;&gt;大三
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;考研目标院校与专业
 &lt;strong&gt;最终/初步确定&lt;/strong&gt;考研目标院校和专业&lt;/li&gt;
 &lt;li&gt;考研复习全面启动&lt;/li&gt;
@@ -136,8 +136,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;33-大四&#34;&gt;3.3 大四
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;大四&#34;&gt;大四
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;7~9月&lt;/strong&gt;：各校陆续发布招生简章&lt;/p&gt;
 &lt;p&gt;​	看考研院校&lt;/p&gt;
@@ -174,9 +174,9 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;p&gt;&lt;strong&gt;次年4-6月&lt;/strong&gt;：考研录取&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;4-择校择专业&#34;&gt;4 择校择专业
-&lt;/h1&gt;&lt;h2 id=&#34;41-择校主要因素&#34;&gt;4.1 择校主要因素
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id=&#34;择校择专业&#34;&gt;择校择专业
+&lt;/h2&gt;&lt;h3 id=&#34;择校主要因素&#34;&gt;择校主要因素
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;学校综合实力
 &lt;ul&gt;
 &lt;li&gt;学校和学科排名、&lt;a class=&#34;link&#34; href=&#34;https://zhuanlan.zhihu.com/p/17880363234&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -207,8 +207,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;42-思考原则&#34;&gt;4.2 思考原则
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;思考原则&#34;&gt;思考原则
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;ol&gt;
 &lt;li&gt;跨考&lt;/li&gt;
@@ -235,9 +235,9 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;5-备考要点&#34;&gt;5 备考要点
-&lt;/h1&gt;&lt;h2 id=&#34;51-备考原则&#34;&gt;5.1 备考原则
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id=&#34;备考要点&#34;&gt;备考要点
+&lt;/h2&gt;&lt;h3 id=&#34;备考原则&#34;&gt;备考原则
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;底层思维
 &lt;ul&gt;
 &lt;li&gt;为什么要考研&lt;/li&gt;
@@ -253,8 +253,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;52-具体科目&#34;&gt;5.2 具体科目
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;具体科目&#34;&gt;具体科目
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;政治
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;大三暑假甚至 9 ~ 10 月开始&lt;/strong&gt;都可以&lt;/li&gt;
@@ -285,21 +285,21 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;6-热门问题&#34;&gt;6 热门问题
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;热门问题&#34;&gt;热门问题
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;性价比&lt;/li&gt;
 &lt;li&gt;导师选择
 放养型导师&lt;/li&gt;
 &lt;li&gt;本科情况&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;7-方法论材料&#34;&gt;7 方法论+材料
-&lt;/h1&gt;&lt;h2 id=&#34;71-学硕与专硕对比18&#34;&gt;7.1 学硕与专硕对比（1.8）
-&lt;/h2&gt;&lt;h2 id=&#34;72-考公专业推荐&#34;&gt;7.2 考公专业推荐
-&lt;/h2&gt;&lt;img src=&#34;images\image-20250215110800020.png&#34; alt=&#34;image-20250215110800020&#34; /&gt;
-&lt;h2 id=&#34;73-查找导师信息&#34;&gt;7.3 查找导师信息
-&lt;/h2&gt;&lt;img src=&#34;images\image-20250215110938246.png&#34; alt=&#34;image-20250215110938246&#34; style=&#34;zoom:50%;&#34; /&gt;
-&lt;h2 id=&#34;74-经验分享&#34;&gt;7.4 经验分享
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id=&#34;方法论材料&#34;&gt;方法论+材料
+&lt;/h2&gt;&lt;h3 id=&#34;学硕与专硕对比18&#34;&gt;学硕与专硕对比（1.8）
+&lt;/h3&gt;&lt;h3 id=&#34;考公专业推荐&#34;&gt;考公专业推荐
+&lt;/h3&gt;&lt;img src=&#34;images\image-20250215110800020.png&#34; alt=&#34;image-20250215110800020&#34; /&gt;
+&lt;h3 id=&#34;查找导师信息&#34;&gt;查找导师信息
+&lt;/h3&gt;&lt;img src=&#34;images\image-20250215110938246.png&#34; alt=&#34;image-20250215110938246&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h3 id=&#34;经验分享&#34;&gt;经验分享
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;/li&gt;
@@ -318,8 +318,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;img src=&#34;images\image-20250215112838820.png&#34; alt=&#34;image-20250215112838820&#34; /&gt;
 &lt;img src=&#34;images\image-20250215112953039.png&#34; alt=&#34;image-20250215112953039&#34; /&gt;
-&lt;h1 id=&#34;8-参考&#34;&gt;8 参考
-&lt;/h1&gt;&lt;ul&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考
+&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1qwzdY4EqG?spm_id_from=333.788.videopod.sections&amp;amp;vd_source=76a496aa006e07f846fd0bbe5954c92e&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;一个视频讲透考研的一切！时间线/信息源/初试/复试/政治/外语/数学/专业课/择校/择专业&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -561,9 +561,9 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
         <pubDate>Wed, 22 Jan 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hongyun-yu.github.io/Hugo-dev/p/test-bushu/</guid>
-        <description>&lt;img src="https://www.helloimg.com/i/2025/02/08/67a74cc6008c5.jpg" alt="Featured image of post 计算机网络总复习" /&gt;&lt;h1 id=&#34;计算机网络与互联网络&#34;&gt;计算机网络与互联网络
-&lt;/h1&gt;&lt;h2 id=&#34;什么是互联网络&#34;&gt;什么是互联网络
-&lt;/h2&gt;&lt;ul&gt;
+        <description>&lt;img src="https://www.helloimg.com/i/2025/02/08/67a74cc6008c5.jpg" alt="Featured image of post 计算机网络总复习" /&gt;&lt;h2 id=&#34;计算机网络与互联网络&#34;&gt;计算机网络与互联网络
+&lt;/h2&gt;&lt;h3 id=&#34;什么是互联网络&#34;&gt;什么是互联网络
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;从构成的角度来看&lt;/strong&gt;：
 &lt;ul&gt;
 &lt;li&gt;互联网络由点和边构成。其中，点包括端系统（涵盖网络应用）以及路由器；边则是链路。简单来说，互联网络其实是网络的网络，众多不同的网络相互连接，形成了一个庞大复杂的体系。&lt;/li&gt;
@@ -576,8 +576,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;网络边缘&#34;&gt;网络边缘
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;网络边缘&#34;&gt;网络边缘
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;网络的结构&lt;/strong&gt;：
 &lt;ul&gt;
 &lt;li&gt;网络整体结构分为网络边缘与网络核心两大部分，还涉及接入网络与通信链路。网络边缘包括运行应用的端系统，重点在于&lt;font style=&#34;color:#DF2A3F;&#34;&gt;端系统中的应用交互方式 &lt;/font&gt;；网络核心则由路由器组成。&lt;/li&gt;
@@ -596,8 +596,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;网络核心&#34;&gt;网络核心
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;网络核心&#34;&gt;网络核心
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;网络核心&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;组成&lt;/strong&gt;：网络交换设备，如路由器 + 链路。&lt;/li&gt;
@@ -622,8 +622,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;网络接入与物理介质&#34;&gt;网络接入与物理介质
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;网络接入与物理介质&#34;&gt;网络接入与物理介质
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;网络接入是指将端系统连接到边缘路由器的链路或网络。&lt;/li&gt;
 &lt;li&gt;住宅接入采用点到点接入方式，具体包括：
 &lt;ul&gt;
@@ -654,20 +654,20 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;互联网络结构与-isp&#34;&gt;互联网络结构与 ISP
-&lt;/h2&gt;&lt;h3 id=&#34;近似层次型结构&#34;&gt;近似层次型结构
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&#34;互联网络结构与-isp&#34;&gt;互联网络结构与 ISP
+&lt;/h3&gt;&lt;h4 id=&#34;近似层次型结构&#34;&gt;近似层次型结构
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;T - 1 ISP&lt;/li&gt;
 &lt;li&gt;T - 2 ISP (Regional ISP)&lt;/li&gt;
 &lt;li&gt;Local ISP&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;isp-之间的连接&#34;&gt;ISP 之间的连接
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;isp-之间的连接&#34;&gt;ISP 之间的连接
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;对等连接&lt;/li&gt;
 &lt;li&gt;IXP（&lt;font style=&#34;color:rgba(0, 0, 0, 0.85);&#34;&gt;互联网交换点&lt;/font&gt;）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;内容提供商网络&#34;&gt;内容提供商网络
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;内容提供商网络&#34;&gt;内容提供商网络
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;在全球部署 DC（数据中心）&lt;/li&gt;
 &lt;li&gt;内容提供商网络在多处与各个 ISP 相联&lt;/li&gt;
 &lt;li&gt;内容提供商自己部署网络将全球的 DC 相联
@@ -677,37 +677,37 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;分组交换网络中的延迟与丢失&#34;&gt;分组交换网络中的延迟与丢失
-&lt;/h2&gt;&lt;h3 id=&#34;延迟的-4-个原因计算font-stylecolordf2a3f---掌握font&#34;&gt;延迟的 4 个原因（计算）&lt;font style=&#34;color:#DF2A3F;&#34;&gt; - 掌握&lt;/font&gt;
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&#34;分组交换网络中的延迟与丢失&#34;&gt;分组交换网络中的延迟与丢失
+&lt;/h3&gt;&lt;h4 id=&#34;延迟的-4-个原因计算font-stylecolordf2a3f---掌握font&#34;&gt;延迟的 4 个原因（计算）&lt;font style=&#34;color:#DF2A3F;&#34;&gt; - 掌握&lt;/font&gt;
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;处理延迟&lt;/li&gt;
 &lt;li&gt;排队延迟&lt;/li&gt;
 &lt;li&gt;传输延迟&lt;/li&gt;
 &lt;li&gt;传播延迟&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;例如：n 段，分组 L，R，传播延迟 d 每段如何计算总体延迟；&lt;/p&gt;
-&lt;h3 id=&#34;流量强度0-1与排队延迟正相关lar-font-stylecolordf2a3f--掌握font&#34;&gt;流量强度（0-1，与排队延迟正相关）：La/R &lt;font style=&#34;color:#DF2A3F;&#34;&gt;- 掌握&lt;/font&gt;
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;流量强度0-1与排队延迟正相关lar-font-stylecolordf2a3f--掌握font&#34;&gt;流量强度（0-1，与排队延迟正相关）：La/R &lt;font style=&#34;color:#DF2A3F;&#34;&gt;- 掌握&lt;/font&gt;
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;排队延迟   依赖**&lt;font style=&#34;color:#DF2A3F;&#34;&gt;流量强度的公式&lt;/font&gt;**；&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;丢失原因&#34;&gt;丢失原因：
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;丢失原因&#34;&gt;丢失原因：
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;缓冲区溢出 + 出错没通过校验&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;吞吐量font-stylecolor74b602--了解font&#34;&gt;吞吐量&lt;font style=&#34;color:#74B602;&#34;&gt; -了解&lt;/font&gt;
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;吞吐量font-stylecolor74b602--了解font&#34;&gt;吞吐量&lt;font style=&#34;color:#74B602;&#34;&gt; -了解&lt;/font&gt;
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;瞬间吞吐量&lt;/li&gt;
 &lt;li&gt;平均吞吐量&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;瓶颈链路决定了主机之间的吞吐量（从每段链路获得的大致带宽是 1/N，瓶颈链路是所有链路段中获得带宽最小的）。&lt;/p&gt;
-&lt;h2 id=&#34;协议层次与服务模型&#34;&gt;协议层次与服务模型
-&lt;/h2&gt;&lt;h3 id=&#34;为什么要分层&#34;&gt;为什么要分层
-&lt;/h3&gt;&lt;h3 id=&#34;网络比较复杂分层实现比较容易设计调试实现&#34;&gt;网络比较复杂，分层实现比较容易设计、调试、实现。
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&#34;协议层次与服务模型&#34;&gt;协议层次与服务模型
+&lt;/h3&gt;&lt;h4 id=&#34;为什么要分层&#34;&gt;为什么要分层
+&lt;/h4&gt;&lt;h4 id=&#34;网络比较复杂分层实现比较容易设计调试实现&#34;&gt;网络比较复杂，分层实现比较容易设计、调试、实现。
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;分层：将复杂的网络功能划分成功能明确的层次，&lt;font style=&#34;color:#DF2A3F;&#34;&gt;上层利用下层提供的服务来实现本层的协议，从而为上层提供更复杂的功能。&lt;/font&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;一些术语和概念font-stylecolor74b602-理解font&#34;&gt;一些术语和概念&lt;font style=&#34;color:#74B602;&#34;&gt;-理解&lt;/font&gt;
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;一些术语和概念font-stylecolor74b602-理解font&#34;&gt;一些术语和概念&lt;font style=&#34;color:#74B602;&#34;&gt;-理解&lt;/font&gt;
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;服务、服务访问原语、服务访问点&lt;/li&gt;
 &lt;li&gt;面向连接的服务、无连接的服务&lt;/li&gt;
 &lt;li&gt;协议、协议数据单元 PDU&lt;/li&gt;
@@ -718,27 +718,27 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;互联网络分层模型及每一层的功能font-stylecolor74b602-理解font&#34;&gt;互联网络分层模型及每一层的功能&lt;font style=&#34;color:#74B602;&#34;&gt;-理解&lt;/font&gt;
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;互联网络分层模型及每一层的功能font-stylecolor74b602-理解font&#34;&gt;互联网络分层模型及每一层的功能&lt;font style=&#34;color:#74B602;&#34;&gt;-理解&lt;/font&gt;
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;应用层&lt;/li&gt;
 &lt;li&gt;传输层&lt;/li&gt;
 &lt;li&gt;网络层（端到端，路由和转发）&lt;/li&gt;
 &lt;li&gt;链路层（点到点，帧为单位）&lt;/li&gt;
 &lt;li&gt;物理层（物理信号）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;封装和解封&#34;&gt;封装和解封
-&lt;/h3&gt;&lt;h2 id=&#34;历史font-stylecolor74b602-了解font&#34;&gt;历史&lt;font style=&#34;color:#74B602;&#34;&gt;-了解&lt;/font&gt;
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h4 id=&#34;封装和解封&#34;&gt;封装和解封
+&lt;/h4&gt;&lt;h3 id=&#34;历史font-stylecolor74b602-了解font&#34;&gt;历史&lt;font style=&#34;color:#74B602;&#34;&gt;-了解&lt;/font&gt;
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;ARPANET：美国军方资助的分组交换实验网，由于 TCP/IP 架构的包容性、免费使用、架构便于应用创新吸引更多的用户等原因，用户数量、节点数量和应用数量越来越多。&lt;/li&gt;
 &lt;li&gt;NSF 建立 ARPANET 的访问网。&lt;/li&gt;
 &lt;li&gt;民用网络从军用网络脱开，成为现在的互联网。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;术语：IETF（互联网工程任务组）, ITU(国际电信联盟），IEEE（电气电子工程师协会 ），RFC（请求评论，是一系列关于互联网技术的文件）。&lt;/p&gt;
-&lt;h1 id=&#34;应用层&#34;&gt;应用层
-&lt;/h1&gt;&lt;p&gt;原理 + 应用实例 + SOCKET 编程&lt;/p&gt;
+&lt;h2 id=&#34;应用层&#34;&gt;应用层
+&lt;/h2&gt;&lt;p&gt;原理 + 应用实例 + SOCKET 编程&lt;/p&gt;
 &lt;p&gt;应用的开发只集中在端系统上，对路由器没有任何改变，这鼓励了互联网架构下的应用创新。&lt;/p&gt;
-&lt;h2 id=&#34;网络应用原理&#34;&gt;网络应用原理
-&lt;/h2&gt;&lt;ol&gt;
+&lt;h3 id=&#34;网络应用原理&#34;&gt;网络应用原理
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;应用架构&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;C/S（客户端 / 服务器）&lt;/li&gt;
@@ -780,21 +780,21 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;都能够提供进程的标示，区分不同的进程&lt;/p&gt;
-&lt;h2 id=&#34;web-和-http&#34;&gt;WEB 和 HTTP
-&lt;/h2&gt;&lt;h3 id=&#34;web-应用包括&#34;&gt;WEB 应用包括
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&#34;web-和-http&#34;&gt;WEB 和 HTTP
+&lt;/h3&gt;&lt;h4 id=&#34;web-应用包括&#34;&gt;WEB 应用包括
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;HTTP 协议&lt;/li&gt;
 &lt;li&gt;HTML&lt;/li&gt;
 &lt;li&gt;CLIENT（客户端），SERVER（服务器）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;术语&#34;&gt;术语
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;术语&#34;&gt;术语
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;网页&lt;/li&gt;
 &lt;li&gt;对象&lt;/li&gt;
 &lt;li&gt;引用 URL&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;font-stylecolordf2a3fhttp-协议font&#34;&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;HTTP 协议&lt;/font&gt;
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;font-stylecolordf2a3fhttp-协议font&#34;&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;HTTP 协议&lt;/font&gt;
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;定义了 C（客户端）和 S（服务器）之间通信的报文格式、解释和时序。&lt;/li&gt;
 &lt;li&gt;HTTP 连接
 &lt;ul&gt;
@@ -804,9 +804,9 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/li&gt;
 &lt;li&gt;往返延迟 RTT 和对象的抓取时间&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;font-stylecolordf2a3fhttp-10-到-http-11-再到-http-20-的演变font&#34;&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0 的演变&lt;/font&gt;
-&lt;/h3&gt;&lt;h4 id=&#34;http-10&#34;&gt;HTTP 1.0
-&lt;/h4&gt;&lt;ol&gt;
+&lt;h4 id=&#34;font-stylecolordf2a3fhttp-10-到-http-11-再到-http-20-的演变font&#34;&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0 的演变&lt;/font&gt;
+&lt;/h4&gt;&lt;h5 id=&#34;http-10&#34;&gt;HTTP 1.0
+&lt;/h5&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;基本特点&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;无状态协议&lt;/strong&gt;：每个请求都是独立的，服务器不会在不同请求之间保留状态信息。&lt;/li&gt;
@@ -821,8 +821,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;http-11&#34;&gt;HTTP 1.1
-&lt;/h4&gt;&lt;ol&gt;
+&lt;h5 id=&#34;http-11&#34;&gt;HTTP 1.1
+&lt;/h5&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;改进之处&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;持久连接（Keep - Alive）&lt;/strong&gt;
@@ -855,8 +855,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;http-20&#34;&gt;HTTP 2.0
-&lt;/h4&gt;&lt;ol&gt;
+&lt;h5 id=&#34;http-20&#34;&gt;HTTP 2.0
+&lt;/h5&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;主要特性&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;二进制分帧层（Binary Framing Layer）&lt;/strong&gt;
@@ -885,9 +885,9 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;从 HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0，协议不断进化，旨在解决前一版本的性能瓶颈，提高网络传输效率和用户体验。&lt;/p&gt;
-&lt;h3 id=&#34;从-ssl-到-http30基于-udp的安全优化过程&#34;&gt;从 SSL 到 HTTP/3.0（基于 UDP）的安全优化过程
-&lt;/h3&gt;&lt;h4 id=&#34;sslsecure-sockets-layer安全套接层&#34;&gt;SSL（Secure Sockets Layer，安全套接层）
-&lt;/h4&gt;&lt;ol&gt;
+&lt;h4 id=&#34;从-ssl-到-http30基于-udp的安全优化过程&#34;&gt;从 SSL 到 HTTP/3.0（基于 UDP）的安全优化过程
+&lt;/h4&gt;&lt;h5 id=&#34;sslsecure-sockets-layer安全套接层&#34;&gt;SSL（Secure Sockets Layer，安全套接层）
+&lt;/h5&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;基本原理&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;SSL 是一种早期的网络安全协议，用于在客户端和服务器之间建立加密连接，确保数据在传输过程中的保密性、完整性和身份验证。&lt;/li&gt;
@@ -910,8 +910,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;tlstransport-layer-security传输层安全&#34;&gt;TLS（Transport Layer Security，传输层安全）
-&lt;/h4&gt;&lt;ol&gt;
+&lt;h5 id=&#34;tlstransport-layer-security传输层安全&#34;&gt;TLS（Transport Layer Security，传输层安全）
+&lt;/h5&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;与 SSL 的关系&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;TLS 是 SSL 的继任者，它在 SSL 的基础上进行了改进和扩展。TLS 的目标与 SSL 相同，即确保网络通信的安全，但在安全性和性能方面有了显著提升。&lt;/li&gt;
@@ -932,8 +932,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;http30基于-udp-的-quic-协议&#34;&gt;HTTP/3.0（基于 UDP 的 QUIC 协议）
-&lt;/h4&gt;&lt;ol&gt;
+&lt;h5 id=&#34;http30基于-udp-的-quic-协议&#34;&gt;HTTP/3.0（基于 UDP 的 QUIC 协议）
+&lt;/h5&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;QUIC（Quick UDP Internet Connections）协议&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;HTTP/3.0 是基于 QUIC 协议的，而 QUIC 是基于 UDP 的。QUIC 旨在解决 TCP 和 TLS 在性能和安全性方面的一些问题。&lt;/li&gt;
@@ -960,8 +960,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;从 SSL 到 HTTP/3.0（基于 UDP）的演变过程，是一个不断优化安全性能和网络传输效率的过程。HTTP/3.0 通过基于 UDP 的 QUIC 协议，在安全和性能方面都有了显著的提升。&lt;/p&gt;
-&lt;h3 id=&#34;报文格式&#34;&gt;报文格式
-&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_45951891/article/details/134217064&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h4 id=&#34;报文格式&#34;&gt;报文格式
+&lt;/h4&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_45951891/article/details/134217064&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Wireshark——抓包分析_wireshark抓包数据怎么看-CSDN博客&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;请求报文
@@ -975,14 +975,14 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;cookieshttp无状态-有状态&#34;&gt;COOKIES（HTTP无状态-&amp;gt;有状态）
-&lt;/h3&gt;&lt;h3 id=&#34;web-缓存&#34;&gt;WEB 缓存
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;cookieshttp无状态-有状态&#34;&gt;COOKIES（HTTP无状态-&amp;gt;有状态）
+&lt;/h4&gt;&lt;h4 id=&#34;web-缓存&#34;&gt;WEB 缓存
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;作用：通过本地命中，减少这些对象的访问延迟；进一步减少接入链路的流量强度，从而降低派对延迟带来总体平均延迟的减少；减轻服务器的负担。&lt;/li&gt;
 &lt;li&gt;优点：通过一个实例，计算不要求。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;ftpfont-stylecolor74b602不要求font&#34;&gt;FTP&lt;font style=&#34;color:#74B602;&#34;&gt;（不要求）&lt;/font&gt;
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;ftpfont-stylecolor74b602不要求font&#34;&gt;FTP&lt;font style=&#34;color:#74B602;&#34;&gt;（不要求）&lt;/font&gt;
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;作用：在 CS 之间传输文件。&lt;/li&gt;
 &lt;li&gt;构成：
 &lt;ul&gt;
@@ -999,21 +999,21 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/li&gt;
 &lt;li&gt;命令和响应&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;email&#34;&gt;EMAIL
-&lt;/h2&gt;&lt;h3 id=&#34;电子邮件应用的构成&#34;&gt;电子邮件应用的构成
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&#34;email&#34;&gt;EMAIL
+&lt;/h3&gt;&lt;h4 id=&#34;电子邮件应用的构成&#34;&gt;电子邮件应用的构成
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;用户代理&lt;/li&gt;
 &lt;li&gt;邮件服务器&lt;/li&gt;
 &lt;li&gt;SMTP（简单邮件传输协议）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;邮件报文格式解析&#34;&gt;邮件报文格式解析
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;邮件报文格式解析&#34;&gt;邮件报文格式解析
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;报文头&lt;/li&gt;
 &lt;li&gt;报文体&lt;/li&gt;
 &lt;li&gt;MIME（多用途互联网邮件扩展）：邮件多媒体扩展，可以在邮件中编解码多媒体内容。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;邮件存取协议&#34;&gt;邮件存取协议
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;邮件存取协议&#34;&gt;邮件存取协议
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;作用&lt;/li&gt;
 &lt;li&gt;常用
 &lt;ul&gt;
@@ -1022,17 +1022,17 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;dns&#34;&gt;DNS
-&lt;/h2&gt;&lt;h3 id=&#34;dns-作用&#34;&gt;DNS 作用
-&lt;/h3&gt;&lt;p&gt;完成域名到 IP 地址的转换（还包括别名到正规名字、邮件服务器名字到正规名字转换等），是应用层面的互联网&lt;font style=&#34;color:#DF2A3F;&#34;&gt;基础设施&lt;/font&gt;，其他应用使用。&lt;/p&gt;
-&lt;h3 id=&#34;二dns-的概念&#34;&gt;二、DNS 的概念
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&#34;dns&#34;&gt;DNS
+&lt;/h3&gt;&lt;h4 id=&#34;dns-作用&#34;&gt;DNS 作用
+&lt;/h4&gt;&lt;p&gt;完成域名到 IP 地址的转换（还包括别名到正规名字、邮件服务器名字到正规名字转换等），是应用层面的互联网&lt;font style=&#34;color:#DF2A3F;&#34;&gt;基础设施&lt;/font&gt;，其他应用使用。&lt;/p&gt;
+&lt;h4 id=&#34;二dns-的概念&#34;&gt;二、DNS 的概念
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;分布式、层次数据库&lt;/li&gt;
 &lt;li&gt;命名是分层的&lt;/li&gt;
 &lt;li&gt;域名信息存储和服务是分布式的，每个域名服务器担任一个区域 ZONE 的名字到 IP 地址的权威转换，也缓存名字 - IP 信息的转换。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;三dns-的构成&#34;&gt;三、DNS 的构成
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;三dns-的构成&#34;&gt;三、DNS 的构成
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;解析器：本地应用&lt;/li&gt;
 &lt;li&gt;域名服务器&lt;/li&gt;
 &lt;li&gt;DNS 协议
@@ -1042,8 +1042,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;域名解析的过程&#34;&gt;域名解析的过程
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;(解析器 -&amp;gt; 本地 DNS 服务器 -&amp;gt; 上层域名服务器 -&amp;gt;&amp;hellip;-&amp;gt; 权威名字服务器，返回)&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;域名解析的过程&#34;&gt;域名解析的过程
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;(解析器 -&amp;gt; 本地 DNS 服务器 -&amp;gt; 上层域名服务器 -&amp;gt;&amp;hellip;-&amp;gt; 权威名字服务器，返回)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本地域名服务器、权限域名服务器、顶级域名服务器、根域名服务器&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;递归解析：如果主机所询问的本地域名服务器不知道被查询的域名的IP地址，那么本地域名服务器就以DNS客户的身份，向其它根域名服务器继续发出查询请求报文(即替主机继续查询)，而不是让主机自己进行下一步查询。因此，递归查询返回的查询结果或者是所要查询的IP地址，或者是报错，表示无法查询到所需的IP地址。&lt;/li&gt;
@@ -1057,38 +1057,38 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 	
 	
 &gt;&lt;/p&gt;
-&lt;h3 id=&#34;五dns-缓存&#34;&gt;五、DNS 缓存
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;dns-缓存&#34;&gt;DNS 缓存
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;作用&lt;/li&gt;
 &lt;li&gt;本地缓存 + 服务器缓存&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;p2pfont-stylecolor74b602了解p2p-的概念和优势即可font&#34;&gt;P2P&lt;font style=&#34;color:#74B602;&#34;&gt;（了解P2P 的概念和优势即可）&lt;/font&gt;
-&lt;/h2&gt;&lt;h3 id=&#34;p2p-概念&#34;&gt;P2P 概念
-&lt;/h3&gt;&lt;p&gt;每个对等体即是客户端又是服务器；P2P 网络是这些 peer 构成的应用层面的逻辑网络。&lt;/p&gt;
-&lt;h3 id=&#34;p2p-网络比-cs-方式分发内容快的原因&#34;&gt;P2P 网络比 C/S 方式分发内容快的原因
-&lt;/h3&gt;&lt;p&gt;这些 peer 节点参与到内容的上载，流量和服务都是分布式的，可扩展性。&lt;/p&gt;
-&lt;h3 id=&#34;典型-p2p-应用及其原理font-stylecolor74b602不要求font&#34;&gt;典型 P2P 应用及其原理&lt;font style=&#34;color:#74B602;&#34;&gt;（不要求）&lt;/font&gt;
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&#34;p2pfont-stylecolor74b602了解p2p-的概念和优势即可font&#34;&gt;P2P&lt;font style=&#34;color:#74B602;&#34;&gt;（了解P2P 的概念和优势即可）&lt;/font&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;p2p-概念&#34;&gt;P2P 概念
+&lt;/h4&gt;&lt;p&gt;每个对等体即是客户端又是服务器；P2P 网络是这些 peer 构成的应用层面的逻辑网络。&lt;/p&gt;
+&lt;h4 id=&#34;p2p-网络比-cs-方式分发内容快的原因&#34;&gt;P2P 网络比 C/S 方式分发内容快的原因
+&lt;/h4&gt;&lt;p&gt;这些 peer 节点参与到内容的上载，流量和服务都是分布式的，可扩展性。&lt;/p&gt;
+&lt;h4 id=&#34;典型-p2p-应用及其原理font-stylecolor74b602不要求font&#34;&gt;典型 P2P 应用及其原理&lt;font style=&#34;color:#74B602;&#34;&gt;（不要求）&lt;/font&gt;
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;Napster：知道名词&lt;/li&gt;
 &lt;li&gt;Gnutella：知道名词&lt;/li&gt;
 &lt;li&gt;KaZaA：知道名词&lt;/li&gt;
 &lt;li&gt;BT：知道名字&lt;/li&gt;
 &lt;li&gt;DHT：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;视频流化服务和-cdnfont-stylecolor74b602了解font&#34;&gt;视频流化服务和 CDN&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;
-&lt;/h2&gt;&lt;h3 id=&#34;服务器向客户端进行视频流化的方式&#34;&gt;服务器向客户端进行视频流化的方式
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&#34;视频流化服务和-cdnfont-stylecolor74b602了解font&#34;&gt;视频流化服务和 CDN&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;服务器向客户端进行视频流化的方式&#34;&gt;服务器向客户端进行视频流化的方式
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;UDP 流化&lt;/li&gt;
 &lt;li&gt;http 流化&lt;/li&gt;
 &lt;li&gt;DASH（Dynamic, Adaptive Streaming over HTTP）&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;dash-流化的过程&#34;&gt;DASH 流化的过程
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;dash-流化的过程&#34;&gt;DASH 流化的过程
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;客户端获取告示文件&lt;/li&gt;
 &lt;li&gt;客户端按照情况，向（可能是不同的）服务器请求不同视频质量的内容块，客户端智能&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;cdn&#34;&gt;CDN
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;cdn&#34;&gt;CDN
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;单个服务器，或者服务器群向客户端提供海量内容并发服务的问题：扩展性差&lt;/li&gt;
 &lt;li&gt;CDN 原理
 &lt;ul&gt;
@@ -1101,23 +1101,23 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 * Enter Deep
 * Bring Home&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;tcp-的-socket-编程-font-stylecolor74b602理解font&#34;&gt;TCP 的 SOCKET 编程 &lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;
-&lt;/h2&gt;&lt;h3 id=&#34;socket-概念&#34;&gt;SOCKET 概念
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&#34;tcp-的-socket-编程-font-stylecolor74b602理解font&#34;&gt;TCP 的 SOCKET 编程 &lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;socket-概念&#34;&gt;SOCKET 概念
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;TCP 连接的本地标示示，向这个 SOCKET 写就是发送给对方的进程；从 SOCKET 中读，就是读取对方发送过来的数据。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;socket-api&#34;&gt;SOCKET API
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;socket-api&#34;&gt;SOCKET API
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;创建&lt;/li&gt;
 &lt;li&gt;使用（读和写）&lt;/li&gt;
 &lt;li&gt;关闭&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;tcp-socket-数据传输的特点&#34;&gt;TCP SOCKET 数据传输的特点
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;tcp-socket-数据传输的特点&#34;&gt;TCP SOCKET 数据传输的特点
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;面向连接，可靠字节流服务&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;tcp-socket-编程&#34;&gt;TCP SOCKET 编程
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;tcp-socket-编程&#34;&gt;TCP SOCKET 编程
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;建立 SOCKET&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;客户端 TCP 实体动作：和服务器端的 TCP 实体握手沟通。&lt;/li&gt;
@@ -1128,8 +1128,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;li&gt;使用 SOCKET&lt;/li&gt;
 &lt;li&gt;关闭 SOCKET&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;udp-的-socket-编程-font-stylecolor74b602理解font&#34;&gt;UDP 的 SOCKET 编程 &lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;udp-的-socket-编程-font-stylecolor74b602理解font&#34;&gt;UDP 的 SOCKET 编程 &lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;UDP SOCKET数据传输的特点&lt;/li&gt;
 &lt;li&gt;编程&lt;font style=&#34;color:#74B602;&#34;&gt; 不要求&lt;/font&gt;
 &lt;ul&gt;
@@ -1139,10 +1139,10 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;传输层&#34;&gt;传输层
-&lt;/h1&gt;&lt;h2 id=&#34;传输层服务&#34;&gt;传输层服务
-&lt;/h2&gt;&lt;h3 id=&#34;传输服务&#34;&gt;传输服务
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h2 id=&#34;传输层&#34;&gt;传输层
+&lt;/h2&gt;&lt;h3 id=&#34;传输层服务&#34;&gt;传输层服务
+&lt;/h3&gt;&lt;h4 id=&#34;传输服务&#34;&gt;传输服务
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;能够使端系统应用之间进行逻辑通信。&lt;/li&gt;
 &lt;li&gt;传输协议：运行于端系统的 2 个对等传输层实体相互通信应该遵守的规则集合。&lt;/li&gt;
 &lt;li&gt;传输服务和网络服务的区别
@@ -1152,33 +1152,33 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;互联网络传输层协议&#34;&gt;互联网络传输层协议
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;互联网络传输层协议&#34;&gt;互联网络传输层协议
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;TCP：有连接，可靠保序数传服务。&lt;/li&gt;
 &lt;li&gt;UDP：无连接，不可靠，不保序的数传服务。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;复用与解复用&#34;&gt;复用与解复用
-&lt;/h2&gt;&lt;h3 id=&#34;复用&#34;&gt;复用
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&#34;复用与解复用&#34;&gt;复用与解复用
+&lt;/h3&gt;&lt;h4 id=&#34;复用&#34;&gt;复用
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;源端多个上层应用收集数据：应用报文，封装报文。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;解复用&#34;&gt;解复用
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;解复用&#34;&gt;解复用
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;接收端将数据按照端口号（结合 IP 地址）给相应的 SOCKET 对应的应用。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;复用和解复用的工作原理ip-port&#34;&gt;复用和解复用的工作原理：IP PORT
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;复用和解复用的工作原理ip-port&#34;&gt;复用和解复用的工作原理：IP PORT
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;TCP 有连接情况：SOCKETS 为 4 元组。&lt;/li&gt;
 &lt;li&gt;UDP 无连接情况：SOCKETS 为 2 元组。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;无连接传输层协议-udp&#34;&gt;无连接传输层协议 UDP
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;无连接传输层协议-udp&#34;&gt;无连接传输层协议 UDP
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;UDP 的必要性&lt;/strong&gt;：有些应用对实时性比较在乎，对可靠性要求不高。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;UDP 报文（无连接的，因此叫做 UDP 数据报）格式&lt;/strong&gt;。（头部 + 载荷）&lt;/li&gt;
 &lt;li&gt;**UDP 报文校验和的计算（Check Sum）  **&lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;可靠数据传输原理&#34;&gt;可靠数据传输原理
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;可靠数据传输原理&#34;&gt;可靠数据传输原理
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;协议演进的方式讲解如何进行 rdt&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;加入一些假设，简单的协议可以提供 rdt 服务。&lt;/li&gt;
@@ -1198,11 +1198,11 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;font-stylecolordf2a3frdtreliable-data-transfer可靠数据传输102030-的功能特点font&#34;&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;RDT（Reliable Data Transfer，可靠数据传输）1.0、2.0、3.0 的功能特点&lt;/font&gt;
-&lt;/h3&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_39583450/article/details/113481150&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;h4 id=&#34;font-stylecolordf2a3frdtreliable-data-transfer可靠数据传输102030-的功能特点font&#34;&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;RDT（Reliable Data Transfer，可靠数据传输）1.0、2.0、3.0 的功能特点&lt;/font&gt;
+&lt;/h4&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_39583450/article/details/113481150&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;计算机网络（14）——可靠数据传输原理_rdt3.0接收方fsm-CSDN博客&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&#34;rdt-10&#34;&gt;RDT 1.0
-&lt;/h4&gt;&lt;ol&gt;
+&lt;h5 id=&#34;rdt-10&#34;&gt;RDT 1.0
+&lt;/h5&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;解决错误问题&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;基本原理&lt;/strong&gt;
@@ -1220,8 +1220,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;rdt-20&#34;&gt;RDT 2.0
-&lt;/h4&gt;&lt;ol&gt;
+&lt;h5 id=&#34;rdt-20&#34;&gt;RDT 2.0
+&lt;/h5&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;解决序号 / 时序问题&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;基本原理&lt;/strong&gt;
@@ -1249,8 +1249,8 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;rdt-30&#34;&gt;RDT 3.0
-&lt;/h4&gt;&lt;ol&gt;
+&lt;h5 id=&#34;rdt-30&#34;&gt;RDT 3.0
+&lt;/h5&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;解决超时 / 重复问题&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;基本原理&lt;/strong&gt;
@@ -1280,25 +1280,25 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;RDT 协议从 1.0 到 3.0 不断演进，逐步解决了可靠数据传输过程中的各种实际问题，从假设理想信道到考虑比特差错、分组丢失等情况，通过增加差错检测、确认机制、定时器等手段来确保数据的可靠传输。&lt;/p&gt;
-&lt;h3 id=&#34;利用率计算font-stylecolor74b602-了解font&#34;&gt;利用率计算&lt;font style=&#34;color:#74B602;&#34;&gt; 了解&lt;/font&gt;
-&lt;/h3&gt;&lt;p&gt;停止等待技术：链路带宽延迟积（容量）效率低。
+&lt;h4 id=&#34;利用率计算font-stylecolor74b602-了解font&#34;&gt;利用率计算&lt;font style=&#34;color:#74B602;&#34;&gt; 了解&lt;/font&gt;
+&lt;/h4&gt;&lt;p&gt;停止等待技术：链路带宽延迟积（容量）效率低。
 管道技术：在未经对方确认的情况下，可以连续发送多个 PDU。
 GBN：发送窗口大于 1，接收窗口 = 1（只能顺序接收；发送方只设置一个超时定时器，一旦出错，返回到出错的那一个 PDU 重发）。
 SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送方为每个发送出去的 PDU 设置超时定时器，哪个超时重发哪个）。&lt;/p&gt;
-&lt;h2 id=&#34;有连接传输层协议tcp&#34;&gt;有连接传输层协议：TCP
-&lt;/h2&gt;&lt;h3 id=&#34;tcp-服务特性&#34;&gt;TCP 服务特性
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&#34;有连接传输层协议tcp&#34;&gt;有连接传输层协议：TCP
+&lt;/h3&gt;&lt;h4 id=&#34;tcp-服务特性&#34;&gt;TCP 服务特性
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;点对点：可靠保序字节流；管道（在未加确认情况下一次次传多个未经确认的段）；缓冲；全双工；面向连接；流控制。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;tcp-段结构&#34;&gt;TCP 段结构
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;tcp-段结构&#34;&gt;TCP 段结构
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;各个字段的作用。&lt;/li&gt;
 &lt;li&gt;连接建立时协商好双方的起始序号；&lt;/li&gt;
 &lt;li&gt;序号是首字节在字节流的偏移量；&lt;/li&gt;
 &lt;li&gt;确认：是对顺序收到的最后一个字节 + 1。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;rtt-时间估计和重发超时时间估计&#34;&gt;RTT 时间估计和重发超时时间估计
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h4 id=&#34;rtt-时间估计和重发超时时间估计&#34;&gt;RTT 时间估计和重发超时时间估计
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;移动平均计算&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;平均往返延迟。&lt;/li&gt;
@@ -1307,16 +1307,16 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;tcp-的可靠数据传输原理&#34;&gt;TCP 的可靠数据传输原理
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h4 id=&#34;tcp-的可靠数据传输原理&#34;&gt;TCP 的可靠数据传输原理
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;快速重传&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;在没有超时情况下，收到对方对于某一个段的重复三次（一共 4 个）ACK。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;流量控制&#34;&gt;流量控制
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h4 id=&#34;流量控制&#34;&gt;流量控制
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;流控目的&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;防止淹没接收方。&lt;/li&gt;
@@ -1328,8 +1328,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;tcp-连接管理-font-stylecolor74b602-理解font&#34;&gt;TCP 连接管理 &lt;font style=&#34;color:#74B602;&#34;&gt; 理解&lt;/font&gt;
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h4 id=&#34;tcp-连接管理-font-stylecolor74b602-理解font&#34;&gt;TCP 连接管理 &lt;font style=&#34;color:#74B602;&#34;&gt; 理解&lt;/font&gt;
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;连接建立&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;3 次握手技术，对双方选择的初始序号给予确认，准备好缓冲区。&lt;/li&gt;
@@ -1345,8 +1345,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;拥塞控制原理&#34;&gt;拥塞控制原理
-&lt;/h2&gt;&lt;ol&gt;
+&lt;h3 id=&#34;拥塞控制原理&#34;&gt;拥塞控制原理
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;拥塞的概念&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;解释什么是拥塞，以及为什么会发生拥塞。&lt;/li&gt;
@@ -1360,9 +1360,9 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;tcp-的拥塞控制原理&#34;&gt;TCP 的拥塞控制原理
-&lt;/h2&gt;&lt;h3 id=&#34;tcp-拥塞控制原理font-stylecolordf2a3f需掌握font&#34;&gt;TCP 拥塞控制原理&lt;font style=&#34;color:#DF2A3F;&#34;&gt;（需掌握）&lt;/font&gt;
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h3 id=&#34;tcp-的拥塞控制原理&#34;&gt;TCP 的拥塞控制原理
+&lt;/h3&gt;&lt;h4 id=&#34;tcp-拥塞控制原理font-stylecolordf2a3f需掌握font&#34;&gt;TCP 拥塞控制原理&lt;font style=&#34;color:#DF2A3F;&#34;&gt;（需掌握）&lt;/font&gt;
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;检测拥塞&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;超时（拥塞，存在误判的可能性，但概率比较低）。&lt;/li&gt;
@@ -1375,8 +1375,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;tcp-拥塞控制的-2-种算法&#34;&gt;TCP 拥塞控制的 2 种算法
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h4 id=&#34;tcp-拥塞控制的-2-种算法&#34;&gt;TCP 拥塞控制的 2 种算法
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Tahoe&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;超时事件和 3 个冗余 ACK 处理一样的，不要求。&lt;/li&gt;
@@ -1388,8 +1388,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;平均延迟和超时定时器时间的设置&#34;&gt;平均延迟和超时定时器时间的设置
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h4 id=&#34;平均延迟和超时定时器时间的设置&#34;&gt;平均延迟和超时定时器时间的设置
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;**JACSON 算法（具体初始化和迭代算法， ** &lt;strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt;不要求&lt;/font&gt;&lt;/strong&gt; &lt;strong&gt;）&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;平均往返延迟公式。&lt;/li&gt;
@@ -1398,12 +1398,12 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;tcp-公平性font-stylecolor74b602了解font&#34;&gt;TCP 公平性：&lt;font style=&#34;color:#74B602;&#34;&gt;了解&lt;/font&gt;
-&lt;/h3&gt;&lt;h3 id=&#34;tcp-的吞吐量计算font-stylecolor74b602不要求font&#34;&gt;TCP 的吞吐量计算：&lt;font style=&#34;color:#74B602;&#34;&gt;不要求&lt;/font&gt;。
-&lt;/h3&gt;&lt;h1 id=&#34;网络层之数据平面&#34;&gt;网络层之数据平面
-&lt;/h1&gt;&lt;h2 id=&#34;简介&#34;&gt;简介
-&lt;/h2&gt;&lt;h3 id=&#34;网络层的主要服务和功能&#34;&gt;网络层的主要服务和功能
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h4 id=&#34;tcp-公平性font-stylecolor74b602了解font&#34;&gt;TCP 公平性：&lt;font style=&#34;color:#74B602;&#34;&gt;了解&lt;/font&gt;
+&lt;/h4&gt;&lt;h4 id=&#34;tcp-的吞吐量计算font-stylecolor74b602不要求font&#34;&gt;TCP 的吞吐量计算：&lt;font style=&#34;color:#74B602;&#34;&gt;不要求&lt;/font&gt;。
+&lt;/h4&gt;&lt;h2 id=&#34;网络层之数据平面&#34;&gt;网络层之数据平面
+&lt;/h2&gt;&lt;h3 id=&#34;简介&#34;&gt;简介
+&lt;/h3&gt;&lt;h4 id=&#34;网络层的主要服务和功能&#34;&gt;网络层的主要服务和功能
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;服务&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;向传输层提供主机到主机的段传输服务。&lt;/li&gt;
@@ -1421,8 +1421,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;实现网络层功能的两种方式&#34;&gt;实现网络层功能的两种方式
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h4 id=&#34;实现网络层功能的两种方式&#34;&gt;实现网络层功能的两种方式
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;传统方式&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;控制平面和数据平面功能垂直集成在每个设备上（路由器）。&lt;/li&gt;
@@ -1438,16 +1438,16 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;网络层提供服务的一些重要指标&#34;&gt;网络层提供服务的一些重要指标
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h4 id=&#34;网络层提供服务的一些重要指标&#34;&gt;网络层提供服务的一些重要指标
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;带宽&lt;/li&gt;
 &lt;li&gt;延迟、延迟差&lt;/li&gt;
 &lt;li&gt;丢包与否&lt;/li&gt;
 &lt;li&gt;丢包率&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;路由器结构和工作原理&#34;&gt;路由器结构和工作原理
-&lt;/h2&gt;&lt;h3 id=&#34;路由器的-2-大功能font-stylecolor74b602需理解font&#34;&gt;路由器的 2 大功能&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h3 id=&#34;路由器结构和工作原理&#34;&gt;路由器结构和工作原理
+&lt;/h3&gt;&lt;h4 id=&#34;路由器的-2-大功能font-stylecolor74b602需理解font&#34;&gt;路由器的 2 大功能&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;路由协议&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;结果形成路由表（转发表）。&lt;/li&gt;
@@ -1459,8 +1459,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;构成&#34;&gt;构成
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h4 id=&#34;构成&#34;&gt;构成
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;输入端口&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;线路终端实现物理层功能，链路协议实体实现链路层功能，网络层功能实现分布式分组转发。&lt;/li&gt;
@@ -1484,13 +1484,13 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;互联网网络层协议&#34;&gt;互联网网络层协议
-&lt;/h2&gt;&lt;h3 id=&#34;ip-网络提供的服务模型尽力而为&#34;&gt;IP 网络提供的服务模型：尽力而为
-&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&#34;互联网网络层协议&#34;&gt;互联网网络层协议
+&lt;/h3&gt;&lt;h4 id=&#34;ip-网络提供的服务模型尽力而为&#34;&gt;IP 网络提供的服务模型：尽力而为
+&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;包括含义：丢包、乱序、不可靠、（可能包括重复）。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;网络层构成&#34;&gt;网络层构成
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h4 id=&#34;网络层构成&#34;&gt;网络层构成
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;协议&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;IP 协议、路由选择协议、ICMP 协议&lt;/li&gt;
@@ -1536,22 +1536,22 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;通用转发和-sdn&#34;&gt;通用转发和 SDN
-&lt;/h2&gt;&lt;h3 id=&#34;sdn-方式控制平面和数据平面分离的优点font-stylecolor74b602需理解font&#34;&gt;SDN 方式控制平面和数据平面分离的优点&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h3 id=&#34;通用转发和-sdn&#34;&gt;通用转发和 SDN
+&lt;/h3&gt;&lt;h4 id=&#34;sdn-方式控制平面和数据平面分离的优点font-stylecolor74b602需理解font&#34;&gt;SDN 方式控制平面和数据平面分离的优点&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;集中在控制器上实现控制逻辑，网络可编程，可以实现各种复杂的网络功能、新功能（一次部署，持续升级）、方便管理。&lt;/li&gt;
 &lt;li&gt;形成开发生态（控制器、分组交换机、网络应用，在一个开放的框架下协作）。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4 id=&#34;sdn-分组交换机按照计算出的流表进行分组转发通用便于升级&#34;&gt;SDN 分组交换机按照计算出的流表进行分组转发、通用、便于升级。
-&lt;/h4&gt;&lt;h4 id=&#34;分组交换机工作原理font-stylecolor74b602需理解font&#34;&gt;分组交换机工作原理&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;
-&lt;/h4&gt;&lt;ol&gt;
+&lt;/h4&gt;&lt;h5 id=&#34;分组交换机工作原理font-stylecolor74b602需理解font&#34;&gt;分组交换机工作原理&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;
+&lt;/h5&gt;&lt;ol&gt;
 &lt;li&gt;模式匹配 + 行动（不仅仅是转发，还可以组播、泛洪、修改字段和阻塞等）。&lt;/li&gt;
 &lt;li&gt;进来分组，按照各级字段匹配流表，按照相应的行动动作分组。&lt;/li&gt;
 &lt;li&gt;按照优先权进行判断；之后，统计计数。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h1 id=&#34;网络层之控制平面&#34;&gt;网络层之控制平面
-&lt;/h1&gt;&lt;h2 id=&#34;概述&#34;&gt;概述
-&lt;/h2&gt;&lt;ol&gt;
+&lt;h2 id=&#34;网络层之控制平面&#34;&gt;网络层之控制平面
+&lt;/h2&gt;&lt;h3 id=&#34;概述&#34;&gt;概述
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;两种方式实现控制平面功能&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;传统方式：在每个路由器上分布式实现路由功能。&lt;/li&gt;
@@ -1559,8 +1559,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;路由选择算法&#34;&gt;路由选择算法
-&lt;/h2&gt;&lt;ol&gt;
+&lt;h3 id=&#34;路由选择算法&#34;&gt;路由选择算法
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;路由目标&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;根据收集到的路由信息（拓扑、链路代价等）计算出源到目标较好的路径，代价比较低的路径。&lt;/li&gt;
@@ -1642,9 +1642,9 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;静态路由和动态路由适用于不同的网络场景，简单、稳定的网络更适合静态路由，而复杂多变、规模较大的网络则要依靠动态路由来保障高效的数据传输。&lt;/p&gt;
-&lt;h2 id=&#34;互联网的路由协议&#34;&gt;互联网的路由协议
-&lt;/h2&gt;&lt;h3 id=&#34;路由协议分类&#34;&gt;路由协议分类
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h3 id=&#34;互联网的路由协议&#34;&gt;互联网的路由协议
+&lt;/h3&gt;&lt;h4 id=&#34;路由协议分类&#34;&gt;路由协议分类
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;内部网关协议 IGP&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;RIP&lt;/li&gt;
@@ -1658,15 +1658,15 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;网关路由器参与-as-内部路由计算收集-as-内部子网可达信息&#34;&gt;网关路由器参与 AS 内部路由计算，收集 AS 内部子网可达信息
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h4 id=&#34;网关路由器参与-as-内部路由计算收集-as-内部子网可达信息&#34;&gt;网关路由器参与 AS 内部路由计算，收集 AS 内部子网可达信息
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;网关路由器通过 AS 间路由向其他 AS 网关通告子网可达信息。&lt;/li&gt;
 &lt;li&gt;网关路由器还转发 “过手” 子网可达信息，但是 AS 路径要加上它自己 AS 编号（防止形成环路）。&lt;/li&gt;
 &lt;li&gt;网关路由器通过 i - BGP 向 AS 内部所有路由节点通告收集到的子网可达信息。&lt;/li&gt;
 &lt;li&gt;内部路由器，通过 AS 内路由和 AS 间路由共同决定向 AS 外部子网的下一跳（内部网关协议决定如何去往网关，外部网关协议决定通过那个网关可到达 AS 外部子网）。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;内部网关协议和外部网关协议的对比font-stylecolor74b602了解font&#34;&gt;内部网关协议和外部网关协议的对比&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;
-&lt;/h3&gt;&lt;ol&gt;
+&lt;h4 id=&#34;内部网关协议和外部网关协议的对比font-stylecolor74b602了解font&#34;&gt;内部网关协议和外部网关协议的对比&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;
+&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;内部网关协议重视效率，性能。&lt;/li&gt;
 &lt;li&gt;外部网关协议重视策略：经济策略和政治策略&lt;/li&gt;
 &lt;/ol&gt;
@@ -1676,14 +1676,14 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;li&gt;控制器和 SDN 交换机按照&lt;code&gt;openflow&lt;/code&gt;等南向接口协议等下发流表，上报设备状态。&lt;/li&gt;
 &lt;li&gt;SDN 控制器按照北向接口和网络应用打交道。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;icmp-协议font-stylecolor74b602了解font&#34;&gt;ICMP 协议&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;icmp-协议font-stylecolor74b602了解font&#34;&gt;ICMP 协议&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;作用：包括错误、&lt;code&gt;echo&lt;/code&gt;请求和应答。&lt;/li&gt;
 &lt;li&gt;报文类型。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&#34;数据链路层与局域网&#34;&gt;数据链路层与局域网
-&lt;/h1&gt;&lt;h2 id=&#34;引论&#34;&gt;引论
-&lt;/h2&gt;&lt;ol&gt;
+&lt;h2 id=&#34;数据链路层与局域网&#34;&gt;数据链路层与局域网
+&lt;/h2&gt;&lt;h3 id=&#34;引论&#34;&gt;引论
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;链路层提供的服务&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;成帧、链路存取控制（链路访问控制）。&lt;/li&gt;
@@ -1701,8 +1701,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;检错与纠错&#34;&gt;检错与纠错
-&lt;/h2&gt;&lt;ol&gt;
+&lt;h3 id=&#34;检错与纠错&#34;&gt;检错与纠错
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;检错原理&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;奇偶校验。&lt;/li&gt;
@@ -1716,8 +1716,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;多路访问协议&#34;&gt;多路访问协议
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;多路访问协议&#34;&gt;多路访问协议
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;MAC 的必要性&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;MAP&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;信道划分&lt;/strong&gt;
@@ -1737,8 +1737,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;li&gt;&lt;strong&gt;轮转协议：不要求&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;令牌协议&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;链路层编地址&#34;&gt;链路层编地址
-&lt;/h2&gt;&lt;ul&gt;
+&lt;h3 id=&#34;链路层编地址&#34;&gt;链路层编地址
+&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;MAC 地址（48位）&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;格式&lt;/strong&gt;&lt;/li&gt;
@@ -1758,8 +1758,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;以太网&#34;&gt;以太网
-&lt;/h2&gt;&lt;ol&gt;
+&lt;h3 id=&#34;以太网&#34;&gt;以太网
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;IEEE802.3 标准，链路层和相应的物理层。&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;以太网的帧结构。&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;向上提供服务的特点。&lt;/strong&gt;
@@ -1784,8 +1784,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;hub-和交换机&#34;&gt;HUB 和交换机
-&lt;/h2&gt;&lt;ol&gt;
+&lt;h3 id=&#34;hub-和交换机&#34;&gt;HUB 和交换机
+&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;HUB 连接方式的问题。&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;无法隔离冲突，在一个冲突域之中：使用 HUB 连接设备时，所有连接的设备处于同一个冲突域，容易产生冲突。&lt;/li&gt;
@@ -1801,6 +1801,9 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;路由器和交换机的区别&lt;/strong&gt; &lt;strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1JV411t7ow/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=76a496aa006e07f846fd0bbe5954c92e&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;中科大郑烇、杨坚全套《计算机网络（自顶向下方法 第7版，James F.Kurose，Keith W.Ross）》课程&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>

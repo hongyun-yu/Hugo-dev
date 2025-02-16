@@ -28,7 +28,7 @@
 <meta property='og:description' content="计算机网络">
 <meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/test-bushu/'>
 <meta property='og:site_name' content='羡余'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-01-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-15T13:21:37&#43;08:00'/><meta property='og:image' content='https://www.helloimg.com/i/2025/02/08/67a74cc6008c5.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-01-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-16T10:56:09&#43;08:00'/><meta property='og:image' content='https://www.helloimg.com/i/2025/02/08/67a74cc6008c5.jpg' />
 <meta name="twitter:title" content="计算机网络总复习">
 <meta name="twitter:description" content="计算机网络"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://www.helloimg.com/i/2025/02/08/67a74cc6008c5.jpg' />
@@ -104,207 +104,198 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#什么是互联网络">什么是互联网络</a></li>
-    <li><a href="#网络边缘">网络边缘</a></li>
-    <li><a href="#网络核心">网络核心</a></li>
-    <li><a href="#网络接入与物理介质">网络接入与物理介质</a></li>
-    <li><a href="#互联网络结构与-isp">互联网络结构与 ISP</a>
+    <li><a href="#计算机网络与互联网络">计算机网络与互联网络</a>
       <ol>
-        <li><a href="#近似层次型结构">近似层次型结构</a></li>
-        <li><a href="#isp-之间的连接">ISP 之间的连接</a></li>
-        <li><a href="#内容提供商网络">内容提供商网络</a></li>
-      </ol>
-    </li>
-    <li><a href="#分组交换网络中的延迟与丢失">分组交换网络中的延迟与丢失</a>
-      <ol>
-        <li><a href="#延迟的-4-个原因计算font-stylecolordf2a3f---掌握font">延迟的 4 个原因（计算）<font style="color:#DF2A3F;"> - 掌握</font></a></li>
-        <li><a href="#流量强度0-1与排队延迟正相关lar-font-stylecolordf2a3f--掌握font">流量强度（0-1，与排队延迟正相关）：La/R <font style="color:#DF2A3F;">- 掌握</font></a></li>
-        <li><a href="#丢失原因">丢失原因：</a></li>
-        <li><a href="#吞吐量font-stylecolor74b602--了解font">吞吐量<font style="color:#74B602;"> -了解</font></a></li>
-      </ol>
-    </li>
-    <li><a href="#协议层次与服务模型">协议层次与服务模型</a>
-      <ol>
-        <li><a href="#为什么要分层">为什么要分层</a></li>
-        <li><a href="#网络比较复杂分层实现比较容易设计调试实现">网络比较复杂，分层实现比较容易设计、调试、实现。</a></li>
-        <li><a href="#一些术语和概念font-stylecolor74b602-理解font">一些术语和概念<font style="color:#74B602;">-理解</font></a></li>
-        <li><a href="#互联网络分层模型及每一层的功能font-stylecolor74b602-理解font">互联网络分层模型及每一层的功能<font style="color:#74B602;">-理解</font></a></li>
-        <li><a href="#封装和解封">封装和解封</a></li>
-      </ol>
-    </li>
-    <li><a href="#历史font-stylecolor74b602-了解font">历史<font style="color:#74B602;">-了解</font></a></li>
-  </ol>
-
-  <ol>
-    <li><a href="#网络应用原理">网络应用原理</a></li>
-    <li><a href="#web-和-http">WEB 和 HTTP</a>
-      <ol>
-        <li><a href="#web-应用包括">WEB 应用包括</a></li>
-        <li><a href="#术语">术语</a></li>
-        <li><a href="#font-stylecolordf2a3fhttp-协议font"><font style="color:#DF2A3F;">HTTP 协议</font></a></li>
-        <li><a href="#font-stylecolordf2a3fhttp-10-到-http-11-再到-http-20-的演变font"><font style="color:#DF2A3F;">HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0 的演变</font></a>
+        <li><a href="#什么是互联网络">什么是互联网络</a></li>
+        <li><a href="#网络边缘">网络边缘</a></li>
+        <li><a href="#网络核心">网络核心</a></li>
+        <li><a href="#网络接入与物理介质">网络接入与物理介质</a></li>
+        <li><a href="#互联网络结构与-isp">互联网络结构与 ISP</a>
           <ol>
-            <li><a href="#http-10">HTTP 1.0</a></li>
-            <li><a href="#http-11">HTTP 1.1</a></li>
-            <li><a href="#http-20">HTTP 2.0</a></li>
+            <li><a href="#近似层次型结构">近似层次型结构</a></li>
+            <li><a href="#isp-之间的连接">ISP 之间的连接</a></li>
+            <li><a href="#内容提供商网络">内容提供商网络</a></li>
           </ol>
         </li>
-        <li><a href="#从-ssl-到-http30基于-udp的安全优化过程">从 SSL 到 HTTP/3.0（基于 UDP）的安全优化过程</a>
+        <li><a href="#分组交换网络中的延迟与丢失">分组交换网络中的延迟与丢失</a>
           <ol>
-            <li><a href="#sslsecure-sockets-layer安全套接层">SSL（Secure Sockets Layer，安全套接层）</a></li>
-            <li><a href="#tlstransport-layer-security传输层安全">TLS（Transport Layer Security，传输层安全）</a></li>
-            <li><a href="#http30基于-udp-的-quic-协议">HTTP/3.0（基于 UDP 的 QUIC 协议）</a></li>
+            <li><a href="#延迟的-4-个原因计算font-stylecolordf2a3f---掌握font">延迟的 4 个原因（计算）<font style="color:#DF2A3F;"> - 掌握</font></a></li>
+            <li><a href="#流量强度0-1与排队延迟正相关lar-font-stylecolordf2a3f--掌握font">流量强度（0-1，与排队延迟正相关）：La/R <font style="color:#DF2A3F;">- 掌握</font></a></li>
+            <li><a href="#丢失原因">丢失原因：</a></li>
+            <li><a href="#吞吐量font-stylecolor74b602--了解font">吞吐量<font style="color:#74B602;"> -了解</font></a></li>
           </ol>
         </li>
-        <li><a href="#报文格式">报文格式</a></li>
-        <li><a href="#cookieshttp无状态-有状态">COOKIES（HTTP无状态-&gt;有状态）</a></li>
-        <li><a href="#web-缓存">WEB 缓存</a></li>
-      </ol>
-    </li>
-    <li><a href="#ftpfont-stylecolor74b602不要求font">FTP<font style="color:#74B602;">（不要求）</font></a></li>
-    <li><a href="#email">EMAIL</a>
-      <ol>
-        <li><a href="#电子邮件应用的构成">电子邮件应用的构成</a></li>
-        <li><a href="#邮件报文格式解析">邮件报文格式解析</a></li>
-        <li><a href="#邮件存取协议">邮件存取协议</a></li>
-      </ol>
-    </li>
-    <li><a href="#dns">DNS</a>
-      <ol>
-        <li><a href="#dns-作用">DNS 作用</a></li>
-        <li><a href="#二dns-的概念">二、DNS 的概念</a></li>
-        <li><a href="#三dns-的构成">三、DNS 的构成</a></li>
-        <li><a href="#域名解析的过程">域名解析的过程</a></li>
-        <li><a href="#五dns-缓存">五、DNS 缓存</a></li>
-      </ol>
-    </li>
-    <li><a href="#p2pfont-stylecolor74b602了解p2p-的概念和优势即可font">P2P<font style="color:#74B602;">（了解P2P 的概念和优势即可）</font></a>
-      <ol>
-        <li><a href="#p2p-概念">P2P 概念</a></li>
-        <li><a href="#p2p-网络比-cs-方式分发内容快的原因">P2P 网络比 C/S 方式分发内容快的原因</a></li>
-        <li><a href="#典型-p2p-应用及其原理font-stylecolor74b602不要求font">典型 P2P 应用及其原理<font style="color:#74B602;">（不要求）</font></a></li>
-      </ol>
-    </li>
-    <li><a href="#视频流化服务和-cdnfont-stylecolor74b602了解font">视频流化服务和 CDN<font style="color:#74B602;">（了解）</font></a>
-      <ol>
-        <li><a href="#服务器向客户端进行视频流化的方式">服务器向客户端进行视频流化的方式</a></li>
-        <li><a href="#dash-流化的过程">DASH 流化的过程</a></li>
-        <li><a href="#cdn">CDN</a></li>
-      </ol>
-    </li>
-    <li><a href="#tcp-的-socket-编程-font-stylecolor74b602理解font">TCP 的 SOCKET 编程 <font style="color:#74B602;">理解</font></a>
-      <ol>
-        <li><a href="#socket-概念">SOCKET 概念</a></li>
-        <li><a href="#socket-api">SOCKET API</a></li>
-        <li><a href="#tcp-socket-数据传输的特点">TCP SOCKET 数据传输的特点</a></li>
-        <li><a href="#tcp-socket-编程">TCP SOCKET 编程</a></li>
-      </ol>
-    </li>
-    <li><a href="#udp-的-socket-编程-font-stylecolor74b602理解font">UDP 的 SOCKET 编程 <font style="color:#74B602;">理解</font></a></li>
-  </ol>
-
-  <ol>
-    <li><a href="#传输层服务">传输层服务</a>
-      <ol>
-        <li><a href="#传输服务">传输服务</a></li>
-        <li><a href="#互联网络传输层协议">互联网络传输层协议</a></li>
-      </ol>
-    </li>
-    <li><a href="#复用与解复用">复用与解复用</a>
-      <ol>
-        <li><a href="#复用">复用</a></li>
-        <li><a href="#解复用">解复用</a></li>
-        <li><a href="#复用和解复用的工作原理ip-port">复用和解复用的工作原理：IP PORT</a></li>
-      </ol>
-    </li>
-    <li><a href="#无连接传输层协议-udp">无连接传输层协议 UDP</a></li>
-    <li><a href="#可靠数据传输原理">可靠数据传输原理</a>
-      <ol>
-        <li><a href="#font-stylecolordf2a3frdtreliable-data-transfer可靠数据传输102030-的功能特点font"><font style="color:#DF2A3F;">RDT（Reliable Data Transfer，可靠数据传输）1.0、2.0、3.0 的功能特点</font></a>
+        <li><a href="#协议层次与服务模型">协议层次与服务模型</a>
           <ol>
-            <li><a href="#rdt-10">RDT 1.0</a></li>
-            <li><a href="#rdt-20">RDT 2.0</a></li>
-            <li><a href="#rdt-30">RDT 3.0</a></li>
+            <li><a href="#为什么要分层">为什么要分层</a></li>
+            <li><a href="#网络比较复杂分层实现比较容易设计调试实现">网络比较复杂，分层实现比较容易设计、调试、实现。</a></li>
+            <li><a href="#一些术语和概念font-stylecolor74b602-理解font">一些术语和概念<font style="color:#74B602;">-理解</font></a></li>
+            <li><a href="#互联网络分层模型及每一层的功能font-stylecolor74b602-理解font">互联网络分层模型及每一层的功能<font style="color:#74B602;">-理解</font></a></li>
+            <li><a href="#封装和解封">封装和解封</a></li>
           </ol>
         </li>
-        <li><a href="#利用率计算font-stylecolor74b602-了解font">利用率计算<font style="color:#74B602;"> 了解</font></a></li>
+        <li><a href="#历史font-stylecolor74b602-了解font">历史<font style="color:#74B602;">-了解</font></a></li>
       </ol>
     </li>
-    <li><a href="#有连接传输层协议tcp">有连接传输层协议：TCP</a>
+    <li><a href="#应用层">应用层</a>
       <ol>
-        <li><a href="#tcp-服务特性">TCP 服务特性</a></li>
-        <li><a href="#tcp-段结构">TCP 段结构</a></li>
-        <li><a href="#rtt-时间估计和重发超时时间估计">RTT 时间估计和重发超时时间估计</a></li>
-        <li><a href="#tcp-的可靠数据传输原理">TCP 的可靠数据传输原理</a></li>
-        <li><a href="#流量控制">流量控制</a></li>
-        <li><a href="#tcp-连接管理-font-stylecolor74b602-理解font">TCP 连接管理 <font style="color:#74B602;"> 理解</font></a></li>
-      </ol>
-    </li>
-    <li><a href="#拥塞控制原理">拥塞控制原理</a></li>
-    <li><a href="#tcp-的拥塞控制原理">TCP 的拥塞控制原理</a>
-      <ol>
-        <li><a href="#tcp-拥塞控制原理font-stylecolordf2a3f需掌握font">TCP 拥塞控制原理<font style="color:#DF2A3F;">（需掌握）</font></a></li>
-        <li><a href="#tcp-拥塞控制的-2-种算法">TCP 拥塞控制的 2 种算法</a></li>
-        <li><a href="#平均延迟和超时定时器时间的设置">平均延迟和超时定时器时间的设置</a></li>
-        <li><a href="#tcp-公平性font-stylecolor74b602了解font">TCP 公平性：<font style="color:#74B602;">了解</font></a></li>
-        <li><a href="#tcp-的吞吐量计算font-stylecolor74b602不要求font">TCP 的吞吐量计算：<font style="color:#74B602;">不要求</font>。</a></li>
-      </ol>
-    </li>
-  </ol>
-
-  <ol>
-    <li><a href="#简介">简介</a>
-      <ol>
-        <li><a href="#网络层的主要服务和功能">网络层的主要服务和功能</a></li>
-        <li><a href="#实现网络层功能的两种方式">实现网络层功能的两种方式</a></li>
-        <li><a href="#网络层提供服务的一些重要指标">网络层提供服务的一些重要指标</a></li>
-      </ol>
-    </li>
-    <li><a href="#路由器结构和工作原理">路由器结构和工作原理</a>
-      <ol>
-        <li><a href="#路由器的-2-大功能font-stylecolor74b602需理解font">路由器的 2 大功能<font style="color:#74B602;">（需理解）</font></a></li>
-        <li><a href="#构成">构成</a></li>
-      </ol>
-    </li>
-    <li><a href="#互联网网络层协议">互联网网络层协议</a>
-      <ol>
-        <li><a href="#ip-网络提供的服务模型尽力而为">IP 网络提供的服务模型：尽力而为</a></li>
-        <li><a href="#网络层构成">网络层构成</a></li>
-      </ol>
-    </li>
-    <li><a href="#通用转发和-sdn">通用转发和 SDN</a>
-      <ol>
-        <li><a href="#sdn-方式控制平面和数据平面分离的优点font-stylecolor74b602需理解font">SDN 方式控制平面和数据平面分离的优点<font style="color:#74B602;">（需理解）</font></a>
+        <li><a href="#网络应用原理">网络应用原理</a></li>
+        <li><a href="#web-和-http">WEB 和 HTTP</a>
           <ol>
+            <li><a href="#web-应用包括">WEB 应用包括</a></li>
+            <li><a href="#术语">术语</a></li>
+            <li><a href="#font-stylecolordf2a3fhttp-协议font"><font style="color:#DF2A3F;">HTTP 协议</font></a></li>
+            <li><a href="#font-stylecolordf2a3fhttp-10-到-http-11-再到-http-20-的演变font"><font style="color:#DF2A3F;">HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0 的演变</font></a></li>
+            <li><a href="#从-ssl-到-http30基于-udp的安全优化过程">从 SSL 到 HTTP/3.0（基于 UDP）的安全优化过程</a></li>
+            <li><a href="#报文格式">报文格式</a></li>
+            <li><a href="#cookieshttp无状态-有状态">COOKIES（HTTP无状态-&gt;有状态）</a></li>
+            <li><a href="#web-缓存">WEB 缓存</a></li>
+          </ol>
+        </li>
+        <li><a href="#ftpfont-stylecolor74b602不要求font">FTP<font style="color:#74B602;">（不要求）</font></a></li>
+        <li><a href="#email">EMAIL</a>
+          <ol>
+            <li><a href="#电子邮件应用的构成">电子邮件应用的构成</a></li>
+            <li><a href="#邮件报文格式解析">邮件报文格式解析</a></li>
+            <li><a href="#邮件存取协议">邮件存取协议</a></li>
+          </ol>
+        </li>
+        <li><a href="#dns">DNS</a>
+          <ol>
+            <li><a href="#dns-作用">DNS 作用</a></li>
+            <li><a href="#二dns-的概念">二、DNS 的概念</a></li>
+            <li><a href="#三dns-的构成">三、DNS 的构成</a></li>
+            <li><a href="#域名解析的过程">域名解析的过程</a></li>
+            <li><a href="#dns-缓存">DNS 缓存</a></li>
+          </ol>
+        </li>
+        <li><a href="#p2pfont-stylecolor74b602了解p2p-的概念和优势即可font">P2P<font style="color:#74B602;">（了解P2P 的概念和优势即可）</font></a>
+          <ol>
+            <li><a href="#p2p-概念">P2P 概念</a></li>
+            <li><a href="#p2p-网络比-cs-方式分发内容快的原因">P2P 网络比 C/S 方式分发内容快的原因</a></li>
+            <li><a href="#典型-p2p-应用及其原理font-stylecolor74b602不要求font">典型 P2P 应用及其原理<font style="color:#74B602;">（不要求）</font></a></li>
+          </ol>
+        </li>
+        <li><a href="#视频流化服务和-cdnfont-stylecolor74b602了解font">视频流化服务和 CDN<font style="color:#74B602;">（了解）</font></a>
+          <ol>
+            <li><a href="#服务器向客户端进行视频流化的方式">服务器向客户端进行视频流化的方式</a></li>
+            <li><a href="#dash-流化的过程">DASH 流化的过程</a></li>
+            <li><a href="#cdn">CDN</a></li>
+          </ol>
+        </li>
+        <li><a href="#tcp-的-socket-编程-font-stylecolor74b602理解font">TCP 的 SOCKET 编程 <font style="color:#74B602;">理解</font></a>
+          <ol>
+            <li><a href="#socket-概念">SOCKET 概念</a></li>
+            <li><a href="#socket-api">SOCKET API</a></li>
+            <li><a href="#tcp-socket-数据传输的特点">TCP SOCKET 数据传输的特点</a></li>
+            <li><a href="#tcp-socket-编程">TCP SOCKET 编程</a></li>
+          </ol>
+        </li>
+        <li><a href="#udp-的-socket-编程-font-stylecolor74b602理解font">UDP 的 SOCKET 编程 <font style="color:#74B602;">理解</font></a></li>
+      </ol>
+    </li>
+    <li><a href="#传输层">传输层</a>
+      <ol>
+        <li><a href="#传输层服务">传输层服务</a>
+          <ol>
+            <li><a href="#传输服务">传输服务</a></li>
+            <li><a href="#互联网络传输层协议">互联网络传输层协议</a></li>
+          </ol>
+        </li>
+        <li><a href="#复用与解复用">复用与解复用</a>
+          <ol>
+            <li><a href="#复用">复用</a></li>
+            <li><a href="#解复用">解复用</a></li>
+            <li><a href="#复用和解复用的工作原理ip-port">复用和解复用的工作原理：IP PORT</a></li>
+          </ol>
+        </li>
+        <li><a href="#无连接传输层协议-udp">无连接传输层协议 UDP</a></li>
+        <li><a href="#可靠数据传输原理">可靠数据传输原理</a>
+          <ol>
+            <li><a href="#font-stylecolordf2a3frdtreliable-data-transfer可靠数据传输102030-的功能特点font"><font style="color:#DF2A3F;">RDT（Reliable Data Transfer，可靠数据传输）1.0、2.0、3.0 的功能特点</font></a></li>
+            <li><a href="#利用率计算font-stylecolor74b602-了解font">利用率计算<font style="color:#74B602;"> 了解</font></a></li>
+          </ol>
+        </li>
+        <li><a href="#有连接传输层协议tcp">有连接传输层协议：TCP</a>
+          <ol>
+            <li><a href="#tcp-服务特性">TCP 服务特性</a></li>
+            <li><a href="#tcp-段结构">TCP 段结构</a></li>
+            <li><a href="#rtt-时间估计和重发超时时间估计">RTT 时间估计和重发超时时间估计</a></li>
+            <li><a href="#tcp-的可靠数据传输原理">TCP 的可靠数据传输原理</a></li>
+            <li><a href="#流量控制">流量控制</a></li>
+            <li><a href="#tcp-连接管理-font-stylecolor74b602-理解font">TCP 连接管理 <font style="color:#74B602;"> 理解</font></a></li>
+          </ol>
+        </li>
+        <li><a href="#拥塞控制原理">拥塞控制原理</a></li>
+        <li><a href="#tcp-的拥塞控制原理">TCP 的拥塞控制原理</a>
+          <ol>
+            <li><a href="#tcp-拥塞控制原理font-stylecolordf2a3f需掌握font">TCP 拥塞控制原理<font style="color:#DF2A3F;">（需掌握）</font></a></li>
+            <li><a href="#tcp-拥塞控制的-2-种算法">TCP 拥塞控制的 2 种算法</a></li>
+            <li><a href="#平均延迟和超时定时器时间的设置">平均延迟和超时定时器时间的设置</a></li>
+            <li><a href="#tcp-公平性font-stylecolor74b602了解font">TCP 公平性：<font style="color:#74B602;">了解</font></a></li>
+            <li><a href="#tcp-的吞吐量计算font-stylecolor74b602不要求font">TCP 的吞吐量计算：<font style="color:#74B602;">不要求</font>。</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#网络层之数据平面">网络层之数据平面</a>
+      <ol>
+        <li><a href="#简介">简介</a>
+          <ol>
+            <li><a href="#网络层的主要服务和功能">网络层的主要服务和功能</a></li>
+            <li><a href="#实现网络层功能的两种方式">实现网络层功能的两种方式</a></li>
+            <li><a href="#网络层提供服务的一些重要指标">网络层提供服务的一些重要指标</a></li>
+          </ol>
+        </li>
+        <li><a href="#路由器结构和工作原理">路由器结构和工作原理</a>
+          <ol>
+            <li><a href="#路由器的-2-大功能font-stylecolor74b602需理解font">路由器的 2 大功能<font style="color:#74B602;">（需理解）</font></a></li>
+            <li><a href="#构成">构成</a></li>
+          </ol>
+        </li>
+        <li><a href="#互联网网络层协议">互联网网络层协议</a>
+          <ol>
+            <li><a href="#ip-网络提供的服务模型尽力而为">IP 网络提供的服务模型：尽力而为</a></li>
+            <li><a href="#网络层构成">网络层构成</a></li>
+          </ol>
+        </li>
+        <li><a href="#通用转发和-sdn">通用转发和 SDN</a>
+          <ol>
+            <li><a href="#sdn-方式控制平面和数据平面分离的优点font-stylecolor74b602需理解font">SDN 方式控制平面和数据平面分离的优点<font style="color:#74B602;">（需理解）</font></a></li>
             <li><a href="#sdn-分组交换机按照计算出的流表进行分组转发通用便于升级">SDN 分组交换机按照计算出的流表进行分组转发、通用、便于升级。</a></li>
-            <li><a href="#分组交换机工作原理font-stylecolor74b602需理解font">分组交换机工作原理<font style="color:#74B602;">（需理解）</font></a></li>
           </ol>
         </li>
       </ol>
     </li>
-  </ol>
-
-  <ol>
-    <li><a href="#概述">概述</a></li>
-    <li><a href="#路由选择算法">路由选择算法</a></li>
-    <li><a href="#互联网的路由协议">互联网的路由协议</a>
+    <li><a href="#网络层之控制平面">网络层之控制平面</a>
       <ol>
-        <li><a href="#路由协议分类">路由协议分类</a></li>
-        <li><a href="#网关路由器参与-as-内部路由计算收集-as-内部子网可达信息">网关路由器参与 AS 内部路由计算，收集 AS 内部子网可达信息</a></li>
-        <li><a href="#内部网关协议和外部网关协议的对比font-stylecolor74b602了解font">内部网关协议和外部网关协议的对比<font style="color:#74B602;">（了解）</font></a></li>
+        <li><a href="#概述">概述</a></li>
+        <li><a href="#路由选择算法">路由选择算法</a></li>
+        <li><a href="#互联网的路由协议">互联网的路由协议</a>
+          <ol>
+            <li><a href="#路由协议分类">路由协议分类</a></li>
+            <li><a href="#网关路由器参与-as-内部路由计算收集-as-内部子网可达信息">网关路由器参与 AS 内部路由计算，收集 AS 内部子网可达信息</a></li>
+            <li><a href="#内部网关协议和外部网关协议的对比font-stylecolor74b602了解font">内部网关协议和外部网关协议的对比<font style="color:#74B602;">（了解）</font></a></li>
+          </ol>
+        </li>
       </ol>
     </li>
-    <li><a href="#sdn-控制平面">SDN 控制平面</a></li>
-    <li><a href="#icmp-协议font-stylecolor74b602了解font">ICMP 协议<font style="color:#74B602;">（了解）</font></a></li>
-  </ol>
-
-  <ol>
-    <li><a href="#引论">引论</a></li>
-    <li><a href="#检错与纠错">检错与纠错</a></li>
-    <li><a href="#多路访问协议">多路访问协议</a></li>
-    <li><a href="#链路层编地址">链路层编地址</a></li>
-    <li><a href="#以太网">以太网</a></li>
-    <li><a href="#hub-和交换机">HUB 和交换机</a></li>
+    <li><a href="#sdn-控制平面">SDN 控制平面</a>
+      <ol>
+        <li><a href="#icmp-协议font-stylecolor74b602了解font">ICMP 协议<font style="color:#74B602;">（了解）</font></a></li>
+      </ol>
+    </li>
+    <li><a href="#数据链路层与局域网">数据链路层与局域网</a>
+      <ol>
+        <li><a href="#引论">引论</a></li>
+        <li><a href="#检错与纠错">检错与纠错</a></li>
+        <li><a href="#多路访问协议">多路访问协议</a></li>
+        <li><a href="#链路层编地址">链路层编地址</a></li>
+        <li><a href="#以太网">以太网</a></li>
+        <li><a href="#hub-和交换机">HUB 和交换机</a></li>
+      </ol>
+    </li>
+    <li><a href="#参考">参考</a></li>
   </ol>
 </nav>
         </div>
@@ -374,8 +365,8 @@
             
             
                         最后修改:
-                        <time class="article-time--updated" datetime="2025-02-15 13:21:37 &#43;0800 &#43;0800" title="2025-02-15 13:21:37 &#43;0800 &#43;0800">
-                            2025-02-15
+                        <time class="article-time--updated" datetime="2025-02-16 10:56:09 &#43;0800 &#43;0800" title="2025-02-16 10:56:09 &#43;0800 &#43;0800">
+                            2025-02-16
                         </time>
 
             
@@ -392,9 +383,9 @@
     <section class="article-content">
     
     
-    <h1 id="计算机网络与互联网络">计算机网络与互联网络
-</h1><h2 id="什么是互联网络">什么是互联网络
-</h2><ul>
+    <h2 id="计算机网络与互联网络">计算机网络与互联网络
+</h2><h3 id="什么是互联网络">什么是互联网络
+</h3><ul>
 <li><strong>从构成的角度来看</strong>：
 <ul>
 <li>互联网络由点和边构成。其中，点包括端系统（涵盖网络应用）以及路由器；边则是链路。简单来说，互联网络其实是网络的网络，众多不同的网络相互连接，形成了一个庞大复杂的体系。</li>
@@ -407,8 +398,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="网络边缘">网络边缘
-</h2><ul>
+<h3 id="网络边缘">网络边缘
+</h3><ul>
 <li><strong>网络的结构</strong>：
 <ul>
 <li>网络整体结构分为网络边缘与网络核心两大部分，还涉及接入网络与通信链路。网络边缘包括运行应用的端系统，重点在于<font style="color:#DF2A3F;">端系统中的应用交互方式 </font>；网络核心则由路由器组成。</li>
@@ -427,8 +418,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="网络核心">网络核心
-</h2><ul>
+<h3 id="网络核心">网络核心
+</h3><ul>
 <li><strong>网络核心</strong>
 <ul>
 <li><strong>组成</strong>：网络交换设备，如路由器 + 链路。</li>
@@ -453,8 +444,8 @@
 </ul>
 </li>
 </ul>
-<h2 id="网络接入与物理介质">网络接入与物理介质
-</h2><ul>
+<h3 id="网络接入与物理介质">网络接入与物理介质
+</h3><ul>
 <li>网络接入是指将端系统连接到边缘路由器的链路或网络。</li>
 <li>住宅接入采用点到点接入方式，具体包括：
 <ul>
@@ -485,20 +476,20 @@
 </ul>
 </li>
 </ul>
-<h2 id="互联网络结构与-isp">互联网络结构与 ISP
-</h2><h3 id="近似层次型结构">近似层次型结构
-</h3><ul>
+<h3 id="互联网络结构与-isp">互联网络结构与 ISP
+</h3><h4 id="近似层次型结构">近似层次型结构
+</h4><ul>
 <li>T - 1 ISP</li>
 <li>T - 2 ISP (Regional ISP)</li>
 <li>Local ISP</li>
 </ul>
-<h3 id="isp-之间的连接">ISP 之间的连接
-</h3><ul>
+<h4 id="isp-之间的连接">ISP 之间的连接
+</h4><ul>
 <li>对等连接</li>
 <li>IXP（<font style="color:rgba(0, 0, 0, 0.85);">互联网交换点</font>）</li>
 </ul>
-<h3 id="内容提供商网络">内容提供商网络
-</h3><ul>
+<h4 id="内容提供商网络">内容提供商网络
+</h4><ul>
 <li>在全球部署 DC（数据中心）</li>
 <li>内容提供商网络在多处与各个 ISP 相联</li>
 <li>内容提供商自己部署网络将全球的 DC 相联
@@ -508,37 +499,37 @@
 </ul>
 </li>
 </ul>
-<h2 id="分组交换网络中的延迟与丢失">分组交换网络中的延迟与丢失
-</h2><h3 id="延迟的-4-个原因计算font-stylecolordf2a3f---掌握font">延迟的 4 个原因（计算）<font style="color:#DF2A3F;"> - 掌握</font>
-</h3><ul>
+<h3 id="分组交换网络中的延迟与丢失">分组交换网络中的延迟与丢失
+</h3><h4 id="延迟的-4-个原因计算font-stylecolordf2a3f---掌握font">延迟的 4 个原因（计算）<font style="color:#DF2A3F;"> - 掌握</font>
+</h4><ul>
 <li>处理延迟</li>
 <li>排队延迟</li>
 <li>传输延迟</li>
 <li>传播延迟</li>
 </ul>
 <p>例如：n 段，分组 L，R，传播延迟 d 每段如何计算总体延迟；</p>
-<h3 id="流量强度0-1与排队延迟正相关lar-font-stylecolordf2a3f--掌握font">流量强度（0-1，与排队延迟正相关）：La/R <font style="color:#DF2A3F;">- 掌握</font>
-</h3><ul>
+<h4 id="流量强度0-1与排队延迟正相关lar-font-stylecolordf2a3f--掌握font">流量强度（0-1，与排队延迟正相关）：La/R <font style="color:#DF2A3F;">- 掌握</font>
+</h4><ul>
 <li>排队延迟   依赖**<font style="color:#DF2A3F;">流量强度的公式</font>**；</li>
 </ul>
-<h3 id="丢失原因">丢失原因：
-</h3><ul>
+<h4 id="丢失原因">丢失原因：
+</h4><ul>
 <li>缓冲区溢出 + 出错没通过校验</li>
 </ul>
-<h3 id="吞吐量font-stylecolor74b602--了解font">吞吐量<font style="color:#74B602;"> -了解</font>
-</h3><ul>
+<h4 id="吞吐量font-stylecolor74b602--了解font">吞吐量<font style="color:#74B602;"> -了解</font>
+</h4><ul>
 <li>瞬间吞吐量</li>
 <li>平均吞吐量</li>
 </ul>
 <p>瓶颈链路决定了主机之间的吞吐量（从每段链路获得的大致带宽是 1/N，瓶颈链路是所有链路段中获得带宽最小的）。</p>
-<h2 id="协议层次与服务模型">协议层次与服务模型
-</h2><h3 id="为什么要分层">为什么要分层
-</h3><h3 id="网络比较复杂分层实现比较容易设计调试实现">网络比较复杂，分层实现比较容易设计、调试、实现。
-</h3><ul>
+<h3 id="协议层次与服务模型">协议层次与服务模型
+</h3><h4 id="为什么要分层">为什么要分层
+</h4><h4 id="网络比较复杂分层实现比较容易设计调试实现">网络比较复杂，分层实现比较容易设计、调试、实现。
+</h4><ul>
 <li>分层：将复杂的网络功能划分成功能明确的层次，<font style="color:#DF2A3F;">上层利用下层提供的服务来实现本层的协议，从而为上层提供更复杂的功能。</font></li>
 </ul>
-<h3 id="一些术语和概念font-stylecolor74b602-理解font">一些术语和概念<font style="color:#74B602;">-理解</font>
-</h3><ul>
+<h4 id="一些术语和概念font-stylecolor74b602-理解font">一些术语和概念<font style="color:#74B602;">-理解</font>
+</h4><ul>
 <li>服务、服务访问原语、服务访问点</li>
 <li>面向连接的服务、无连接的服务</li>
 <li>协议、协议数据单元 PDU</li>
@@ -549,27 +540,27 @@
 </ul>
 </li>
 </ul>
-<h3 id="互联网络分层模型及每一层的功能font-stylecolor74b602-理解font">互联网络分层模型及每一层的功能<font style="color:#74B602;">-理解</font>
-</h3><ul>
+<h4 id="互联网络分层模型及每一层的功能font-stylecolor74b602-理解font">互联网络分层模型及每一层的功能<font style="color:#74B602;">-理解</font>
+</h4><ul>
 <li>应用层</li>
 <li>传输层</li>
 <li>网络层（端到端，路由和转发）</li>
 <li>链路层（点到点，帧为单位）</li>
 <li>物理层（物理信号）</li>
 </ul>
-<h3 id="封装和解封">封装和解封
-</h3><h2 id="历史font-stylecolor74b602-了解font">历史<font style="color:#74B602;">-了解</font>
-</h2><ul>
+<h4 id="封装和解封">封装和解封
+</h4><h3 id="历史font-stylecolor74b602-了解font">历史<font style="color:#74B602;">-了解</font>
+</h3><ul>
 <li>ARPANET：美国军方资助的分组交换实验网，由于 TCP/IP 架构的包容性、免费使用、架构便于应用创新吸引更多的用户等原因，用户数量、节点数量和应用数量越来越多。</li>
 <li>NSF 建立 ARPANET 的访问网。</li>
 <li>民用网络从军用网络脱开，成为现在的互联网。</li>
 </ul>
 <p>术语：IETF（互联网工程任务组）, ITU(国际电信联盟），IEEE（电气电子工程师协会 ），RFC（请求评论，是一系列关于互联网技术的文件）。</p>
-<h1 id="应用层">应用层
-</h1><p>原理 + 应用实例 + SOCKET 编程</p>
+<h2 id="应用层">应用层
+</h2><p>原理 + 应用实例 + SOCKET 编程</p>
 <p>应用的开发只集中在端系统上，对路由器没有任何改变，这鼓励了互联网架构下的应用创新。</p>
-<h2 id="网络应用原理">网络应用原理
-</h2><ol>
+<h3 id="网络应用原理">网络应用原理
+</h3><ol>
 <li><strong>应用架构</strong>
 <ul>
 <li>C/S（客户端 / 服务器）</li>
@@ -611,21 +602,21 @@
 </li>
 </ol>
 <p>都能够提供进程的标示，区分不同的进程</p>
-<h2 id="web-和-http">WEB 和 HTTP
-</h2><h3 id="web-应用包括">WEB 应用包括
-</h3><ul>
+<h3 id="web-和-http">WEB 和 HTTP
+</h3><h4 id="web-应用包括">WEB 应用包括
+</h4><ul>
 <li>HTTP 协议</li>
 <li>HTML</li>
 <li>CLIENT（客户端），SERVER（服务器）</li>
 </ul>
-<h3 id="术语">术语
-</h3><ul>
+<h4 id="术语">术语
+</h4><ul>
 <li>网页</li>
 <li>对象</li>
 <li>引用 URL</li>
 </ul>
-<h3 id="font-stylecolordf2a3fhttp-协议font"><font style="color:#DF2A3F;">HTTP 协议</font>
-</h3><ul>
+<h4 id="font-stylecolordf2a3fhttp-协议font"><font style="color:#DF2A3F;">HTTP 协议</font>
+</h4><ul>
 <li>定义了 C（客户端）和 S（服务器）之间通信的报文格式、解释和时序。</li>
 <li>HTTP 连接
 <ul>
@@ -635,9 +626,9 @@
 </li>
 <li>往返延迟 RTT 和对象的抓取时间</li>
 </ul>
-<h3 id="font-stylecolordf2a3fhttp-10-到-http-11-再到-http-20-的演变font"><font style="color:#DF2A3F;">HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0 的演变</font>
-</h3><h4 id="http-10">HTTP 1.0
-</h4><ol>
+<h4 id="font-stylecolordf2a3fhttp-10-到-http-11-再到-http-20-的演变font"><font style="color:#DF2A3F;">HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0 的演变</font>
+</h4><h5 id="http-10">HTTP 1.0
+</h5><ol>
 <li><strong>基本特点</strong>
 <ul>
 <li><strong>无状态协议</strong>：每个请求都是独立的，服务器不会在不同请求之间保留状态信息。</li>
@@ -652,8 +643,8 @@
 </ul>
 </li>
 </ol>
-<h4 id="http-11">HTTP 1.1
-</h4><ol>
+<h5 id="http-11">HTTP 1.1
+</h5><ol>
 <li><strong>改进之处</strong>
 <ul>
 <li><strong>持久连接（Keep - Alive）</strong>
@@ -686,8 +677,8 @@
 </ul>
 </li>
 </ol>
-<h4 id="http-20">HTTP 2.0
-</h4><ol>
+<h5 id="http-20">HTTP 2.0
+</h5><ol>
 <li><strong>主要特性</strong>
 <ul>
 <li><strong>二进制分帧层（Binary Framing Layer）</strong>
@@ -716,9 +707,9 @@
 </li>
 </ol>
 <p>从 HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0，协议不断进化，旨在解决前一版本的性能瓶颈，提高网络传输效率和用户体验。</p>
-<h3 id="从-ssl-到-http30基于-udp的安全优化过程">从 SSL 到 HTTP/3.0（基于 UDP）的安全优化过程
-</h3><h4 id="sslsecure-sockets-layer安全套接层">SSL（Secure Sockets Layer，安全套接层）
-</h4><ol>
+<h4 id="从-ssl-到-http30基于-udp的安全优化过程">从 SSL 到 HTTP/3.0（基于 UDP）的安全优化过程
+</h4><h5 id="sslsecure-sockets-layer安全套接层">SSL（Secure Sockets Layer，安全套接层）
+</h5><ol>
 <li><strong>基本原理</strong>
 <ul>
 <li>SSL 是一种早期的网络安全协议，用于在客户端和服务器之间建立加密连接，确保数据在传输过程中的保密性、完整性和身份验证。</li>
@@ -741,8 +732,8 @@
 </ul>
 </li>
 </ol>
-<h4 id="tlstransport-layer-security传输层安全">TLS（Transport Layer Security，传输层安全）
-</h4><ol>
+<h5 id="tlstransport-layer-security传输层安全">TLS（Transport Layer Security，传输层安全）
+</h5><ol>
 <li><strong>与 SSL 的关系</strong>
 <ul>
 <li>TLS 是 SSL 的继任者，它在 SSL 的基础上进行了改进和扩展。TLS 的目标与 SSL 相同，即确保网络通信的安全，但在安全性和性能方面有了显著提升。</li>
@@ -763,8 +754,8 @@
 </ul>
 </li>
 </ol>
-<h4 id="http30基于-udp-的-quic-协议">HTTP/3.0（基于 UDP 的 QUIC 协议）
-</h4><ol>
+<h5 id="http30基于-udp-的-quic-协议">HTTP/3.0（基于 UDP 的 QUIC 协议）
+</h5><ol>
 <li><strong>QUIC（Quick UDP Internet Connections）协议</strong>
 <ul>
 <li>HTTP/3.0 是基于 QUIC 协议的，而 QUIC 是基于 UDP 的。QUIC 旨在解决 TCP 和 TLS 在性能和安全性方面的一些问题。</li>
@@ -791,8 +782,8 @@
 </li>
 </ol>
 <p>从 SSL 到 HTTP/3.0（基于 UDP）的演变过程，是一个不断优化安全性能和网络传输效率的过程。HTTP/3.0 通过基于 UDP 的 QUIC 协议，在安全和性能方面都有了显著的提升。</p>
-<h3 id="报文格式">报文格式
-</h3><p><a class="link" href="https://blog.csdn.net/qq_45951891/article/details/134217064"  target="_blank" rel="noopener"
+<h4 id="报文格式">报文格式
+</h4><p><a class="link" href="https://blog.csdn.net/qq_45951891/article/details/134217064"  target="_blank" rel="noopener"
     >Wireshark——抓包分析_wireshark抓包数据怎么看-CSDN博客</a></p>
 <ul>
 <li>请求报文
@@ -806,14 +797,14 @@
 </ul>
 </li>
 </ul>
-<h3 id="cookieshttp无状态-有状态">COOKIES（HTTP无状态-&gt;有状态）
-</h3><h3 id="web-缓存">WEB 缓存
-</h3><ul>
+<h4 id="cookieshttp无状态-有状态">COOKIES（HTTP无状态-&gt;有状态）
+</h4><h4 id="web-缓存">WEB 缓存
+</h4><ul>
 <li>作用：通过本地命中，减少这些对象的访问延迟；进一步减少接入链路的流量强度，从而降低派对延迟带来总体平均延迟的减少；减轻服务器的负担。</li>
 <li>优点：通过一个实例，计算不要求。</li>
 </ul>
-<h2 id="ftpfont-stylecolor74b602不要求font">FTP<font style="color:#74B602;">（不要求）</font>
-</h2><ul>
+<h3 id="ftpfont-stylecolor74b602不要求font">FTP<font style="color:#74B602;">（不要求）</font>
+</h3><ul>
 <li>作用：在 CS 之间传输文件。</li>
 <li>构成：
 <ul>
@@ -830,21 +821,21 @@
 </li>
 <li>命令和响应</li>
 </ul>
-<h2 id="email">EMAIL
-</h2><h3 id="电子邮件应用的构成">电子邮件应用的构成
-</h3><ul>
+<h3 id="email">EMAIL
+</h3><h4 id="电子邮件应用的构成">电子邮件应用的构成
+</h4><ul>
 <li>用户代理</li>
 <li>邮件服务器</li>
 <li>SMTP（简单邮件传输协议）</li>
 </ul>
-<h3 id="邮件报文格式解析">邮件报文格式解析
-</h3><ul>
+<h4 id="邮件报文格式解析">邮件报文格式解析
+</h4><ul>
 <li>报文头</li>
 <li>报文体</li>
 <li>MIME（多用途互联网邮件扩展）：邮件多媒体扩展，可以在邮件中编解码多媒体内容。</li>
 </ul>
-<h3 id="邮件存取协议">邮件存取协议
-</h3><ul>
+<h4 id="邮件存取协议">邮件存取协议
+</h4><ul>
 <li>作用</li>
 <li>常用
 <ul>
@@ -853,17 +844,17 @@
 </ul>
 </li>
 </ul>
-<h2 id="dns">DNS
-</h2><h3 id="dns-作用">DNS 作用
-</h3><p>完成域名到 IP 地址的转换（还包括别名到正规名字、邮件服务器名字到正规名字转换等），是应用层面的互联网<font style="color:#DF2A3F;">基础设施</font>，其他应用使用。</p>
-<h3 id="二dns-的概念">二、DNS 的概念
-</h3><ul>
+<h3 id="dns">DNS
+</h3><h4 id="dns-作用">DNS 作用
+</h4><p>完成域名到 IP 地址的转换（还包括别名到正规名字、邮件服务器名字到正规名字转换等），是应用层面的互联网<font style="color:#DF2A3F;">基础设施</font>，其他应用使用。</p>
+<h4 id="二dns-的概念">二、DNS 的概念
+</h4><ul>
 <li>分布式、层次数据库</li>
 <li>命名是分层的</li>
 <li>域名信息存储和服务是分布式的，每个域名服务器担任一个区域 ZONE 的名字到 IP 地址的权威转换，也缓存名字 - IP 信息的转换。</li>
 </ul>
-<h3 id="三dns-的构成">三、DNS 的构成
-</h3><ul>
+<h4 id="三dns-的构成">三、DNS 的构成
+</h4><ul>
 <li>解析器：本地应用</li>
 <li>域名服务器</li>
 <li>DNS 协议
@@ -873,8 +864,8 @@
 </ul>
 </li>
 </ul>
-<h3 id="域名解析的过程">域名解析的过程
-</h3><p><strong>(解析器 -&gt; 本地 DNS 服务器 -&gt; 上层域名服务器 -&gt;&hellip;-&gt; 权威名字服务器，返回)</strong></p>
+<h4 id="域名解析的过程">域名解析的过程
+</h4><p><strong>(解析器 -&gt; 本地 DNS 服务器 -&gt; 上层域名服务器 -&gt;&hellip;-&gt; 权威名字服务器，返回)</strong></p>
 <p><strong>本地域名服务器、权限域名服务器、顶级域名服务器、根域名服务器</strong></p>
 <ul>
 <li>递归解析：如果主机所询问的本地域名服务器不知道被查询的域名的IP地址，那么本地域名服务器就以DNS客户的身份，向其它根域名服务器继续发出查询请求报文(即替主机继续查询)，而不是让主机自己进行下一步查询。因此，递归查询返回的查询结果或者是所要查询的IP地址，或者是报错，表示无法查询到所需的IP地址。</li>
@@ -888,38 +879,38 @@
 	
 	
 ></p>
-<h3 id="五dns-缓存">五、DNS 缓存
-</h3><ul>
+<h4 id="dns-缓存">DNS 缓存
+</h4><ul>
 <li>作用</li>
 <li>本地缓存 + 服务器缓存</li>
 </ul>
-<h2 id="p2pfont-stylecolor74b602了解p2p-的概念和优势即可font">P2P<font style="color:#74B602;">（了解P2P 的概念和优势即可）</font>
-</h2><h3 id="p2p-概念">P2P 概念
-</h3><p>每个对等体即是客户端又是服务器；P2P 网络是这些 peer 构成的应用层面的逻辑网络。</p>
-<h3 id="p2p-网络比-cs-方式分发内容快的原因">P2P 网络比 C/S 方式分发内容快的原因
-</h3><p>这些 peer 节点参与到内容的上载，流量和服务都是分布式的，可扩展性。</p>
-<h3 id="典型-p2p-应用及其原理font-stylecolor74b602不要求font">典型 P2P 应用及其原理<font style="color:#74B602;">（不要求）</font>
-</h3><ul>
+<h3 id="p2pfont-stylecolor74b602了解p2p-的概念和优势即可font">P2P<font style="color:#74B602;">（了解P2P 的概念和优势即可）</font>
+</h3><h4 id="p2p-概念">P2P 概念
+</h4><p>每个对等体即是客户端又是服务器；P2P 网络是这些 peer 构成的应用层面的逻辑网络。</p>
+<h4 id="p2p-网络比-cs-方式分发内容快的原因">P2P 网络比 C/S 方式分发内容快的原因
+</h4><p>这些 peer 节点参与到内容的上载，流量和服务都是分布式的，可扩展性。</p>
+<h4 id="典型-p2p-应用及其原理font-stylecolor74b602不要求font">典型 P2P 应用及其原理<font style="color:#74B602;">（不要求）</font>
+</h4><ul>
 <li>Napster：知道名词</li>
 <li>Gnutella：知道名词</li>
 <li>KaZaA：知道名词</li>
 <li>BT：知道名字</li>
 <li>DHT：</li>
 </ul>
-<h2 id="视频流化服务和-cdnfont-stylecolor74b602了解font">视频流化服务和 CDN<font style="color:#74B602;">（了解）</font>
-</h2><h3 id="服务器向客户端进行视频流化的方式">服务器向客户端进行视频流化的方式
-</h3><ul>
+<h3 id="视频流化服务和-cdnfont-stylecolor74b602了解font">视频流化服务和 CDN<font style="color:#74B602;">（了解）</font>
+</h3><h4 id="服务器向客户端进行视频流化的方式">服务器向客户端进行视频流化的方式
+</h4><ul>
 <li>UDP 流化</li>
 <li>http 流化</li>
 <li>DASH（Dynamic, Adaptive Streaming over HTTP）</li>
 </ul>
-<h3 id="dash-流化的过程">DASH 流化的过程
-</h3><ul>
+<h4 id="dash-流化的过程">DASH 流化的过程
+</h4><ul>
 <li>客户端获取告示文件</li>
 <li>客户端按照情况，向（可能是不同的）服务器请求不同视频质量的内容块，客户端智能</li>
 </ul>
-<h3 id="cdn">CDN
-</h3><ul>
+<h4 id="cdn">CDN
+</h4><ul>
 <li>单个服务器，或者服务器群向客户端提供海量内容并发服务的问题：扩展性差</li>
 <li>CDN 原理
 <ul>
@@ -932,23 +923,23 @@
 * Enter Deep
 * Bring Home</li>
 </ul>
-<h2 id="tcp-的-socket-编程-font-stylecolor74b602理解font">TCP 的 SOCKET 编程 <font style="color:#74B602;">理解</font>
-</h2><h3 id="socket-概念">SOCKET 概念
-</h3><ul>
+<h3 id="tcp-的-socket-编程-font-stylecolor74b602理解font">TCP 的 SOCKET 编程 <font style="color:#74B602;">理解</font>
+</h3><h4 id="socket-概念">SOCKET 概念
+</h4><ul>
 <li>TCP 连接的本地标示示，向这个 SOCKET 写就是发送给对方的进程；从 SOCKET 中读，就是读取对方发送过来的数据。</li>
 </ul>
-<h3 id="socket-api">SOCKET API
-</h3><ul>
+<h4 id="socket-api">SOCKET API
+</h4><ul>
 <li>创建</li>
 <li>使用（读和写）</li>
 <li>关闭</li>
 </ul>
-<h3 id="tcp-socket-数据传输的特点">TCP SOCKET 数据传输的特点
-</h3><ul>
+<h4 id="tcp-socket-数据传输的特点">TCP SOCKET 数据传输的特点
+</h4><ul>
 <li>面向连接，可靠字节流服务</li>
 </ul>
-<h3 id="tcp-socket-编程">TCP SOCKET 编程
-</h3><ul>
+<h4 id="tcp-socket-编程">TCP SOCKET 编程
+</h4><ul>
 <li><strong>建立 SOCKET</strong>
 <ul>
 <li>客户端 TCP 实体动作：和服务器端的 TCP 实体握手沟通。</li>
@@ -959,8 +950,8 @@
 <li>使用 SOCKET</li>
 <li>关闭 SOCKET</li>
 </ul>
-<h2 id="udp-的-socket-编程-font-stylecolor74b602理解font">UDP 的 SOCKET 编程 <font style="color:#74B602;">理解</font>
-</h2><ul>
+<h3 id="udp-的-socket-编程-font-stylecolor74b602理解font">UDP 的 SOCKET 编程 <font style="color:#74B602;">理解</font>
+</h3><ul>
 <li>UDP SOCKET数据传输的特点</li>
 <li>编程<font style="color:#74B602;"> 不要求</font>
 <ul>
@@ -970,10 +961,10 @@
 </ul>
 </li>
 </ul>
-<h1 id="传输层">传输层
-</h1><h2 id="传输层服务">传输层服务
-</h2><h3 id="传输服务">传输服务
-</h3><ul>
+<h2 id="传输层">传输层
+</h2><h3 id="传输层服务">传输层服务
+</h3><h4 id="传输服务">传输服务
+</h4><ul>
 <li>能够使端系统应用之间进行逻辑通信。</li>
 <li>传输协议：运行于端系统的 2 个对等传输层实体相互通信应该遵守的规则集合。</li>
 <li>传输服务和网络服务的区别
@@ -983,33 +974,33 @@
 </ul>
 </li>
 </ul>
-<h3 id="互联网络传输层协议">互联网络传输层协议
-</h3><ul>
+<h4 id="互联网络传输层协议">互联网络传输层协议
+</h4><ul>
 <li>TCP：有连接，可靠保序数传服务。</li>
 <li>UDP：无连接，不可靠，不保序的数传服务。</li>
 </ul>
-<h2 id="复用与解复用">复用与解复用
-</h2><h3 id="复用">复用
-</h3><ul>
+<h3 id="复用与解复用">复用与解复用
+</h3><h4 id="复用">复用
+</h4><ul>
 <li>源端多个上层应用收集数据：应用报文，封装报文。</li>
 </ul>
-<h3 id="解复用">解复用
-</h3><ul>
+<h4 id="解复用">解复用
+</h4><ul>
 <li>接收端将数据按照端口号（结合 IP 地址）给相应的 SOCKET 对应的应用。</li>
 </ul>
-<h3 id="复用和解复用的工作原理ip-port">复用和解复用的工作原理：IP PORT
-</h3><ul>
+<h4 id="复用和解复用的工作原理ip-port">复用和解复用的工作原理：IP PORT
+</h4><ul>
 <li>TCP 有连接情况：SOCKETS 为 4 元组。</li>
 <li>UDP 无连接情况：SOCKETS 为 2 元组。</li>
 </ul>
-<h2 id="无连接传输层协议-udp">无连接传输层协议 UDP
-</h2><ul>
+<h3 id="无连接传输层协议-udp">无连接传输层协议 UDP
+</h3><ul>
 <li><strong>UDP 的必要性</strong>：有些应用对实时性比较在乎，对可靠性要求不高。</li>
 <li><strong>UDP 报文（无连接的，因此叫做 UDP 数据报）格式</strong>。（头部 + 载荷）</li>
 <li>**UDP 报文校验和的计算（Check Sum）  **<font style="color:#74B602;">理解</font></li>
 </ul>
-<h2 id="可靠数据传输原理">可靠数据传输原理
-</h2><ul>
+<h3 id="可靠数据传输原理">可靠数据传输原理
+</h3><ul>
 <li><strong>协议演进的方式讲解如何进行 rdt</strong>
 <ul>
 <li>加入一些假设，简单的协议可以提供 rdt 服务。</li>
@@ -1029,11 +1020,11 @@
 </ul>
 </li>
 </ul>
-<h3 id="font-stylecolordf2a3frdtreliable-data-transfer可靠数据传输102030-的功能特点font"><font style="color:#DF2A3F;">RDT（Reliable Data Transfer，可靠数据传输）1.0、2.0、3.0 的功能特点</font>
-</h3><p><a class="link" href="https://blog.csdn.net/qq_39583450/article/details/113481150"  target="_blank" rel="noopener"
+<h4 id="font-stylecolordf2a3frdtreliable-data-transfer可靠数据传输102030-的功能特点font"><font style="color:#DF2A3F;">RDT（Reliable Data Transfer，可靠数据传输）1.0、2.0、3.0 的功能特点</font>
+</h4><p><a class="link" href="https://blog.csdn.net/qq_39583450/article/details/113481150"  target="_blank" rel="noopener"
     >计算机网络（14）——可靠数据传输原理_rdt3.0接收方fsm-CSDN博客</a></p>
-<h4 id="rdt-10">RDT 1.0
-</h4><ol>
+<h5 id="rdt-10">RDT 1.0
+</h5><ol>
 <li><strong>解决错误问题</strong>
 <ul>
 <li><strong>基本原理</strong>
@@ -1051,8 +1042,8 @@
 </ul>
 </li>
 </ol>
-<h4 id="rdt-20">RDT 2.0
-</h4><ol>
+<h5 id="rdt-20">RDT 2.0
+</h5><ol>
 <li><strong>解决序号 / 时序问题</strong>
 <ul>
 <li><strong>基本原理</strong>
@@ -1080,8 +1071,8 @@
 </ul>
 </li>
 </ol>
-<h4 id="rdt-30">RDT 3.0
-</h4><ol>
+<h5 id="rdt-30">RDT 3.0
+</h5><ol>
 <li><strong>解决超时 / 重复问题</strong>
 <ul>
 <li><strong>基本原理</strong>
@@ -1111,25 +1102,25 @@
 </li>
 </ol>
 <p>RDT 协议从 1.0 到 3.0 不断演进，逐步解决了可靠数据传输过程中的各种实际问题，从假设理想信道到考虑比特差错、分组丢失等情况，通过增加差错检测、确认机制、定时器等手段来确保数据的可靠传输。</p>
-<h3 id="利用率计算font-stylecolor74b602-了解font">利用率计算<font style="color:#74B602;"> 了解</font>
-</h3><p>停止等待技术：链路带宽延迟积（容量）效率低。
+<h4 id="利用率计算font-stylecolor74b602-了解font">利用率计算<font style="color:#74B602;"> 了解</font>
+</h4><p>停止等待技术：链路带宽延迟积（容量）效率低。
 管道技术：在未经对方确认的情况下，可以连续发送多个 PDU。
 GBN：发送窗口大于 1，接收窗口 = 1（只能顺序接收；发送方只设置一个超时定时器，一旦出错，返回到出错的那一个 PDU 重发）。
 SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送方为每个发送出去的 PDU 设置超时定时器，哪个超时重发哪个）。</p>
-<h2 id="有连接传输层协议tcp">有连接传输层协议：TCP
-</h2><h3 id="tcp-服务特性">TCP 服务特性
-</h3><ul>
+<h3 id="有连接传输层协议tcp">有连接传输层协议：TCP
+</h3><h4 id="tcp-服务特性">TCP 服务特性
+</h4><ul>
 <li>点对点：可靠保序字节流；管道（在未加确认情况下一次次传多个未经确认的段）；缓冲；全双工；面向连接；流控制。</li>
 </ul>
-<h3 id="tcp-段结构">TCP 段结构
-</h3><ul>
+<h4 id="tcp-段结构">TCP 段结构
+</h4><ul>
 <li>各个字段的作用。</li>
 <li>连接建立时协商好双方的起始序号；</li>
 <li>序号是首字节在字节流的偏移量；</li>
 <li>确认：是对顺序收到的最后一个字节 + 1。</li>
 </ul>
-<h3 id="rtt-时间估计和重发超时时间估计">RTT 时间估计和重发超时时间估计
-</h3><ol>
+<h4 id="rtt-时间估计和重发超时时间估计">RTT 时间估计和重发超时时间估计
+</h4><ol>
 <li><strong>移动平均计算</strong>
 <ul>
 <li>平均往返延迟。</li>
@@ -1138,16 +1129,16 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h3 id="tcp-的可靠数据传输原理">TCP 的可靠数据传输原理
-</h3><ol>
+<h4 id="tcp-的可靠数据传输原理">TCP 的可靠数据传输原理
+</h4><ol>
 <li><strong>快速重传</strong>
 <ul>
 <li>在没有超时情况下，收到对方对于某一个段的重复三次（一共 4 个）ACK。</li>
 </ul>
 </li>
 </ol>
-<h3 id="流量控制">流量控制
-</h3><ol>
+<h4 id="流量控制">流量控制
+</h4><ol>
 <li><strong>流控目的</strong>
 <ul>
 <li>防止淹没接收方。</li>
@@ -1159,8 +1150,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h3 id="tcp-连接管理-font-stylecolor74b602-理解font">TCP 连接管理 <font style="color:#74B602;"> 理解</font>
-</h3><ol>
+<h4 id="tcp-连接管理-font-stylecolor74b602-理解font">TCP 连接管理 <font style="color:#74B602;"> 理解</font>
+</h4><ol>
 <li><strong>连接建立</strong>
 <ul>
 <li>3 次握手技术，对双方选择的初始序号给予确认，准备好缓冲区。</li>
@@ -1176,8 +1167,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h2 id="拥塞控制原理">拥塞控制原理
-</h2><ol>
+<h3 id="拥塞控制原理">拥塞控制原理
+</h3><ol>
 <li><strong>拥塞的概念</strong>
 <ul>
 <li>解释什么是拥塞，以及为什么会发生拥塞。</li>
@@ -1191,9 +1182,9 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h2 id="tcp-的拥塞控制原理">TCP 的拥塞控制原理
-</h2><h3 id="tcp-拥塞控制原理font-stylecolordf2a3f需掌握font">TCP 拥塞控制原理<font style="color:#DF2A3F;">（需掌握）</font>
-</h3><ol>
+<h3 id="tcp-的拥塞控制原理">TCP 的拥塞控制原理
+</h3><h4 id="tcp-拥塞控制原理font-stylecolordf2a3f需掌握font">TCP 拥塞控制原理<font style="color:#DF2A3F;">（需掌握）</font>
+</h4><ol>
 <li><strong>检测拥塞</strong>
 <ul>
 <li>超时（拥塞，存在误判的可能性，但概率比较低）。</li>
@@ -1206,8 +1197,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h3 id="tcp-拥塞控制的-2-种算法">TCP 拥塞控制的 2 种算法
-</h3><ol>
+<h4 id="tcp-拥塞控制的-2-种算法">TCP 拥塞控制的 2 种算法
+</h4><ol>
 <li><strong>Tahoe</strong>
 <ul>
 <li>超时事件和 3 个冗余 ACK 处理一样的，不要求。</li>
@@ -1219,8 +1210,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h3 id="平均延迟和超时定时器时间的设置">平均延迟和超时定时器时间的设置
-</h3><ol>
+<h4 id="平均延迟和超时定时器时间的设置">平均延迟和超时定时器时间的设置
+</h4><ol>
 <li>**JACSON 算法（具体初始化和迭代算法， ** <strong><font style="color:#74B602;">不要求</font></strong> <strong>）</strong>
 <ul>
 <li>平均往返延迟公式。</li>
@@ -1229,12 +1220,12 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h3 id="tcp-公平性font-stylecolor74b602了解font">TCP 公平性：<font style="color:#74B602;">了解</font>
-</h3><h3 id="tcp-的吞吐量计算font-stylecolor74b602不要求font">TCP 的吞吐量计算：<font style="color:#74B602;">不要求</font>。
-</h3><h1 id="网络层之数据平面">网络层之数据平面
-</h1><h2 id="简介">简介
-</h2><h3 id="网络层的主要服务和功能">网络层的主要服务和功能
-</h3><ol>
+<h4 id="tcp-公平性font-stylecolor74b602了解font">TCP 公平性：<font style="color:#74B602;">了解</font>
+</h4><h4 id="tcp-的吞吐量计算font-stylecolor74b602不要求font">TCP 的吞吐量计算：<font style="color:#74B602;">不要求</font>。
+</h4><h2 id="网络层之数据平面">网络层之数据平面
+</h2><h3 id="简介">简介
+</h3><h4 id="网络层的主要服务和功能">网络层的主要服务和功能
+</h4><ol>
 <li><strong>服务</strong>
 <ul>
 <li>向传输层提供主机到主机的段传输服务。</li>
@@ -1252,8 +1243,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h3 id="实现网络层功能的两种方式">实现网络层功能的两种方式
-</h3><ol>
+<h4 id="实现网络层功能的两种方式">实现网络层功能的两种方式
+</h4><ol>
 <li><strong>传统方式</strong>
 <ul>
 <li>控制平面和数据平面功能垂直集成在每个设备上（路由器）。</li>
@@ -1269,16 +1260,16 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h3 id="网络层提供服务的一些重要指标">网络层提供服务的一些重要指标
-</h3><ul>
+<h4 id="网络层提供服务的一些重要指标">网络层提供服务的一些重要指标
+</h4><ul>
 <li>带宽</li>
 <li>延迟、延迟差</li>
 <li>丢包与否</li>
 <li>丢包率</li>
 </ul>
-<h2 id="路由器结构和工作原理">路由器结构和工作原理
-</h2><h3 id="路由器的-2-大功能font-stylecolor74b602需理解font">路由器的 2 大功能<font style="color:#74B602;">（需理解）</font>
-</h3><ol>
+<h3 id="路由器结构和工作原理">路由器结构和工作原理
+</h3><h4 id="路由器的-2-大功能font-stylecolor74b602需理解font">路由器的 2 大功能<font style="color:#74B602;">（需理解）</font>
+</h4><ol>
 <li><strong>路由协议</strong>
 <ul>
 <li>结果形成路由表（转发表）。</li>
@@ -1290,8 +1281,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h3 id="构成">构成
-</h3><ol>
+<h4 id="构成">构成
+</h4><ol>
 <li><strong>输入端口</strong>
 <ul>
 <li>线路终端实现物理层功能，链路协议实体实现链路层功能，网络层功能实现分布式分组转发。</li>
@@ -1315,13 +1306,13 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h2 id="互联网网络层协议">互联网网络层协议
-</h2><h3 id="ip-网络提供的服务模型尽力而为">IP 网络提供的服务模型：尽力而为
-</h3><ul>
+<h3 id="互联网网络层协议">互联网网络层协议
+</h3><h4 id="ip-网络提供的服务模型尽力而为">IP 网络提供的服务模型：尽力而为
+</h4><ul>
 <li>包括含义：丢包、乱序、不可靠、（可能包括重复）。</li>
 </ul>
-<h3 id="网络层构成">网络层构成
-</h3><ol>
+<h4 id="网络层构成">网络层构成
+</h4><ol>
 <li><strong>协议</strong>
 <ul>
 <li>IP 协议、路由选择协议、ICMP 协议</li>
@@ -1367,22 +1358,22 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ol>
 </li>
 </ol>
-<h2 id="通用转发和-sdn">通用转发和 SDN
-</h2><h3 id="sdn-方式控制平面和数据平面分离的优点font-stylecolor74b602需理解font">SDN 方式控制平面和数据平面分离的优点<font style="color:#74B602;">（需理解）</font>
-</h3><ol>
+<h3 id="通用转发和-sdn">通用转发和 SDN
+</h3><h4 id="sdn-方式控制平面和数据平面分离的优点font-stylecolor74b602需理解font">SDN 方式控制平面和数据平面分离的优点<font style="color:#74B602;">（需理解）</font>
+</h4><ol>
 <li>集中在控制器上实现控制逻辑，网络可编程，可以实现各种复杂的网络功能、新功能（一次部署，持续升级）、方便管理。</li>
 <li>形成开发生态（控制器、分组交换机、网络应用，在一个开放的框架下协作）。</li>
 </ol>
 <h4 id="sdn-分组交换机按照计算出的流表进行分组转发通用便于升级">SDN 分组交换机按照计算出的流表进行分组转发、通用、便于升级。
-</h4><h4 id="分组交换机工作原理font-stylecolor74b602需理解font">分组交换机工作原理<font style="color:#74B602;">（需理解）</font>
-</h4><ol>
+</h4><h5 id="分组交换机工作原理font-stylecolor74b602需理解font">分组交换机工作原理<font style="color:#74B602;">（需理解）</font>
+</h5><ol>
 <li>模式匹配 + 行动（不仅仅是转发，还可以组播、泛洪、修改字段和阻塞等）。</li>
 <li>进来分组，按照各级字段匹配流表，按照相应的行动动作分组。</li>
 <li>按照优先权进行判断；之后，统计计数。</li>
 </ol>
-<h1 id="网络层之控制平面">网络层之控制平面
-</h1><h2 id="概述">概述
-</h2><ol>
+<h2 id="网络层之控制平面">网络层之控制平面
+</h2><h3 id="概述">概述
+</h3><ol>
 <li><strong>两种方式实现控制平面功能</strong>
 <ul>
 <li>传统方式：在每个路由器上分布式实现路由功能。</li>
@@ -1390,8 +1381,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h2 id="路由选择算法">路由选择算法
-</h2><ol>
+<h3 id="路由选择算法">路由选择算法
+</h3><ol>
 <li><strong>路由目标</strong>
 <ul>
 <li>根据收集到的路由信息（拓扑、链路代价等）计算出源到目标较好的路径，代价比较低的路径。</li>
@@ -1473,9 +1464,9 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </li>
 </ul>
 <p>静态路由和动态路由适用于不同的网络场景，简单、稳定的网络更适合静态路由，而复杂多变、规模较大的网络则要依靠动态路由来保障高效的数据传输。</p>
-<h2 id="互联网的路由协议">互联网的路由协议
-</h2><h3 id="路由协议分类">路由协议分类
-</h3><ol>
+<h3 id="互联网的路由协议">互联网的路由协议
+</h3><h4 id="路由协议分类">路由协议分类
+</h4><ol>
 <li><strong>内部网关协议 IGP</strong>
 <ul>
 <li>RIP</li>
@@ -1489,15 +1480,15 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h3 id="网关路由器参与-as-内部路由计算收集-as-内部子网可达信息">网关路由器参与 AS 内部路由计算，收集 AS 内部子网可达信息
-</h3><ol>
+<h4 id="网关路由器参与-as-内部路由计算收集-as-内部子网可达信息">网关路由器参与 AS 内部路由计算，收集 AS 内部子网可达信息
+</h4><ol>
 <li>网关路由器通过 AS 间路由向其他 AS 网关通告子网可达信息。</li>
 <li>网关路由器还转发 “过手” 子网可达信息，但是 AS 路径要加上它自己 AS 编号（防止形成环路）。</li>
 <li>网关路由器通过 i - BGP 向 AS 内部所有路由节点通告收集到的子网可达信息。</li>
 <li>内部路由器，通过 AS 内路由和 AS 间路由共同决定向 AS 外部子网的下一跳（内部网关协议决定如何去往网关，外部网关协议决定通过那个网关可到达 AS 外部子网）。</li>
 </ol>
-<h3 id="内部网关协议和外部网关协议的对比font-stylecolor74b602了解font">内部网关协议和外部网关协议的对比<font style="color:#74B602;">（了解）</font>
-</h3><ol>
+<h4 id="内部网关协议和外部网关协议的对比font-stylecolor74b602了解font">内部网关协议和外部网关协议的对比<font style="color:#74B602;">（了解）</font>
+</h4><ol>
 <li>内部网关协议重视效率，性能。</li>
 <li>外部网关协议重视策略：经济策略和政治策略</li>
 </ol>
@@ -1507,14 +1498,14 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 <li>控制器和 SDN 交换机按照<code>openflow</code>等南向接口协议等下发流表，上报设备状态。</li>
 <li>SDN 控制器按照北向接口和网络应用打交道。</li>
 </ul>
-<h2 id="icmp-协议font-stylecolor74b602了解font">ICMP 协议<font style="color:#74B602;">（了解）</font>
-</h2><ul>
+<h3 id="icmp-协议font-stylecolor74b602了解font">ICMP 协议<font style="color:#74B602;">（了解）</font>
+</h3><ul>
 <li>作用：包括错误、<code>echo</code>请求和应答。</li>
 <li>报文类型。</li>
 </ul>
-<h1 id="数据链路层与局域网">数据链路层与局域网
-</h1><h2 id="引论">引论
-</h2><ol>
+<h2 id="数据链路层与局域网">数据链路层与局域网
+</h2><h3 id="引论">引论
+</h3><ol>
 <li><strong>链路层提供的服务</strong>
 <ul>
 <li>成帧、链路存取控制（链路访问控制）。</li>
@@ -1532,8 +1523,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h2 id="检错与纠错">检错与纠错
-</h2><ol>
+<h3 id="检错与纠错">检错与纠错
+</h3><ol>
 <li><strong>检错原理</strong>
 <ul>
 <li>奇偶校验。</li>
@@ -1547,8 +1538,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h2 id="多路访问协议">多路访问协议
-</h2><ul>
+<h3 id="多路访问协议">多路访问协议
+</h3><ul>
 <li><strong>MAC 的必要性</strong></li>
 <li><strong>MAP</strong></li>
 <li><strong>信道划分</strong>
@@ -1568,8 +1559,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 <li><strong>轮转协议：不要求</strong></li>
 <li><strong>令牌协议</strong></li>
 </ul>
-<h2 id="链路层编地址">链路层编地址
-</h2><ul>
+<h3 id="链路层编地址">链路层编地址
+</h3><ul>
 <li><strong>MAC 地址（48位）</strong>
 <ul>
 <li><strong>格式</strong></li>
@@ -1589,8 +1580,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ul>
-<h2 id="以太网">以太网
-</h2><ol>
+<h3 id="以太网">以太网
+</h3><ol>
 <li><strong>IEEE802.3 标准，链路层和相应的物理层。</strong></li>
 <li><strong>以太网的帧结构。</strong></li>
 <li><strong>向上提供服务的特点。</strong>
@@ -1615,8 +1606,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </ul>
 </li>
 </ol>
-<h2 id="hub-和交换机">HUB 和交换机
-</h2><ol>
+<h3 id="hub-和交换机">HUB 和交换机
+</h3><ol>
 <li><strong>HUB 连接方式的问题。</strong>
 <ul>
 <li>无法隔离冲突，在一个冲突域之中：使用 HUB 连接设备时，所有连接的设备处于同一个冲突域，容易产生冲突。</li>
@@ -1632,6 +1623,9 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </li>
 <li><strong>路由器和交换机的区别</strong> <strong><font style="color:#74B602;">（需理解）</font></strong></li>
 </ol>
+<h2 id="参考">参考
+</h2><p><a class="link" href="https://www.bilibili.com/video/BV1JV411t7ow/?spm_id_from=333.337.search-card.all.click&amp;vd_source=76a496aa006e07f846fd0bbe5954c92e"  target="_blank" rel="noopener"
+    >中科大郑烇、杨坚全套《计算机网络（自顶向下方法 第7版，James F.Kurose，Keith W.Ross）》课程</a></p>
 
 </section>
 
@@ -1649,7 +1643,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 
 
         <span>
-            最后更新于 2025-02-15 13:21 &#43;0800
+            最后更新于 2025-02-16 10:56 &#43;0800
         </span>
     </section></footer>
 
@@ -1771,7 +1765,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 
 
 <section class="wordcount">
-    <p>13.88k 字
+    <p>13.90k 字
         <br>3篇文章
     </p>
 </section>
