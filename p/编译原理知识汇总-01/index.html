@@ -10,7 +10,7 @@
 <meta property='og:description' content="编译原理一、二、三、四章知识点总结，参考了简书博主SnorlaxSE总结的《编译原理知识汇总》内容，结合上课的内容进行修改">
 <meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB-01/'>
 <meta property='og:site_name' content='羡余'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-02-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-17T11:01:59&#43;08:00'/><meta property='og:image' content='https://picsum.photos/800/600.webp?random={{ substr (md5 (.Date)) 4 8 }}' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-02-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-17T12:10:50&#43;08:00'/><meta property='og:image' content='https://picsum.photos/800/600.webp?random={{ substr (md5 (.Date)) 4 8 }}' />
 <meta name="twitter:title" content="编译原理知识汇总-01">
 <meta name="twitter:description" content="编译原理一、二、三、四章知识点总结，参考了简书博主SnorlaxSE总结的《编译原理知识汇总》内容，结合上课的内容进行修改"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://picsum.photos/800/600.webp?random={{ substr (md5 (.Date)) 4 8 }}' />
@@ -90,6 +90,8 @@
       <ol>
         <li><a href="#从面向机器的语言到面向人类的语言">从面向机器的语言到面向人类的语言</a></li>
         <li><a href="#语言之间的翻译">语言之间的翻译</a></li>
+        <li><a href="#课程内容">课程内容</a></li>
+        <li><a href="#三种程序">三种程序</a></li>
         <li><a href="#编译器与解释器">编译器与解释器</a></li>
         <li><a href="#编译器的工作原理与基本组成">编译器的工作原理与基本组成</a></li>
         <li><a href="#编译器扫描的遍数">编译器扫描的遍数</a></li>
@@ -191,7 +193,7 @@
             
             
                         最后修改:
-                        <time class="article-time--updated" datetime="2025-02-17 11:01:59 &#43;0800 &#43;0800" title="2025-02-17 11:01:59 &#43;0800 &#43;0800">
+                        <time class="article-time--updated" datetime="2025-02-17 12:10:50 &#43;0800 &#43;0800" title="2025-02-17 12:10:50 &#43;0800 &#43;0800">
                             2025-02-17
                         </time>
 
@@ -216,30 +218,32 @@
 </h3><p><strong>汇编指令：</strong> 用符号表示的指令被称为汇编指令<br>
 <strong>汇编语言：</strong> 汇编指令的集合称为汇编语言</p>
 <h3 id="语言之间的翻译">语言之间的翻译
-</h3><p><strong>转换</strong> (也被称为 <strong>预处理</strong> )：高级语言之间的翻译，如<code>FORTRAN</code>到<code>ADA</code>的转换<br>
-<strong>编译：</strong> 高级语言可以直接翻译成机器语言，也可以翻译成汇编语言，这两个翻译过程称为编译<br>
+</h3><p><strong>转换</strong> (也被称为 <strong>预处理</strong> )：高级语言之间的翻译</p>
+<p><strong>编译：</strong> 高级语言可以直接翻译成机器语言，也可以翻译成汇编语言，这两个翻译过程称为编译<br>
 <strong>汇编：</strong> 从汇编语言到机器语言的翻译被称为汇编<br>
 <strong>交叉汇编：</strong> 将一个汇编语言程序汇编成为可在另一机器上运行的机器指令成为交叉汇编<br>
 <strong>反汇编：</strong> 把机器语言翻译成汇编语言<br>
 <strong>反编译：</strong> 把汇编语言翻译成高级语言</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5267500-d4008e57f6e52e2c.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
+<img src="https://upload-images.jianshu.io/upload_images/5267500-d4008e57f6e52e2c.png" style="zoom:80%;" />
+<h3 id="课程内容">课程内容
+</h3><p>介绍设计和构造编译程序的<strong>基本原理</strong>和<strong>基本实现技术</strong></p>
+<img src="image\Ft8WNgqjp2FTy9aorBV1tR9BCCSk.png" alt="Ft8WNgqjp2FTy9aorBV1tR9BCCSk" style="zoom:50%;" />
+<h3 id="三种程序">三种程序
+</h3><ul>
+<li>
+<p><strong>翻译程序</strong></p>
+</li>
+<li>
+<p><strong>编译程序（compiler）</strong>：把某一种<strong>高级语言程序</strong>等价转换成另一种<strong>低级语言程序</strong>（如汇编或机器语言）的程序</p>
+<img src="image\image-20250217120413413.png" alt="image-20250217120413413" />
+</li>
+<li>
+<p><strong>解释程序</strong></p>
+</li>
+</ul>
 <h3 id="编译器与解释器">编译器与解释器
 </h3><p>（1）语言翻译的两种基本形态</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5267500-cbf938bbdf9e6dc1.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
+<img src="https://upload-images.jianshu.io/upload_images/5267500-cbf938bbdf9e6dc1.png" />
 <p><strong>解释器与编译器的主要区别:</strong> 运行目标程序时的控制权在<code>解释器</code>而不在目标程序.</p>
 <p>（2）各自特点</p>
 <ul>
@@ -249,31 +253,17 @@
 <p>共同点:均完成对<code>源程序</code>的翻译.<br>
 差异:编译器采用先翻译后执行,解释器采用边翻译边执行.</p>
 <h3 id="编译器的工作原理与基本组成">编译器的工作原理与基本组成
-</h3><p>（0）通用程序设计语言的主要成份 <code>声明＋操作＝完整定义</code></p>
-<p>（1）以<code>过程</code>为基本结构的程序设计语言的组成</p>
-<ul>
-<li>声明性语句：提供操作对象的性质，如数据类型、值、作用域等；</li>
-<li>操作性语句：确定操作的计算次序，完成实际操作。</li>
-<li>过程定义 = 过程头＋过程体</li>
-</ul>
-<p>（2）以阶段划分编译器</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5267500-7813bda350b45828.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
+</h3><p>（1）以阶段划分编译器</p>
+<img src="https://upload-images.jianshu.io/upload_images/5267500-7813bda350b45828.png" />
 <p>注：符号表管理器和出错处理贯穿编译器工作的各个阶段.</p>
-<p>（3）编译器各阶段工作</p>
+<p>（2）编译器各阶段工作</p>
 <p>**1 &gt; 词法分析：**词法分析的 <strong>输入</strong> 是<code>源程序</code>, <strong>输出</strong> 是识别出的<code>记号流</code>. <strong>目的</strong> 是<code>识别单词</code>. 至少分以下几类：关键字(保留字)、标识符、字面量、特殊符号</p>
 <p><strong>2 &gt; 语法分析：</strong> <strong>输入</strong> 是词法分析器返回的<code>记号流</code>, <strong>输出</strong> 是<code>语法树</code>. <strong>目的</strong> 是得到语言结构并以树的形式表示.对于声明性语句,进行符号表的查填,对于可执行语句,检查结构合理的表达式运算是否有意义.</p>
 <p>**3 &gt; 语义分析：**根据语义规则对语法树中的语法单元进行静态语义检查,如类型检查和转换等, <strong>目的</strong> 在于保证语法正确的结构在语义分析上也是合法的.</p>
 <p>**4 &gt; 中间代码生成(可选)：**生成一种既接近目标语言,又与具体机器无关的表示,便于代码优化与代码生成.</p>
 <p>(到目前为止，编译器与解释器可以一致)</p>
 <p>**5 &gt; 中间代码优化(可选)：**局部优化、循环优化、全局优化等；优化实际上是一个等价变换，变换前后的指令序列完成同样的功能，但在占用的空间上和程序执行的时间上都更省、更有效</p>
-<p>**6 &gt; 目标代码生成：**不同形式的目标代码—汇编语言形式、可重定位二进制代码形式、内存形式(Load-and-Go)</p>
+<p>**6 &gt; 目标代码生成：**不同形式的目标代码—汇编语言形式、可重定位二进制代码形式、内存形式</p>
 <p>**7 &gt; 符号表管理：**合理组织符号,便于各阶段查找\填写等.</p>
 <p><strong>8 &gt; 出错处理：</strong></p>
 <pre><code>动态错误：源程序中的逻辑错误，发生在程序运行的时候。也称为动态语义错误
@@ -282,14 +272,7 @@
 &lt;2&gt; 静态语义错误：分析源程序时可以发现的语言意义上的错误，如加法的两个操作数一个是整形变量，另一个是数组名
 </code></pre>
 <p>（4）编译器的分析\综合模式</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5267500-afbb123ec5a660fe.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
+<img src="https://upload-images.jianshu.io/upload_images/5267500-afbb123ec5a660fe.png" />
 <p>逻辑上把编译器分为<code>分析(前端)部分</code>和<code>综合(后端)部分</code>.<br>
 1&gt; 分析(前端)：语言结构和意义的分析； 从词法分析到中间代码生成各阶段的工作<br>
 2&gt; 综合(后端)：语言意义处理；从中间代码生成到目标代码生成的各阶段的工作<br>
@@ -958,7 +941,7 @@ LR分析： ** <em>允许左递归，但不能有二义</em>**</p>
 
 
         <span>
-            最后更新于 2025-02-17 11:01 &#43;0800
+            最后更新于 2025-02-17 12:10 &#43;0800
         </span>
     </section></footer>
 
@@ -1082,7 +1065,7 @@ LR分析： ** <em>允许左递归，但不能有二义</em>**</p>
 
 
 <section class="wordcount">
-    <p>27.31k 字
+    <p>27.26k 字
         <br>4篇文章
     </p>
 </section>
