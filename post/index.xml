@@ -50,7 +50,7 @@
 &lt;p&gt;（2）各自特点&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;编译器:&lt;code&gt;工作效率高&lt;/code&gt;,即时间快、空间省；&lt;code&gt;交互性与动态性差,可移植性差&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;解释器:&lt;code&gt;工作效率低&lt;/code&gt;,,即时间慢、空间费；&lt;code&gt;交互性与动态性好,可移植性好&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;解释器:&lt;code&gt;工作效率低&lt;/code&gt;,即时间慢、空间费；&lt;code&gt;交互性与动态性好,可移植性好&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;共同点:均完成对&lt;code&gt;源程序&lt;/code&gt;的翻译.&lt;br&gt;
 差异:编译器采用先翻译后执行,解释器采用边翻译边执行.&lt;/p&gt;
@@ -59,20 +59,19 @@
 &lt;img src=&#34;image\5267500-7813bda350b45828.png&#34; alt=&#34;image-20250217121558148&#34; /&gt;
 &lt;p&gt;注：符号表管理器和出错处理贯穿编译器工作的各个阶段.&lt;/p&gt;
 &lt;p&gt;（2）编译器各阶段工作&lt;/p&gt;
-&lt;p&gt;**1 &amp;gt; 词法分析：**词法分析的 &lt;strong&gt;输入&lt;/strong&gt; 是&lt;code&gt;源程序&lt;/code&gt;, &lt;strong&gt;输出&lt;/strong&gt; 是识别出的&lt;code&gt;记号流&lt;/code&gt;. &lt;strong&gt;目的&lt;/strong&gt; 是&lt;code&gt;识别单词&lt;/code&gt;. 至少分以下几类：关键字(保留字)、标识符、字面量、特殊符号&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1 &amp;gt; 词法分析：&lt;/strong&gt; 词法分析的 &lt;strong&gt;输入&lt;/strong&gt; 是&lt;code&gt;源程序&lt;/code&gt;, &lt;strong&gt;输出&lt;/strong&gt; 是识别出的&lt;code&gt;记号流&lt;/code&gt;. &lt;strong&gt;目的&lt;/strong&gt; 是&lt;code&gt;识别单词&lt;/code&gt;. 至少分以下几类：关键字(保留字)、标识符、字面量、特殊符号&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2 &amp;gt; 语法分析：&lt;/strong&gt; &lt;strong&gt;输入&lt;/strong&gt; 是词法分析器返回的&lt;code&gt;记号流&lt;/code&gt;, &lt;strong&gt;输出&lt;/strong&gt; 是&lt;code&gt;语法树&lt;/code&gt;. &lt;strong&gt;目的&lt;/strong&gt; 是得到语言结构并以树的形式表示.对于声明性语句,进行符号表的查填,对于可执行语句,检查结构合理的表达式运算是否有意义.&lt;/p&gt;
-&lt;p&gt;**3 &amp;gt; 语义分析：**根据语义规则对语法树中的语法单元进行静态语义检查,如类型检查和转换等, &lt;strong&gt;目的&lt;/strong&gt; 在于保证语法正确的结构在语义分析上也是合法的.&lt;/p&gt;
-&lt;p&gt;**4 &amp;gt; 中间代码生成(可选)：**生成一种既接近目标语言,又与具体机器无关的表示,便于代码优化与代码生成.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3 &amp;gt; 语义分析：&lt;/strong&gt; 根据语义规则对语法树中的语法单元进行静态语义检查,如类型检查和转换等, &lt;strong&gt;目的&lt;/strong&gt; 在于保证语法正确的结构在语义分析上也是合法的.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4 &amp;gt; 中间代码生成(可选)：&lt;/strong&gt; 生成一种既接近目标语言,又与具体机器无关的表示,便于代码优化与代码生成.&lt;/p&gt;
 &lt;p&gt;(到目前为止，编译器与解释器可以一致)&lt;/p&gt;
-&lt;p&gt;**5 &amp;gt; 中间代码优化(可选)：**局部优化、循环优化、全局优化等；优化实际上是一个等价变换，变换前后的指令序列完成同样的功能，但在占用的空间上和程序执行的时间上都更省、更有效&lt;/p&gt;
-&lt;p&gt;**6 &amp;gt; 目标代码生成：**不同形式的目标代码—汇编语言形式、可重定位二进制代码形式、内存形式&lt;/p&gt;
-&lt;p&gt;**7 &amp;gt; 符号表管理：**合理组织符号,便于各阶段查找\填写等.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;8 &amp;gt; 出错处理：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;动态错误：源程序中的逻辑错误，发生在程序运行的时候。也称为动态语义错误
-静态错误：静态错误分为语法错误和静态语义错误.  
+&lt;p&gt;&lt;strong&gt;5 &amp;gt; 中间代码优化(可选)：&lt;/strong&gt; 局部优化、循环优化、全局优化等；优化实际上是一个等价变换，变换前后的指令序列完成同样的功能，但在占用的空间上和程序执行的时间上都更省、更有效&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6 &amp;gt; 目标代码生成：&lt;/strong&gt; 不同形式的目标代码—汇编语言形式、可重定位二进制代码形式、内存形式&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;7 &amp;gt; 符号表管理：&lt;/strong&gt; 合理组织符号,便于各阶段查找\填写等.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;8 &amp;gt; 出错处理：&lt;/strong&gt;
+动态错误：源程序中的逻辑错误，发生在程序运行的时候。也称为动态语义错误
+静态错误：静态错误分为语法错误和静态语义错误.&lt;br&gt;
 &amp;lt;1&amp;gt; 语法错误：有关语言结构上的错误，如单词拼写错误、表达式缺少操作数、begin和end不匹配
-&amp;lt;2&amp;gt; 静态语义错误：分析源程序时可以发现的语言意义上的错误，如加法的两个操作数一个是整形变量，另一个是数组名
-&lt;/code&gt;&lt;/pre&gt;
+&amp;lt;2&amp;gt; 静态语义错误：分析源程序时可以发现的语言意义上的错误，如加法的两个操作数一个是整形变量，另一个是数组名&lt;/p&gt;
 &lt;p&gt;（4）编译器的分析\综合模式&lt;/p&gt;
 &lt;img src=&#34;image\5267500-afbb123ec5a660fe.png&#34; alt=&#34;img&#34; /&gt;
 &lt;p&gt;逻辑上把编译器分为&lt;code&gt;分析(前端)部分&lt;/code&gt;和&lt;code&gt;综合(后端)部分&lt;/code&gt;.&lt;br&gt;
