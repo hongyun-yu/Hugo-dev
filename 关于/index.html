@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="This is a test page for i18n support.">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Hugo, the world's fastest framework for building websites">
 <title>关于</title>
 
 <link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/%E5%85%B3%E4%BA%8E/'>
 
-<link rel="stylesheet" href="/Hugo-dev/scss/style.min.30f0c8d6cdc4e967256c31d8f5a5e56368f740b7c269c10fb284a52b0dc52ee3.css"><meta property='og:title' content="关于">
-<meta property='og:description' content="This is a test page for i18n support.">
+<link rel="stylesheet" href="/Hugo-dev/scss/style.min.6c6cc2c76c057a1febb7bb131b6e42fd8eead70048c8deddae6c5a1a86bd18c4.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+    
+    $(window).scroll(function() {
+    if ($(this).scrollTop()) {
+        $('#back-to-top').fadeIn();
+    } else {
+        $('#back-to-top').fadeOut();
+    }
+    });
+
+    
+    $('#back-to-top').click(function() {
+    $('html, body').animate({scrollTop: 0}, 1000);
+    return false;
+    });
+</script>
+<meta property='og:title' content="关于">
+<meta property='og:description' content="Hugo, the world's fastest framework for building websites">
 <meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/%E5%85%B3%E4%BA%8E/'>
 <meta property='og:site_name' content='羡余'>
-<meta property='og:type' content='article'><meta property='article:section' content='Page' /><meta property='article:modified_time' content='2025-01-20T21:13:08&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Page' /><meta property='article:published_time' content='2025-02-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-17T19:34:04&#43;08:00'/>
 <meta name="twitter:title" content="关于">
-<meta name="twitter:description" content="This is a test page for i18n support.">
+<meta name="twitter:description" content="Hugo, the world's fastest framework for building websites">
     <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
 
   
@@ -275,8 +293,38 @@ opacity: 0.5; /* 设置半透明 */</svg>
         </h2>
     
         
+        <h3 class="article-subtitle">
+            Hugo, the world&#39;s fastest framework for building websites
+        </h3>
+        
     </div>
 
+    
+        <footer class="article-time">
+            
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                    <time class="article-time--published">2025-02-17</time>
+                </div>
+            
+
+            
+            
+                        最后修改:
+                        <time class="article-time--updated" datetime="2025-02-17 19:34:04 &#43;0800 CST" title="2025-02-17 19:34:04 &#43;0800 CST">
+                            2025-02-17
+                        </time>
+
+            
+        </footer>
     
 
 
@@ -289,7 +337,28 @@ opacity: 0.5; /* 设置半透明 */</svg>
     <section class="article-content">
     
     
-    <p>This is a test page for i18n support.</p>
+    <p>URL： <a class="link" href="https://hongyun-yu.github.io/Hugo-dev/"  target="_blank" rel="noopener"
+    >https://hongyun-yu.github.io/Hugo-dev/</a></p>
+<p>本博客基于 <code>Hugo</code>、<code>stake</code> 主题和 <code>Github Pages</code> 搭建静态博客，使用 <code>Markdown</code> 作为写作方式。</p>
+<p>部署主要参考了<a class="link" href="https://letere-gzj.github.io/hugo-stack/"  title="点击跳转"
+     target="_blank" rel="noopener"
+    >莱特雷</a> 的教程和 B 站视频，其他的各种美化也是陆陆续续根据同主题下的大佬来改的</p>
+<p>目前已实现：</p>
+<ul>
+<li>通过Aplayer引入音乐播放器，再使用PJAX不刷新加载技术，实现页面切换不中断音乐播放</li>
+<li>背景点线漂移</li>
+<li>博客文章数和总字数统计</li>
+<li>加载进度条</li>
+<li>文章最后更新时间</li>
+<li>随机封面</li>
+<li><a class="link" href="https://linsnow.cn/posts/bloglab/hugo-stack/modify-hugo/"  title="点击跳转"
+     target="_blank" rel="noopener"
+    >主题细节调整</a></li>
+<li><a class="link" href="https://xrg.fj.cn/p/hugo-stack%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%96%B0%E5%B0%8F%E8%AE%B0/#%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE"  target="_blank" rel="noopener"
+    >返回顶部</a></li>
+<li>···</li>
+<li></li>
+</ul>
 
 </section>
 
@@ -307,7 +376,7 @@ opacity: 0.5; /* 设置半透明 */</svg>
 
 
         <span>
-            最后更新于 2025-01-20 21:13 CST
+            最后更新于 2025-02-17 19:34 CST
         </span>
     </section></footer>
 
@@ -431,7 +500,7 @@ opacity: 0.5; /* 设置半透明 */</svg>
 
 
 <section class="wordcount">
-    <p>27.25k 字
+    <p>27.30k 字
         <br>4篇文章
     </p>
 </section>
@@ -654,6 +723,100 @@ opacity: 0.5; /* 设置半透明 */</svg>
     });
 </script>
 
+
+<style>
+  #TableOfContents > ul, ol {
+      ul, ol {
+          display: none;
+      }
+      .open {
+          display: block;
+      }
+  }
+</style>
+
+<script>
+  function initTocHide() {
+      
+      let toc = document.querySelector(".widget--toc");
+      if (!toc) {
+          return;
+      }
+      
+      window.addEventListener('scroll', function() {
+          
+          let openUl = document.querySelectorAll(".open");
+          if (openUl.length > 0) {
+            openUl.forEach((ul) => {
+              ul.classList.remove("open")
+            })
+          }
+          
+          let currentLi = document.querySelector(".active-class");
+          if (!currentLi) {
+              return
+          }
+          
+          if (currentLi.children.length > 1) {
+              currentLi.children[1].classList.add("open")
+          }
+          
+          let ul = currentLi.parentElement;
+          do {
+              ul.classList.add("open");
+              ul = ul.parentElement.parentElement
+          } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+      });
+  }
+  initTocHide()
+</script>
+
+
+<style>
+  #backTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      z-index: 99;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      background-image: url(https://hongyun-yu.github.io/Hugo-dev/icons/backTop.svg);
+  }
+</style>
+
+<script>
+  
+
+  function initScrollTop() {
+      let rightSideBar = document.querySelector(".right-sidebar");
+      if (!rightSideBar) {
+          return;
+      }
+      
+      let btn = document.createElement("div");
+      btn.id = "backTopBtn";
+      btn.onclick = backToTop
+      rightSideBar.appendChild(btn)
+      
+      window.onscroll = function() {
+          
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              btn.style.display = "block";
+          } else {
+              btn.style.display = "none";
+          }
+      };
+  }
+
+  
+
+  function backToTop(){
+      window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
+  initScrollTop();
+</script>
 
     </body>
 </html>
