@@ -328,9 +328,11 @@
 
 
 
+
+
 <section class="wordcount">
-    <p>29.60k 字
-        <br>4篇文章
+    <p>30.14k 字
+        <br>5篇文章
     </p>
 </section>
 
@@ -356,17 +358,18 @@
 
 
 
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
 <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
+
 <meting-js
 	server="netease"
 	type="playlist"
 	fixed="true"
-	listMaxHeight="150px"
+    order="random"
+    list-max-height="1500px"
 	id="13187846602">
 </meting-js>
 
@@ -374,7 +377,7 @@
     ap = null
     Object.defineProperty(document.querySelector('meting-js'),"aplayer",{
         set: function(aplayer) {
-            ap=aplayer
+            ap = aplayer
             ready();
         }
     });
@@ -444,6 +447,7 @@
 
 
 
+
 <div id="particles-js"></div>
 <script src=https://hongyun-yu.github.io/Hugo-dev/background/particles.min.js></script>
 <script>
@@ -462,6 +466,7 @@
     z-index: -1;
   }
 </style>
+
 
  
 <script src="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.js" crossorigin="anonymous"></script>
@@ -515,7 +520,7 @@
           let ul = currentLi.parentElement;
           do {
               ul.classList.add("open");
-              ul = ul.parentElement.parentElement
+              ul = ul.parentElement.parentElement;
           } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
       });
   }

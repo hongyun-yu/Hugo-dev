@@ -366,23 +366,6 @@
                         </time>
 
             
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <polyline points="12 7 12 12 15 15" />
-</svg>
-
-
-
-                    <time class="article-time--reading">
-                        阅读时长: 29 分钟
-                    </time>
-                    <time class="article-words">
-                        14127字
-                    <time>
-                </div>
-            
         </footer>
     
 
@@ -1659,7 +1642,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 
 
         <span>
-            最后更新于 2025-02-18 17:21 CST
+            最后更新于 2025-02-18
         </span>
     </section></footer>
 
@@ -1782,9 +1765,11 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 
 
 
+
+
 <section class="wordcount">
-    <p>29.60k 字
-        <br>4篇文章
+    <p>30.14k 字
+        <br>5篇文章
     </p>
 </section>
 
@@ -1888,17 +1873,18 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 
 
 
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
 <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
+
 <meting-js
 	server="netease"
 	type="playlist"
 	fixed="true"
-	listMaxHeight="150px"
+    order="random"
+    list-max-height="1500px"
 	id="13187846602">
 </meting-js>
 
@@ -1906,7 +1892,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
     ap = null
     Object.defineProperty(document.querySelector('meting-js'),"aplayer",{
         set: function(aplayer) {
-            ap=aplayer
+            ap = aplayer
             ready();
         }
     });
@@ -1976,6 +1962,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 
 
 
+
 <div id="particles-js"></div>
 <script src=https://hongyun-yu.github.io/Hugo-dev/background/particles.min.js></script>
 <script>
@@ -1994,6 +1981,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
     z-index: -1;
   }
 </style>
+
 
  
 <script src="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.js" crossorigin="anonymous"></script>
@@ -2047,7 +2035,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
           let ul = currentLi.parentElement;
           do {
               ul.classList.add("open");
-              ul = ul.parentElement.parentElement
+              ul = ul.parentElement.parentElement;
           } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
       });
   }
