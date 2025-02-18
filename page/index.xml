@@ -15,7 +15,9 @@
         <guid>https://hongyun-yu.github.io/Hugo-dev/%E5%85%B3%E4%BA%8E/</guid>
         <description>&lt;p&gt;URL： &lt;a class=&#34;link&#34; href=&#34;https://hongyun-yu.github.io/Hugo-dev/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://hongyun-yu.github.io/Hugo-dev/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;本博客基于 &lt;code&gt;Hugo&lt;/code&gt;、&lt;code&gt;stake&lt;/code&gt; 主题和 &lt;code&gt;Github Pages&lt;/code&gt; 搭建静态博客，使用 &lt;code&gt;Markdown&lt;/code&gt; 作为写作方式。&lt;/p&gt;
+&lt;p&gt;本博客基于 &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/documentation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo&lt;/a&gt;、&lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io/themes/hugo-theme-stack/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;stake&lt;/a&gt; 主题和Github Pages 部署静态博客，使用 Markdown 作为写作方式。&lt;/p&gt;
 &lt;p&gt;部署主要参考了&lt;a class=&#34;link&#34; href=&#34;https://letere-gzj.github.io/hugo-stack/&#34;  title=&#34;点击跳转&#34;
      target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;莱特雷&lt;/a&gt; 的教程和 B 站视频，其他的各种美化也是陆陆续续根据同主题下的大佬来改的&lt;/p&gt;
@@ -32,6 +34,8 @@
     &gt;主题细节调整&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://xrg.fj.cn/p/hugo-stack%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%96%B0%E5%B0%8F%E8%AE%B0/#%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;返回顶部&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://yonkov.github.io/post/add-dark-mode-toggle-to-hugo/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;深色模式&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;···&lt;/li&gt;
 &lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
