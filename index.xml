@@ -717,11 +717,11 @@ SLR(1)文法：简单向前看一个终结符即可解决冲突
 </description>
         </item>
         <item>
-        <title>关于</title>
-        <link>https://hongyun-yu.github.io/Hugo-dev/%E5%85%B3%E4%BA%8E/</link>
+        <title>关于 | About</title>
+        <link>https://hongyun-yu.github.io/Hugo-dev/%E5%85%B3%E4%BA%8E-about/</link>
         <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://hongyun-yu.github.io/Hugo-dev/%E5%85%B3%E4%BA%8E/</guid>
+        <guid>https://hongyun-yu.github.io/Hugo-dev/%E5%85%B3%E4%BA%8E-about/</guid>
         <description>&lt;p&gt;URL： &lt;a class=&#34;link&#34; href=&#34;https://hongyun-yu.github.io/Hugo-dev/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://hongyun-yu.github.io/Hugo-dev/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;本博客基于 &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/documentation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1287,10 +1287,10 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
         </item>
         <item>
         <title>计算机网络总复习</title>
-        <link>https://hongyun-yu.github.io/Hugo-dev/p/test-bushu/</link>
+        <link>https://hongyun-yu.github.io/Hugo-dev/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%80%BB%E5%A4%8D%E4%B9%A0/</link>
         <pubDate>Wed, 22 Jan 2025 00:00:00 +0000</pubDate>
         
-        <guid>https://hongyun-yu.github.io/Hugo-dev/p/test-bushu/</guid>
+        <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%80%BB%E5%A4%8D%E4%B9%A0/</guid>
         <description>&lt;img src="https://www.helloimg.com/i/2025/02/08/67a74cc6008c5.jpg" alt="Featured image of post 计算机网络总复习" /&gt;&lt;h2 id=&#34;计算机网络与互联网络&#34;&gt;计算机网络与互联网络
 &lt;/h2&gt;&lt;h3 id=&#34;什么是互联网络&#34;&gt;什么是互联网络
 &lt;/h3&gt;&lt;ul&gt;
@@ -1310,10 +1310,10 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;网络的结构&lt;/strong&gt;：
 &lt;ul&gt;
-&lt;li&gt;网络整体结构分为网络边缘与网络核心两大部分，还涉及接入网络与通信链路。网络边缘包括运行应用的端系统，重点在于&lt;font style=&#34;color:#DF2A3F;&#34;&gt;端系统中的应用交互方式 &lt;/font&gt;；网络核心则由路由器组成。&lt;/li&gt;
+&lt;li&gt;网络整体结构分为网络边缘与网络核心两大部分，还涉及接入网络与通信链路。网络边缘包括运行应用的端系统，重点在于&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;端系统中的应用交互方式 &lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;；网络核心则由路由器组成。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;网络边缘的应用交互方式&lt;/font&gt;&lt;/strong&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;：&lt;/font&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;网络边缘的应用交互方式&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/strong&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;：&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;C/S 模式（客户端 / 服务器模式）&lt;/strong&gt;：其特点在于，客户端向服务器发起请求，服务器响应请求并为客户端提供服务。服务器往往具备强大的处理能力与丰富的数据资源，客户端则相对轻量化，依赖服务器获取数据与执行复杂运算，常见于网页浏览、邮件收发等应用场景。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;P2P 模式（对等模式）&lt;/strong&gt;：这种模式下，各个端系统地位平等，既可以作为客户端向其他节点请求资源，也能充当服务器为其他节点提供资源。它无需依赖集中式服务器，有较强的扩展性与容错性，常用于文件共享、流媒体直播等应用。&lt;/li&gt;
@@ -1336,7 +1336,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;数据交换方式及比较&lt;/strong&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;分组交换&lt;/strong&gt;：存储转发方式，统计复用。&lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;
+&lt;li&gt;&lt;strong&gt;分组交换&lt;/strong&gt;：存储转发方式，统计复用。&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;理解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;ul&gt;
 &lt;li&gt;VC（虚电路）&lt;/li&gt;
 &lt;li&gt;Datagram（数据报）&lt;/li&gt;
@@ -1394,7 +1394,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;h4 id=&#34;isp-之间的连接&#34;&gt;ISP 之间的连接
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;对等连接&lt;/li&gt;
-&lt;li&gt;IXP（&lt;font style=&#34;color:rgba(0, 0, 0, 0.85);&#34;&gt;互联网交换点&lt;/font&gt;）&lt;/li&gt;
+&lt;li&gt;IXP（&lt;code&gt;&amp;lt;font style=&amp;quot;color:rgba(0, 0, 0, 0.85);&amp;quot;&amp;gt;&lt;/code&gt;互联网交换点&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;内容提供商网络&#34;&gt;内容提供商网络
 &lt;/h4&gt;&lt;ul&gt;
@@ -1408,7 +1408,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;分组交换网络中的延迟与丢失&#34;&gt;分组交换网络中的延迟与丢失
-&lt;/h3&gt;&lt;h4 id=&#34;延迟的-4-个原因计算font-stylecolordf2a3f---掌握font&#34;&gt;延迟的 4 个原因（计算）&lt;font style=&#34;color:#DF2A3F;&#34;&gt; - 掌握&lt;/font&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;延迟的-4-个原因计算font-stylecolordf2a3f---掌握font&#34;&gt;延迟的 4 个原因（计算）&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt; - 掌握&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;处理延迟&lt;/li&gt;
 &lt;li&gt;排队延迟&lt;/li&gt;
@@ -1416,15 +1416,15 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;li&gt;传播延迟&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;例如：n 段，分组 L，R，传播延迟 d 每段如何计算总体延迟；&lt;/p&gt;
-&lt;h4 id=&#34;流量强度0-1与排队延迟正相关lar-font-stylecolordf2a3f--掌握font&#34;&gt;流量强度（0-1，与排队延迟正相关）：La/R &lt;font style=&#34;color:#DF2A3F;&#34;&gt;- 掌握&lt;/font&gt;
+&lt;h4 id=&#34;流量强度0-1与排队延迟正相关lar-font-stylecolordf2a3f--掌握font&#34;&gt;流量强度（0-1，与排队延迟正相关）：La/R &lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;- 掌握&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;排队延迟   依赖**&lt;font style=&#34;color:#DF2A3F;&#34;&gt;流量强度的公式&lt;/font&gt;**；&lt;/li&gt;
+&lt;li&gt;排队延迟   依赖**&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;流量强度的公式&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;**；&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;丢失原因&#34;&gt;丢失原因：
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;缓冲区溢出 + 出错没通过校验&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;吞吐量font-stylecolor74b602--了解font&#34;&gt;吞吐量&lt;font style=&#34;color:#74B602;&#34;&gt; -了解&lt;/font&gt;
+&lt;h4 id=&#34;吞吐量font-stylecolor74b602--了解font&#34;&gt;吞吐量&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt; -了解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;瞬间吞吐量&lt;/li&gt;
 &lt;li&gt;平均吞吐量&lt;/li&gt;
@@ -1434,9 +1434,9 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/h3&gt;&lt;h4 id=&#34;为什么要分层&#34;&gt;为什么要分层
 &lt;/h4&gt;&lt;h4 id=&#34;网络比较复杂分层实现比较容易设计调试实现&#34;&gt;网络比较复杂，分层实现比较容易设计、调试、实现。
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;分层：将复杂的网络功能划分成功能明确的层次，&lt;font style=&#34;color:#DF2A3F;&#34;&gt;上层利用下层提供的服务来实现本层的协议，从而为上层提供更复杂的功能。&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;分层：将复杂的网络功能划分成功能明确的层次，&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;上层利用下层提供的服务来实现本层的协议，从而为上层提供更复杂的功能。&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;一些术语和概念font-stylecolor74b602-理解font&#34;&gt;一些术语和概念&lt;font style=&#34;color:#74B602;&#34;&gt;-理解&lt;/font&gt;
+&lt;h4 id=&#34;一些术语和概念font-stylecolor74b602-理解font&#34;&gt;一些术语和概念&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;-理解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;服务、服务访问原语、服务访问点&lt;/li&gt;
 &lt;li&gt;面向连接的服务、无连接的服务&lt;/li&gt;
@@ -1448,7 +1448,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;互联网络分层模型及每一层的功能font-stylecolor74b602-理解font&#34;&gt;互联网络分层模型及每一层的功能&lt;font style=&#34;color:#74B602;&#34;&gt;-理解&lt;/font&gt;
+&lt;h4 id=&#34;互联网络分层模型及每一层的功能font-stylecolor74b602-理解font&#34;&gt;互联网络分层模型及每一层的功能&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;-理解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;应用层&lt;/li&gt;
 &lt;li&gt;传输层&lt;/li&gt;
@@ -1457,7 +1457,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;li&gt;物理层（物理信号）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;封装和解封&#34;&gt;封装和解封
-&lt;/h4&gt;&lt;h3 id=&#34;历史font-stylecolor74b602-了解font&#34;&gt;历史&lt;font style=&#34;color:#74B602;&#34;&gt;-了解&lt;/font&gt;
+&lt;/h4&gt;&lt;h3 id=&#34;历史font-stylecolor74b602-了解font&#34;&gt;历史&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;-了解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;ARPANET：美国军方资助的分组交换实验网，由于 TCP/IP 架构的包容性、免费使用、架构便于应用创新吸引更多的用户等原因，用户数量、节点数量和应用数量越来越多。&lt;/li&gt;
 &lt;li&gt;NSF 建立 ARPANET 的访问网。&lt;/li&gt;
@@ -1523,7 +1523,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;li&gt;对象&lt;/li&gt;
 &lt;li&gt;引用 URL&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;font-stylecolordf2a3fhttp-协议font&#34;&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;HTTP 协议&lt;/font&gt;
+&lt;h4 id=&#34;font-stylecolordf2a3fhttp-协议font&#34;&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;HTTP 协议&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;定义了 C（客户端）和 S（服务器）之间通信的报文格式、解释和时序。&lt;/li&gt;
 &lt;li&gt;HTTP 连接
@@ -1534,7 +1534,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/li&gt;
 &lt;li&gt;往返延迟 RTT 和对象的抓取时间&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;font-stylecolordf2a3fhttp-10-到-http-11-再到-http-20-的演变font&#34;&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0 的演变&lt;/font&gt;
+&lt;h4 id=&#34;font-stylecolordf2a3fhttp-10-到-http-11-再到-http-20-的演变font&#34;&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;HTTP 1.0 到 HTTP 1.1 再到 HTTP 2.0 的演变&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;h5 id=&#34;http-10&#34;&gt;HTTP 1.0
 &lt;/h5&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;基本特点&lt;/strong&gt;
@@ -1558,7 +1558,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;持久连接（Keep - Alive）&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;允许在一个 TCP 连接上进行多次请求 - 响应交互，减少了建立连接的开销。&lt;/li&gt;
-&lt;li&gt;客户端和服务器可以通过&lt;code&gt;Connection: keep - alive&lt;/code&gt;头字段来协商保持连接。&lt;/li&gt;
+&lt;li&gt;客户端和服务器可以通过 &lt;code&gt;Connection: keep - alive&lt;/code&gt;头字段来协商保持连接。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;管道化（Pipelining）&lt;/strong&gt;
@@ -1568,7 +1568,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;增强的缓存机制&lt;/strong&gt;
 &lt;ul&gt;
-&lt;li&gt;引入了更多的缓存控制头字段，如&lt;code&gt;Cache - Control&lt;/code&gt;、&lt;code&gt;ETag&lt;/code&gt;和&lt;code&gt;If - Modified - Since&lt;/code&gt;等，使得缓存管理更加灵活和高效。&lt;/li&gt;
+&lt;li&gt;引入了更多的缓存控制头字段，如 &lt;code&gt;Cache - Control&lt;/code&gt;、&lt;code&gt;ETag&lt;/code&gt;和 &lt;code&gt;If - Modified - Since&lt;/code&gt;等，使得缓存管理更加灵活和高效。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;分块传输编码（Chunked Transfer Coding）&lt;/strong&gt;
@@ -1711,7 +1711,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;li&gt;作用：通过本地命中，减少这些对象的访问延迟；进一步减少接入链路的流量强度，从而降低派对延迟带来总体平均延迟的减少；减轻服务器的负担。&lt;/li&gt;
 &lt;li&gt;优点：通过一个实例，计算不要求。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;ftpfont-stylecolor74b602不要求font&#34;&gt;FTP&lt;font style=&#34;color:#74B602;&#34;&gt;（不要求）&lt;/font&gt;
+&lt;h3 id=&#34;ftpfont-stylecolor74b602不要求font&#34;&gt;FTP&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;（不要求）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;作用：在 CS 之间传输文件。&lt;/li&gt;
 &lt;li&gt;构成：
@@ -1754,7 +1754,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;dns&#34;&gt;DNS
 &lt;/h3&gt;&lt;h4 id=&#34;dns-作用&#34;&gt;DNS 作用
-&lt;/h4&gt;&lt;p&gt;完成域名到 IP 地址的转换（还包括别名到正规名字、邮件服务器名字到正规名字转换等），是应用层面的互联网&lt;font style=&#34;color:#DF2A3F;&#34;&gt;基础设施&lt;/font&gt;，其他应用使用。&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;完成域名到 IP 地址的转换（还包括别名到正规名字、邮件服务器名字到正规名字转换等），是应用层面的互联网&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;基础设施&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;，其他应用使用。&lt;/p&gt;
 &lt;h4 id=&#34;二dns-的概念&#34;&gt;二、DNS 的概念
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;分布式、层次数据库&lt;/li&gt;
@@ -1792,12 +1792,12 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;li&gt;作用&lt;/li&gt;
 &lt;li&gt;本地缓存 + 服务器缓存&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;p2pfont-stylecolor74b602了解p2p-的概念和优势即可font&#34;&gt;P2P&lt;font style=&#34;color:#74B602;&#34;&gt;（了解P2P 的概念和优势即可）&lt;/font&gt;
+&lt;h3 id=&#34;p2pfont-stylecolor74b602了解p2p-的概念和优势即可font&#34;&gt;P2P&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;（了解P2P 的概念和优势即可）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h3&gt;&lt;h4 id=&#34;p2p-概念&#34;&gt;P2P 概念
 &lt;/h4&gt;&lt;p&gt;每个对等体即是客户端又是服务器；P2P 网络是这些 peer 构成的应用层面的逻辑网络。&lt;/p&gt;
 &lt;h4 id=&#34;p2p-网络比-cs-方式分发内容快的原因&#34;&gt;P2P 网络比 C/S 方式分发内容快的原因
 &lt;/h4&gt;&lt;p&gt;这些 peer 节点参与到内容的上载，流量和服务都是分布式的，可扩展性。&lt;/p&gt;
-&lt;h4 id=&#34;典型-p2p-应用及其原理font-stylecolor74b602不要求font&#34;&gt;典型 P2P 应用及其原理&lt;font style=&#34;color:#74B602;&#34;&gt;（不要求）&lt;/font&gt;
+&lt;h4 id=&#34;典型-p2p-应用及其原理font-stylecolor74b602不要求font&#34;&gt;典型 P2P 应用及其原理&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;（不要求）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;Napster：知道名词&lt;/li&gt;
 &lt;li&gt;Gnutella：知道名词&lt;/li&gt;
@@ -1805,7 +1805,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;li&gt;BT：知道名字&lt;/li&gt;
 &lt;li&gt;DHT：&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;视频流化服务和-cdnfont-stylecolor74b602了解font&#34;&gt;视频流化服务和 CDN&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;
+&lt;h3 id=&#34;视频流化服务和-cdnfont-stylecolor74b602了解font&#34;&gt;视频流化服务和 CDN&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;（了解）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h3&gt;&lt;h4 id=&#34;服务器向客户端进行视频流化的方式&#34;&gt;服务器向客户端进行视频流化的方式
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;UDP 流化&lt;/li&gt;
@@ -1828,10 +1828,13 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;缓存节点放置的方式
-* Enter Deep
-* Bring Home&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;Enter Deep&lt;/li&gt;
+&lt;li&gt;Bring Home&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;tcp-的-socket-编程-font-stylecolor74b602理解font&#34;&gt;TCP 的 SOCKET 编程 &lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;tcp-的-socket-编程-font-stylecolor74b602理解font&#34;&gt;TCP 的 SOCKET 编程 &lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;理解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h3&gt;&lt;h4 id=&#34;socket-概念&#34;&gt;SOCKET 概念
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;TCP 连接的本地标示示，向这个 SOCKET 写就是发送给对方的进程；从 SOCKET 中读，就是读取对方发送过来的数据。&lt;/li&gt;
@@ -1858,10 +1861,10 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;li&gt;使用 SOCKET&lt;/li&gt;
 &lt;li&gt;关闭 SOCKET&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;udp-的-socket-编程-font-stylecolor74b602理解font&#34;&gt;UDP 的 SOCKET 编程 &lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;
+&lt;h3 id=&#34;udp-的-socket-编程-font-stylecolor74b602理解font&#34;&gt;UDP 的 SOCKET 编程 &lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;理解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;UDP SOCKET数据传输的特点&lt;/li&gt;
-&lt;li&gt;编程&lt;font style=&#34;color:#74B602;&#34;&gt; 不要求&lt;/font&gt;
+&lt;li&gt;编程&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt; 不要求&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;ul&gt;
 &lt;li&gt;建立SOCKET（之前客户端 UDP 实体和服务器不用握手，不为之后的通信做准备）&lt;/li&gt;
 &lt;li&gt;使用&lt;/li&gt;
@@ -1905,7 +1908,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;UDP 的必要性&lt;/strong&gt;：有些应用对实时性比较在乎，对可靠性要求不高。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;UDP 报文（无连接的，因此叫做 UDP 数据报）格式&lt;/strong&gt;。（头部 + 载荷）&lt;/li&gt;
-&lt;li&gt;**UDP 报文校验和的计算（Check Sum）  **&lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;**UDP 报文校验和的计算（Check Sum）  **&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;理解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;可靠数据传输原理&#34;&gt;可靠数据传输原理
 &lt;/h3&gt;&lt;ul&gt;
@@ -1915,7 +1918,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;li&gt;去掉一些假设，需要协议实体做相应的变化从而能够进行 rdt。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;**技术机制 ** &lt;strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt; &lt;/font&gt;&lt;/strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt;理解&lt;/font&gt;
+&lt;li&gt;**技术机制 ** &lt;strong&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt; &lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/strong&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;理解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;ul&gt;
 &lt;li&gt;校验和，正向确认，反向确认。&lt;/li&gt;
 &lt;li&gt;序号：检查重复。&lt;/li&gt;
@@ -1928,7 +1931,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&#34;font-stylecolordf2a3frdtreliable-data-transfer可靠数据传输102030-的功能特点font&#34;&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;RDT（Reliable Data Transfer，可靠数据传输）1.0、2.0、3.0 的功能特点&lt;/font&gt;
+&lt;h4 id=&#34;font-stylecolordf2a3frdtreliable-data-transfer可靠数据传输102030-的功能特点font&#34;&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;RDT（Reliable Data Transfer，可靠数据传输）1.0、2.0、3.0 的功能特点&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_39583450/article/details/113481150&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;计算机网络（14）——可靠数据传输原理_rdt3.0接收方fsm-CSDN博客&lt;/a&gt;&lt;/p&gt;
 &lt;h5 id=&#34;rdt-10&#34;&gt;RDT 1.0
@@ -2010,7 +2013,7 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;RDT 协议从 1.0 到 3.0 不断演进，逐步解决了可靠数据传输过程中的各种实际问题，从假设理想信道到考虑比特差错、分组丢失等情况，通过增加差错检测、确认机制、定时器等手段来确保数据的可靠传输。&lt;/p&gt;
-&lt;h4 id=&#34;利用率计算font-stylecolor74b602-了解font&#34;&gt;利用率计算&lt;font style=&#34;color:#74B602;&#34;&gt; 了解&lt;/font&gt;
+&lt;h4 id=&#34;利用率计算font-stylecolor74b602-了解font&#34;&gt;利用率计算&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt; 了解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;p&gt;停止等待技术：链路带宽延迟积（容量）效率低。
 管道技术：在未经对方确认的情况下，可以连续发送多个 PDU。
 GBN：发送窗口大于 1，接收窗口 = 1（只能顺序接收；发送方只设置一个超时定时器，一旦出错，返回到出错的那一个 PDU 重发）。
@@ -2058,7 +2061,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;tcp-连接管理-font-stylecolor74b602-理解font&#34;&gt;TCP 连接管理 &lt;font style=&#34;color:#74B602;&#34;&gt; 理解&lt;/font&gt;
+&lt;h4 id=&#34;tcp-连接管理-font-stylecolor74b602-理解font&#34;&gt;TCP 连接管理 &lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt; 理解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;连接建立&lt;/strong&gt;
 &lt;ul&gt;
@@ -2083,15 +2086,15 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;拥塞控制目的&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;拥塞控制手段&lt;/strong&gt;**&lt;font style=&#34;color:#74B602;&#34;&gt;  理解&lt;/font&gt;**
+&lt;li&gt;&lt;strong&gt;拥塞控制手段&lt;/strong&gt;**&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;  理解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;**
 &lt;ul&gt;
 &lt;li&gt;端到端的拥塞控制：&lt;strong&gt;TCP&lt;/strong&gt; 采用这种方式。&lt;/li&gt;
-&lt;li&gt;网络辅助的拥塞控制：&lt;strong&gt;ATM&lt;/strong&gt; 网络标志和携带拥塞信息，反馈给主机&lt;font style=&#34;color:#74B602;&#34;&gt;（不要求）&lt;/font&gt;。&lt;/li&gt;
+&lt;li&gt;网络辅助的拥塞控制：&lt;strong&gt;ATM&lt;/strong&gt; 网络标志和携带拥塞信息，反馈给主机&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;（不要求）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;tcp-的拥塞控制原理&#34;&gt;TCP 的拥塞控制原理
-&lt;/h3&gt;&lt;h4 id=&#34;tcp-拥塞控制原理font-stylecolordf2a3f需掌握font&#34;&gt;TCP 拥塞控制原理&lt;font style=&#34;color:#DF2A3F;&#34;&gt;（需掌握）&lt;/font&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;tcp-拥塞控制原理font-stylecolordf2a3f需掌握font&#34;&gt;TCP 拥塞控制原理&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;（需掌握）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;检测拥塞&lt;/strong&gt;
 &lt;ul&gt;
@@ -2101,7 +2104,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;拥塞控制机制&lt;/strong&gt;
 &lt;ul&gt;
-&lt;li&gt;AIMD（加性增&lt;font style=&#34;color:#F1A2AB;&#34;&gt;1&lt;/font&gt;、乘性减&lt;font style=&#34;color:#F1A2AB;&#34;&gt;半&lt;/font&gt;）、慢启动&lt;font style=&#34;color:#F1A2AB;&#34;&gt;（加倍）&lt;/font&gt;、超时之后的保守策略。&lt;/li&gt;
+&lt;li&gt;AIMD（加性增&lt;code&gt;&amp;lt;font style=&amp;quot;color:#F1A2AB;&amp;quot;&amp;gt;&lt;/code&gt;1&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;、乘性减&lt;code&gt;&amp;lt;font style=&amp;quot;color:#F1A2AB;&amp;quot;&amp;gt;&lt;/code&gt;半&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;）、慢启动&lt;code&gt;&amp;lt;font style=&amp;quot;color:#F1A2AB;&amp;quot;&amp;gt;&lt;/code&gt;（加倍）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;、超时之后的保守策略。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -2112,7 +2115,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;li&gt;超时事件和 3 个冗余 ACK 处理一样的，不要求。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;reno 算法&lt;/strong&gt; &lt;strong&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;（需掌握）&lt;/font&gt;&lt;/strong&gt;
+&lt;li&gt;&lt;strong&gt;reno 算法&lt;/strong&gt; &lt;strong&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;（需掌握）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;超时事件发生和 3 个冗余 ACK 处理不一样。&lt;/li&gt;
 &lt;/ul&gt;
@@ -2120,7 +2123,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ol&gt;
 &lt;h4 id=&#34;平均延迟和超时定时器时间的设置&#34;&gt;平均延迟和超时定时器时间的设置
 &lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;**JACSON 算法（具体初始化和迭代算法， ** &lt;strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt;不要求&lt;/font&gt;&lt;/strong&gt; &lt;strong&gt;）&lt;/strong&gt;
+&lt;li&gt;**JACSON 算法（具体初始化和迭代算法， ** &lt;strong&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;不要求&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/strong&gt; &lt;strong&gt;）&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;平均往返延迟公式。&lt;/li&gt;
 &lt;li&gt;Dev 算法：第一个超时时间 = 延迟的 1/2，初值设置；后面按公式。&lt;/li&gt;
@@ -2128,8 +2131,8 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;tcp-公平性font-stylecolor74b602了解font&#34;&gt;TCP 公平性：&lt;font style=&#34;color:#74B602;&#34;&gt;了解&lt;/font&gt;
-&lt;/h4&gt;&lt;h4 id=&#34;tcp-的吞吐量计算font-stylecolor74b602不要求font&#34;&gt;TCP 的吞吐量计算：&lt;font style=&#34;color:#74B602;&#34;&gt;不要求&lt;/font&gt;。
+&lt;h4 id=&#34;tcp-公平性font-stylecolor74b602了解font&#34;&gt;TCP 公平性：&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;了解&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
+&lt;/h4&gt;&lt;h4 id=&#34;tcp-的吞吐量计算font-stylecolor74b602不要求font&#34;&gt;TCP 的吞吐量计算：&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;不要求&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;。
 &lt;/h4&gt;&lt;h2 id=&#34;网络层之数据平面&#34;&gt;网络层之数据平面
 &lt;/h2&gt;&lt;h3 id=&#34;简介&#34;&gt;简介
 &lt;/h3&gt;&lt;h4 id=&#34;网络层的主要服务和功能&#34;&gt;网络层的主要服务和功能
@@ -2176,7 +2179,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;li&gt;丢包率&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;路由器结构和工作原理&#34;&gt;路由器结构和工作原理
-&lt;/h3&gt;&lt;h4 id=&#34;路由器的-2-大功能font-stylecolor74b602需理解font&#34;&gt;路由器的 2 大功能&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;路由器的-2-大功能font-stylecolor74b602需理解font&#34;&gt;路由器的 2 大功能&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;（需理解）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;路由协议&lt;/strong&gt;
 &lt;ul&gt;
@@ -2230,7 +2233,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;li&gt;&lt;strong&gt;IP 数据报格式&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;各个字段的作用&lt;/li&gt;
-&lt;li&gt;分片和重组 &lt;font style=&#34;color:#DF2A3F;&#34;&gt;- 掌握&lt;/font&gt;
+&lt;li&gt;分片和重组 &lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;- 掌握&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;ul&gt;
 &lt;li&gt;一个分组的总体大小超过了转发链路的 MTU，因此要切片。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;到目标主机重组。&lt;/strong&gt;&lt;/li&gt;
@@ -2251,7 +2254,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;li&gt;子网掩码和 CIDR&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;**NAT ** &lt;strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt;不要求&lt;/font&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;**NAT ** &lt;strong&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;不要求&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;DHCP 协议：上网主机获得 IP、掩码、默认网关和 local name server。&lt;/li&gt;
 &lt;li&gt;路由聚集：连续的子网前缀的子网可达信息可以做聚集，减少向外部传输路由的数量，减少路由计算的负担。支持大概的路由聚集，与此对应的是最长前缀匹配的措施。&lt;/li&gt;
 &lt;li&gt;IPV 6：
@@ -2267,13 +2270,13 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;通用转发和-sdn&#34;&gt;通用转发和 SDN
-&lt;/h3&gt;&lt;h4 id=&#34;sdn-方式控制平面和数据平面分离的优点font-stylecolor74b602需理解font&#34;&gt;SDN 方式控制平面和数据平面分离的优点&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;sdn-方式控制平面和数据平面分离的优点font-stylecolor74b602需理解font&#34;&gt;SDN 方式控制平面和数据平面分离的优点&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;（需理解）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;集中在控制器上实现控制逻辑，网络可编程，可以实现各种复杂的网络功能、新功能（一次部署，持续升级）、方便管理。&lt;/li&gt;
 &lt;li&gt;形成开发生态（控制器、分组交换机、网络应用，在一个开放的框架下协作）。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4 id=&#34;sdn-分组交换机按照计算出的流表进行分组转发通用便于升级&#34;&gt;SDN 分组交换机按照计算出的流表进行分组转发、通用、便于升级。
-&lt;/h4&gt;&lt;h5 id=&#34;分组交换机工作原理font-stylecolor74b602需理解font&#34;&gt;分组交换机工作原理&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;
+&lt;/h4&gt;&lt;h5 id=&#34;分组交换机工作原理font-stylecolor74b602需理解font&#34;&gt;分组交换机工作原理&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;（需理解）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h5&gt;&lt;ol&gt;
 &lt;li&gt;模式匹配 + 行动（不仅仅是转发，还可以组播、泛洪、修改字段和阻塞等）。&lt;/li&gt;
 &lt;li&gt;进来分组，按照各级字段匹配流表，按照相应的行动动作分组。&lt;/li&gt;
@@ -2395,7 +2398,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;li&gt;网关路由器通过 i - BGP 向 AS 内部所有路由节点通告收集到的子网可达信息。&lt;/li&gt;
 &lt;li&gt;内部路由器，通过 AS 内路由和 AS 间路由共同决定向 AS 外部子网的下一跳（内部网关协议决定如何去往网关，外部网关协议决定通过那个网关可到达 AS 外部子网）。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;内部网关协议和外部网关协议的对比font-stylecolor74b602了解font&#34;&gt;内部网关协议和外部网关协议的对比&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;
+&lt;h4 id=&#34;内部网关协议和外部网关协议的对比font-stylecolor74b602了解font&#34;&gt;内部网关协议和外部网关协议的对比&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;（了解）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;内部网关协议重视效率，性能。&lt;/li&gt;
 &lt;li&gt;外部网关协议重视策略：经济策略和政治策略&lt;/li&gt;
@@ -2403,10 +2406,10 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;h2 id=&#34;sdn-控制平面&#34;&gt;SDN 控制平面
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;在控制器上集中实现控制功能。&lt;/li&gt;
-&lt;li&gt;控制器和 SDN 交换机按照&lt;code&gt;openflow&lt;/code&gt;等南向接口协议等下发流表，上报设备状态。&lt;/li&gt;
+&lt;li&gt;控制器和 SDN 交换机按照 &lt;code&gt;openflow&lt;/code&gt;等南向接口协议等下发流表，上报设备状态。&lt;/li&gt;
 &lt;li&gt;SDN 控制器按照北向接口和网络应用打交道。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;icmp-协议font-stylecolor74b602了解font&#34;&gt;ICMP 协议&lt;font style=&#34;color:#74B602;&#34;&gt;（了解）&lt;/font&gt;
+&lt;h3 id=&#34;icmp-协议font-stylecolor74b602了解font&#34;&gt;ICMP 协议&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;（了解）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;作用：包括错误、&lt;code&gt;echo&lt;/code&gt;请求和应答。&lt;/li&gt;
 &lt;li&gt;报文类型。&lt;/li&gt;
@@ -2436,7 +2439,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;li&gt;&lt;strong&gt;检错原理&lt;/strong&gt;
 &lt;ul&gt;
 &lt;li&gt;奇偶校验。&lt;/li&gt;
-&lt;li&gt;CRC（循环冗余校验）&lt;font style=&#34;color:#DF2A3F;&#34;&gt; - 掌握&lt;/font&gt;
+&lt;li&gt;CRC（循环冗余校验）&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt; - 掌握&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;
 &lt;ul&gt;
 &lt;li&gt;原理。&lt;/li&gt;
 &lt;li&gt;生成多项式。&lt;/li&gt;
@@ -2461,7 +2464,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;slotted ALOHA&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;ALOHA&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;CSMA&lt;/strong&gt;，&lt;strong&gt;&lt;font style=&#34;background-color:#FBF5CB;&#34;&gt;CSMA/CD（至少 2t 长度帧），CSMA/CA&lt;/font&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSMA&lt;/strong&gt;，&lt;strong&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;background-color:#FBF5CB;&amp;quot;&amp;gt;&lt;/code&gt;CSMA/CD（至少 2t 长度帧），CSMA/CA&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;轮转协议：不要求&lt;/strong&gt;&lt;/li&gt;
@@ -2500,12 +2503,12 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;访问控制技术。&lt;/strong&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;CSMA/CD&lt;/strong&gt; &lt;strong&gt;&lt;font style=&#34;color:#DF2A3F;&#34;&gt;（需掌握）&lt;/font&gt;&lt;/strong&gt;：载波侦听多路访问 / 冲突检测，用于解决以太网中的冲突问题。
+&lt;li&gt;&lt;strong&gt;CSMA/CD&lt;/strong&gt; &lt;strong&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#DF2A3F;&amp;quot;&amp;gt;&lt;/code&gt;（需掌握）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/strong&gt;：载波侦听多路访问 / 冲突检测，用于解决以太网中的冲突问题。
 &lt;ul&gt;
 &lt;li&gt;指数后退：在发生冲突后，设备会采用指数后退算法等待一段时间后再尝试发送。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;**CSMA/CA ** &lt;strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;&lt;/strong&gt;：载波侦听多路访问 / 冲突避免，适用于无线网络。&lt;/li&gt;
+&lt;li&gt;**CSMA/CA ** &lt;strong&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;（需理解）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/strong&gt;：载波侦听多路访问 / 冲突避免，适用于无线网络。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;编码。&lt;/strong&gt;
@@ -2529,7 +2532,7 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;li&gt;专用接入：交换机提供专用的接入端口。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;路由器和交换机的区别&lt;/strong&gt; &lt;strong&gt;&lt;font style=&#34;color:#74B602;&#34;&gt;（需理解）&lt;/font&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;路由器和交换机的区别&lt;/strong&gt; &lt;strong&gt;&lt;code&gt;&amp;lt;font style=&amp;quot;color:#74B602;&amp;quot;&amp;gt;&lt;/code&gt;（需理解）&lt;code&gt;&amp;lt;/font&amp;gt;&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;参考&#34;&gt;参考
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1JV411t7ow/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=76a496aa006e07f846fd0bbe5954c92e&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2537,137 +2540,27 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 </description>
         </item>
         <item>
-        <title>归档</title>
+        <title>归档 | Archives</title>
         <link>https://hongyun-yu.github.io/Hugo-dev/archives/</link>
-        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://hongyun-yu.github.io/Hugo-dev/archives/</guid>
         <description></description>
         </item>
         <item>
-        <title></title>
-        <link>https://hongyun-yu.github.io/Hugo-dev/p/</link>
+        <title>链接 | Links</title>
+        <link>https://hongyun-yu.github.io/Hugo-dev/%E9%93%BE%E6%8E%A5-links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://hongyun-yu.github.io/Hugo-dev/p/</guid>
-        <description>&lt;h2 id=&#34;hugo解析&#34;&gt;Hugo解析
-&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── archetypes                  
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── default.md				# hugo新建文章的默认模板
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── config.yaml                 # 网站配置文件
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── content                     # 站点内的内容都在这里
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── categories              # “分类”页面的首页
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   └── Test                # “分类”页面下的一个具体分类页面
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── page                    # 显示在网站主页左侧边栏菜单的选项（导航栏）
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   ├── about               # 左侧边栏菜单中的“关于”页面
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   ├── archives            # 左侧边栏菜单中的“归档”页面
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   ├── links               # 左侧边栏菜单中的“链接”页面
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   └── search              # 左侧边栏菜单中的“搜索”页面
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── post                    # 用户写的帖子都放在这里，每个子文件夹对应一个帖子
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│       ├── 2024
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│            ├── 09
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│                ├── 文章目录
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│					  ├── .md
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│					  ├── .img
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│			 ├── 10
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│                ├── 文章目录
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│					  ├── .md
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── data
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── layouts
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── LICENSE
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── README.md
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── resources
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── _gen
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│       ├── assets
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│       └── images
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── static                     # 放用户自定义字体、用户头像、网站小图标等
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└── themes                     # 放各种主题
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    └── hugo-theme-stack       # stack主题
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── archetypes
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── assets
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── config.yaml
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── data
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── debug.sh
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── exampleSite
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── go.mod
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── i18n
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── images
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── layouts
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── LICENSE
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── netlify.toml
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── README.md
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        └── theme.toml
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;+++&lt;/p&gt;
-&lt;h2 id=&#34;最后修改时间问题&#34;&gt;最后修改时间问题
-&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://i-square.github.io/p/hugo-upgrade-and-hugo-theme-stack-modify-and-last-modified-time/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;记录hugo升级、hugo-theme-stack主题更新和修改、最后修改时间问题解决的相关内容&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;heading&#34;&gt;
-&lt;/h2&gt;</description>
+        <guid>https://hongyun-yu.github.io/Hugo-dev/%E9%93%BE%E6%8E%A5-links/</guid>
+        <description></description>
         </item>
         <item>
-        <title>搜索</title>
+        <title>搜索 | Search</title>
         <link>https://hongyun-yu.github.io/Hugo-dev/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://hongyun-yu.github.io/Hugo-dev/search/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>友链</title>
-        <link>https://hongyun-yu.github.io/Hugo-dev/%E5%8F%8B%E9%93%BE/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://hongyun-yu.github.io/Hugo-dev/%E5%8F%8B%E9%93%BE/</guid>
         <description></description>
         </item>
         
