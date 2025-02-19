@@ -1774,10 +1774,11 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 
 
 <section class="wordcount">
-    <p>29.70k 字
+    <p>29.69k 字
         <br>5篇文章
     </p>
 </section>
+
 
 
     
@@ -1876,6 +1877,113 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
         document.head.appendChild(customFont);
     }());
 </script>
+ 
+<script src="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.css" crossorigin="anonymous" />
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
+
+<style>
+  #TableOfContents > ul, ol {
+      ul, ol {
+          display: none;
+      }
+      .open {
+          display: block;
+      }
+  }
+</style>
+
+<script>
+  function initTocHide() {
+      
+      let toc = document.querySelector(".widget--toc");
+      if (!toc) {
+          return;
+      }
+      
+      window.addEventListener('scroll', function() {
+          
+          let openUl = document.querySelectorAll(".open");
+          if (openUl.length > 0) {
+            openUl.forEach((ul) => {
+              ul.classList.remove("open")
+            })
+          }
+          
+          let currentLi = document.querySelector(".active-class");
+          if (!currentLi) {
+              return
+          }
+          
+          if (currentLi.children.length > 1) {
+              currentLi.children[1].classList.add("open")
+          }
+          
+          let ul = currentLi.parentElement;
+          do {
+              ul.classList.add("open");
+              ul = ul.parentElement.parentElement;
+          } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+      });
+  }
+  initTocHide()
+</script>
+
+
+<style>
+  #backTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      z-index: 99;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      background-image: url(https://hongyun-yu.github.io/Hugo-dev/icons/backTop.svg);
+  }
+</style>
+
+<script>
+  
+
+  function initScrollTop() {
+      let rightSideBar = document.querySelector(".right-sidebar");
+      if (!rightSideBar) {
+          return;
+      }
+      
+      let btn = document.createElement("div");
+      btn.id = "backTopBtn";
+      btn.onclick = backToTop
+      rightSideBar.appendChild(btn)
+      
+      window.onscroll = function() {
+          
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              btn.style.display = "block";
+          } else {
+              btn.style.display = "none";
+          }
+      };
+  }
+
+  
+
+  function backToTop(){
+      window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
+  initScrollTop();
+</script>
+
+
 
 
 
@@ -2003,113 +2111,6 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
     }
   </style>
   
-
- 
-<script src="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.css" crossorigin="anonymous" />
-<script>
-    NProgress.start();
-    document.addEventListener("readystatechange", () => {
-        if (document.readyState === "interactive") NProgress.inc(0.8);
-        if (document.readyState === "complete") NProgress.done();
-    });
-</script>
-
-
-<style>
-  #TableOfContents > ul, ol {
-      ul, ol {
-          display: none;
-      }
-      .open {
-          display: block;
-      }
-  }
-</style>
-
-<script>
-  function initTocHide() {
-      
-      let toc = document.querySelector(".widget--toc");
-      if (!toc) {
-          return;
-      }
-      
-      window.addEventListener('scroll', function() {
-          
-          let openUl = document.querySelectorAll(".open");
-          if (openUl.length > 0) {
-            openUl.forEach((ul) => {
-              ul.classList.remove("open")
-            })
-          }
-          
-          let currentLi = document.querySelector(".active-class");
-          if (!currentLi) {
-              return
-          }
-          
-          if (currentLi.children.length > 1) {
-              currentLi.children[1].classList.add("open")
-          }
-          
-          let ul = currentLi.parentElement;
-          do {
-              ul.classList.add("open");
-              ul = ul.parentElement.parentElement;
-          } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
-      });
-  }
-  initTocHide()
-</script>
-
-
-<style>
-  #backTopBtn {
-      display: none;
-      position: fixed;
-      bottom: 30px;
-      z-index: 99;
-      cursor: pointer;
-      width: 30px;
-      height: 30px;
-      background-image: url(https://hongyun-yu.github.io/Hugo-dev/icons/backTop.svg);
-  }
-</style>
-
-<script>
-  
-
-  function initScrollTop() {
-      let rightSideBar = document.querySelector(".right-sidebar");
-      if (!rightSideBar) {
-          return;
-      }
-      
-      let btn = document.createElement("div");
-      btn.id = "backTopBtn";
-      btn.onclick = backToTop
-      rightSideBar.appendChild(btn)
-      
-      window.onscroll = function() {
-          
-          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-              btn.style.display = "block";
-          } else {
-              btn.style.display = "none";
-          }
-      };
-  }
-
-  
-
-  function backToTop(){
-      window.scrollTo({ top: 0, behavior: "smooth" })
-  }
-
-  initScrollTop();
-</script>
-
     </body>
 </html>
 
