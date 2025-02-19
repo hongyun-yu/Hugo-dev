@@ -739,15 +739,16 @@ SLR(1)文法：简单向前看一个终结符即可解决冲突
 &lt;li&gt;博客文章数和总字数统计&lt;/li&gt;
 &lt;li&gt;加载进度条&lt;/li&gt;
 &lt;li&gt;文章最后更新时间&lt;/li&gt;
-&lt;li&gt;随机封面&lt;/li&gt;
+&lt;li&gt;随机封面（-已移除）&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://linsnow.cn/posts/bloglab/hugo-stack/modify-hugo/&#34;  title=&#34;点击跳转&#34;
      target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;主题细节调整&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://xrg.fj.cn/p/hugo-stack%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%96%B0%E5%B0%8F%E8%AE%B0/#%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;返回顶部&lt;/a&gt;&lt;/li&gt;
+    &gt;返回顶部&lt;/a&gt;（-暂不满意）&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://yonkov.github.io/post/add-dark-mode-toggle-to-hugo/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;深色模式&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;···&lt;/li&gt;
+    &gt;深色模式&lt;/a&gt;(-暂未解决)&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/lxgw/LxgwWenKai/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;字体更换&lt;/a&gt; - 霞鹜文楷&lt;/li&gt;
 &lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
@@ -2540,14 +2541,6 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1JV411t7ow/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=76a496aa006e07f846fd0bbe5954c92e&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;中科大郑烇、杨坚全套《计算机网络（自顶向下方法 第7版，James F.Kurose，Keith W.Ross）》课程&lt;/a&gt;&lt;/p&gt;
 </description>
-        </item>
-        <item>
-        <title></title>
-        <link>https://hongyun-yu.github.io/Hugo-dev/categories/categories/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://hongyun-yu.github.io/Hugo-dev/categories/categories/</guid>
-        <description></description>
         </item>
         <item>
         <title></title>
