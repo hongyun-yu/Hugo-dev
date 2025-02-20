@@ -15,7 +15,7 @@
         <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB-01/</guid>
         <description>&lt;h1 id=&#34;编译原理知识汇总&#34;&gt;编译原理知识汇总
 &lt;/h1&gt;&lt;h1 id=&#34;编译原理&#34;&gt;编译原理
-&lt;/h1&gt;&lt;h2 id=&#34;第一章-引言&#34;&gt;第一章 引言
+&lt;/h1&gt;&lt;h2 id=&#34;第一章-绪论&#34;&gt;第一章 绪论
 &lt;/h2&gt;&lt;h3 id=&#34;从面向机器的语言到面向人类的语言&#34;&gt;从面向机器的语言到面向人类的语言
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;汇编指令：&lt;/strong&gt; 用符号表示的指令被称为汇编指令
 &lt;strong&gt;汇编语言：&lt;/strong&gt; 汇编指令的集合称为汇编语言&lt;/p&gt;
@@ -72,7 +72,7 @@
 静态错误：静态错误分为语法错误和静态语义错误.
 &amp;lt;1&amp;gt; 语法错误：有关语言结构上的错误，如单词拼写错误、表达式缺少操作数、begin和end不匹配
 &amp;lt;2&amp;gt; 静态语义错误：分析源程序时可以发现的语言意义上的错误，如加法的两个操作数一个是整形变量，另一个是数组名&lt;/p&gt;
-&lt;p&gt;（4）编译器的分析\综合模式&lt;/p&gt;
+&lt;p&gt;（3）编译器的分析\综合模式&lt;/p&gt;
 &lt;img src=&#34;image\5267500-afbb123ec5a660fe.png&#34; alt=&#34;img&#34; /&gt;
 &lt;p&gt;逻辑上把编译器分为 &lt;code&gt;分析(前端)部分&lt;/code&gt;和 &lt;code&gt;综合(后端)部分&lt;/code&gt;.
 1&amp;gt; 分析(前端)：语言结构和意义的分析； 从词法分析到中间代码生成各阶段的工作
@@ -81,6 +81,67 @@
 &lt;h3 id=&#34;编译器扫描的遍数&#34;&gt;编译器扫描的遍数
 &lt;/h3&gt;&lt;p&gt;每个阶段将程序完整分析一遍的工作模式称为一遍扫描。
 (将源程序或源程序的某种形式的中间表示完整分析一遍，亦称作一遍扫描)&lt;/p&gt;
+&lt;h2 id=&#34;第二章-高级语言及语法描述&#34;&gt;第二章 高级语言及语法描述
+&lt;/h2&gt;&lt;h3 id=&#34;程序语言的定义&#34;&gt;程序语言的定义
+&lt;/h3&gt;&lt;p&gt;程序语言由 &lt;strong&gt;语法&lt;/strong&gt; 和 &lt;strong&gt;语义&lt;/strong&gt; 两方面定义&lt;/p&gt;
+&lt;h4 id=&#34;语法&#34;&gt;语法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;词法规则：单词符号的形成规则  描述工具：有限自动机&lt;/li&gt;
+&lt;li&gt;语法规则：语法单位的形成规则  描述工具：上下文无关文法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;语义&#34;&gt;语义
+&lt;/h4&gt;&lt;h3 id=&#34;程序语言的语法&#34;&gt;程序语言的语法
+&lt;/h3&gt;&lt;h3 id=&#34;程序语言的语法描述&#34;&gt;程序语言的语法描述
+&lt;/h3&gt;&lt;h4 id=&#34;概念&#34;&gt;概念
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;有穷 &lt;strong&gt;字母表&lt;/strong&gt;（字符集） Σ 中每一个元素称为一个&lt;strong&gt;字符&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Σ 上的字（也叫字符串） 是指由 Σ 中的 字符所构成的一个有穷序列&lt;/li&gt;
+&lt;li&gt;空字 ε ：不包含任何字符的序列&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;上下文无关文法&#34;&gt;上下文无关文法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;文法：描述语言的语法结构的形式&lt;strong&gt;规则&lt;/strong&gt; （或&lt;strong&gt;语法规则&lt;/strong&gt;）&lt;/li&gt;
+&lt;li&gt;产生式（文法的简化表示方法）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+例： G ( E ) : E \rightarrow i | E + E | E * E | (E)&lt;br&gt;
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;上下文无关文法的中心思想：
+从文法的开始符号出发，反复连续使用产生式，对非终结符实行替换和展开&lt;/li&gt;
+&lt;li&gt;句子
+全是终结符&lt;/li&gt;
+&lt;li&gt;句型&lt;/li&gt;
+&lt;li&gt;文法 &amp;mdash;&amp;gt; 语言&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;构造某语言文法的方法&#34;&gt;构造某语言文法的方法
+&lt;/h4&gt;&lt;p&gt;采用&lt;strong&gt;凑规则&lt;/strong&gt;的方法来完成：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;找出语言的&lt;strong&gt;若干句子&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;分析&lt;strong&gt;句子的特点&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;根据句子的特点&lt;strong&gt;凑规则&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;形成&lt;strong&gt;文法&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;检验
+$$
+构造生成 L = {a^n b^n c^i | n \geq 1, i \geq 0 }语言的文法: \
+G[ Z ]: Z \rightarrow AB|A \
+A \rightarrow aAb|ab \
+B \rightarrow cB|c \
+$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;最左推导&lt;/li&gt;
+&lt;li&gt;最右推导&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;语法树与二义性&#34;&gt;语法树与二义性
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;用一张图表示一个句型的推导，称为&lt;strong&gt;语法树&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img src=&#34;image/FnRGkDLWai296OXhevRyG50jTDvq.png&#34; alt=&#34;FnRGkDLWai296OXhevRyG50jTDvq&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;语言二义性&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;文法二义性： 可以改造为无二义&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;第二章-词法分析&#34;&gt;第二章 词法分析
 &lt;/h2&gt;&lt;h3 id=&#34;词法分析中的若干问题&#34;&gt;词法分析中的若干问题
 &lt;/h3&gt;&lt;p&gt;(1) 记号、模式与单词&lt;/p&gt;
@@ -716,7 +777,8 @@ SLR(1)文法：简单向前看一个终结符即可解决冲突
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jianshu.com/p/eb63d31ad638&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;简书博主 SnorlaxSE - 编译原理知识汇总&lt;/a&gt;
 &lt;a class=&#34;link&#34; href=&#34;https://icourse163.feishu.cn/wiki/NLSjwolTAic4gGkYmhicKJOEnpc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;中国大学MOOC 考拉学姐 - 编译原理&lt;/a&gt;&lt;/p&gt;
+    &gt;中国大学MOOC 考拉学姐 - 编译原理&lt;/a&gt;
+《程序设计语言编译原理》 - 陈火旺，刘春林等 国防工业出版社&lt;/p&gt;
 </description>
         </item>
         <item>

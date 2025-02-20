@@ -28,7 +28,7 @@
 <meta property='og:description' content="编译原理一、二、三、四章知识点总结，参考了简书博主SnorlaxSE总结的《编译原理知识汇总》和中国大学MOOC 考拉学姐分享的内容，结合上课的内容进行修改">
 <meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB-01/'>
 <meta property='og:site_name' content='羡余'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-02-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-18T22:18:00&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-02-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-20T16:02:03&#43;08:00'/>
 <meta name="twitter:title" content="编译原理知识汇总-01">
 <meta name="twitter:description" content="编译原理一、二、三、四章知识点总结，参考了简书博主SnorlaxSE总结的《编译原理知识汇总》和中国大学MOOC 考拉学姐分享的内容，结合上课的内容进行修改">
     <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
@@ -103,7 +103,7 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#第一章-引言">第一章 引言</a>
+    <li><a href="#第一章-绪论">第一章 绪论</a>
       <ol>
         <li><a href="#从面向机器的语言到面向人类的语言">从面向机器的语言到面向人类的语言</a></li>
         <li><a href="#语言之间的翻译">语言之间的翻译</a></li>
@@ -112,6 +112,25 @@
         <li><a href="#编译器与解释器">编译器与解释器</a></li>
         <li><a href="#编译器的工作原理与基本组成">编译器的工作原理与基本组成</a></li>
         <li><a href="#编译器扫描的遍数">编译器扫描的遍数</a></li>
+      </ol>
+    </li>
+    <li><a href="#第二章-高级语言及语法描述">第二章 高级语言及语法描述</a>
+      <ol>
+        <li><a href="#程序语言的定义">程序语言的定义</a>
+          <ol>
+            <li><a href="#语法">语法</a></li>
+            <li><a href="#语义">语义</a></li>
+          </ol>
+        </li>
+        <li><a href="#程序语言的语法">程序语言的语法</a></li>
+        <li><a href="#程序语言的语法描述">程序语言的语法描述</a>
+          <ol>
+            <li><a href="#概念">概念</a></li>
+            <li><a href="#上下文无关文法">上下文无关文法</a></li>
+            <li><a href="#构造某语言文法的方法">构造某语言文法的方法</a></li>
+            <li><a href="#语法树与二义性">语法树与二义性</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
     <li><a href="#第二章-词法分析">第二章 词法分析</a>
@@ -202,8 +221,8 @@
             
             
                         最后修改:
-                        <time class="article-time--updated" datetime="2025-02-18 22:18:00 &#43;0800 CST" title="2025-02-18 22:18:00 &#43;0800 CST">
-                            2025-02-18
+                        <time class="article-time--updated" datetime="2025-02-20 16:02:03 &#43;0800 CST" title="2025-02-20 16:02:03 &#43;0800 CST">
+                            2025-02-20
                         </time>
 
             
@@ -222,7 +241,7 @@
     
     <h1 id="编译原理知识汇总">编译原理知识汇总
 </h1><h1 id="编译原理">编译原理
-</h1><h2 id="第一章-引言">第一章 引言
+</h1><h2 id="第一章-绪论">第一章 绪论
 </h2><h3 id="从面向机器的语言到面向人类的语言">从面向机器的语言到面向人类的语言
 </h3><p><strong>汇编指令：</strong> 用符号表示的指令被称为汇编指令
 <strong>汇编语言：</strong> 汇编指令的集合称为汇编语言</p>
@@ -279,7 +298,7 @@
 静态错误：静态错误分为语法错误和静态语义错误.
 &lt;1&gt; 语法错误：有关语言结构上的错误，如单词拼写错误、表达式缺少操作数、begin和end不匹配
 &lt;2&gt; 静态语义错误：分析源程序时可以发现的语言意义上的错误，如加法的两个操作数一个是整形变量，另一个是数组名</p>
-<p>（4）编译器的分析\综合模式</p>
+<p>（3）编译器的分析\综合模式</p>
 <img src="image\5267500-afbb123ec5a660fe.png" alt="img" />
 <p>逻辑上把编译器分为 <code>分析(前端)部分</code>和 <code>综合(后端)部分</code>.
 1&gt; 分析(前端)：语言结构和意义的分析； 从词法分析到中间代码生成各阶段的工作
@@ -288,6 +307,67 @@
 <h3 id="编译器扫描的遍数">编译器扫描的遍数
 </h3><p>每个阶段将程序完整分析一遍的工作模式称为一遍扫描。
 (将源程序或源程序的某种形式的中间表示完整分析一遍，亦称作一遍扫描)</p>
+<h2 id="第二章-高级语言及语法描述">第二章 高级语言及语法描述
+</h2><h3 id="程序语言的定义">程序语言的定义
+</h3><p>程序语言由 <strong>语法</strong> 和 <strong>语义</strong> 两方面定义</p>
+<h4 id="语法">语法
+</h4><ul>
+<li>词法规则：单词符号的形成规则  描述工具：有限自动机</li>
+<li>语法规则：语法单位的形成规则  描述工具：上下文无关文法</li>
+</ul>
+<h4 id="语义">语义
+</h4><h3 id="程序语言的语法">程序语言的语法
+</h3><h3 id="程序语言的语法描述">程序语言的语法描述
+</h3><h4 id="概念">概念
+</h4><ul>
+<li>有穷 <strong>字母表</strong>（字符集） Σ 中每一个元素称为一个<strong>字符</strong></li>
+<li>Σ 上的字（也叫字符串） 是指由 Σ 中的 字符所构成的一个有穷序列</li>
+<li>空字 ε ：不包含任何字符的序列</li>
+</ul>
+<h4 id="上下文无关文法">上下文无关文法
+</h4><ul>
+<li>文法：描述语言的语法结构的形式<strong>规则</strong> （或<strong>语法规则</strong>）</li>
+<li>产生式（文法的简化表示方法）</li>
+</ul>
+<p>$$
+例： G ( E ) : E \rightarrow i | E + E | E * E | (E)<br>
+$$</p>
+<ul>
+<li>上下文无关文法的中心思想：
+从文法的开始符号出发，反复连续使用产生式，对非终结符实行替换和展开</li>
+<li>句子
+全是终结符</li>
+<li>句型</li>
+<li>文法 &mdash;&gt; 语言</li>
+</ul>
+<h4 id="构造某语言文法的方法">构造某语言文法的方法
+</h4><p>采用<strong>凑规则</strong>的方法来完成：</p>
+<ol>
+<li>找出语言的<strong>若干句子</strong></li>
+<li>分析<strong>句子的特点</strong></li>
+<li>根据句子的特点<strong>凑规则</strong></li>
+<li>形成<strong>文法</strong></li>
+<li>检验
+$$
+构造生成 L = {a^n b^n c^i | n \geq 1, i \geq 0 }语言的文法: \
+G[ Z ]: Z \rightarrow AB|A \
+A \rightarrow aAb|ab \
+B \rightarrow cB|c \
+$$</li>
+</ol>
+<ul>
+<li>最左推导</li>
+<li>最右推导</li>
+</ul>
+<h4 id="语法树与二义性">语法树与二义性
+</h4><ul>
+<li>用一张图表示一个句型的推导，称为<strong>语法树</strong></li>
+</ul>
+<img src="image/FnRGkDLWai296OXhevRyG50jTDvq.png" alt="FnRGkDLWai296OXhevRyG50jTDvq" style="zoom: 67%;" />
+<ul>
+<li><strong>语言二义性</strong></li>
+<li>文法二义性： 可以改造为无二义</li>
+</ul>
 <h2 id="第二章-词法分析">第二章 词法分析
 </h2><h3 id="词法分析中的若干问题">词法分析中的若干问题
 </h3><p>(1) 记号、模式与单词</p>
@@ -923,7 +1003,8 @@ SLR(1)文法：简单向前看一个终结符即可解决冲突
 </h2><p><a class="link" href="https://www.jianshu.com/p/eb63d31ad638"  target="_blank" rel="noopener"
     >简书博主 SnorlaxSE - 编译原理知识汇总</a>
 <a class="link" href="https://icourse163.feishu.cn/wiki/NLSjwolTAic4gGkYmhicKJOEnpc"  target="_blank" rel="noopener"
-    >中国大学MOOC 考拉学姐 - 编译原理</a></p>
+    >中国大学MOOC 考拉学姐 - 编译原理</a>
+《程序设计语言编译原理》 - 陈火旺，刘春林等 国防工业出版社</p>
 
 </section>
 
@@ -941,7 +1022,7 @@ SLR(1)文法：简单向前看一个终结符即可解决冲突
 
 
         <span>
-            最后更新于 2025-02-18
+            最后更新于 2025-02-20
         </span>
     </section></footer>
 
@@ -1067,7 +1148,7 @@ SLR(1)文法：简单向前看一个终结符即可解决冲突
 
 
 <section class="wordcount">
-    <p>29.69k 字
+    <p>30.17k 字
         <br>5篇文章
     </p>
 </section>
