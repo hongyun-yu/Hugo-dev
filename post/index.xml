@@ -104,7 +104,7 @@
 &lt;li&gt;产生式（文法的简化表示方法）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;$$
-例： G ( E ) : E \rightarrow i | E + E | E * E | (E)&lt;br&gt;
+例： G ( E ) : E \rightarrow i | E + E | E * E | (E)
 $$&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;上下文无关文法的中心思想：
@@ -121,14 +121,14 @@ $$&lt;/p&gt;
 &lt;li&gt;分析&lt;strong&gt;句子的特点&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;根据句子的特点&lt;strong&gt;凑规则&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;形成&lt;strong&gt;文法&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;检验
-$$
+&lt;li&gt;检验&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;$$
 构造生成 L = {a^n b^n c^i | n \geq 1, i \geq 0 }语言的文法: \
 G[ Z ]: Z \rightarrow AB|A \
 A \rightarrow aAb|ab \
 B \rightarrow cB|c \
-$$&lt;/li&gt;
-&lt;/ol&gt;
+$$&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;最左推导&lt;/li&gt;
 &lt;li&gt;最右推导&lt;/li&gt;

@@ -103,7 +103,7 @@
 &lt;li&gt;产生式（文法的简化表示方法）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;$$
-例： G ( E ) : E \rightarrow i | E + E | E * E | (E)&lt;br&gt;
+例： G ( E ) : E \rightarrow i | E + E | E * E | (E)
 $$&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;上下文无关文法的中心思想：
@@ -120,14 +120,14 @@ $$&lt;/p&gt;
 &lt;li&gt;分析&lt;strong&gt;句子的特点&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;根据句子的特点&lt;strong&gt;凑规则&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;形成&lt;strong&gt;文法&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;检验
-$$
+&lt;li&gt;检验&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;$$
 构造生成 L = {a^n b^n c^i | n \geq 1, i \geq 0 }语言的文法: \
 G[ Z ]: Z \rightarrow AB|A \
 A \rightarrow aAb|ab \
 B \rightarrow cB|c \
-$$&lt;/li&gt;
-&lt;/ol&gt;
+$$&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;最左推导&lt;/li&gt;
 &lt;li&gt;最右推导&lt;/li&gt;
@@ -798,19 +798,24 @@ SLR(1)文法：简单向前看一个终结符即可解决冲突
 &lt;ul&gt;
 &lt;li&gt;通过Aplayer引入音乐播放器，再使用PJAX不刷新加载技术，实现页面切换不中断音乐播放&lt;/li&gt;
 &lt;li&gt;背景点线漂移&lt;/li&gt;
-&lt;li&gt;博客文章数和总字数统计&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.mulinbiao.com/post/stack-beautify/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;博客文章数和总字数统计&lt;/a&gt;等&lt;/li&gt;
 &lt;li&gt;加载进度条&lt;/li&gt;
 &lt;li&gt;文章最后更新时间&lt;/li&gt;
 &lt;li&gt;随机封面（-已移除）&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://linsnow.cn/posts/bloglab/hugo-stack/modify-hugo/&#34;  title=&#34;点击跳转&#34;
      target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;主题细节调整&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://xrg.fj.cn/p/hugo-stack%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%96%B0%E5%B0%8F%E8%AE%B0/#%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;返回顶部&lt;/a&gt;  -暂不满意&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://munlelee.github.io/post/hugo%E5%8D%9A%E5%AE%A2-stack%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9%E7%AC%AC%E4%B8%80%E7%AB%99/#%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8%E6%8C%89%E9%92%AE%E7%9A%84%E6%B7%BB%E5%8A%A0&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;返回顶部&lt;/a&gt;  （pjax导致刷新返回顶部按钮才能出现）&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://yonkov.github.io/post/add-dark-mode-toggle-to-hugo/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;深色模式&lt;/a&gt;  -  暂未解决&lt;/li&gt;
+    &gt;深色模式&lt;/a&gt;  -  ( 文章页切换 )暂未解决&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/lxgw/LxgwWenKai/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;字体更换&lt;/a&gt; - 霞鹜文楷&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://xrg.fj.cn/p/hugo-stack%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%96%B0%E5%B0%8F%E8%AE%B0/#%E6%BB%9A%E5%8A%A8%E6%9D%A1%E7%BE%8E%E5%8C%96&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;滚动条美化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://oxidane-uni.github.io/p/%E4%BD%BF%E7%94%A8-hugo-%E5%AF%B9%E5%8D%9A%E5%AE%A2%E7%9A%84%E9%87%8D%E5%BB%BA%E4%B8%8E-stack-%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96%E8%AE%B0%E5%BD%95/#%E6%94%B9%E5%96%84%E6%B5%85%E8%89%B2%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%AF%BB%E6%80%A7&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;浅色模式可读性&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>

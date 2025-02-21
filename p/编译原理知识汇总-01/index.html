@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB-01/'>
 
-<link rel="stylesheet" href="/Hugo-dev/scss/style.min.6c6cc2c76c057a1febb7bb131b6e42fd8eead70048c8deddae6c5a1a86bd18c4.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="/Hugo-dev/scss/style.min.535ffcccd8feddebde301f518adc370d7c99262077033a7ca616e6762dc85408.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
 <script>
     
@@ -28,7 +28,7 @@
 <meta property='og:description' content="编译原理一、二、三、四章知识点总结，参考了简书博主SnorlaxSE总结的《编译原理知识汇总》和中国大学MOOC 考拉学姐分享的内容，结合上课的内容进行修改">
 <meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB-01/'>
 <meta property='og:site_name' content='羡余'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-02-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-20T16:02:03&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-02-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-02-21T22:11:10&#43;08:00'/>
 <meta name="twitter:title" content="编译原理知识汇总-01">
 <meta name="twitter:description" content="编译原理一、二、三、四章知识点总结，参考了简书博主SnorlaxSE总结的《编译原理知识汇总》和中国大学MOOC 考拉学姐分享的内容，结合上课的内容进行修改">
     <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
@@ -221,8 +221,8 @@
             
             
                         最后修改:
-                        <time class="article-time--updated" datetime="2025-02-20 16:02:03 &#43;0800 CST" title="2025-02-20 16:02:03 &#43;0800 CST">
-                            2025-02-20
+                        <time class="article-time--updated" datetime="2025-02-21 22:11:10 &#43;0800 CST" title="2025-02-21 22:11:10 &#43;0800 CST">
+                            2025-02-21
                         </time>
 
             
@@ -330,7 +330,7 @@
 <li>产生式（文法的简化表示方法）</li>
 </ul>
 <p>$$
-例： G ( E ) : E \rightarrow i | E + E | E * E | (E)<br>
+例： G ( E ) : E \rightarrow i | E + E | E * E | (E)
 $$</p>
 <ul>
 <li>上下文无关文法的中心思想：
@@ -347,14 +347,14 @@ $$</p>
 <li>分析<strong>句子的特点</strong></li>
 <li>根据句子的特点<strong>凑规则</strong></li>
 <li>形成<strong>文法</strong></li>
-<li>检验
-$$
+<li>检验</li>
+</ol>
+<p>$$
 构造生成 L = {a^n b^n c^i | n \geq 1, i \geq 0 }语言的文法: \
 G[ Z ]: Z \rightarrow AB|A \
 A \rightarrow aAb|ab \
 B \rightarrow cB|c \
-$$</li>
-</ol>
+$$</p>
 <ul>
 <li>最左推导</li>
 <li>最右推导</li>
@@ -1009,6 +1009,7 @@ SLR(1)文法：简单向前看一个终结符即可解决冲突
 </section>
 
 
+
     <footer class="article-footer">
     
 
@@ -1022,7 +1023,7 @@ SLR(1)文法：简单向前看一个终结符即可解决冲突
 
 
         <span>
-            最后更新于 2025-02-20
+            最后更新于 2025-02-21
         </span>
     </section></footer>
 
@@ -1128,31 +1129,59 @@ SLR(1)文法：简单向前看一个终结符即可解决冲突
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section class="wordcount">
-    <p>30.17k 字
-        <br>5篇文章
-    </p>
+<section class="count_info">
+    <div>
+        本博客已稳定运行
+        <span id="ds" class="running-days"></span>
+        天
+        <span id="hs" class="running-days"></span>
+        小时
+        <span id="ms" class="running-days"></span>
+        分钟
+    </div>
+    <div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        共发表 5 篇文章 · 总计 30.20 k 字
+    </div>
+    <div>
+        <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    </div>
 </section>
 
+
+<script>
+let s1 = '2025-1-20'; 
+s1 = new Date(s1.replace(/-/g, "/"));
+let s2 = new Date();
+let timeDifference = s2.getTime() - s1.getTime();
+
+let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+document.getElementById('ds').innerHTML = days;
+document.getElementById('hs').innerHTML = hours;
+document.getElementById('ms').innerHTML = minutes;
+
+</script>
 
 
     
@@ -1356,6 +1385,7 @@ SLR(1)文法：简单向前看一个终结符即可解决冲突
 
   initScrollTop();
 </script>
+
 
 
 
