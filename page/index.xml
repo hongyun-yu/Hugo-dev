@@ -25,7 +25,7 @@
 &lt;ul&gt;
 &lt;li&gt;通过Aplayer引入音乐播放器，再使用PJAX不刷新加载技术，实现页面切换不中断音乐播放&lt;/li&gt;
 &lt;li&gt;背景点线漂移&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.mulinbiao.com/post/stack-beautify/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://thirdshire.com/hugo-stack-renovation/#%E5%8D%9A%E5%AE%A2%E5%B7%B2%E8%BF%90%E8%A1%8Cx%E5%A4%A9x%E5%B0%8F%E6%97%B6x%E5%88%86%E9%92%9F%E5%AD%97%E6%A0%B7&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;博客文章数和总字数统计&lt;/a&gt;等&lt;/li&gt;
 &lt;li&gt;加载进度条&lt;/li&gt;
 &lt;li&gt;文章最后更新时间&lt;/li&gt;

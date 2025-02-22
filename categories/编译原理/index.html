@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/'>
 
-<link rel="stylesheet" href="/Hugo-dev/scss/style.min.535ffcccd8feddebde301f518adc370d7c99262077033a7ca616e6762dc85408.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="/Hugo-dev/scss/style.min.931ff95f801376156525fd9d531ff3120af79ead784dd3bd6ce58d23d430b394.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
 <script>
     
@@ -28,7 +28,7 @@
 <meta property='og:description' content="演示说明">
 <meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/'>
 <meta property='og:site_name' content='羡余'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-02-21T22:11:10&#43;08:00 '/>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-02-22T16:57:24&#43;08:00 '/>
 <meta name="twitter:title" content="Category: 编译原理 - 羡余">
 <meta name="twitter:description" content="演示说明"><link rel="alternate" type="application/rss&#43;xml" href="https://hongyun-yu.github.io/Hugo-dev/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/index.xml">
     <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
@@ -351,6 +351,11 @@
     <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB-01/">
         <div class="article-details">
             <h2 class="article-title">编译原理知识汇总-01</h2>
+            
+            <div class="article-subtitle">
+                编译原理一、二、三、四章知识点总结，参考了简书博主SnorlaxSE总结的《编译原理知识汇总》和中国大学MOOC 考拉学姐分享的内容，结合上课的内容进行修改
+            </div>
+            
             <footer class="article-time">
                 <time datetime='2025-02-17T00:00:00Z'>2025-02-17</time>
             </footer>
@@ -370,6 +375,39 @@
         使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
         主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
+
+    
+    <section class="running-time">
+    本博客已稳定运行
+    <span id="runningdays" class="running-days"></span>
+    </section>
+    
+    
+    <section class="totalcount">
+    
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    发表了5篇文章 · 
+    总计30.20k字
+</section>
+
 </footer>
 
 
@@ -499,6 +537,21 @@
   initScrollTop();
 </script>
 
+
+
+<script>
+    let s1 = '2025-1-20'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let result = days + "天" + hours + "小时" + minutes + "分钟";
+    document.getElementById('runningdays').innerHTML = result;
+</script>
 
 
 

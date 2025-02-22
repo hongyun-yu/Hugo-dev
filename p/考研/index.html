@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/p/%E8%80%83%E7%A0%94/'>
 
-<link rel="stylesheet" href="/Hugo-dev/scss/style.min.535ffcccd8feddebde301f518adc370d7c99262077033a7ca616e6762dc85408.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="/Hugo-dev/scss/style.min.931ff95f801376156525fd9d531ff3120af79ead784dd3bd6ce58d23d430b394.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
 <script>
     
@@ -555,6 +555,7 @@ bilibili、知乎、小红书、抖音</li>
     </section></footer>
 
 
+
     
         <link 
                 rel="stylesheet" 
@@ -652,6 +653,39 @@ bilibili、知乎、小红书、抖音</li>
         使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
         主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
+
+    
+    <section class="running-time">
+    本博客已稳定运行
+    <span id="runningdays" class="running-days"></span>
+    </section>
+    
+    
+    <section class="totalcount">
+    
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    发表了5篇文章 · 
+    总计30.20k字
+</section>
+
 </footer>
 
 
@@ -859,6 +893,21 @@ bilibili、知乎、小红书、抖音</li>
   initScrollTop();
 </script>
 
+
+
+<script>
+    let s1 = '2025-1-20'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let result = days + "天" + hours + "小时" + minutes + "分钟";
+    document.getElementById('runningdays').innerHTML = result;
+</script>
 
 
 

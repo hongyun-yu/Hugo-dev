@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/archives/'>
 
-<link rel="stylesheet" href="/Hugo-dev/scss/style.min.535ffcccd8feddebde301f518adc370d7c99262077033a7ca616e6762dc85408.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="/Hugo-dev/scss/style.min.931ff95f801376156525fd9d531ff3120af79ead784dd3bd6ce58d23d430b394.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
 <script>
     
@@ -354,6 +354,11 @@
     <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB-01/">
         <div class="article-details">
             <h2 class="article-title">编译原理知识汇总-01</h2>
+            
+            <div class="article-subtitle">
+                编译原理一、二、三、四章知识点总结，参考了简书博主SnorlaxSE总结的《编译原理知识汇总》和中国大学MOOC 考拉学姐分享的内容，结合上课的内容进行修改
+            </div>
+            
             <footer class="article-time">
                 <time datetime='2025-02-17T00:00:00Z'>2025-02-17</time>
             </footer>
@@ -365,6 +370,11 @@
     <a href="/Hugo-dev/p/%E8%80%83%E7%A0%94/">
         <div class="article-details">
             <h2 class="article-title">考研-基本常识</h2>
+            
+            <div class="article-subtitle">
+                考研基本常识，参考了B站up取景框看世界《一个视频讲透考研的一切！》，最后主要是计算机科学与技术专业
+            </div>
+            
             <footer class="article-time">
                 <time datetime='2025-02-15T00:00:00Z'>2025-02-15</time>
             </footer>
@@ -382,6 +392,11 @@
     <a href="/Hugo-dev/p/markdown-syntax-guide/">
         <div class="article-details">
             <h2 class="article-title">Markdown Syntax Guide</h2>
+            
+            <div class="article-subtitle">
+                Hugo&#43;Stake主题下的博客文章规则，使用markdown格式
+            </div>
+            
             <footer class="article-time">
                 <time datetime='2025-02-08T00:00:00Z'>2025-02-08</time>
             </footer>
@@ -402,6 +417,11 @@
     <a href="/Hugo-dev/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%80%BB%E5%A4%8D%E4%B9%A0/">
         <div class="article-details">
             <h2 class="article-title">计算机网络总复习</h2>
+            
+            <div class="article-subtitle">
+                计算机网络总复习，参考了B站视频中科大郑烇、杨坚老师的《计算机网络-自顶向下方法》给出的总复习，同时结合课程考核加入了一些内容
+            </div>
+            
             <footer class="article-time">
                 <time datetime='2025-01-22T00:00:00Z'>2025-01-22</time>
             </footer>
@@ -427,6 +447,7 @@
     <a href="/Hugo-dev/p/">
         <div class="article-details">
             <h2 class="article-title"></h2>
+            
             <footer class="article-time">
                 <time datetime='0001-01-01T00:00:00Z'>0001-01-01</time>
             </footer>
@@ -449,6 +470,39 @@
         使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
         主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
+
+    
+    <section class="running-time">
+    本博客已稳定运行
+    <span id="runningdays" class="running-days"></span>
+    </section>
+    
+    
+    <section class="totalcount">
+    
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    发表了5篇文章 · 
+    总计30.20k字
+</section>
+
 </footer>
 
 
@@ -578,6 +632,21 @@
   initScrollTop();
 </script>
 
+
+
+<script>
+    let s1 = '2025-1-20'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let result = days + "天" + hours + "小时" + minutes + "分钟";
+    document.getElementById('runningdays').innerHTML = result;
+</script>
 
 
 
