@@ -95,13 +95,28 @@
 &lt;/h3&gt;&lt;h4 id=&#34;概念&#34;&gt;概念
 &lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;有穷 &lt;strong&gt;字母表&lt;/strong&gt;（字符集） Σ 中每一个元素称为一个&lt;strong&gt;字符&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Σ 上的字（也叫字符串） 是指由 Σ 中的 字符所构成的一个有穷序列&lt;/li&gt;
+&lt;li&gt;Σ 上的&lt;strong&gt;字&lt;/strong&gt;（也叫&lt;strong&gt;字符串&lt;/strong&gt;） 是指由 Σ 中的 字符所构成的一个有穷序列&lt;/li&gt;
 &lt;li&gt;空字 ε ：不包含任何字符的序列&lt;/li&gt;
+&lt;li&gt;Σ* ：表示 Σ 上的所有字的全体，包含空字  ε&lt;/li&gt;
+&lt;li&gt;Σ* 的子集 U 和 V 的**连接（积）**定义为 UV = { αβ| α∈U ,  β∈V }&lt;/li&gt;
+&lt;li&gt;V&lt;span style=&#34;vertical-align:super;&#34;&gt;*&lt;/span&gt;：&lt;strong&gt;闭包&lt;/strong&gt;      V&lt;span style=&#34;vertical-align:super;&#34;&gt;+&lt;/span&gt;：正规闭包&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;上下文无关文法&#34;&gt;上下文无关文法
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;文法：描述语言的语法结构的形式&lt;strong&gt;规则&lt;/strong&gt; （或&lt;strong&gt;语法规则&lt;/strong&gt;）&lt;/li&gt;
-&lt;li&gt;产生式（文法的简化表示方法）&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文法：描述语言的语法结构的形式&lt;strong&gt;规则&lt;/strong&gt; （或&lt;strong&gt;语法规则&lt;/strong&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上下文无关文法的定义：&lt;/p&gt;
+&lt;p&gt;一个上下文无关文法 G 是一个四元式 G =(V&lt;span style=&#34;vertical-align:sub;&#34;&gt;T&lt;/span&gt;, V&lt;span style=&#34;vertical-align:sub;&#34;&gt;N&lt;/span&gt;, S, P)，其中:&lt;/p&gt;
+&lt;p&gt;​	V&lt;span style=&#34;vertical-align:sub;&#34;&gt;T&lt;/span&gt;: 终结符集合( 非空 )&lt;/p&gt;
+&lt;p&gt;​	V&lt;span style=&#34;vertical-align:sub;&#34;&gt;N&lt;/span&gt;: 非终结符集合( 非空 )&lt;/p&gt;
+&lt;p&gt;​	S: 文法的开始符号&lt;/p&gt;
+&lt;p&gt;​	P: 产生式集合&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;产生式（文法的简化表示方法）&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;$$
 例： G ( E ) : E \rightarrow i | E + E | E * E | (E)
@@ -109,9 +124,8 @@ $$&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;上下文无关文法的中心思想：
 从文法的开始符号出发，反复连续使用产生式，对非终结符实行替换和展开&lt;/li&gt;
-&lt;li&gt;句子
-全是终结符&lt;/li&gt;
 &lt;li&gt;句型&lt;/li&gt;
+&lt;li&gt;句子: 只含终结符的句型&lt;/li&gt;
 &lt;li&gt;文法 &amp;mdash;&amp;gt; 语言&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;构造某语言文法的方法&#34;&gt;构造某语言文法的方法
@@ -142,6 +156,15 @@ $$&lt;/p&gt;
 &lt;li&gt;&lt;strong&gt;语言二义性&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;文法二义性： 可以改造为无二义&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h4 id=&#34;形式语言鸟瞰&#34;&gt;形式语言鸟瞰
+&lt;/h4&gt;&lt;p&gt;$$
+产生式:   α \rightarrow β
+$$&lt;/p&gt;
+&lt;p&gt;0型文法: &lt;strong&gt;α 至少含有一个终结符&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1型文法( 上下文有关文法 ): &lt;strong&gt;|α | &amp;lt;= |β|  ,表示长度&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;2型文法( 上下文无关文法 ): &lt;strong&gt;α 只能是一个非终结符, 如 A&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;3型文法( 正规文法，有限自动机 ): &lt;strong&gt;α 只能是一个非终结符, 且 β 只能是 αB( Bα ) 或 α&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;描述能力&lt;/strong&gt;从上至下逐渐减弱，为包含关系&lt;/p&gt;
 &lt;h2 id=&#34;第二章-词法分析&#34;&gt;第二章 词法分析
 &lt;/h2&gt;&lt;h3 id=&#34;词法分析中的若干问题&#34;&gt;词法分析中的若干问题
 &lt;/h3&gt;&lt;p&gt;(1) 记号、模式与单词&lt;/p&gt;
@@ -151,14 +174,18 @@ $$&lt;/p&gt;
 &lt;strong&gt;单词（lexeme）&lt;/strong&gt; ：被识别出的元素的值(字符串本身) ，也称为词值&lt;/p&gt;
 &lt;p&gt;(2) 词法分析器的作用与工作方式&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;词法分析器的作用：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;1&amp;gt; 识别记号并交给语法分析器(根据模式识别记号)
-2&amp;gt; 滤掉源程序中的无用成分,如注释、空格和回车等
-3&amp;gt; 处理与具体平台有关的输入(如文件结束符的不同表示等)
-4&amp;gt; 调用符号表管理器和出错处理器，进行相关处理&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;工作方式：&lt;/strong&gt;
-1.单独一遍扫描
-2.作为语法分析器的子程序
-3.并行方式&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;识别记号并交给语法分析器(根据模式识别记号)&lt;/li&gt;
+&lt;li&gt;滤掉源程序中的无用成分,如注释、空格和回车等&lt;/li&gt;
+&lt;li&gt;处理与具体平台有关的输入(如文件结束符的不同表示等)&lt;/li&gt;
+&lt;li&gt;调用符号表管理器和出错处理器，进行相关处理&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;工作方式：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;单独一遍扫描&lt;/li&gt;
+&lt;li&gt;作为语法分析器的子程序&lt;/li&gt;
+&lt;li&gt;并行方式&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h3 id=&#34;模式的形式化描述&#34;&gt;模式的形式化描述
 &lt;/h3&gt;&lt;p&gt;(1) 字符串与语言&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;语言L&lt;/strong&gt; 是有限字母表∑上有限长度字符串的集合.
@@ -204,7 +231,7 @@ $$&lt;/p&gt;
 (e) 非字符组 若[r]是一个字符组形式的正规式，则[^r]是表示∑- L([r])的正规式。
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;记号的识别有限自动机&#34;&gt;记号的识别——有限自动机
-&lt;/h3&gt;&lt;p&gt;(1) 不确定的有限自动机（NondeterministicFinite Automaton, NFA）&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;(1) 不确定的有限自动机（NondeterministicFinite Automaton,&lt;span style=&#34;color:#330000;&#34;&gt;&lt;/span&gt; NFA）&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;NFA是一个五元组（5-tuple）：M =（S，∑，move，s0，F），其中
 （1） S是有限个状态（state）的集合；
 （2） ∑是有限个输入字符（包括ε）的集合；
