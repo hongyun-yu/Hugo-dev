@@ -6,39 +6,6 @@
         <description>Recent content in Tags on 羡余</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <copyright>Hongyun</copyright>
-        <lastBuildDate>Sat, 08 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hongyun-yu.github.io/Hugo-dev/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Css</title>
-        <link>https://hongyun-yu.github.io/Hugo-dev/tags/css/</link>
-        <pubDate>Sat, 08 Feb 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://hongyun-yu.github.io/Hugo-dev/tags/css/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Html</title>
-        <link>https://hongyun-yu.github.io/Hugo-dev/tags/html/</link>
-        <pubDate>Sat, 08 Feb 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://hongyun-yu.github.io/Hugo-dev/tags/html/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Markdown</title>
-        <link>https://hongyun-yu.github.io/Hugo-dev/tags/markdown/</link>
-        <pubDate>Sat, 08 Feb 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://hongyun-yu.github.io/Hugo-dev/tags/markdown/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Themes</title>
-        <link>https://hongyun-yu.github.io/Hugo-dev/tags/themes/</link>
-        <pubDate>Sat, 08 Feb 2025 00:00:00 +0000</pubDate>
-        
-        <guid>https://hongyun-yu.github.io/Hugo-dev/tags/themes/</guid>
-        <description></description>
-        </item>
-        
+        <copyright>Hongyun</copyright><atom:link href="https://hongyun-yu.github.io/Hugo-dev/tags/index.xml" rel="self" type="application/rss+xml" />
     </channel>
 </rss>
