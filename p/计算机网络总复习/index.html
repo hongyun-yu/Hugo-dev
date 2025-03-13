@@ -28,7 +28,7 @@
 <meta property='og:description' content="计算机网络总复习，参考了B站视频中科大郑烇、杨坚老师的《计算机网络-自顶向下方法》给出的总复习，同时结合课程考核加入了一些内容">
 <meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%80%BB%E5%A4%8D%E4%B9%A0/'>
 <meta property='og:site_name' content='羡余'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-01-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-13T15:59:35&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-01-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-13T16:05:01&#43;08:00'/>
 <meta name="twitter:title" content="计算机网络总复习">
 <meta name="twitter:description" content="计算机网络总复习，参考了B站视频中科大郑烇、杨坚老师的《计算机网络-自顶向下方法》给出的总复习，同时结合课程考核加入了一些内容">
     <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
@@ -352,7 +352,7 @@
             
             
                         最后修改:
-                        <time class="article-time--updated" datetime="2025-03-13 15:59:35 &#43;0800 CST" title="2025-03-13 15:59:35 &#43;0800 CST">
+                        <time class="article-time--updated" datetime="2025-03-13 16:05:01 &#43;0800 CST" title="2025-03-13 16:05:01 &#43;0800 CST">
                             2025-03-13
                         </time>
 
@@ -872,14 +872,7 @@
 <li>递归解析：如果主机所询问的本地域名服务器不知道被查询的域名的IP地址，那么本地域名服务器就以DNS客户的身份，向其它根域名服务器继续发出查询请求报文(即替主机继续查询)，而不是让主机自己进行下一步查询。因此，递归查询返回的查询结果或者是所要查询的IP地址，或者是报错，表示无法查询到所需的IP地址。</li>
 <li>迭代解析：当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么给出所要查询的IP地址，要么告诉本地服务器：“你下一步应当向哪一个域名服务器进行查询”。然后让本地服务器进行后续的查询。根域名服务器通常是把自己知道的顶级域名服务器的IP地址告诉本地域名服务器，让本地域名服务器再向顶级域名服务器查询。顶级域名服务器在收到本地域名服务器的查询请求后，要么给出所要查询的IP地址，要么告诉本地服务器下一步应当向哪一个权限域名服务器进行查询。最后，知道了所要解析的IP地址或报错，然后把这个结果返回给发起查询的主机。</li>
 </ul>
-<p><img src="https://cdn.nlark.com/yuque/0/2025/png/42840982/1736144525748-a7a35972-1aeb-4e16-acae-ca23c1300d01.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
+<img src="image/1736144525748-a7a35972-1aeb-4e16-acae-ca23c1300d01.png" />
 <h4 id="dns-缓存">DNS 缓存
 </h4><ul>
 <li>作用</li>
