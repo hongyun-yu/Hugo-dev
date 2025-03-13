@@ -13,7 +13,21 @@
         <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</guid>
-        <description>&lt;img src="https://www.helloimg.com/i/2025/03/10/67cea15d2afc4.png" alt="Featured image of post 编译原理知识汇总" /&gt;&lt;h1 id=&#34;编译原理知识汇总&#34;&gt;编译原理知识汇总
+        <description>&lt;p&gt;&lt;img src=&#34;https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/image/%E5%B0%8F%E9%B8%9F%E6%B8%B8%E5%85%AD%E8%8A%B1.png&#34;
+	width=&#34;5120&#34;
+	height=&#34;3656&#34;
+	srcset=&#34;https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/image/%E5%B0%8F%E9%B8%9F%E6%B8%B8%E5%85%AD%E8%8A%B1_hu15121179169480956145.png 480w, https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/image/%E5%B0%8F%E9%B8%9F%E6%B8%B8%E5%85%AD%E8%8A%B1_hu15848701515808961622.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;小鸟游六花&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;336px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;编译原理知识汇总&#34;&gt;编译原理知识汇总
 &lt;/h1&gt;&lt;h1 id=&#34;编译原理&#34;&gt;编译原理
 &lt;/h1&gt;&lt;h2 id=&#34;第一章-绪论&#34;&gt;第一章 绪论
 &lt;/h2&gt;&lt;h3 id=&#34;从面向机器的语言到面向人类的语言&#34;&gt;从面向机器的语言到面向人类的语言

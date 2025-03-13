@@ -12,7 +12,21 @@
         <pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E8%A2%AB%E7%94%9F%E5%91%BD%E6%89%80%E5%8E%8C%E5%BC%83%E4%B8%AD%E6%96%87%E5%A1%AB%E8%AF%8D/</guid>
-        <description>&lt;img src="https://www.helloimg.com/i/2025/03/13/67d281733e206.png" alt="Featured image of post 被生命所厌弃（中文填词）" /&gt;&lt;h2 id=&#34;中文填词被生命所厌恶&#34;&gt;&lt;strong&gt;「中文填词」被生命所厌恶&lt;/strong&gt;
+        <description>&lt;p&gt;&lt;img src=&#34;https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E8%A2%AB%E7%94%9F%E5%91%BD%E6%89%80%E5%8E%8C%E5%BC%83%E4%B8%AD%E6%96%87%E5%A1%AB%E8%AF%8D/image/1.png&#34;
+	width=&#34;1200&#34;
+	height=&#34;900&#34;
+	srcset=&#34;https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E8%A2%AB%E7%94%9F%E5%91%BD%E6%89%80%E5%8E%8C%E5%BC%83%E4%B8%AD%E6%96%87%E5%A1%AB%E8%AF%8D/image/1_hu18301126553737146209.png 480w, https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E8%A2%AB%E7%94%9F%E5%91%BD%E6%89%80%E5%8E%8C%E5%BC%83%E4%B8%AD%E6%96%87%E5%A1%AB%E8%AF%8D/image/1_hu4943427714506201370.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;中文填词被生命所厌恶&#34;&gt;&lt;strong&gt;「中文填词」被生命所厌恶&lt;/strong&gt;
 &lt;/h2&gt;&lt;p&gt;若以爱来维系生息啊&lt;/p&gt;
 &lt;p&gt;尚能感受的温度是虚假&lt;/p&gt;
 &lt;p&gt;我该说点什么开朗的话&lt;/p&gt;
@@ -109,7 +123,21 @@
         <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</guid>
-        <description>&lt;img src="https://www.helloimg.com/i/2025/03/10/67cea15d2afc4.png" alt="Featured image of post 编译原理知识汇总" /&gt;&lt;h1 id=&#34;编译原理知识汇总&#34;&gt;编译原理知识汇总
+        <description>&lt;p&gt;&lt;img src=&#34;https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/image/%E5%B0%8F%E9%B8%9F%E6%B8%B8%E5%85%AD%E8%8A%B1.png&#34;
+	width=&#34;5120&#34;
+	height=&#34;3656&#34;
+	srcset=&#34;https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/image/%E5%B0%8F%E9%B8%9F%E6%B8%B8%E5%85%AD%E8%8A%B1_hu15121179169480956145.png 480w, https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/image/%E5%B0%8F%E9%B8%9F%E6%B8%B8%E5%85%AD%E8%8A%B1_hu15848701515808961622.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;小鸟游六花&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;140&#34;
+		data-flex-basis=&#34;336px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;编译原理知识汇总&#34;&gt;编译原理知识汇总
 &lt;/h1&gt;&lt;h1 id=&#34;编译原理&#34;&gt;编译原理
 &lt;/h1&gt;&lt;h2 id=&#34;第一章-绪论&#34;&gt;第一章 绪论
 &lt;/h2&gt;&lt;h3 id=&#34;从面向机器的语言到面向人类的语言&#34;&gt;从面向机器的语言到面向人类的语言
@@ -916,7 +944,21 @@ SLR(1)文法：简单向前看一个终结符即可解决冲突
         <pubDate>Sat, 15 Feb 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E8%80%83%E7%A0%94/</guid>
-        <description>&lt;img src="https://www.helloimg.com/i/2025/02/17/67b3141695089.png" alt="Featured image of post 考研-基本常识" /&gt;&lt;h2 id=&#34;考研基本常识&#34;&gt;考研基本常识
+        <description>&lt;p&gt;&lt;img src=&#34;https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E8%80%83%E7%A0%94/images/67b3141695089.png&#34;
+	width=&#34;1000&#34;
+	height=&#34;700&#34;
+	srcset=&#34;https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E8%80%83%E7%A0%94/images/67b3141695089_hu4801696423511383485.png 480w, https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E8%80%83%E7%A0%94/images/67b3141695089_hu4125657899593880953.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;67b3141695089&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;342px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;考研基本常识&#34;&gt;考研基本常识
 &lt;/h2&gt;&lt;h3 id=&#34;考研届数&#34;&gt;考研届数
 &lt;/h3&gt;&lt;p&gt;XX考研（ &lt;strong&gt;研究生入学年份&lt;/strong&gt; ）&lt;/p&gt;
 &lt;h3 id=&#34;报名条件&#34;&gt;报名条件
@@ -1451,7 +1493,21 @@ bilibili、知乎、小红书、抖音&lt;/li&gt;
         <pubDate>Wed, 22 Jan 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%80%BB%E5%A4%8D%E4%B9%A0/</guid>
-        <description>&lt;img src="https://www.helloimg.com/i/2025/02/20/67b6e34cc4b6a.png" alt="Featured image of post 计算机网络总复习" /&gt;&lt;h2 id=&#34;计算机网络与互联网络&#34;&gt;计算机网络与互联网络
+        <description>&lt;p&gt;&lt;img src=&#34;https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%80%BB%E5%A4%8D%E4%B9%A0/image/%E6%9C%AA%E6%A0%87%E9%A2%98-1.png&#34;
+	width=&#34;1000&#34;
+	height=&#34;750&#34;
+	srcset=&#34;https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%80%BB%E5%A4%8D%E4%B9%A0/image/%E6%9C%AA%E6%A0%87%E9%A2%98-1_hu7094522952496973246.png 480w, https://hongyun-yu.github.io/Hugo-dev/Hugo-dev/p/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%80%BB%E5%A4%8D%E4%B9%A0/image/%E6%9C%AA%E6%A0%87%E9%A2%98-1_hu18361080572184167177.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;未标题-1&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;133&#34;
+		data-flex-basis=&#34;320px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;计算机网络与互联网络&#34;&gt;计算机网络与互联网络
 &lt;/h2&gt;&lt;h3 id=&#34;什么是互联网络&#34;&gt;什么是互联网络
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;从构成的角度来看&lt;/strong&gt;：
@@ -2697,115 +2753,6 @@ SR：发送窗口大于 1，接收窗口大于 1（能够乱序接收；发送�
 &lt;h2 id=&#34;参考&#34;&gt;参考
 &lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1JV411t7ow/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=76a496aa006e07f846fd0bbe5954c92e&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;中科大郑烇、杨坚全套《计算机网络（自顶向下方法 第7版，James F.Kurose，Keith W.Ross）》课程&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title></title>
-        <link>https://hongyun-yu.github.io/Hugo-dev/p/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://hongyun-yu.github.io/Hugo-dev/p/</guid>
-        <description>&lt;h2 id=&#34;hugo解析&#34;&gt;Hugo解析
-&lt;/h2&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;43
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;44
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;45
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── archetypes            
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── default.md				# hugo新建文章的默认模板
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── config.yaml                 # 网站配置文件
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── content                     # 站点内的内容都在这里
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── categories              # “分类”页面的首页
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   └── Test                # “分类”页面下的一个具体分类页面
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   ├── page                    # 显示在网站主页左侧边栏菜单的选项（导航栏）
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   ├── about               # 左侧边栏菜单中的“关于”页面
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   ├── archives            # 左侧边栏菜单中的“归档”页面
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   ├── links               # 左侧边栏菜单中的“链接”页面
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   │   └── search              # 左侧边栏菜单中的“搜索”页面
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── post                    # 用户写的帖子都放在这里，每个子文件夹对应一个帖子
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│       ├── 2024
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│            ├── 09
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│                ├── 文章目录
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│					  ├── .md
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│					  ├── .img
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│			 ├── 10
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│                ├── 文章目录
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│					  ├── .md
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── data
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── layouts
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── LICENSE
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── README.md
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── resources
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│   └── _gen
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│       ├── assets
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;│       └── images
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── static                     # 放用户自定义字体、用户头像、网站小图标等
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└── themes                     # 放各种主题
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    └── hugo-theme-stack       # stack主题
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── archetypes
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── assets
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── config.yaml
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── data
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── debug.sh
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── exampleSite
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── go.mod
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── i18n
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── images
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── layouts
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── LICENSE
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── netlify.toml
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        ├── README.md
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        └── theme.toml
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;+++&lt;/p&gt;
-&lt;h2 id=&#34;最后修改时间问题&#34;&gt;最后修改时间问题
-&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://i-square.github.io/p/hugo-upgrade-and-hugo-theme-stack-modify-and-last-modified-time/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;记录hugo升级、hugo-theme-stack主题更新和修改、最后修改时间问题解决的相关内容&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
