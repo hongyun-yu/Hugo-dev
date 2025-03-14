@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://hongyun-yu.github.io/Hugo-dev/</loc>
+    <lastmod>2025-03-14T20:13:04+08:00</lastmod>
+  </url><url>
+    <loc>https://hongyun-yu.github.io/Hugo-dev/page/</loc>
+    <lastmod>2025-03-14T20:13:04+08:00</lastmod>
+  </url><url>
+    <loc>https://hongyun-yu.github.io/Hugo-dev/%E5%BD%B1%E8%A7%86-screen/</loc>
+    <lastmod>2025-03-14T20:13:04+08:00</lastmod>
+  </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/categories/</loc>
     <lastmod>2025-03-13T16:35:32+08:00</lastmod>
   </url><url>
@@ -14,17 +23,11 @@
     <loc>https://hongyun-yu.github.io/Hugo-dev/categories/%E9%9F%B3%E4%B9%90/</loc>
     <lastmod>2025-03-13T15:43:34+08:00</lastmod>
   </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/page/</loc>
-    <lastmod>2025-03-14T20:05:43+08:00</lastmod>
-  </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2025-03-13T16:35:32+08:00</lastmod>
   </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</loc>
     <lastmod>2025-03-13T16:35:32+08:00</lastmod>
-  </url><url>
-    <loc>https://hongyun-yu.github.io/Hugo-dev/%E5%BD%B1%E8%A7%86-screen/</loc>
-    <lastmod>2025-03-14T20:05:43+08:00</lastmod>
   </url><url>
     <loc>https://hongyun-yu.github.io/Hugo-dev/categories/%E8%80%83%E7%A0%94/</loc>
     <lastmod>2025-03-13T15:43:34+08:00</lastmod>
