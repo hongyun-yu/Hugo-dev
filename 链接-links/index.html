@@ -296,7 +296,6 @@
     
 </div>
 
-
 </header>
 
     <section class="article-content">
@@ -885,6 +884,26 @@
 
     let result = days + "天" + hours + "小时" + minutes + "分钟";
     document.getElementById('runningdays').innerHTML = result;
+</script>
+
+
+<script defer src="https://cn.vercount.one/js"></script>
+<script>
+    function showHideView() {
+        
+        let viewCounts = document.querySelectorAll("#viewCount");
+        if (viewCounts) {
+            
+            let article =  document.querySelector(".article-page");
+            if (!article) {
+                viewCounts.forEach(ele => {
+                    ele.style.display = 'none';
+                });
+            }
+        }
+    }
+    
+    showHideView();
 </script>
 
 
