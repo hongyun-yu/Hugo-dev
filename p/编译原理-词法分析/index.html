@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="编译原理知识点，结合学习的内容进行删改">
+<title>编译原理-词法分析</title>
+
+<link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/'>
+
+<link rel="stylesheet" href="/Hugo-dev/scss/style.min.931ff95f801376156525fd9d531ff3120af79ead784dd3bd6ce58d23d430b394.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+    
+    $(window).scroll(function() {
+    if ($(this).scrollTop()) {
+        $('#back-to-top').fadeIn();
+    } else {
+        $('#back-to-top').fadeOut();
+    }
+    });
+
+    
+    $('#back-to-top').click(function() {
+    $('html, body').animate({scrollTop: 0}, 1000);
+    return false;
+    });
+</script>
+<meta property='og:title' content="编译原理-词法分析">
+<meta property='og:description' content="编译原理知识点，结合学习的内容进行删改">
+<meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/'>
+<meta property='og:site_name' content='羡余'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-19T23:19:20&#43;08:00'/>
+<meta name="twitter:title" content="编译原理-词法分析">
+<meta name="twitter:description" content="编译原理知识点，结合学习的内容进行删改">
+    <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended">
+
+
+        <div id="article-toolbar" style="position: sticky;top: 5px;z-index: 1000;">
+            <a href="/Hugo-dev" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>返回</span>
+            </a>
+        </div>
+    
+
+    
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#第四章-词法分析一">第四章 词法分析（一）</a>
+      <ol>
+        <li><a href="#词法分析概述">词法分析概述</a>
+          <ol>
+            <li><a href="#词法分析的任务">词法分析的任务</a></li>
+            <li><a href="#词法分析器的功能">词法分析器的功能</a></li>
+            <li><a href="#词法分析器的输出">词法分析器的输出</a></li>
+            <li><a href="#词法分析器作为一个独立子程序">词法分析器作为一个独立子程序</a></li>
+          </ol>
+        </li>
+        <li><a href="#42-词法分析器的设计">4.2 词法分析器的设计</a>
+          <ol>
+            <li><a href="#词法分析器的结构">词法分析器的结构</a></li>
+            <li><a href="#扫描缓冲区">扫描缓冲区</a></li>
+            <li><a href="#单词符号的识别超前搜索">单词符号的识别:超前搜索</a></li>
+            <li><a href="#几点限制不必使用超前搜索">几点限制——不必使用超前搜索</a></li>
+            <li><a href="#状态转换图">状态转换图</a></li>
+            <li><a href="#词法分析器的设计示例-理解即可">词法分析器的设计示例 （理解即可）</a></li>
+            <li><a href="#将状态图的代码一般化">将状态图的代码一般化</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#第五章-词法分析二">第五章 词法分析（二）</a>
+      <ol>
+        <li><a href="#词法规则形式化-正规集和正规式">词法规则形式化-正规集和正规式</a>
+          <ol>
+            <li><a href="#正规集和正规式">正规集和正规式</a></li>
+            <li><a href="#正规式和正规集的递归定义">正规式和正规集的递归定义</a></li>
+            <li><a href="#正规式的等价性">正规式的等价性</a></li>
+            <li><a href="#正规式的性质">正规式的性质</a></li>
+          </ol>
+        </li>
+        <li><a href="#52-确定有限自动机dfa">5.2 确定有限自动机(DFA)</a>
+          <ol>
+            <li><a href="#对状态图进行形式化定义">对状态图进行形式化定义</a></li>
+            <li><a href="#dfa表示为状态转换图">DFA表示为状态转换图</a></li>
+            <li><a href="#dfa识别字符串的定义">DFA识别字符串的定义</a></li>
+          </ol>
+        </li>
+        <li><a href="#53-非确定有限自动机nfa">5.3 非确定有限自动机（NFA）</a>
+          <ol>
+            <li><a href="#非确定有限自动机nfa的定义">非确定有限自动机（NFA）的定义</a></li>
+            <li><a href="#从状态图看nfa和dfa的区别">从状态图看NFA和DFA的区别</a></li>
+            <li><a href="#nfa识别字符串的定义">NFA识别字符串的定义</a></li>
+            <li><a href="#dfa和nfa">DFA和NFA</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#第六章-词法分析三">第六章 词法分析（三）</a>
+      <ol>
+        <li><a href="#61-有限自动机的等价性">6.1 有限自动机的等价性</a>
+          <ol>
+            <li><a href="#dfa与nfa的等价性">DFA与NFA的等价性</a></li>
+            <li><a href="#dfa与nfa的等价性证明">DFA与NFA的等价性证明</a></li>
+            <li><a href="#确定有限自动机的化简">确定有限自动机的化简</a></li>
+          </ol>
+        </li>
+        <li><a href="#62-正规式与有限自动机的等价性">6.2 正规式与有限自动机的等价性</a>
+          <ol>
+            <li><a href="#正规式与有限自动机的等价性结论">正规式与有限自动机的等价性（结论）</a></li>
+            <li><a href="#为nfa构造正规式">为NFA构造正规式</a></li>
+            <li><a href="#为正规式构造nfa">为正规式构造NFA</a></li>
+          </ol>
+        </li>
+        <li><a href="#63-词法分析程序自动生成lex">6.3 词法分析程序自动生成–LEX</a></li>
+      </ol>
+    </li>
+    <li><a href="#习题">习题</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/Hugo-dev/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" >
+                编译原理
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/">编译原理-词法分析</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            编译原理知识点，结合学习的内容进行删改
+        </h3>
+        
+    </div>
+
+    
+        <footer class="article-time">
+            
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                    <time class="article-time--published">2025-03-19</time>
+                </div>
+            
+
+            
+            
+                        最后修改:
+                        <time class="article-time--updated" datetime="2025-03-19 23:19:20 &#43;0800 CST" title="2025-03-19 23:19:20 &#43;0800 CST">
+                            2025-03-19
+                        </time>
+
+            
+
+            
+            <div id="viewCount">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+                <time class="article-time--reading">
+                    
+                    <span id="vercount_value_page_pv">loading... </span>次
+                </time>
+            </div>
+        </footer>
+    
+
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="编译原理-第四五六章-词法分析">编译原理-第四、五、六章-词法分析
+</h1><h2 id="第四章-词法分析一">第四章 词法分析（一）
+</h2><h3 id="词法分析概述">词法分析概述
+</h3><h4 id="词法分析的任务">词法分析的任务
+</h4><ul>
+<li><code>词法分析</code> 的任务：从左至右逐个字符地对源程序进行扫描，产生一个 个单词符号</li>
+<li><code>词法分析器(Lexical Analyzer)</code>又称 <code>扫描器(Scanner)</code> ：执行词法分析的程序</li>
+</ul>
+<h4 id="词法分析器的功能">词法分析器的功能
+</h4><p>功能：输入源程序、输出单词符号</p>
+<p>单词符号的种类：</p>
+<ul>
+<li><code>基本字</code> ：如begin，repeat，for，…</li>
+<li><code>标识符</code> ：用来表示各种名字，如变量名、数组名和 过程名</li>
+<li><code>常数</code> ：各种类型的常数</li>
+<li><code>运算符</code> ：+，-，*，/，…</li>
+<li><code>界符</code> ：逗号、分号、括号和空白</li>
+</ul>
+<h4 id="词法分析器的输出">词法分析器的输出
+</h4><p>输出的单词符号的表示形式： <code>(单词种别，单词自身的值)</code> 一个二元组</p>
+<p>单词种别通常用整数编码表示：</p>
+<ul>
+<li>若一个种别只有一个单词符号，则种别编码就代表该单 词符号。假定 <code>基本字、运算符和界符</code> 都是一符一种。</li>
+<li>若一个种别有多个单词符号，则对于每个单词符号，给出种别 <code>编码和自身的值</code> 。
+<ul>
+<li><code>标识符</code> 单列一种；标识符自身的值表示成按机器字节划分的内 部码</li>
+<li><code>常数</code> 按类型分种；常数的值则表示成标准的二进制形式</li>
+</ul>
+</li>
+</ul>
+<h4 id="词法分析器作为一个独立子程序">词法分析器作为一个独立子程序
+</h4><ul>
+<li>词法分析作为一个独立的 <code>阶段</code> ：结构简洁、清晰和条理化，有利于集中考虑词法分 析一些枝节问题</li>
+<li>但不一定不作为单独的一 <code>遍</code> ：而是将其处理为一个子程序， <strong>由语法分析驱动词法分析</strong></li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/1977714d5be6d7041d4c4e0bfcd0221e.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="词法分析器和语法分析器的地位"
+	
+	
+></p>
+<h3 id="42-词法分析器的设计">4.2 词法分析器的设计
+</h3><h4 id="词法分析器的结构">词法分析器的结构
+</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/8af6e151aa2b21ae29892561d16e506b.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="此法分析器的结构"
+	
+	
+></p>
+<h4 id="扫描缓冲区">扫描缓冲区
+</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/1b11430a0ad5b63f6450c9cbdcae008b.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="扫描缓冲区"
+	
+	
+></p>
+<p>这里的扫描缓冲区使用两个半区互补使用， <strong>半区的长度即为单词的最大长度</strong></p>
+<h4 id="单词符号的识别超前搜索">单词符号的识别:超前搜索
+</h4><ul>
+<li><code>基本字</code> 需要超前搜索才能确定哪些是基本字。</li>
+<li><code>标识符</code> 识别：字母开头的字母数字串，后跟界符或算符</li>
+<li><code>常数</code> 识别：识别出算术常数并将其转变为二进制内码表示</li>
+<li><code>算符和界符</code> 的识别：把多字符组成的算符和界符拼合成一个单词符号</li>
+</ul>
+<h4 id="几点限制不必使用超前搜索">几点限制——不必使用超前搜索
+</h4><ul>
+<li><code>所有基本字都是保留字</code> ;用户不能用它们作自己 的标识符</li>
+<li><code>基本字作为特殊的标识符来处理</code> ，使用保留字表</li>
+<li>如果基本字、标识符和常数(或标号)之间没有确 定的运算符或界符作间隔，则 <code>必须使用一个空白符作间隔</code></li>
+</ul>
+<p>对程序编写者的一些限制也是简化词法分析程序的设计以及是程序的阅读性增加。</p>
+<h4 id="状态转换图">状态转换图
+</h4><p>状态转换图是一张有限方向图：</p>
+<ul>
+<li><code>结点</code> 代表 <code>状态</code> ，用圆圈表示</li>
+<li>状态之间用 <code>箭弧</code> 连结，箭弧上的标记(字符)代表射出 结状态下可能出现的输入 <code>字符或字符类</code></li>
+<li>一张转换图只包含 <code>有限个状态</code> ，其中有一个为 <code>初态</code> （用双箭头表示）， 至少要有一个 <code>终态</code> （用双圆圈表示）</li>
+</ul>
+<p>状态转换图可用于识别(或接受)一定的字符串：</p>
+<ul>
+<li>若存在一条从初态到某一终态的道路，且这条路上所 有弧上的标记符连接成的字等于α，则称α被该状态 转换图所识别(接受)</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d822fce112c406b5c8172a90282f13f7.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="一个识别整常数的状态转换图"
+	
+	
+></p>
+<h4 id="词法分析器的设计示例-理解即可">词法分析器的设计示例 （理解即可）
+</h4><p>例如这样的一个单词表对应这样的一个状态转换图：</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/512a0ae5cfc161e8cc2a70aad0d077a5.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="设计状态转换图"
+	
+	
+></p>
+<ul>
+<li>不含回路的分叉结点：可用一个 <code>CASE</code> 语句或一组 <code>IF-THEN-ELSE</code> 语句实现</li>
+<li>含回路的状态结点：对应一段由 <code>WHILE</code> 结构和 <code>IF</code> 语句构成的程序</li>
+<li>终态结点：表示识别出某种单词符号，对应 <code>返回</code> 语句（此处的返回值是一个二元组（种别，自身值））</li>
+</ul>
+<p>定义：</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/ca0496f5cc366ecbb0cd892bd743c020.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="全局变量"
+	
+	
+></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d0f660313fee2fb359b926bf16176afe.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="变量及过程"
+	
+	
+></p>
+<p>对于其中一个分支就可以写出如下的代码：</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/51086d7ac3f8f419c96e45cde53f7800.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="示例"
+	
+	
+></p>
+<h4 id="将状态图的代码一般化">将状态图的代码一般化
+</h4><ul>
+<li>变量 <code>curState</code> 用于保存现有的状态</li>
+<li>用二维数组表示状态图：<code>stateTrans[state][ch]</code></li>
+</ul>
+<p>这样的一个一般化的框架就如下：</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/24ef3b6e202d2f1732dd17a51d267fd6.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="一般化"
+	
+	
+></p>
+<p>这里的返回值要根据具体的处理过程进行细节的处理，如关键字的处理、单词的处理、标识符的处理等等。</p>
+<h2 id="第五章-词法分析二">第五章 词法分析（二）
+</h2><h3 id="词法规则形式化-正规集和正规式">词法规则形式化-正规集和正规式
+</h3><h4 id="正规集和正规式">正规集和正规式
+</h4><ul>
+<li><code>正规集</code> 可以用 <code>正规式</code> 表示。</li>
+<li><code>正规式</code> 是表示 <code>正规集</code> 一种方法</li>
+<li>一个字集合是 <code>正规集</code> 当且仅当它能用 <code>正规式</code> 表示</li>
+</ul>
+<p>正规集是一类字的集合，程序语言的定义的合法单词的集合</p>
+<h4 id="正规式和正规集的递归定义">正规式和正规集的递归定义
+</h4><p>对给定的字母表  Σ Σ Σ :</p>
+<ul>
+<li>ε ε ε 和  ∅ ∅ ∅ 都是  Σ Σ Σ 上的正规式，它们所表示的正规集为  { ε } \{ε\} {ε} 和  ∅ ∅ ∅ ;</li>
+<li>任何  a ∈ Σ a∈Σ a∈Σ ， a a a 是  Σ Σ Σ 上的正规式，它所表示的正规集为  { a } \{a\} {a} ;</li>
+<li>假定  e 1 e1 e1 和  e 2 e2 e2 都是  Σ Σ Σ 上的正规式，它们所表示 的正规集为  L ( e 1 ) L(e_1) L(e1​) 和  L ( e 2 ) L(e_2) L(e2​) ，则
+<ul>
+<li>( e 1 ∣ e 2 ) (e_1|e_2) (e1​∣e2​) 为正规式，它所表示的正规集为  L ( e 1 ) ∪ L ( e 2 ) L(e_1)∪L(e_2) L(e1​)∪L(e2​)</li>
+<li>( e 1 . e 2 ) (e_1.e_2) (e1​.e2​) 为正规式，它所表示的正规集为  L ( e 1 ) L ( e 2 ) L(e_1)L(e_2) L(e1​)L(e2​)</li>
+<li>( e 1 ) ∗ (e_1)* (e1​)∗ 为正规式，它所表示的正规集为  ( L ( e 1 ) ) ∗ (L(e_1))^* (L(e1​))∗</li>
+</ul>
+</li>
+</ul>
+<p>仅由 <code>有限次</code> 使用上述三步骤而定义的表达式才 是Σ上的正规式，仅由这些正规式表示的字 集才是Σ上的正规集。</p>
+<p>由以上规则可得：</p>
+<ul>
+<li>ε ε ε 是： 字 或 正规式</li>
+<li>∅ ∅ ∅ 是： 集合 或 正规式</li>
+<li>a ( a ∈ Σ ) a (a ∈Σ) a(a∈Σ) 是： 字符 或 字 或 正规式</li>
+</ul>
+<h4 id="正规式的等价性">正规式的等价性
+</h4><p>若两个正规式所表示的正规集相同，则称这两 个正规式等价。如  b ( a b ) ∗ = ( b a ) ∗ b b(ab)^*=(ba)^*b b(ab)∗=(ba)∗b</p>
+<p>证明：<img src="https://i-blog.csdnimg.cn/blog_migrate/e224b9e71d6daa2b53beab521239f555.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="等价性的证明"
+	
+	
+></p>
+<p>利用正规式与正规集的对应关系，证明  ( a ∗ b ∗ ) ∗ = ( a ∣ b ) ∗ = ( a ∗ ∣ b ∗ ) ∗ (a^<em>b^</em>)^<em>=(a|b)^</em>=(a^<em>|b^</em>)^* (a∗b∗)∗=(a∣b)∗=(a∗∣b∗)∗ ：可以看出每一个正规式表示的都是由 ab组成的所有串的集合，所以是等价的 <del>（证明过程？！null）</del></p>
+<h4 id="正规式的性质">正规式的性质
+</h4><p>对正规式，下列等价成立：</p>
+<ul>
+<li>e 1 ∣ e 2 = e 2 ∣ e 1 e_1|e_2 = e_2|e_1 e1​∣e2​=e2​∣e1​ 交换律</li>
+<li>e 1 ∣ ( e 2 ∣ e 3 ) = ( e 1 ∣ e 2 ) ∣ e 3 e_1 |(e_2|e_3) = (e_1|e_2)|e_3 e1​∣(e2​∣e3​)=(e1​∣e2​)∣e3​ 结合律</li>
+<li>e 1 ( e 2 e 3 ) = ( e 1 e 2 ) e 3 e_1(e_2e_3) = (e_1e_2)e_3 e1​(e2​e3​)=(e1​e2​)e3​ 结合律</li>
+<li>e 1 ( e 2 ∣ e 3 ) = e 1 e 2 ∣ e 1 e 3 e_1(e_2|e_3) = e_1e_2|e_1e_3 e1​(e2​∣e3​)=e1​e2​∣e1​e3​ 分配律</li>
+<li>( e 2 ∣ e 3 ) e 1 = e 2 e 1 ∣ e 3 e 1 (e_2|e_3)e_1 = e_2e_1|e_3e_1 (e2​∣e3​)e1​=e2​e1​∣e3​e1​ 分配律</li>
+<li>e ε = ε e = e eε= εe=e eε=εe=e</li>
+<li><strong>注意乘么的交换律 e 1 e 2 &lt; &gt; e 2 e 1 e_1e_2 &lt;&gt; e_2e_1 e1​e2​&lt;&gt;e2​e1​</strong></li>
+</ul>
+<p>证明过程：转化为集合运算来证明即可</p>
+<h3 id="52-确定有限自动机dfa">5.2 确定有限自动机(DFA)
+</h3><h4 id="对状态图进行形式化定义">对状态图进行形式化定义
+</h4><p><code>确定有限自动机(DeterministicFiniteAutomata， DFA)</code> M M M 是一个五元式  M = ( S , Σ , f , S 0 , F ) M=(S,Σ,f,S_0,F) M=(S,Σ,f,S0​,F) ，其中：</p>
+<ul>
+<li>S S S :有穷 <code>状态集</code></li>
+<li>Σ Σ Σ ：输入 <code>字母表</code> (有穷)</li>
+<li>f f f : <code>状态转换函数</code> ，为  S × Σ → S S×Σ→S S×Σ→S 的 <code>单值部分映射</code> ，  f ( s ， a ) = s ′ f(s， a)=s&rsquo; f(s，a)=s′ 表示：当现行状态为  s s s ，输入字符为  a a a 时，将状态转换到下一状态  s ′ s&rsquo; s′ ，  s ′ s&rsquo; s′ 称为  s s s 的一个后继状态</li>
+<li>S 0 ∈ S S_0∈S S0​∈S 是<code>唯一</code> 的一个 <code>初态</code></li>
+<li>F ⊆ S F⊆S F⊆S ：<code>终态集</code>(可空)</li>
+</ul>
+<h4 id="dfa表示为状态转换图">DFA表示为状态转换图
+</h4><p>假定DFA M含有 <code>m个状态</code> 和 <code>n个输入字符</code> ，则对应的状态转换图含有 <code>m个状态结点</code> ，每个结点顶 多含有 <code>n条箭弧射出</code> ，且每条箭弧用Σ上的不同的输 入字符来作标记</p>
+<h4 id="dfa识别字符串的定义">DFA识别字符串的定义
+</h4><ul>
+<li>对于  Σ ∗ Σ^* Σ∗ 中的任何字  α α α ，若存在一条从初态到某一 终态的道路，且这条路上所有弧上的标记符连 接成的字等于  α α α ，则称  α α α 为DFA M所 <code>识别(接收)</code></li>
+<li>DFA M所识别的字的全体记为  L ( M ) L(M) L(M)</li>
+</ul>
+<p>例如一个识别以00结尾的字符串的DFA：<br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/6b7d407beb2f5bfcf41e56641ce77a0b.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="一个识别亿00结尾的字符串"
+	
+	
+></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a49720cf0d564624c7c6f5a7616c2196.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="一个识别含有aa或bb的字符串的DFA"
+	
+	
+></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/3e9e606438e3b5c8b84b5c1568afb5fe.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="两个特殊的DFA"
+	
+	
+></p>
+<p>将DFA中的各个状态函数写成矩阵的形式，也就是状态矩阵，这样就可以利用前面的词法分析程序：<img src="https://i-blog.csdnimg.cn/blog_migrate/6b47972b7d35f30a2958164154c57552.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="词法分析程序"
+	
+	
+></p>
+<h3 id="53-非确定有限自动机nfa">5.3 非确定有限自动机（NFA）
+</h3><h4 id="非确定有限自动机nfa的定义">非确定有限自动机（NFA）的定义
+</h4><p>一个简单的NFA状态图： <img src="https://i-blog.csdnimg.cn/blog_migrate/d35cf749746c64e2e9f88b606452a46f.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="NFA状态图"
+	
+	
+></p>
+<p>（大部分定义与DFA一致）</p>
+<p>一个 <code>非确定有限自动机 (Nondeterministic Finite Automata，NFA)</code> M M M 是一个五元式  M = ( S , Σ , f , S 0 , F ) M=(S, Σ, f, S_0, F) M=(S,Σ,f,S0​,F) ，其中：</p>
+<ul>
+<li>S S S :有穷 <code>状态集</code></li>
+<li>Σ Σ Σ ：输入 <code>字母表</code> (有穷)</li>
+<li>f f f : <code>状态转换函数</code>，为  S × Σ ∗ → 2 S \color{#0CF}{S×Σ^*→2^S} S×Σ∗→2S 的部分映射 <strong>这里的 2 S 2^S 2S 指的是  S S S 的幂级，即  S S S 所有的子集的集合</strong> ，这样就表明从一个状态出发可能有多个不同的状态，体现非确定这一特点</li>
+<li>S 0 ⊆ S \color{#0CF}{S_0⊆S} S0​⊆S 是非空的 <code>初态集</code> ，这里与 DFA 不同，DFA处的  S 0 S_0 S0​ 的定义是 <strong>属于</strong> 某个状态集合，而这里是某一 <strong>些</strong> 集合作为自动机的初态，这也体现着非确定这一特点</li>
+<li>F ⊆ S F⊆S F⊆S ：<code>终态集</code> (可空)</li>
+</ul>
+<p>（个人理解：可以将自动机看作一幅图（网络），每个节点代表一种状态，边权为符合某一值时表示联通，DFA每个节点出发的边的限制条件不同，且为字符限制，而NFA的每一个节点出发的边的限制条件可以相同，即多个通路，而且是字符串的限制，并且前者仅有一个源点，后者可以有多个源点 <del>（一个不显示的超级源点？？嘿嘿）</del> ）</p>
+<h4 id="从状态图看nfa和dfa的区别">从状态图看NFA和DFA的区别
+</h4><ul>
+<li>NFA可以有多个 <code>初态</code></li>
+<li>弧上的标记可以是  Σ ∗ Σ^* Σ∗ 中的一个 <code>字</code> (甚至可以是一个 <code>正规式</code> )，而不 一定是单个字符</li>
+<li><code>同一个字</code> 可能出现在同状态射出的 <code>多条弧</code> 上</li>
+</ul>
+<p>DFA是NFA的特例</p>
+<h4 id="nfa识别字符串的定义">NFA识别字符串的定义
+</h4><ul>
+<li>对于  Σ ∗ Σ^* Σ∗ 中的任何字  α α α ，若存在一条从初态到某一终态的道路，且这条路上所有弧上的标记字连 接成的字等于  α α α (忽略那些标记为  ε ε ε 的弧)，则称  α α α为NFAM所 <code>识别(接收)</code></li>
+<li>NFA M所识别的字的全体记为  L ( M ) L(M) L(M)</li>
+</ul>
+<p>一个识别含有aa或bb的字符串的NFA：<img src="https://i-blog.csdnimg.cn/blog_migrate/1ccbbc30bad135154fbfd396ddf8fbc7.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="识别含有aa或bb的NFA"
+	
+	
+></p>
+<p>可以看出左图的DFA也可以完成相同的功能；</p>
+<p>一个识别特定语言的NFA：<br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/bd562759f2f6d7e4650f967fb3acf1da.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="一个识别特定语言的NFA"
+	
+	
+></p>
+<h4 id="dfa和nfa">DFA和NFA
+</h4><ul>
+<li>定义：对于任何两个有限自动机M和  M ′ M&rsquo; M′ ，如果  L ( M ) = L ( M ′ ) L(M)=L(M&rsquo;) L(M)=L(M′) ，则称  M M M 与 M ′ M&rsquo; M′ <code>等价</code></li>
+<li>自动机理论中一个重要的结论：<code>判定两个自动机等价性的算法是存在的</code></li>
+<li>对于每个NFA M存在一个DFA  M ′ M&rsquo; M′ ，使得  L ( M ) = L ( M ′ ) L(M)=L(M&rsquo;) L(M)=L(M′)</li>
+<li><code>DFA与NFA识别能力相同!</code> （如上面的那个识别含有aa或bb字符串的自动机）</li>
+</ul>
+<h2 id="第六章-词法分析三">第六章 词法分析（三）
+</h2><h3 id="61-有限自动机的等价性">6.1 有限自动机的等价性
+</h3><h4 id="dfa与nfa的等价性">DFA与NFA的等价性
+</h4><p>对于每个NFA  M M M 存在一个DFA  M ′ M&rsquo; M′，使得  L ( M ) = L ( M ′ ) L(M)=L(M&rsquo;) L(M)=L(M′) ，包括： <em>等价性证明</em> 和 <em>NFA的确定化</em></p>
+<p>可以从 **NFA 和DFA的差别 ** 入手：<img src="https://i-blog.csdnimg.cn/blog_migrate/fb7a6dba0213a8940d1c548ad33eeb9d.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="NFA和DFA的差别"
+	
+	
+></p>
+<p>所以只要消除差别就可以实现两者的转化，也就是等价</p>
+<h4 id="dfa与nfa的等价性证明">DFA与NFA的等价性证明
+</h4><h5 id="等价性证明">等价性证明
+</h5><p><img src="https://i-blog.csdnimg.cn/blog_migrate/5e7b1176275331232e34be1cf0eb8095.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="一个NFA"
+	
+	
+><br>
+假定NFA  M = &lt; S , Σ , δ , S 0 , F &gt; M=&lt;S, Σ, δ, S_0, F&gt; M=&lt;S,Σ,δ,S0​,F&gt; ，我们对M的状态转换图进行以下改造：</p>
+<ul>
+<li>
+<p>引进新的初态结点  X X X 和终态结点  Y Y Y ， X , Y ∉ S X,Y∉S X,Y∈/​S ，从  X X X 到  S 0 S_0 S0​ 中任意状态结点连一条  ε ε ε 箭弧，从  F F F 中任意状态结点连一条  ε ε ε 箭弧到  Y Y Y <del>（类似一个超级源点和超级汇点）</del> 。 <strong>(解决初始状态唯一性)</strong> <img src="https://i-blog.csdnimg.cn/blog_migrate/5b75f57b9fa4e51b0dd7b9e6af11d604.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="添加一个初态节点和终态节点"
+	
+	
+></p>
+</li>
+<li>
+<p>对M的状态转换图进一步施行替换，其中k是新引入的状态。 <strong>(简化弧上的标记)</strong> 。 例如拆分的替代：<img src="https://i-blog.csdnimg.cn/blog_migrate/62950deb09c311c2894edd85a8affd5b.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="拆分替代"
+	
+	
+><br>
+对于我们现在的这个NFA：<br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/379022f6b60cb51cef10349d34c4edbd.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="简化弧上的标记"
+	
+	
+></p>
+</li>
+<li>
+<p>逐步把这个图转变为每条弧只标记为  Σ Σ Σ 上的一个字符或  ε ε ε ，后得到一个NFA  M ′ M&rsquo; M′ ，显然  L ( M ′ ) = L ( M ) L(M&rsquo;)=L(M) L(M′)=L(M)</p>
+</li>
+</ul>
+<h5 id="nfa的确定化-子集法解决ε弧和转换关系">NFA的确定化-子集法(解决ε弧和转换关系)
+</h5><h6 id="ε--c-l-o-s-u-r-e--i--ε-closurei-εclosurei-的定义">ε − c l o s u r e ( I ) ε-closure(I) ε−closure(I) 的定义
+</h6><p>设  I I I 是的状态集的一个子集，定义  I I I 的  ε − 闭 包 ε-闭包 ε−闭包 ε − c l o s u r e ( I ) ε-closure(I) ε−closure(I) 为:</p>
+<ul>
+<li>若  s ∈ I s∈I s∈I ，则  s ∈ ε − c l o s u r e ( I ) s∈ε-closure(I) s∈ε−closure(I) ；</li>
+<li>若  s ∈ I s∈I s∈I ，则从s出发经过任意条ε弧而能到达的任何状态  s ′ s&rsquo; s′ 都属于  ε − c l o s u r e ( I ) ε-closure(I) ε−closure(I)</li>
+</ul>
+<p>即，  ε − c l o s u r e ( I ) = I ∪ { s ′ ∣ 从 某 个 s ∈ I 出 发 经 过 任 意 条 ε 弧 能 到 达 s ′ } ε-closure(I)=I∪\{s&rsquo;|从某个s∈I出发经过任意条ε 弧能到达s&rsquo;\} ε−closure(I)=I∪{s′∣从某个s∈I出发经过任意条ε弧能到达s′}</p>
+<h6 id="i-a--ε--c-l-o-s-u-r-e--j--i_a-ε-closurej-iaεclosurej-的定义">I a = ε − c l o s u r e ( J ) I_a= ε-closure(J) Ia​=ε−closure(J) 的定义
+</h6><p>设a是Σ中的一个字符，定义  I a = ε − c l o s u r e ( J ) I_a= ε-closure(J) Ia​=ε−closure(J) 其中，J为I中的某个状态出发经过一条a弧而到达的状态集合。 <img src="https://i-blog.csdnimg.cn/blog_migrate/0650e761a12ff7f84286f49094a0b327.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="I_a的图形描述"
+	
+	
+></p>
+<p>eg:<img src="https://i-blog.csdnimg.cn/blog_migrate/eafc4099f039f761b0f43e5ae33e4f9a.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="I_a的一个例子"
+	
+	
+></p>
+<h6 id="nfa的确定化">NFA的确定化
+</h6><p>确定化：不失一般性，设字母表只 包含两个a 和b，我们构造一张计 算状态集的转换表:</p>
+<ul>
+<li>首先，置第1行第1列为εclosure({X})求出这一列的Ia，Ib；</li>
+<li>然后，检查这两个Ia，Ib，看它 们是否已在表中的第一列中出 现，把未曾出现的填入后面的 空行的第1列上，求出每行第2， 3列上的集合…</li>
+<li>重复上述过程，直到所有第2， 3列子集全部出现在第一列为止</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e55d43f4c5c0182ebd19bafcf12d6a64.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="表的大致结构"
+	
+	
+></p>
+<p><strong>注意，这里如果右边出现空集，左边I这列也要计算空集；此外，因为是有限自动机，故左边的计算出的项最多有 2 n 2^n 2n 个，所以一定会计算完</strong></p>
+<p>例如：对于上面的 NFA M’ 的计算结果就是如下：<img src="https://i-blog.csdnimg.cn/blog_migrate/10becb8ffa2522b2127c36fb6afb386b.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="M&rsquo;的子集结果"
+	
+	
+></p>
+<ul>
+<li>把表看成状态转换矩阵，子集视为状态</li>
+<li>转换表唯一刻划了一个确定 的有限自动机M，其中：初态是ε-closure({X}) 、终态是含有原终态Y的子集</li>
+<li>并将集合进行一定的标号，即可得到一个新的状态转移矩阵，同样可以得到一个新的状态转换图：<img src="https://i-blog.csdnimg.cn/blog_migrate/657ddeed287330cf0cc48365a77c5c83.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="新的状态转换图"
+	
+	
+><br>
+而这个状态转换图对应的显然是一个 DFA，不难看出，这个DFA M与M’ 等价 ，对于每个NFA M存在一个 DFA M’ ，使得L(M)=L(M’) ，也就是说，NFA和DFA等价</li>
+</ul>
+<h4 id="确定有限自动机的化简">确定有限自动机的化简
+</h4><ul>
+<li>DFA的化简(最小化) ：对于给定的DFA M，寻找一个状态数比M少的DFA M’，使得L(M)=L(M’)</li>
+<li>状态的等价性：
+<ul>
+<li>假设s和t为M的两个状态，称s和t等价：如果从状态 s出发能读出某个字α而停止于终态，那么同样，从t 出发也能读出α而停止于终态；反之亦然</li>
+<li>两个状态不等价，则称它们是可区别的</li>
+</ul>
+</li>
+<li>两个状态不等价是指： <strong>存在一个字α</strong> ，要么s读出α停止于终态而t读出 α停止于非终态，要么t读出α停止于终态而s读 出α停止于非终态</li>
+<li>化简的基本思想：把M的状态集划分为一些 <em>不相交的子集</em> ，使得任何 <strong>两个不同子集的状态是可区别的</strong> ，而 <strong>同一子集的任何两个状态是等价的</strong> ，最后，让每个子集选出一个代表，同时消去其他状态。所以，对DFA的状态集合S进行第一次划分是 <strong>终态</strong> 和 <strong>非终态</strong> 。</li>
+</ul>
+<h5 id="化简的方法">化简的方法
+</h5><ul>
+<li>
+<p>首先，把S划分为 <strong>终态</strong> 和 <strong>非终态</strong> 两个子集，形成 基本划分  Π Π Π 。</p>
+</li>
+<li>
+<p>假定到某个时候，  Π Π Π 已含  m m m 个子集，记为  Π = { I ( 1 ) ， I ( 2 ) ， … ， I ( m ) } Π=\{I^{(1)}， I^{(2)}，…，I^{(m)}\} Π={I(1)，I(2)，…，I(m)} ，检查  Π Π Π 中的每个子集看是否能进 一步划分： 对某个  I ( i ) I^{(i)} I(i) ，令  I ( i ) = { s 1 , s 2 , … , s k } I^{(i)}=\{s_1,s_2, …,s_k\} I(i)={s1​,s2​,…,sk​} ，若存在一个输入字符  a a a 使得  I a ( i ) I_a^{(i)} Ia(i)​ 不会包含在现行  Π Π Π 的某个子集  I ( j ) I^{(j)} I(j) 中，则至少应把  I ( i ) I^{(i)} I(i) 分为 两个部分。</p>
+</li>
+<li>
+<p>假定状态  s 1 s_1 s1​ 和  s 2 s_2 s2​ 是  I ( i ) = { s 1 , s 2 , … , s k } I^{(i)}=\{s_1,s_2, …,s_k\} I(i)={s1​,s2​,…,sk​} 中的两个状态， 它们经  a a a 弧分别到达  t 1 t_1 t1​ 和  t 2 t_2 t2​ ，而  t 1 t_1 t1​ 和  t 2 t_2 t2​ 属于现行  Π Π Π 中的两个不同子集（看图理解）</p>
+<ul>
+<li>说明有一个字  α α α ，  t 1 t_1 t1​ 读出  α α α 后到达终态，而  t 2 t_2 t2​ 读出  α α α 后 不能到达终态，或者反之</li>
+<li>那么对于字  a α aα aα ，  s 1 s_1 s1​ 读出  a α aα aα 后到达终态，而  s 2 s_2 s2​ 读出  a α aα aα 不能到达终态，或者反之</li>
+<li>所以  s 1 s_1 s1​ 和  s 2 s_2 s2​ 不等价 <img src="https://i-blog.csdnimg.cn/blog_migrate/36fa31b2d0fb9aee5dc56b63a7c63b40.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></li>
+</ul>
+</li>
+<li>
+<p>将  I ( i ) I^{(i)} I(i) 分成两半，一半含有  s 1 s_1 s1​ ，一半含有  s 2 s_2 s2​</p>
+<ul>
+<li>I ( i 1 ) I^{(i1)} I(i1) 含有  s 1 s_1 s1​ :  I ( i 1 ) = { s ∣ s ∈ I ( i ) } I^{(i1)}=\{s|s∈I^{(i)}\} I(i1)={s∣s∈I(i)} 且s经a弧到达t, 且t与  t 1 t_1 t1​ 属于现行  Π Π Π 中的同一子集}</li>
+<li>I ( i 2 ) I^{(i2)} I(i2) 含有  s 2 s_2 s2​ :  I ( i 2 ) = I ( i ) − I ( i 1 ) I^{(i2)}=I^{(i)}-I^{(i1)} I(i2)=I(i)−I(i1)</li>
+</ul>
+</li>
+<li>
+<p>一般地，对某个  a a a 和  I ( i ) I^{(i)} I(i) ，若  I a ( i ) I_a^{(i)} Ia(i)​ 落入现行  Π Π Π 中N 个不同子集，则应把  I ( i ) I^{(i)} I(i) 划分成N个不相交的组， 使得每个组  J J J 的  J a J_a Ja​ 都落入的  Π Π Π 同一子集。</p>
+</li>
+<li>
+<p>重复上述过程，直到  Π Π Π 所含子集数不再增长</p>
+</li>
+<li>
+<p>对于上述后划分  Π Π Π 中的每个子集，我们选取 每个子集  I I I 中的一个状态代表其他状态，则可得 到化简后的DFA  M ′ M&rsquo; M′</p>
+</li>
+<li>
+<p>若  I I I 含有原来的 <strong>初态</strong> ，则其代表为 <strong>新的初态</strong> ，若  I I I 含有原来的 <strong>终态</strong> ，则其代表为 <strong>新的终态</strong> 。</p>
+</li>
+</ul>
+<p>eg: 我们对上面的那个 DFA M’ 进行不断的化简，首先分成两个集合：终态和非终态集合：  I ( 1 ) 和 I ( 2 ) I^{(1)} 和 I^{(2)} I(1)和I(2) ，对他们求子集。。。。（红蓝两色即为分解中出现某个集合出现在多个状态集中，需要分解的过程）：<img src="https://i-blog.csdnimg.cn/blog_migrate/4a00098cbd11ecc53f9b9d0fc2bf4b90.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="分解"
+	
+	
+></p>
+<p>对最后化解后的集合重新标号，可以得到一个化解后的状态转换图：<img src="https://i-blog.csdnimg.cn/blog_migrate/b5196e35b60835da9d0f50ddfe0de3b1.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="化解结果"
+	
+	
+></p>
+<h3 id="62-正规式与有限自动机的等价性">6.2 正规式与有限自动机的等价性
+</h3><p>上面一节证明了 有限自动机间的等价性，表明 DFA 和 NFA 是可以相互转化的，其识别的字是相同的，而 NFA 对于设计人员来说更加友好，因为不用对转换关系考虑的更加细致，易于设计；而 DFA 对开发词法分析程序更加友好，因为更加的简单，清晰，这样我们可以由语言的 单词正规集 得到 正规式， 然后设计处 NFA ，最后利用 有限自动机的等价性来实现 NFA 向 DFA 的转化和化解，从而设计出此法分析程序。（也就是这个图)<img src="https://i-blog.csdnimg.cn/blog_migrate/8080fd3eeb3dfb99662c9fde8bbd8b9d.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="词法分析程序步骤"
+	
+	
+></p>
+<p>这节证明正规式与有限自动机之间的等价性。</p>
+<h4 id="正规式与有限自动机的等价性结论">正规式与有限自动机的等价性（结论）
+</h4><ul>
+<li>一个正规式r与一个有限自动机M等价：  L ( r ) = L ( M ) L(r)=L(M) L(r)=L(M)</li>
+<li>FA -&gt;正规式 ：对任何FA M，都存在一个正规式r，使得  L ( r ) = L ( M ) L(r)=L(M) L(r)=L(M) 。</li>
+<li>正规式-&gt; FA ：对任何正规式r，都存在一个FA M，使得  L ( M ) = L ( r ) L(M)=L(r) L(M)=L(r)。</li>
+</ul>
+<h4 id="为nfa构造正规式">为NFA构造正规式
+</h4><p>对转换图概念拓广，令每条弧可用一个正规式作标记。</p>
+<p><strong>证明</strong> ：对  Σ Σ Σ 上任一NFA  M M M ，都存在一个  Σ Σ Σ 上的 规式  r r r ，使得  L ( r ) = L ( M ) L(r)=L(M) L(r)=L(M) 。<img src="https://i-blog.csdnimg.cn/blog_migrate/49ca510448cddb28eeb21bfa25a44d03.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<ul>
+<li>假定NFA  M = &lt; S , Σ , δ , S 0 , F &gt; M=&lt;S, Σ, δ, S_0, F&gt; M=&lt;S,Σ,δ,S0​,F&gt;，我们对M的状 态转换图进行以下改造：<br>
+在M的转换图上加进两个状态X和Y，从X用ε弧连接 到M的所有初态结点，从M的所有终态结点用ε弧连 接到Y，从而形成一个新的NFA，记为  M ’ M’ M’ ，它只有一 个初态X和一个终态Y，显然  L ( M ) = L ( M ’ ) L(M)=L(M’) L(M)=L(M’) 。</li>
+<li>然后，反复使用下面的三条规则，逐步消去结点， 直到只剩下X和Y为止。 <img src="https://i-blog.csdnimg.cn/blog_migrate/3b64dd7b4511d86b66abe78358dae944.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="三条规则"
+	
+	
+></li>
+<li>最后，X到Y的弧上标记的正规式即为所构造的 正规式r，显然  L ( r ) = L ( M ’ ) = L ( M ) L(r)=L(M’)=L(M) L(r)=L(M’)=L(M) ，得证：对  Σ Σ Σ 上任一NFA  M M M ，都存在一个  Σ Σ Σ 上的正规式  r r r ，使得  L ( r ) = L ( M ) L(r)=L(M) L(r)=L(M) 。</li>
+</ul>
+<h4 id="为正规式构造nfa">为正规式构造NFA
+</h4><ul>
+<li>定理：对任何正规式r，都存在一个FA M，使 得  L ( M ) = L ( r ) L(M)=L(r) L(M)=L(r) 。</li>
+<li>定理: 对于  Σ Σ Σ 上的正规式r，都存在一个NFA M， 使  L ( M ) = L ( r ) L(M)=L(r) L(M)=L(r) ，并且M只有一个初态和一个终态， 而且没有从终态出发的箭弧。</li>
+<li><strong>证明：</strong> 对给定正规式r中的运算符数目进行归纳
+* 验证r中的运算符数目为0时，结论成立。
+* 假设结论对于运算符数目少于k(k≥1)的正规式成立
+* 基于该假设，证明结论对于运算符数目为k的正规式 成立。</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d3f9bca5fdafc6cb6ba99bfc4820d226.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="证明第一步"
+	
+	
+></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/7d71f9304d8f573ab654cd8b676b8c18.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+><br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/c51803e67cc7d86dcfda9a46eac06354.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+><br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/53e98aadaafb40fb4594e5f928a937fb.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+><br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/6e36ff06c90fb7aa87c95b2cceb1ce0c.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h5 id="正规式向nfa的转化过程">正规式向NFA的转化过程
+</h5><ul>
+<li>上述证明过程实质上是一个将 <strong>正规表达式</strong> 转换为 <strong>有限自动机</strong> 的算法 ，如构造  Σ Σ Σ 上的NFA  M ’ M’ M’ 使得  L ( r ) = L ( M ’ ) L(r)=L(M’) L(r)=L(M’)</li>
+<li>首先，把r表示成一个初态为X、终态为Y并且转换条件是r的 NFA<img src="https://i-blog.csdnimg.cn/blog_migrate/0fac6c75ddc6f3e5251898a19cf98869.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></li>
+<li>然后按照如下规则不断地对 r 进行分裂 （就是上面 NFA向r转换的三条规则的逆过程）<img src="https://i-blog.csdnimg.cn/blog_migrate/74f75deabf3cf143d5be0a3ce3835dc4.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="三条规则"
+	
+	
+></li>
+<li>逐步把这个图转变为每条弧只标记为  Σ Σ Σ 上的一个字符或  ε ε ε ，最后得到一个NFA  M ’ M’ M’ ，显然  L ( M ’ ) = L ( r ) L(M’)=L(r) L(M’)=L(r)</li>
+</ul>
+<p>eg: 例如上面一直使用的一个 NFA/DFA 用 正规式r表示的情况：<img src="https://i-blog.csdnimg.cn/blog_migrate/d1caa04107da08afb7afab9c574d7ad9.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="一个正规式向NFA转换的例子"
+	
+	
+></p>
+<p>当我们得到一个想要的字的正规式r时，就可以将正规式转化为一个NFA，然后利用上一讲6.1的有限自动机的转化就可以将一个NFA利用子集法转化为一个DFA并化解，这样我们就清楚了整个词法分析程序生成的主要过程的理论。<br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/fd5f57cdfea8f2b4792b88e0faa245b0.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="NFA向DFA的子集法的转化"
+	
+	
+><br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/7e7ba4c5472a9b99a485982d5bc07d8d.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="子集法得到新的状态转换矩阵和对应的DFA"
+	
+	
+></p>
+<h3 id="63-词法分析程序自动生成lex">6.3 词法分析程序自动生成–LEX
+</h3><p>利用LEX设计词法分析程序的整个流程如下<img src="https://i-blog.csdnimg.cn/blog_migrate/c2eae347fad66b8a8cce0099534f21bb.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="LEX流程"
+	
+	
+></p>
+<p>LEX的源文件格式包括：辅助定义（紫色）和识别规则（正规式+一小段的程序代码）（蓝色）<img src="https://i-blog.csdnimg.cn/blog_migrate/592edfe047a9a4e534fcef359937e3de.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="LEX源文件格式"
+	
+	
+></p>
+<p>LEX的工作过程：<img src="https://i-blog.csdnimg.cn/blog_migrate/7f9cc58394ded10581d8b5da1b89c39d.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="LEX工作过程"
+	
+	
+></p>
+<p>下面的流程图就是词法分析的大致流程。每个箭头之间的内部转化一次证明都已经在前面几章、讲介绍了。</p>
+<h2 id="习题">习题
+</h2><p>这14题我看傻了，，，<br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/c527e3c898faf269f31a50216195853e.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="这14题我看傻了。。"
+	
+	
+><br>
+(end)</p>
+
+</section>
+
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 2025-03-19
+        </span>
+    </section></footer>
+
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E5%AF%BC%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">编译原理-导学</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">编译原理-属性文法和语法制导翻译</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E5%88%86%E6%9E%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">编译原理-语法分析-自上而下分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">编译原理-语法分析-自下而上分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">编译原理知识汇总</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="hongyun-yu/Hugo-dev"
+    data-repo-id="R_kgDONs2V_A"
+    data-category="Announcements"
+    data-category-id="DIC_kwDONs2V_M4CmzPf"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="en"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light');
+            } else {
+                setGiscusTheme('dark_dimmed');
+            }
+        }
+    })();
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 Hongyun
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+    
+    <section class="running-time">
+    本博客已稳定运行
+    <span id="runningdays" class="running-days"></span>
+    </section>
+    
+    
+    <section class="totalcount">
+    
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    发表了11篇文章 · 
+    总计66.90k字
+</section>
+
+</footer>
+
+
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/Hugo-dev/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+ 
+<script src="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.css" crossorigin="anonymous" />
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
+
+<style>
+  #TableOfContents > ul, ol {
+      ul, ol {
+          display: none;
+      }
+      .open {
+          display: block;
+      }
+  }
+</style>
+
+<script>
+  function initTocHide() {
+      
+      let toc = document.querySelector(".widget--toc");
+      if (!toc) {
+          return;
+      }
+      
+      window.addEventListener('scroll', function() {
+          
+          let openUl = document.querySelectorAll(".open");
+          if (openUl.length > 0) {
+            openUl.forEach((ul) => {
+              ul.classList.remove("open")
+            })
+          }
+          
+          let currentLi = document.querySelector(".active-class");
+          if (!currentLi) {
+              return
+          }
+          
+          if (currentLi.children.length > 1) {
+              currentLi.children[1].classList.add("open")
+          }
+          
+          let ul = currentLi.parentElement;
+          do {
+              ul.classList.add("open");
+              ul = ul.parentElement.parentElement;
+          } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+      });
+  }
+  initTocHide()
+</script>
+
+
+<style>
+  #backTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      z-index: 99;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      background-image: url(https://hongyun-yu.github.io/Hugo-dev/icons/backTop.svg);
+  }
+</style>
+
+<script>
+  
+
+  function initScrollTop() {
+      let rightSideBar = document.querySelector(".right-sidebar");
+      if (!rightSideBar) {
+          return;
+      }
+      
+      let btn = document.createElement("div");
+      btn.id = "backTopBtn";
+      btn.onclick = backToTop
+      rightSideBar.appendChild(btn)
+      
+      window.onscroll = function() {
+          
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              btn.style.display = "block";
+          } else {
+              btn.style.display = "none";
+          }
+      };
+  }
+
+  
+
+  function backToTop(){
+      window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
+  initScrollTop();
+</script>
+
+
+
+<script>
+    let s1 = '2025-1-20'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let result = days + "天" + hours + "小时" + minutes + "分钟";
+    document.getElementById('runningdays').innerHTML = result;
+</script>
+
+
+<script defer src="https://cn.vercount.one/js"></script>
+<script>
+    function showHideView() {
+        
+        let viewCounts = document.querySelectorAll("#viewCount");
+        if (viewCounts) {
+            
+            let article =  document.querySelector(".article-page");
+            if (!article) {
+                viewCounts.forEach(ele => {
+                    ele.style.display = 'none';
+                });
+            }
+        }
+    }
+    showHideView();
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+
+<meting-js
+	server="netease"
+	type="playlist"
+	fixed="true"
+    order="random"
+    list-max-height="1500px"
+	id="13187846602">
+</meting-js>
+
+<script>
+    ap = null
+    Object.defineProperty(document.querySelector('meting-js'),"aplayer",{
+        set: function(aplayer) {
+            ap = aplayer
+            ready();
+        }
+    });
+    isRecover = false;
+    function ready(){
+        ap.on('canplay', function () {
+            if(!isRecover){
+                if(localStorage.getItem("musicIndex") != null){
+                    musicIndex = localStorage.getItem("musicIndex");
+                    musicTime = localStorage.getItem("musicTime");
+                    if(ap.list.index != musicIndex){
+                        ap.list.switch(musicIndex);
+                    }else{
+                        ap.seek(musicTime);
+                        ap.play();
+                        localStorage.clear();
+                        isRecover = true;
+                    }
+                }else{
+                    isRecover = true;
+                }
+            }
+        });
+    }
+    window.onbeforeunload = function(event) {
+        if(!ap.audio.paused){
+            musicIndex = ap.list.index;
+            musicTime = ap.audio.currentTime;
+            localStorage.setItem("musicIndex",musicIndex);
+            localStorage.setItem("musicTime",musicTime);
+        }
+    };
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+<script>
+	var pjax = new Pjax({
+	  selectors: [
+	    ".main-container"
+	  ]
+	})
+
+	
+	pjax._handleResponse = pjax.handleResponse;
+    pjax.handleResponse = function(responseText, request, href, options) {
+        if (request.responseText.match("<html")) {
+            
+            let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+            
+            pjax._handleResponse(responseText, request, href, options);
+        } else {
+            
+        }
+    }
+
+	
+	document.addEventListener('pjax:complete', () => {
+        
+        window.Stack.init();
+    })
+
+</script>
+
+
+
+
+<div id="particles-js"></div>
+<script src=https://hongyun-yu.github.io/Hugo-dev/background/particles.min.js></script>
+<script>
+  particlesJS.load('particles-js', "https://hongyun-yu.github.io/Hugo-dev/background/particlesjs-config.json", function() {
+    console.log('particles.js loaded - callback');
+  });
+</script>
+
+<style>
+  #particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+</style>
+
+
+
+
+<style>
+    @font-face {
+      font-family: 'LXGWWenKai';
+      src: url(https://hongyun-yu.github.io/Hugo-dev/font/LXGWWenKai-Medium.ttf) format('truetype');
+    }
+  
+    :root {
+      --base-font-family: 'LXGWWenKai';
+      --code-font-family: 'LXGWWenKai';
+    }
+  </style>
+  
+    </body>
+</html>
+
+<body>
+    <button class="btn" onclick="smoothScrollTop()" id="goTopBtn" title="Go to top">TOP</button>
+  </body>

@@ -7,7 +7,3398 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>Hongyun</copyright>
-        <lastBuildDate>Mon, 17 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hongyun-yu.github.io/Hugo-dev/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 19 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://hongyun-yu.github.io/Hugo-dev/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>编译原理-词法分析</title>
+        <link>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/</link>
+        <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/</guid>
+        <description>&lt;h1 id=&#34;编译原理-第四五六章-词法分析&#34;&gt;编译原理-第四、五、六章-词法分析
+&lt;/h1&gt;&lt;h2 id=&#34;第四章-词法分析一&#34;&gt;第四章 词法分析（一）
+&lt;/h2&gt;&lt;h3 id=&#34;词法分析概述&#34;&gt;词法分析概述
+&lt;/h3&gt;&lt;h4 id=&#34;词法分析的任务&#34;&gt;词法分析的任务
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;词法分析&lt;/code&gt; 的任务：从左至右逐个字符地对源程序进行扫描，产生一个 个单词符号&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;词法分析器(Lexical Analyzer)&lt;/code&gt;又称 &lt;code&gt;扫描器(Scanner)&lt;/code&gt; ：执行词法分析的程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;词法分析器的功能&#34;&gt;词法分析器的功能
+&lt;/h4&gt;&lt;p&gt;功能：输入源程序、输出单词符号&lt;/p&gt;
+&lt;p&gt;单词符号的种类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;基本字&lt;/code&gt; ：如begin，repeat，for，…&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;标识符&lt;/code&gt; ：用来表示各种名字，如变量名、数组名和 过程名&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;常数&lt;/code&gt; ：各种类型的常数&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;运算符&lt;/code&gt; ：+，-，*，/，…&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;界符&lt;/code&gt; ：逗号、分号、括号和空白&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;词法分析器的输出&#34;&gt;词法分析器的输出
+&lt;/h4&gt;&lt;p&gt;输出的单词符号的表示形式： &lt;code&gt;(单词种别，单词自身的值)&lt;/code&gt; 一个二元组&lt;/p&gt;
+&lt;p&gt;单词种别通常用整数编码表示：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若一个种别只有一个单词符号，则种别编码就代表该单 词符号。假定 &lt;code&gt;基本字、运算符和界符&lt;/code&gt; 都是一符一种。&lt;/li&gt;
+&lt;li&gt;若一个种别有多个单词符号，则对于每个单词符号，给出种别 &lt;code&gt;编码和自身的值&lt;/code&gt; 。
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;标识符&lt;/code&gt; 单列一种；标识符自身的值表示成按机器字节划分的内 部码&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;常数&lt;/code&gt; 按类型分种；常数的值则表示成标准的二进制形式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;词法分析器作为一个独立子程序&#34;&gt;词法分析器作为一个独立子程序
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;词法分析作为一个独立的 &lt;code&gt;阶段&lt;/code&gt; ：结构简洁、清晰和条理化，有利于集中考虑词法分 析一些枝节问题&lt;/li&gt;
+&lt;li&gt;但不一定不作为单独的一 &lt;code&gt;遍&lt;/code&gt; ：而是将其处理为一个子程序， &lt;strong&gt;由语法分析驱动词法分析&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/1977714d5be6d7041d4c4e0bfcd0221e.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;词法分析器和语法分析器的地位&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;42-词法分析器的设计&#34;&gt;4.2 词法分析器的设计
+&lt;/h3&gt;&lt;h4 id=&#34;词法分析器的结构&#34;&gt;词法分析器的结构
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/8af6e151aa2b21ae29892561d16e506b.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;此法分析器的结构&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;扫描缓冲区&#34;&gt;扫描缓冲区
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/1b11430a0ad5b63f6450c9cbdcae008b.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;扫描缓冲区&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这里的扫描缓冲区使用两个半区互补使用， &lt;strong&gt;半区的长度即为单词的最大长度&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;单词符号的识别超前搜索&#34;&gt;单词符号的识别:超前搜索
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;基本字&lt;/code&gt; 需要超前搜索才能确定哪些是基本字。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;标识符&lt;/code&gt; 识别：字母开头的字母数字串，后跟界符或算符&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;常数&lt;/code&gt; 识别：识别出算术常数并将其转变为二进制内码表示&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;算符和界符&lt;/code&gt; 的识别：把多字符组成的算符和界符拼合成一个单词符号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;几点限制不必使用超前搜索&#34;&gt;几点限制——不必使用超前搜索
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;所有基本字都是保留字&lt;/code&gt; ;用户不能用它们作自己 的标识符&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;基本字作为特殊的标识符来处理&lt;/code&gt; ，使用保留字表&lt;/li&gt;
+&lt;li&gt;如果基本字、标识符和常数(或标号)之间没有确 定的运算符或界符作间隔，则 &lt;code&gt;必须使用一个空白符作间隔&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对程序编写者的一些限制也是简化词法分析程序的设计以及是程序的阅读性增加。&lt;/p&gt;
+&lt;h4 id=&#34;状态转换图&#34;&gt;状态转换图
+&lt;/h4&gt;&lt;p&gt;状态转换图是一张有限方向图：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;结点&lt;/code&gt; 代表 &lt;code&gt;状态&lt;/code&gt; ，用圆圈表示&lt;/li&gt;
+&lt;li&gt;状态之间用 &lt;code&gt;箭弧&lt;/code&gt; 连结，箭弧上的标记(字符)代表射出 结状态下可能出现的输入 &lt;code&gt;字符或字符类&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;一张转换图只包含 &lt;code&gt;有限个状态&lt;/code&gt; ，其中有一个为 &lt;code&gt;初态&lt;/code&gt; （用双箭头表示）， 至少要有一个 &lt;code&gt;终态&lt;/code&gt; （用双圆圈表示）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;状态转换图可用于识别(或接受)一定的字符串：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若存在一条从初态到某一终态的道路，且这条路上所 有弧上的标记符连接成的字等于α，则称α被该状态 转换图所识别(接受)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/d822fce112c406b5c8172a90282f13f7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一个识别整常数的状态转换图&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;词法分析器的设计示例-理解即可&#34;&gt;词法分析器的设计示例 （理解即可）
+&lt;/h4&gt;&lt;p&gt;例如这样的一个单词表对应这样的一个状态转换图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/512a0ae5cfc161e8cc2a70aad0d077a5.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;设计状态转换图&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不含回路的分叉结点：可用一个 &lt;code&gt;CASE&lt;/code&gt; 语句或一组 &lt;code&gt;IF-THEN-ELSE&lt;/code&gt; 语句实现&lt;/li&gt;
+&lt;li&gt;含回路的状态结点：对应一段由 &lt;code&gt;WHILE&lt;/code&gt; 结构和 &lt;code&gt;IF&lt;/code&gt; 语句构成的程序&lt;/li&gt;
+&lt;li&gt;终态结点：表示识别出某种单词符号，对应 &lt;code&gt;返回&lt;/code&gt; 语句（此处的返回值是一个二元组（种别，自身值））&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;定义：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/ca0496f5cc366ecbb0cd892bd743c020.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;全局变量&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/d0f660313fee2fb359b926bf16176afe.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;变量及过程&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对于其中一个分支就可以写出如下的代码：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/51086d7ac3f8f419c96e45cde53f7800.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;将状态图的代码一般化&#34;&gt;将状态图的代码一般化
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;变量 &lt;code&gt;curState&lt;/code&gt; 用于保存现有的状态&lt;/li&gt;
+&lt;li&gt;用二维数组表示状态图：&lt;code&gt;stateTrans[state][ch]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这样的一个一般化的框架就如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/24ef3b6e202d2f1732dd17a51d267fd6.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一般化&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这里的返回值要根据具体的处理过程进行细节的处理，如关键字的处理、单词的处理、标识符的处理等等。&lt;/p&gt;
+&lt;h2 id=&#34;第五章-词法分析二&#34;&gt;第五章 词法分析（二）
+&lt;/h2&gt;&lt;h3 id=&#34;词法规则形式化-正规集和正规式&#34;&gt;词法规则形式化-正规集和正规式
+&lt;/h3&gt;&lt;h4 id=&#34;正规集和正规式&#34;&gt;正规集和正规式
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;正规集&lt;/code&gt; 可以用 &lt;code&gt;正规式&lt;/code&gt; 表示。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;正规式&lt;/code&gt; 是表示 &lt;code&gt;正规集&lt;/code&gt; 一种方法&lt;/li&gt;
+&lt;li&gt;一个字集合是 &lt;code&gt;正规集&lt;/code&gt; 当且仅当它能用 &lt;code&gt;正规式&lt;/code&gt; 表示&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;正规集是一类字的集合，程序语言的定义的合法单词的集合&lt;/p&gt;
+&lt;h4 id=&#34;正规式和正规集的递归定义&#34;&gt;正规式和正规集的递归定义
+&lt;/h4&gt;&lt;p&gt;对给定的字母表  Σ Σ Σ :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ε ε ε 和  ∅ ∅ ∅ 都是  Σ Σ Σ 上的正规式，它们所表示的正规集为  { ε } \{ε\} {ε} 和  ∅ ∅ ∅ ;&lt;/li&gt;
+&lt;li&gt;任何  a ∈ Σ a∈Σ a∈Σ ， a a a 是  Σ Σ Σ 上的正规式，它所表示的正规集为  { a } \{a\} {a} ;&lt;/li&gt;
+&lt;li&gt;假定  e 1 e1 e1 和  e 2 e2 e2 都是  Σ Σ Σ 上的正规式，它们所表示 的正规集为  L ( e 1 ) L(e_1) L(e1​) 和  L ( e 2 ) L(e_2) L(e2​) ，则
+&lt;ul&gt;
+&lt;li&gt;( e 1 ∣ e 2 ) (e_1|e_2) (e1​∣e2​) 为正规式，它所表示的正规集为  L ( e 1 ) ∪ L ( e 2 ) L(e_1)∪L(e_2) L(e1​)∪L(e2​)&lt;/li&gt;
+&lt;li&gt;( e 1 . e 2 ) (e_1.e_2) (e1​.e2​) 为正规式，它所表示的正规集为  L ( e 1 ) L ( e 2 ) L(e_1)L(e_2) L(e1​)L(e2​)&lt;/li&gt;
+&lt;li&gt;( e 1 ) ∗ (e_1)* (e1​)∗ 为正规式，它所表示的正规集为  ( L ( e 1 ) ) ∗ (L(e_1))^* (L(e1​))∗&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;仅由 &lt;code&gt;有限次&lt;/code&gt; 使用上述三步骤而定义的表达式才 是Σ上的正规式，仅由这些正规式表示的字 集才是Σ上的正规集。&lt;/p&gt;
+&lt;p&gt;由以上规则可得：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ε ε ε 是： 字 或 正规式&lt;/li&gt;
+&lt;li&gt;∅ ∅ ∅ 是： 集合 或 正规式&lt;/li&gt;
+&lt;li&gt;a ( a ∈ Σ ) a (a ∈Σ) a(a∈Σ) 是： 字符 或 字 或 正规式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;正规式的等价性&#34;&gt;正规式的等价性
+&lt;/h4&gt;&lt;p&gt;若两个正规式所表示的正规集相同，则称这两 个正规式等价。如  b ( a b ) ∗ = ( b a ) ∗ b b(ab)^*=(ba)^*b b(ab)∗=(ba)∗b&lt;/p&gt;
+&lt;p&gt;证明：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/e224b9e71d6daa2b53beab521239f555.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;等价性的证明&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;利用正规式与正规集的对应关系，证明  ( a ∗ b ∗ ) ∗ = ( a ∣ b ) ∗ = ( a ∗ ∣ b ∗ ) ∗ (a^&lt;em&gt;b^&lt;/em&gt;)^&lt;em&gt;=(a|b)^&lt;/em&gt;=(a^&lt;em&gt;|b^&lt;/em&gt;)^* (a∗b∗)∗=(a∣b)∗=(a∗∣b∗)∗ ：可以看出每一个正规式表示的都是由 ab组成的所有串的集合，所以是等价的 &lt;del&gt;（证明过程？！null）&lt;/del&gt;&lt;/p&gt;
+&lt;h4 id=&#34;正规式的性质&#34;&gt;正规式的性质
+&lt;/h4&gt;&lt;p&gt;对正规式，下列等价成立：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;e 1 ∣ e 2 = e 2 ∣ e 1 e_1|e_2 = e_2|e_1 e1​∣e2​=e2​∣e1​ 交换律&lt;/li&gt;
+&lt;li&gt;e 1 ∣ ( e 2 ∣ e 3 ) = ( e 1 ∣ e 2 ) ∣ e 3 e_1 |(e_2|e_3) = (e_1|e_2)|e_3 e1​∣(e2​∣e3​)=(e1​∣e2​)∣e3​ 结合律&lt;/li&gt;
+&lt;li&gt;e 1 ( e 2 e 3 ) = ( e 1 e 2 ) e 3 e_1(e_2e_3) = (e_1e_2)e_3 e1​(e2​e3​)=(e1​e2​)e3​ 结合律&lt;/li&gt;
+&lt;li&gt;e 1 ( e 2 ∣ e 3 ) = e 1 e 2 ∣ e 1 e 3 e_1(e_2|e_3) = e_1e_2|e_1e_3 e1​(e2​∣e3​)=e1​e2​∣e1​e3​ 分配律&lt;/li&gt;
+&lt;li&gt;( e 2 ∣ e 3 ) e 1 = e 2 e 1 ∣ e 3 e 1 (e_2|e_3)e_1 = e_2e_1|e_3e_1 (e2​∣e3​)e1​=e2​e1​∣e3​e1​ 分配律&lt;/li&gt;
+&lt;li&gt;e ε = ε e = e eε= εe=e eε=εe=e&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;注意乘么的交换律 e 1 e 2 &amp;lt; &amp;gt; e 2 e 1 e_1e_2 &amp;lt;&amp;gt; e_2e_1 e1​e2​&amp;lt;&amp;gt;e2​e1​&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;证明过程：转化为集合运算来证明即可&lt;/p&gt;
+&lt;h3 id=&#34;52-确定有限自动机dfa&#34;&gt;5.2 确定有限自动机(DFA)
+&lt;/h3&gt;&lt;h4 id=&#34;对状态图进行形式化定义&#34;&gt;对状态图进行形式化定义
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;确定有限自动机(DeterministicFiniteAutomata， DFA)&lt;/code&gt; M M M 是一个五元式  M = ( S , Σ , f , S 0 , F ) M=(S,Σ,f,S_0,F) M=(S,Σ,f,S0​,F) ，其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;S S S :有穷 &lt;code&gt;状态集&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Σ Σ Σ ：输入 &lt;code&gt;字母表&lt;/code&gt; (有穷)&lt;/li&gt;
+&lt;li&gt;f f f : &lt;code&gt;状态转换函数&lt;/code&gt; ，为  S × Σ → S S×Σ→S S×Σ→S 的 &lt;code&gt;单值部分映射&lt;/code&gt; ，  f ( s ， a ) = s ′ f(s， a)=s&amp;rsquo; f(s，a)=s′ 表示：当现行状态为  s s s ，输入字符为  a a a 时，将状态转换到下一状态  s ′ s&amp;rsquo; s′ ，  s ′ s&amp;rsquo; s′ 称为  s s s 的一个后继状态&lt;/li&gt;
+&lt;li&gt;S 0 ∈ S S_0∈S S0​∈S 是&lt;code&gt;唯一&lt;/code&gt; 的一个 &lt;code&gt;初态&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;F ⊆ S F⊆S F⊆S ：&lt;code&gt;终态集&lt;/code&gt;(可空)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;dfa表示为状态转换图&#34;&gt;DFA表示为状态转换图
+&lt;/h4&gt;&lt;p&gt;假定DFA M含有 &lt;code&gt;m个状态&lt;/code&gt; 和 &lt;code&gt;n个输入字符&lt;/code&gt; ，则对应的状态转换图含有 &lt;code&gt;m个状态结点&lt;/code&gt; ，每个结点顶 多含有 &lt;code&gt;n条箭弧射出&lt;/code&gt; ，且每条箭弧用Σ上的不同的输 入字符来作标记&lt;/p&gt;
+&lt;h4 id=&#34;dfa识别字符串的定义&#34;&gt;DFA识别字符串的定义
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;对于  Σ ∗ Σ^* Σ∗ 中的任何字  α α α ，若存在一条从初态到某一 终态的道路，且这条路上所有弧上的标记符连 接成的字等于  α α α ，则称  α α α 为DFA M所 &lt;code&gt;识别(接收)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;DFA M所识别的字的全体记为  L ( M ) L(M) L(M)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如一个识别以00结尾的字符串的DFA：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/6b7d407beb2f5bfcf41e56641ce77a0b.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一个识别亿00结尾的字符串&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/a49720cf0d564624c7c6f5a7616c2196.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一个识别含有aa或bb的字符串的DFA&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/3e9e606438e3b5c8b84b5c1568afb5fe.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;两个特殊的DFA&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;将DFA中的各个状态函数写成矩阵的形式，也就是状态矩阵，这样就可以利用前面的词法分析程序：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/6b47972b7d35f30a2958164154c57552.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;词法分析程序&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;53-非确定有限自动机nfa&#34;&gt;5.3 非确定有限自动机（NFA）
+&lt;/h3&gt;&lt;h4 id=&#34;非确定有限自动机nfa的定义&#34;&gt;非确定有限自动机（NFA）的定义
+&lt;/h4&gt;&lt;p&gt;一个简单的NFA状态图： &lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/d35cf749746c64e2e9f88b606452a46f.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;NFA状态图&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;（大部分定义与DFA一致）&lt;/p&gt;
+&lt;p&gt;一个 &lt;code&gt;非确定有限自动机 (Nondeterministic Finite Automata，NFA)&lt;/code&gt; M M M 是一个五元式  M = ( S , Σ , f , S 0 , F ) M=(S, Σ, f, S_0, F) M=(S,Σ,f,S0​,F) ，其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;S S S :有穷 &lt;code&gt;状态集&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Σ Σ Σ ：输入 &lt;code&gt;字母表&lt;/code&gt; (有穷)&lt;/li&gt;
+&lt;li&gt;f f f : &lt;code&gt;状态转换函数&lt;/code&gt;，为  S × Σ ∗ → 2 S \color{#0CF}{S×Σ^*→2^S} S×Σ∗→2S 的部分映射 &lt;strong&gt;这里的 2 S 2^S 2S 指的是  S S S 的幂级，即  S S S 所有的子集的集合&lt;/strong&gt; ，这样就表明从一个状态出发可能有多个不同的状态，体现非确定这一特点&lt;/li&gt;
+&lt;li&gt;S 0 ⊆ S \color{#0CF}{S_0⊆S} S0​⊆S 是非空的 &lt;code&gt;初态集&lt;/code&gt; ，这里与 DFA 不同，DFA处的  S 0 S_0 S0​ 的定义是 &lt;strong&gt;属于&lt;/strong&gt; 某个状态集合，而这里是某一 &lt;strong&gt;些&lt;/strong&gt; 集合作为自动机的初态，这也体现着非确定这一特点&lt;/li&gt;
+&lt;li&gt;F ⊆ S F⊆S F⊆S ：&lt;code&gt;终态集&lt;/code&gt; (可空)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;（个人理解：可以将自动机看作一幅图（网络），每个节点代表一种状态，边权为符合某一值时表示联通，DFA每个节点出发的边的限制条件不同，且为字符限制，而NFA的每一个节点出发的边的限制条件可以相同，即多个通路，而且是字符串的限制，并且前者仅有一个源点，后者可以有多个源点 &lt;del&gt;（一个不显示的超级源点？？嘿嘿）&lt;/del&gt; ）&lt;/p&gt;
+&lt;h4 id=&#34;从状态图看nfa和dfa的区别&#34;&gt;从状态图看NFA和DFA的区别
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;NFA可以有多个 &lt;code&gt;初态&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;弧上的标记可以是  Σ ∗ Σ^* Σ∗ 中的一个 &lt;code&gt;字&lt;/code&gt; (甚至可以是一个 &lt;code&gt;正规式&lt;/code&gt; )，而不 一定是单个字符&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;同一个字&lt;/code&gt; 可能出现在同状态射出的 &lt;code&gt;多条弧&lt;/code&gt; 上&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;DFA是NFA的特例&lt;/p&gt;
+&lt;h4 id=&#34;nfa识别字符串的定义&#34;&gt;NFA识别字符串的定义
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;对于  Σ ∗ Σ^* Σ∗ 中的任何字  α α α ，若存在一条从初态到某一终态的道路，且这条路上所有弧上的标记字连 接成的字等于  α α α (忽略那些标记为  ε ε ε 的弧)，则称  α α α为NFAM所 &lt;code&gt;识别(接收)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;NFA M所识别的字的全体记为  L ( M ) L(M) L(M)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个识别含有aa或bb的字符串的NFA：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/1ccbbc30bad135154fbfd396ddf8fbc7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;识别含有aa或bb的NFA&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以看出左图的DFA也可以完成相同的功能；&lt;/p&gt;
+&lt;p&gt;一个识别特定语言的NFA：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/bd562759f2f6d7e4650f967fb3acf1da.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一个识别特定语言的NFA&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;dfa和nfa&#34;&gt;DFA和NFA
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;定义：对于任何两个有限自动机M和  M ′ M&amp;rsquo; M′ ，如果  L ( M ) = L ( M ′ ) L(M)=L(M&amp;rsquo;) L(M)=L(M′) ，则称  M M M 与 M ′ M&amp;rsquo; M′ &lt;code&gt;等价&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;自动机理论中一个重要的结论：&lt;code&gt;判定两个自动机等价性的算法是存在的&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;对于每个NFA M存在一个DFA  M ′ M&amp;rsquo; M′ ，使得  L ( M ) = L ( M ′ ) L(M)=L(M&amp;rsquo;) L(M)=L(M′)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DFA与NFA识别能力相同!&lt;/code&gt; （如上面的那个识别含有aa或bb字符串的自动机）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;第六章-词法分析三&#34;&gt;第六章 词法分析（三）
+&lt;/h2&gt;&lt;h3 id=&#34;61-有限自动机的等价性&#34;&gt;6.1 有限自动机的等价性
+&lt;/h3&gt;&lt;h4 id=&#34;dfa与nfa的等价性&#34;&gt;DFA与NFA的等价性
+&lt;/h4&gt;&lt;p&gt;对于每个NFA  M M M 存在一个DFA  M ′ M&amp;rsquo; M′，使得  L ( M ) = L ( M ′ ) L(M)=L(M&amp;rsquo;) L(M)=L(M′) ，包括： &lt;em&gt;等价性证明&lt;/em&gt; 和 &lt;em&gt;NFA的确定化&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;可以从 **NFA 和DFA的差别 ** 入手：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/fb7a6dba0213a8940d1c548ad33eeb9d.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;NFA和DFA的差别&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;所以只要消除差别就可以实现两者的转化，也就是等价&lt;/p&gt;
+&lt;h4 id=&#34;dfa与nfa的等价性证明&#34;&gt;DFA与NFA的等价性证明
+&lt;/h4&gt;&lt;h5 id=&#34;等价性证明&#34;&gt;等价性证明
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/5e7b1176275331232e34be1cf0eb8095.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一个NFA&#34;
+	
+	
+&gt;&lt;br&gt;
+假定NFA  M = &amp;lt; S , Σ , δ , S 0 , F &amp;gt; M=&amp;lt;S, Σ, δ, S_0, F&amp;gt; M=&amp;lt;S,Σ,δ,S0​,F&amp;gt; ，我们对M的状态转换图进行以下改造：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;引进新的初态结点  X X X 和终态结点  Y Y Y ， X , Y ∉ S X,Y∉S X,Y∈/​S ，从  X X X 到  S 0 S_0 S0​ 中任意状态结点连一条  ε ε ε 箭弧，从  F F F 中任意状态结点连一条  ε ε ε 箭弧到  Y Y Y &lt;del&gt;（类似一个超级源点和超级汇点）&lt;/del&gt; 。 &lt;strong&gt;(解决初始状态唯一性)&lt;/strong&gt; &lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/5b75f57b9fa4e51b0dd7b9e6af11d604.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;添加一个初态节点和终态节点&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对M的状态转换图进一步施行替换，其中k是新引入的状态。 &lt;strong&gt;(简化弧上的标记)&lt;/strong&gt; 。 例如拆分的替代：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/62950deb09c311c2894edd85a8affd5b.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;拆分替代&#34;
+	
+	
+&gt;&lt;br&gt;
+对于我们现在的这个NFA：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/379022f6b60cb51cef10349d34c4edbd.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;简化弧上的标记&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;逐步把这个图转变为每条弧只标记为  Σ Σ Σ 上的一个字符或  ε ε ε ，后得到一个NFA  M ′ M&amp;rsquo; M′ ，显然  L ( M ′ ) = L ( M ) L(M&amp;rsquo;)=L(M) L(M′)=L(M)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;nfa的确定化-子集法解决ε弧和转换关系&#34;&gt;NFA的确定化-子集法(解决ε弧和转换关系)
+&lt;/h5&gt;&lt;h6 id=&#34;ε--c-l-o-s-u-r-e--i--ε-closurei-εclosurei-的定义&#34;&gt;ε − c l o s u r e ( I ) ε-closure(I) ε−closure(I) 的定义
+&lt;/h6&gt;&lt;p&gt;设  I I I 是的状态集的一个子集，定义  I I I 的  ε − 闭 包 ε-闭包 ε−闭包 ε − c l o s u r e ( I ) ε-closure(I) ε−closure(I) 为:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若  s ∈ I s∈I s∈I ，则  s ∈ ε − c l o s u r e ( I ) s∈ε-closure(I) s∈ε−closure(I) ；&lt;/li&gt;
+&lt;li&gt;若  s ∈ I s∈I s∈I ，则从s出发经过任意条ε弧而能到达的任何状态  s ′ s&amp;rsquo; s′ 都属于  ε − c l o s u r e ( I ) ε-closure(I) ε−closure(I)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;即，  ε − c l o s u r e ( I ) = I ∪ { s ′ ∣ 从 某 个 s ∈ I 出 发 经 过 任 意 条 ε 弧 能 到 达 s ′ } ε-closure(I)=I∪\{s&amp;rsquo;|从某个s∈I出发经过任意条ε 弧能到达s&amp;rsquo;\} ε−closure(I)=I∪{s′∣从某个s∈I出发经过任意条ε弧能到达s′}&lt;/p&gt;
+&lt;h6 id=&#34;i-a--ε--c-l-o-s-u-r-e--j--i_a-ε-closurej-iaεclosurej-的定义&#34;&gt;I a = ε − c l o s u r e ( J ) I_a= ε-closure(J) Ia​=ε−closure(J) 的定义
+&lt;/h6&gt;&lt;p&gt;设a是Σ中的一个字符，定义  I a = ε − c l o s u r e ( J ) I_a= ε-closure(J) Ia​=ε−closure(J) 其中，J为I中的某个状态出发经过一条a弧而到达的状态集合。 &lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/0650e761a12ff7f84286f49094a0b327.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;I_a的图形描述&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;eg:&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/eafc4099f039f761b0f43e5ae33e4f9a.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;I_a的一个例子&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h6 id=&#34;nfa的确定化&#34;&gt;NFA的确定化
+&lt;/h6&gt;&lt;p&gt;确定化：不失一般性，设字母表只 包含两个a 和b，我们构造一张计 算状态集的转换表:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先，置第1行第1列为εclosure({X})求出这一列的Ia，Ib；&lt;/li&gt;
+&lt;li&gt;然后，检查这两个Ia，Ib，看它 们是否已在表中的第一列中出 现，把未曾出现的填入后面的 空行的第1列上，求出每行第2， 3列上的集合…&lt;/li&gt;
+&lt;li&gt;重复上述过程，直到所有第2， 3列子集全部出现在第一列为止&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/e55d43f4c5c0182ebd19bafcf12d6a64.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;表的大致结构&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注意，这里如果右边出现空集，左边I这列也要计算空集；此外，因为是有限自动机，故左边的计算出的项最多有 2 n 2^n 2n 个，所以一定会计算完&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;例如：对于上面的 NFA M’ 的计算结果就是如下：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/10becb8ffa2522b2127c36fb6afb386b.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;M&amp;rsquo;的子集结果&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;把表看成状态转换矩阵，子集视为状态&lt;/li&gt;
+&lt;li&gt;转换表唯一刻划了一个确定 的有限自动机M，其中：初态是ε-closure({X}) 、终态是含有原终态Y的子集&lt;/li&gt;
+&lt;li&gt;并将集合进行一定的标号，即可得到一个新的状态转移矩阵，同样可以得到一个新的状态转换图：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/657ddeed287330cf0cc48365a77c5c83.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;新的状态转换图&#34;
+	
+	
+&gt;&lt;br&gt;
+而这个状态转换图对应的显然是一个 DFA，不难看出，这个DFA M与M’ 等价 ，对于每个NFA M存在一个 DFA M’ ，使得L(M)=L(M’) ，也就是说，NFA和DFA等价&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;确定有限自动机的化简&#34;&gt;确定有限自动机的化简
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;DFA的化简(最小化) ：对于给定的DFA M，寻找一个状态数比M少的DFA M’，使得L(M)=L(M’)&lt;/li&gt;
+&lt;li&gt;状态的等价性：
+&lt;ul&gt;
+&lt;li&gt;假设s和t为M的两个状态，称s和t等价：如果从状态 s出发能读出某个字α而停止于终态，那么同样，从t 出发也能读出α而停止于终态；反之亦然&lt;/li&gt;
+&lt;li&gt;两个状态不等价，则称它们是可区别的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;两个状态不等价是指： &lt;strong&gt;存在一个字α&lt;/strong&gt; ，要么s读出α停止于终态而t读出 α停止于非终态，要么t读出α停止于终态而s读 出α停止于非终态&lt;/li&gt;
+&lt;li&gt;化简的基本思想：把M的状态集划分为一些 &lt;em&gt;不相交的子集&lt;/em&gt; ，使得任何 &lt;strong&gt;两个不同子集的状态是可区别的&lt;/strong&gt; ，而 &lt;strong&gt;同一子集的任何两个状态是等价的&lt;/strong&gt; ，最后，让每个子集选出一个代表，同时消去其他状态。所以，对DFA的状态集合S进行第一次划分是 &lt;strong&gt;终态&lt;/strong&gt; 和 &lt;strong&gt;非终态&lt;/strong&gt; 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;化简的方法&#34;&gt;化简的方法
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;首先，把S划分为 &lt;strong&gt;终态&lt;/strong&gt; 和 &lt;strong&gt;非终态&lt;/strong&gt; 两个子集，形成 基本划分  Π Π Π 。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;假定到某个时候，  Π Π Π 已含  m m m 个子集，记为  Π = { I ( 1 ) ， I ( 2 ) ， … ， I ( m ) } Π=\{I^{(1)}， I^{(2)}，…，I^{(m)}\} Π={I(1)，I(2)，…，I(m)} ，检查  Π Π Π 中的每个子集看是否能进 一步划分： 对某个  I ( i ) I^{(i)} I(i) ，令  I ( i ) = { s 1 , s 2 , … , s k } I^{(i)}=\{s_1,s_2, …,s_k\} I(i)={s1​,s2​,…,sk​} ，若存在一个输入字符  a a a 使得  I a ( i ) I_a^{(i)} Ia(i)​ 不会包含在现行  Π Π Π 的某个子集  I ( j ) I^{(j)} I(j) 中，则至少应把  I ( i ) I^{(i)} I(i) 分为 两个部分。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;假定状态  s 1 s_1 s1​ 和  s 2 s_2 s2​ 是  I ( i ) = { s 1 , s 2 , … , s k } I^{(i)}=\{s_1,s_2, …,s_k\} I(i)={s1​,s2​,…,sk​} 中的两个状态， 它们经  a a a 弧分别到达  t 1 t_1 t1​ 和  t 2 t_2 t2​ ，而  t 1 t_1 t1​ 和  t 2 t_2 t2​ 属于现行  Π Π Π 中的两个不同子集（看图理解）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;说明有一个字  α α α ，  t 1 t_1 t1​ 读出  α α α 后到达终态，而  t 2 t_2 t2​ 读出  α α α 后 不能到达终态，或者反之&lt;/li&gt;
+&lt;li&gt;那么对于字  a α aα aα ，  s 1 s_1 s1​ 读出  a α aα aα 后到达终态，而  s 2 s_2 s2​ 读出  a α aα aα 不能到达终态，或者反之&lt;/li&gt;
+&lt;li&gt;所以  s 1 s_1 s1​ 和  s 2 s_2 s2​ 不等价 &lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/36fa31b2d0fb9aee5dc56b63a7c63b40.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将  I ( i ) I^{(i)} I(i) 分成两半，一半含有  s 1 s_1 s1​ ，一半含有  s 2 s_2 s2​&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I ( i 1 ) I^{(i1)} I(i1) 含有  s 1 s_1 s1​ :  I ( i 1 ) = { s ∣ s ∈ I ( i ) } I^{(i1)}=\{s|s∈I^{(i)}\} I(i1)={s∣s∈I(i)} 且s经a弧到达t, 且t与  t 1 t_1 t1​ 属于现行  Π Π Π 中的同一子集}&lt;/li&gt;
+&lt;li&gt;I ( i 2 ) I^{(i2)} I(i2) 含有  s 2 s_2 s2​ :  I ( i 2 ) = I ( i ) − I ( i 1 ) I^{(i2)}=I^{(i)}-I^{(i1)} I(i2)=I(i)−I(i1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一般地，对某个  a a a 和  I ( i ) I^{(i)} I(i) ，若  I a ( i ) I_a^{(i)} Ia(i)​ 落入现行  Π Π Π 中N 个不同子集，则应把  I ( i ) I^{(i)} I(i) 划分成N个不相交的组， 使得每个组  J J J 的  J a J_a Ja​ 都落入的  Π Π Π 同一子集。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重复上述过程，直到  Π Π Π 所含子集数不再增长&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于上述后划分  Π Π Π 中的每个子集，我们选取 每个子集  I I I 中的一个状态代表其他状态，则可得 到化简后的DFA  M ′ M&amp;rsquo; M′&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;若  I I I 含有原来的 &lt;strong&gt;初态&lt;/strong&gt; ，则其代表为 &lt;strong&gt;新的初态&lt;/strong&gt; ，若  I I I 含有原来的 &lt;strong&gt;终态&lt;/strong&gt; ，则其代表为 &lt;strong&gt;新的终态&lt;/strong&gt; 。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;eg: 我们对上面的那个 DFA M’ 进行不断的化简，首先分成两个集合：终态和非终态集合：  I ( 1 ) 和 I ( 2 ) I^{(1)} 和 I^{(2)} I(1)和I(2) ，对他们求子集。。。。（红蓝两色即为分解中出现某个集合出现在多个状态集中，需要分解的过程）：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/4a00098cbd11ecc53f9b9d0fc2bf4b90.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;分解&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对最后化解后的集合重新标号，可以得到一个化解后的状态转换图：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/b5196e35b60835da9d0f50ddfe0de3b1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;化解结果&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;62-正规式与有限自动机的等价性&#34;&gt;6.2 正规式与有限自动机的等价性
+&lt;/h3&gt;&lt;p&gt;上面一节证明了 有限自动机间的等价性，表明 DFA 和 NFA 是可以相互转化的，其识别的字是相同的，而 NFA 对于设计人员来说更加友好，因为不用对转换关系考虑的更加细致，易于设计；而 DFA 对开发词法分析程序更加友好，因为更加的简单，清晰，这样我们可以由语言的 单词正规集 得到 正规式， 然后设计处 NFA ，最后利用 有限自动机的等价性来实现 NFA 向 DFA 的转化和化解，从而设计出此法分析程序。（也就是这个图)&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/8080fd3eeb3dfb99662c9fde8bbd8b9d.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;词法分析程序步骤&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这节证明正规式与有限自动机之间的等价性。&lt;/p&gt;
+&lt;h4 id=&#34;正规式与有限自动机的等价性结论&#34;&gt;正规式与有限自动机的等价性（结论）
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;一个正规式r与一个有限自动机M等价：  L ( r ) = L ( M ) L(r)=L(M) L(r)=L(M)&lt;/li&gt;
+&lt;li&gt;FA -&amp;gt;正规式 ：对任何FA M，都存在一个正规式r，使得  L ( r ) = L ( M ) L(r)=L(M) L(r)=L(M) 。&lt;/li&gt;
+&lt;li&gt;正规式-&amp;gt; FA ：对任何正规式r，都存在一个FA M，使得  L ( M ) = L ( r ) L(M)=L(r) L(M)=L(r)。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;为nfa构造正规式&#34;&gt;为NFA构造正规式
+&lt;/h4&gt;&lt;p&gt;对转换图概念拓广，令每条弧可用一个正规式作标记。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;证明&lt;/strong&gt; ：对  Σ Σ Σ 上任一NFA  M M M ，都存在一个  Σ Σ Σ 上的 规式  r r r ，使得  L ( r ) = L ( M ) L(r)=L(M) L(r)=L(M) 。&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/49ca510448cddb28eeb21bfa25a44d03.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;假定NFA  M = &amp;lt; S , Σ , δ , S 0 , F &amp;gt; M=&amp;lt;S, Σ, δ, S_0, F&amp;gt; M=&amp;lt;S,Σ,δ,S0​,F&amp;gt;，我们对M的状 态转换图进行以下改造：&lt;br&gt;
+在M的转换图上加进两个状态X和Y，从X用ε弧连接 到M的所有初态结点，从M的所有终态结点用ε弧连 接到Y，从而形成一个新的NFA，记为  M ’ M’ M’ ，它只有一 个初态X和一个终态Y，显然  L ( M ) = L ( M ’ ) L(M)=L(M’) L(M)=L(M’) 。&lt;/li&gt;
+&lt;li&gt;然后，反复使用下面的三条规则，逐步消去结点， 直到只剩下X和Y为止。 &lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/3b64dd7b4511d86b66abe78358dae944.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;三条规则&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;最后，X到Y的弧上标记的正规式即为所构造的 正规式r，显然  L ( r ) = L ( M ’ ) = L ( M ) L(r)=L(M’)=L(M) L(r)=L(M’)=L(M) ，得证：对  Σ Σ Σ 上任一NFA  M M M ，都存在一个  Σ Σ Σ 上的正规式  r r r ，使得  L ( r ) = L ( M ) L(r)=L(M) L(r)=L(M) 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;为正规式构造nfa&#34;&gt;为正规式构造NFA
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;定理：对任何正规式r，都存在一个FA M，使 得  L ( M ) = L ( r ) L(M)=L(r) L(M)=L(r) 。&lt;/li&gt;
+&lt;li&gt;定理: 对于  Σ Σ Σ 上的正规式r，都存在一个NFA M， 使  L ( M ) = L ( r ) L(M)=L(r) L(M)=L(r) ，并且M只有一个初态和一个终态， 而且没有从终态出发的箭弧。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;证明：&lt;/strong&gt; 对给定正规式r中的运算符数目进行归纳
+* 验证r中的运算符数目为0时，结论成立。
+* 假设结论对于运算符数目少于k(k≥1)的正规式成立
+* 基于该假设，证明结论对于运算符数目为k的正规式 成立。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/d3f9bca5fdafc6cb6ba99bfc4820d226.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;证明第一步&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/7d71f9304d8f573ab654cd8b676b8c18.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/c51803e67cc7d86dcfda9a46eac06354.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/53e98aadaafb40fb4594e5f928a937fb.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/6e36ff06c90fb7aa87c95b2cceb1ce0c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;正规式向nfa的转化过程&#34;&gt;正规式向NFA的转化过程
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;上述证明过程实质上是一个将 &lt;strong&gt;正规表达式&lt;/strong&gt; 转换为 &lt;strong&gt;有限自动机&lt;/strong&gt; 的算法 ，如构造  Σ Σ Σ 上的NFA  M ’ M’ M’ 使得  L ( r ) = L ( M ’ ) L(r)=L(M’) L(r)=L(M’)&lt;/li&gt;
+&lt;li&gt;首先，把r表示成一个初态为X、终态为Y并且转换条件是r的 NFA&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/0fac6c75ddc6f3e5251898a19cf98869.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;然后按照如下规则不断地对 r 进行分裂 （就是上面 NFA向r转换的三条规则的逆过程）&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/74f75deabf3cf143d5be0a3ce3835dc4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;三条规则&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;逐步把这个图转变为每条弧只标记为  Σ Σ Σ 上的一个字符或  ε ε ε ，最后得到一个NFA  M ’ M’ M’ ，显然  L ( M ’ ) = L ( r ) L(M’)=L(r) L(M’)=L(r)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;eg: 例如上面一直使用的一个 NFA/DFA 用 正规式r表示的情况：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/d1caa04107da08afb7afab9c574d7ad9.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一个正规式向NFA转换的例子&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;当我们得到一个想要的字的正规式r时，就可以将正规式转化为一个NFA，然后利用上一讲6.1的有限自动机的转化就可以将一个NFA利用子集法转化为一个DFA并化解，这样我们就清楚了整个词法分析程序生成的主要过程的理论。&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/fd5f57cdfea8f2b4792b88e0faa245b0.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;NFA向DFA的子集法的转化&#34;
+	
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/7e7ba4c5472a9b99a485982d5bc07d8d.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;子集法得到新的状态转换矩阵和对应的DFA&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;63-词法分析程序自动生成lex&#34;&gt;6.3 词法分析程序自动生成–LEX
+&lt;/h3&gt;&lt;p&gt;利用LEX设计词法分析程序的整个流程如下&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/c2eae347fad66b8a8cce0099534f21bb.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;LEX流程&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;LEX的源文件格式包括：辅助定义（紫色）和识别规则（正规式+一小段的程序代码）（蓝色）&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/592edfe047a9a4e534fcef359937e3de.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;LEX源文件格式&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;LEX的工作过程：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/7f9cc58394ded10581d8b5da1b89c39d.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;LEX工作过程&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;下面的流程图就是词法分析的大致流程。每个箭头之间的内部转化一次证明都已经在前面几章、讲介绍了。&lt;/p&gt;
+&lt;h2 id=&#34;习题&#34;&gt;习题
+&lt;/h2&gt;&lt;p&gt;这14题我看傻了，，，&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/c527e3c898faf269f31a50216195853e.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;这14题我看傻了。。&#34;
+	
+	
+&gt;&lt;br&gt;
+(end)&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>编译原理-导学</title>
+        <link>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E5%AF%BC%E5%AD%A6/</link>
+        <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E5%AF%BC%E5%AD%A6/</guid>
+        <description>&lt;h1 id=&#34;编译原理-第一章-第三章&#34;&gt;编译原理-第一章-第三章
+&lt;/h1&gt;&lt;h2 id=&#34;第一章-引论&#34;&gt;第一章 引论
+&lt;/h2&gt;&lt;p&gt;课程内容： 介绍程序设计语言 &lt;strong&gt;编译程序构造&lt;/strong&gt; 的 &lt;strong&gt;基本原理&lt;/strong&gt; 和 &lt;strong&gt;基本实现技术&lt;/strong&gt; 。&lt;/p&gt;
+&lt;h3 id=&#34;什么是编译程序&#34;&gt;什么是编译程序
+&lt;/h3&gt;&lt;h4 id=&#34;翻译程序translator&#34;&gt;翻译程序(Translator)
+&lt;/h4&gt;&lt;p&gt;把某一种语言程序（称为 &lt;code&gt;源语言程序&lt;/code&gt;） &lt;strong&gt;等价&lt;/strong&gt; 的转换成另一种语言程序（称为 &lt;code&gt;目标语言程序&lt;/code&gt;） 的程序。&lt;/p&gt;
+&lt;img src=&#34;images/01.png&#34; alt=&#34;翻译程序&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h4 id=&#34;编译程序complier&#34;&gt;编译程序(Complier)
+&lt;/h4&gt;&lt;p&gt;把某一种 &lt;code&gt;高级语言程序&lt;/code&gt; 等价的转化成另一种 &lt;code&gt;低级语言程序&lt;/code&gt; （如汇编语言或机器语言程序）的程序。&lt;/p&gt;
+&lt;img src=&#34;images/02.png&#34; alt=&#34;编译程序&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;编译程序可分为： &lt;code&gt;诊断编译程序&lt;/code&gt;、&lt;code&gt;优化编译程序&lt;/code&gt;、&lt;code&gt;交叉编译程序&lt;/code&gt;、&lt;code&gt;可变目标编译程序&lt;/code&gt; 。&lt;/p&gt;
+&lt;h4 id=&#34;解释程序interpretor&#34;&gt;解释程序(Interpretor)
+&lt;/h4&gt;&lt;p&gt;把 &lt;code&gt;源语言&lt;/code&gt; 写的源程序作为输入，但不产生目标 程序，而是 &lt;code&gt;边解释边执行&lt;/code&gt; 源程序。&lt;/p&gt;
+&lt;img src=&#34;images/03.png&#34; alt=&#34;j解释程序&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h3 id=&#34;为什么学习编译原理&#34;&gt;为什么学习编译原理
+&lt;/h3&gt;&lt;h4 id=&#34;从计算机科学与技术可以学到什么&#34;&gt;从计算机科学与技术可以学到什么：
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;理解计算系统&lt;/li&gt;
+&lt;li&gt;设计计算系统&lt;/li&gt;
+&lt;li&gt;训练计算思维(Computational Thinking)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;计算思维是什么&#34;&gt;计算思维是什么：
+&lt;/h4&gt;&lt;p&gt;计算思维是运用计算集科学的基础概念去求解问题，设计系统和理解人类行为。&lt;/p&gt;
+&lt;h4 id=&#34;计算思维的广泛方法&#34;&gt;计算思维的广泛方法：
+&lt;/h4&gt;&lt;p&gt;抽象、自动化、问题分解、递归、权衡、保护、冗余、容错、纠错、和恢复、启发式等等。&lt;/p&gt;
+&lt;h3 id=&#34;编译过程&#34;&gt;编译过程
+&lt;/h3&gt;&lt;p&gt;编译程序工作的五个阶段： &lt;code&gt;词法分析&lt;/code&gt; 、 &lt;code&gt;语法分析&lt;/code&gt; 、 &lt;code&gt;中间代码生成&lt;/code&gt; 、 &lt;code&gt;优化&lt;/code&gt; 、 &lt;code&gt;目标代码产生&lt;/code&gt; 。&lt;/p&gt;
+&lt;h4 id=&#34;词法分析&#34;&gt;词法分析
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;任务: 输入源程序，对构成源程序的字符串进行 扫描和分解，识别出单词符号&lt;/li&gt;
+&lt;li&gt;依循的原则：&lt;code&gt;构词规则&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;描述工具：&lt;code&gt;有限自动机&lt;/code&gt; 和 &lt;code&gt;正规式&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;语法分析&#34;&gt;语法分析
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;任务：在词法分析的基础上，根据语法规则把 单词符号串分解成各类 &lt;code&gt;语法单位(语法范畴)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;依循的原则：&lt;code&gt;语法规则&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;描述工具：&lt;code&gt;上下文无关文法&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;中间代码产生&#34;&gt;中间代码产生
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;任务：对各类语法单位按语言的语义进行初步翻译&lt;/li&gt;
+&lt;li&gt;依循的原则：&lt;code&gt;语义规则&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;描述工具：&lt;code&gt;属性文法&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;中间代码：&lt;code&gt;三元式，四元式，树，...&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img src=&#34;images/04.png&#34; alt=&#34;在这里插入图片描述&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h4 id=&#34;优化&#34;&gt;优化
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;任务：对前阶段产生的中间代码进行加工变换， 以期在最后阶段产生更高效的目标代码&lt;/li&gt;
+&lt;li&gt;依循的原则：&lt;code&gt;程序的等价变换规则&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;目标代码产生&#34;&gt;目标代码产生
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;任务: 把中间代码变换成特定机器上的&lt;strong&gt;目标代码&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;依赖于硬件系统结构和机器指令的含义&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;目标代码三种形式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;汇编指令代码: 需要进行汇编&lt;/li&gt;
+&lt;li&gt;绝对指令代码: 可直接运行&lt;/li&gt;
+&lt;li&gt;可重新定位指令代码: 需要连接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;可以直接运行的目标代码是绝对指令代码。&lt;/p&gt;
+&lt;h3 id=&#34;编译程序的结构&#34;&gt;编译程序的结构
+&lt;/h3&gt;&lt;h4 id=&#34;编译程序总框&#34;&gt;编译程序总框
+&lt;/h4&gt;&lt;img src=&#34;images/05.png&#34; alt=&#34;编译程序总框&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h4 id=&#34;出错处理&#34;&gt;出错处理
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;出错处理程序&lt;/strong&gt;：发现源程序中的错误，把有关错误信息报告给用户&lt;/li&gt;
+&lt;li&gt;语法错误： 源程序中不符合语法（或词法）规则的错误；非法字符、括号不匹配、缺少…&lt;/li&gt;
+&lt;li&gt;语义错误： 源程序中不符合语义规则的错误 ；说明错误、作用域错误、类型不一致…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;遍pass&#34;&gt;遍(pass)
+&lt;/h4&gt;&lt;p&gt;遍： 对源程序或源程序的中间表示 从头到尾扫描一次&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;阶段&lt;/strong&gt;与&lt;strong&gt;遍&lt;/strong&gt;是不同的概念&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一遍可以由若干段组成（词法+语法+语义）&lt;/li&gt;
+&lt;li&gt;一个阶段也可以分若干遍来完成（优化）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;编译前端与后端&#34;&gt;编译前端与后端
+&lt;/h4&gt;&lt;img src=&#34;images/06.png&#34; alt=&#34;编译前端和后端&#34; style=&#34;zoom:50%;&#34; /&gt;
+**编译前端**：与源语言有关，如词法分析，语法分析，语义分析与中间代码产生，与机器无关的优化
+&lt;p&gt;&lt;strong&gt;编译后端&lt;/strong&gt;：与目标机有关，与目标机有关的优化，目标代码产生&lt;/p&gt;
+&lt;p&gt;带来的好处&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;程序逻辑结构清晰&lt;/li&gt;
+&lt;li&gt;优化更充分，有利于移植&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img src=&#34;images/07.png&#34; alt=&#34;前后端&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h3 id=&#34;编译程序生成&#34;&gt;编译程序生成
+&lt;/h3&gt;&lt;h4 id=&#34;以汇编语言和机器语言为工具&#34;&gt;以汇编语言和机器语言为工具
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;优点: 可以针对具体的机器，充分发挥计算机的系统功能；生成的程序效率高&lt;/li&gt;
+&lt;li&gt;缺点: 程序难读、难写、易出错、难维护、生产的效率低&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;高级语言书写&#34;&gt;高级语言书写
+&lt;/h4&gt;&lt;h5 id=&#34;一个高级语言编写的编译器&#34;&gt;一个高级语言编写的编译器：
+&lt;/h5&gt;&lt;img src=&#34;images/08.png&#34; alt=&#34;一个高级语言编写的编译器&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;h5 id=&#34;利用已有的某种语言的编译程序实现另一语言的编译程序&#34;&gt;利用已有的某种语言的编译程序实现另一语言的编译程序
+&lt;/h5&gt;&lt;img src=&#34;images/09.png&#34; alt=&#34;利用已有某种语言的编译程序实现另一种语言的编译程序&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;​	P1 是一个可以在 A 机器上运行的编译程序（类似 gcc.exe ）即  &lt;code&gt;L1ToA.A&lt;/code&gt; ，可以将一个 L1 语言的代码编译成一个可以在 A 上运行的程序&lt;/p&gt;
+&lt;p&gt;​	这时我们用 L1 语言写一个编译 L2 语言的编译器 P2 ，即  &lt;code&gt;L2ToA.L1&lt;/code&gt;  为了能够在 A 机器上运行，所以我们需要上面的编译器来编译这个代码，得到  &lt;code&gt;L2ToA.A&lt;/code&gt;  这样就得到了一个 L2 语言的编译器（例如我们用 C++ 语言编写一个 Python 的编译器 python.cpp ，然后用 g++.exe  编译链接得到一个可以运行的 Python 的编译器  python.exe ）&lt;/p&gt;
+&lt;h5 id=&#34;移植方法把一种机器上的编译程序移植到另一种机器上&#34;&gt;移植方法：把一种机器上的编译程序移植到另一种机器上
+&lt;/h5&gt;&lt;img src=&#34;images/10.png&#34; alt=&#34;编译器的移植&#34; style=&#34;zoom: 33%;&#34; /&gt;
+&lt;p&gt;​	例如现在有一个在A平台（例如Windows）下的L语言（例如c++)的编译器，要移植这个编译器到B平台（Linux）下，我们拥有A平台下的一个L语言的编译器（例如g++.exe）即 &lt;code&gt;LToA.A&lt;/code&gt; ，我们可以用L语言写一个针对B平台下的L语言的编译器（例如Linux中的g++.cpp）即 &lt;code&gt;LToB.L&lt;/code&gt; ，在A平台下编译即可得到一个在A平台下运行并可以编译出在B平台的下运行的L语言的编译器(P2: &lt;code&gt;LToB.A&lt;/code&gt;)，然后再用这个A平台下的编译器编译我们的代码（ &lt;code&gt;LToB.L&lt;/code&gt;）就可以得到一个在B平台下运行的编译器 &lt;code&gt;LToB.B&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;打个比方：&lt;/p&gt;
+&lt;p&gt;我们用c++ 编写一个 &lt;code&gt;g++ForLinux.cpp&lt;/code&gt; 然后用 &lt;code&gt;g++.exe&lt;/code&gt; 编译，得到 &lt;code&gt;g++ForLinux.exe&lt;/code&gt; 然后用 &lt;code&gt;g++ForLinux.exe&lt;/code&gt; 编译 &lt;code&gt;g++ForLinux.cpp&lt;/code&gt; 就可以得到在Linux下运行的 &lt;code&gt;g++ForLinux&lt;/code&gt; c++编译器了。&lt;/p&gt;
+&lt;h5 id=&#34;自编译方式&#34;&gt;自编译方式
+&lt;/h5&gt;&lt;p&gt;就是编写L的编译器就用L的一小部分  L 1 L_1 L1​ 写一个编译器，然后编译  L 1 + L 2 L_1 + L_2 L1​+L2​ 得到一个较大的编译器，这样不断的重复下去，利用语言自己来写完整的编译器。&lt;/p&gt;
+&lt;h5 id=&#34;编译程序自动产生&#34;&gt;编译程序自动产生
+&lt;/h5&gt;&lt;p&gt;编译程序-编译程序，编译程序产生器，编译程序书 写系统&lt;/p&gt;
+&lt;p&gt;LEX：词法分析程序产生器&lt;/p&gt;
+&lt;p&gt;YACC：语法分析程序产生器&lt;/p&gt;
+&lt;img src=&#34;images/11.png&#34; alt=&#34;编译程序自动产生&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h2 id=&#34;第二章-高级程序设计语言概述&#34;&gt;第二章 高级程序设计语言概述
+&lt;/h2&gt;&lt;h3 id=&#34;常用的高级程序设计语言&#34;&gt;常用的高级程序设计语言
+&lt;/h3&gt;&lt;h4 id=&#34;高级程序设计语言的优点&#34;&gt;高级程序设计语言的优点
+&lt;/h4&gt;&lt;p&gt;相对机器语言或汇编语言，高级程序设计语言&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更接近于数学语言和工程语言，更直观、自然和易 于理解&lt;/li&gt;
+&lt;li&gt;更容易验证其正确性、改错&lt;/li&gt;
+&lt;li&gt;编写程序的效率更高&lt;/li&gt;
+&lt;li&gt;更容易移植&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;程序设计语言的定义&#34;&gt;程序设计语言的定义
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;标识符是语法概念，名字是语义概念&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;程序语言的定义： &lt;strong&gt;语法 、语义 、语用&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;语法&#34;&gt;语法
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;程序&lt;/strong&gt;本质上是一定字符集上的&lt;strong&gt;字符串&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;语法&lt;/strong&gt; ：一组规则，用它可以形成和产生一个 &lt;strong&gt;合式(well-formed)&lt;/strong&gt; 的程序。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;词法规则&lt;/strong&gt; ：单词符号的形成规则。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;单词符号是语言中具有独立意义的最基本结构&lt;/li&gt;
+&lt;li&gt;一般包括：常数、标识符、基本字、算符、界符等&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;描述工具：有限自动机&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;语法规则&lt;/strong&gt; ：语法单位的形成规则。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;语法单位通常包括：表达式、语句、分程序、过程、 函数、程序等;&lt;/li&gt;
+&lt;li&gt;描述工具：上下文无关文法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;语法规则&lt;/strong&gt; 和 &lt;strong&gt;词法规则&lt;/strong&gt; 定义了程序的形式结构。&lt;/p&gt;
+&lt;p&gt;定义语法单位的意义属于 &lt;strong&gt;语义&lt;/strong&gt; 问题。&lt;/p&gt;
+&lt;h4 id=&#34;语义&#34;&gt;语义
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;语义&lt;/strong&gt; ：一组规则，用它可以定义一个程序的意义 。&lt;/p&gt;
+&lt;p&gt;描述方法 ：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自然语言描述：二义性、隐藏错误和不完整性&lt;/li&gt;
+&lt;li&gt;形式描述： &lt;em&gt;操作语义 、指称语义 、代数语义&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;程序语言的基本功能和层次结构&#34;&gt;程序语言的基本功能和层次结构
+&lt;/h4&gt;&lt;p&gt;程序，本质上说是描述一定数据的处理过程 。&lt;/p&gt;
+&lt;p&gt;程序语言的基本功能 ： &lt;strong&gt;描述数据&lt;/strong&gt; 和 &lt;strong&gt;对数据的运算&lt;/strong&gt; 。&lt;/p&gt;
+&lt;h4 id=&#34;程序的层次结构&#34;&gt;程序的层次结构
+&lt;/h4&gt;&lt;img src=&#34;images/12.png&#34; alt=&#34;层次结构&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h4 id=&#34;程序语言成分的逻辑和实现意义&#34;&gt;程序语言成分的逻辑和实现意义
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;抽象的逻辑的意义：数学意义&lt;/li&gt;
+&lt;li&gt;计算机实现的意义：具体实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;高级程序设计语言的一般特性&#34;&gt;高级程序设计语言的一般特性
+&lt;/h3&gt;&lt;h4 id=&#34;高级语言的分类&#34;&gt;高级语言的分类
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;强制式语言(Imperative Languge)/过程式语言：命令驱动，面向语句，C、Pascal&lt;/li&gt;
+&lt;li&gt;应用式语言(Applicative Language)： 注重程序所表示的功能，而不是一个语句接一个语 句地执行 LISP、ML&lt;/li&gt;
+&lt;li&gt;基于规则的语言( Rule-based Language)： 检查一定的条件，当它满足值，则执行适当的动作 Prolog&lt;/li&gt;
+&lt;li&gt;面向对象语言(Object-Oriented Language)： 封装、继承和多态性 Smalltalk，C++，Java&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;程序结构&#34;&gt;程序结构
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;FORTRAN ： 主程序段+辅程序段、没有嵌套和递归==&amp;gt; 模块化的特点&lt;/li&gt;
+&lt;li&gt;PASCAL ：程序本身可以看成是一个操作系统调用的过 程，过程可以嵌套和递归&lt;/li&gt;
+&lt;li&gt;作用域：一个名字能被使用的区域范围。&lt;/li&gt;
+&lt;li&gt;名字作用域规则—— &lt;strong&gt;&amp;ldquo;最近嵌套原则&amp;rdquo;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;JAVA ：面向对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;数据结构与操作&#34;&gt;数据结构与操作
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;数据类型&lt;/strong&gt; 通常包括三要素：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用于区别这种类型数据对象的 &lt;strong&gt;属性&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;这种类型的数据对象可以具有的 &lt;strong&gt;值&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;可以作用于这种类型的数据对象的 &lt;strong&gt;操作&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;初等数据类型 ： 数值类型 、逻辑类型 、字符类型、指针类型。&lt;/p&gt;
+&lt;h4 id=&#34;标识符与名字&#34;&gt;标识符与名字
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;标识符是语法概念，名字是语义概念&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;标识符：以字母开头的，由字母数字组成的字符串&lt;/li&gt;
+&lt;li&gt;名字：标识程序中的对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img src=&#34;images/13.png&#34; alt=&#34;标识符绑定成名字&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;p&gt;名字的意义和属性 ：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;值：单元中的内容&lt;/li&gt;
+&lt;li&gt;属性：类型和作用域&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;名字的说明方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;由说明语句来明确规定的&lt;/li&gt;
+&lt;li&gt;隐含说明&lt;/li&gt;
+&lt;li&gt;动态确定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;数据结构&#34;&gt;数据结构
+&lt;/h4&gt;&lt;h5 id=&#34;数组&#34;&gt;数组
+&lt;/h5&gt;&lt;p&gt;n维矩形结构、长度可变和不可变、存放方式：按行存放、案列存放&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;数组元素地址计算&lt;/strong&gt; ：&lt;/p&gt;
+&lt;img src=&#34;images/14.png&#34; alt=&#34;数组地址计算通项&#34; style=&#34;zoom:50%;&#34; /&gt;  
+编译器程序会维护一个这样的向量：
+&lt;img src=&#34;images/15.png&#34; alt=&#34;内情向量&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h5 id=&#34;记录&#34;&gt;记录
+&lt;/h5&gt;&lt;p&gt;由已知类型的数据组合在一起的一种结构 （就是结构体。。。）&lt;/p&gt;
+&lt;p&gt;其中内部的元素也称为 域（field）&lt;/p&gt;
+&lt;h5 id=&#34;字符串表格栈&#34;&gt;字符串、表格、栈
+&lt;/h5&gt;&lt;h5 id=&#34;抽象数据类型&#34;&gt;抽象数据类型
+&lt;/h5&gt;&lt;p&gt;其内容包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据对象集合&lt;/li&gt;
+&lt;li&gt;作用于这些数据对象的抽象运算的集合&lt;/li&gt;
+&lt;li&gt;这种类型对象的封装，即，除了使用类型中所定义 的运算外，用户不能对这些对象进行操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;程序设计语言对抽象数据类型的支持&lt;/p&gt;
+&lt;h4 id=&#34;语句与控制结构&#34;&gt;语句与控制结构
+&lt;/h4&gt;&lt;h5 id=&#34;表达式&#34;&gt;表达式
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;表达式由 &lt;strong&gt;运算量（也称操作数，即数据引用或函数 调用）&lt;/strong&gt; 和 &lt;strong&gt;算符（运算符，操作符）&lt;/strong&gt; 组成 。&lt;/li&gt;
+&lt;li&gt;形式：中缀、前缀、后缀&lt;/li&gt;
+&lt;li&gt;表达式形成规则&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;算符的优先次序&#34;&gt;算符的优先次序
+&lt;/h5&gt;&lt;p&gt;一般的规定 ：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PASCAL：左结合A+B+C=(A+B)+C&lt;/li&gt;
+&lt;li&gt;FORTRAN： 对于满足左、右结合的算符可任取一种&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;代数性质能引用到什么程度视具体的语言而定&lt;/li&gt;
+&lt;li&gt;在数学上成立的代数性质在计算机上未必完全成立（多个函数间的返回值的运算）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;语句&#34;&gt;语句
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;赋值语句： &lt;strong&gt;左值- &amp;gt;地址、右值-&amp;gt;内容&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;控制语句 ：无条件转移语句、条件语句 、循环语句、过程调用语句 、返回语句&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;语句的分类：&lt;/p&gt;
+&lt;p&gt;1.按功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;执行语句：描述程序的动作&lt;/li&gt;
+&lt;li&gt;说明语句：定义各种不同数据类型的变量或运算， 定义名字的性质&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.按形式 ：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;简单句：不包含其他语句成分的基本句&lt;/li&gt;
+&lt;li&gt;复合句：句中有句的语句&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;第三章-高级程序设计语言的语法描述&#34;&gt;第三章 高级程序设计语言的语法描述
+&lt;/h2&gt;&lt;h3 id=&#34;上下文无关文法&#34;&gt;上下文无关文法
+&lt;/h3&gt;&lt;h4 id=&#34;文法&#34;&gt;文法
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;文法&lt;/strong&gt; ：描述语言的语法结构的形式规则。&lt;/p&gt;
+&lt;p&gt;以英文句子： &lt;code&gt;He gave me a book&lt;/code&gt; 举例：&lt;/p&gt;
+&lt;img src=&#34;images/16.png&#34; alt=&#34;以英文句子举例&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;h4 id=&#34;语法描述的几个基本概念&#34;&gt;语法描述的几个基本概念
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;有穷 &lt;strong&gt;字母表&lt;/strong&gt;（字符集） Σ 中每一个元素称为一个&lt;strong&gt;字符&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Σ 上的&lt;strong&gt;字&lt;/strong&gt;（也叫&lt;strong&gt;字符串&lt;/strong&gt;） 是指由 Σ 中的 字符所构成的一个有穷序列&lt;/li&gt;
+&lt;li&gt;空字 ε ：不包含任何字符的序列&lt;/li&gt;
+&lt;li&gt;Σ* ：表示 Σ 上的所有字的全体，包含空字 ε&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如: 设  ∑ = { a , b } ，则 Σ* = { ϵ , a , b , a a , a b , b a , b b , a a a , . . . }&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Σ* 的子集 U 和 V 的**连接（积）**定义为 UV = { αβ| α∈U , β∈V }&lt;/li&gt;
+&lt;li&gt;V*：&lt;strong&gt;闭包&lt;/strong&gt; V+：正规闭包&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;eg: 设  U = { α , α α } ，显然 ：&lt;/p&gt;
+&lt;p&gt;U*= { ϵ , a , a a , a a a , a a a a , … }&lt;/p&gt;
+&lt;p&gt;U&lt;span style=&#34;vertical-align:super;&#34;&gt;+&lt;/span&gt; = { a , a a , a a a , a a a a , … }&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;闭包与正规闭包的区别： V 若无空字， V* 中有空字，而  V&lt;span style=&#34;vertical-align:super;&#34;&gt;+&lt;/span&gt; 无空字&lt;/em&gt;。&lt;/p&gt;
+&lt;h4 id=&#34;上下文无关文法-1&#34;&gt;上下文无关文法
+&lt;/h4&gt;&lt;p&gt;上下文无关文法 G 是一个四元组  G = ( V&lt;span style=&#34;vertical-align:sub;&#34;&gt;T&lt;/span&gt; ，V&lt;span style=&#34;vertical-align:sub;&#34;&gt;N&lt;/span&gt;,  S ，P ) ，其中:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;V&lt;span style=&#34;vertical-align:sub;&#34;&gt;T&lt;/span&gt;：&lt;code&gt;终结符(Terminal)&lt;/code&gt;集合 ( 非空 )&lt;/li&gt;
+&lt;li&gt;V&lt;span style=&#34;vertical-align:sub;&#34;&gt;N&lt;/span&gt;：&lt;code&gt;非终结符(Noterminal)&lt;/code&gt; 集合 ( 非空 ) ，且  VT&lt;/span&gt; ⋂ V&lt;span style=&#34;vertical-align:sub;&#34;&gt;N&lt;/span&gt; = ∅&lt;/li&gt;
+&lt;li&gt;S：文法的 &lt;code&gt;开始符号&lt;/code&gt;， S ∈  V&lt;span style=&#34;vertical-align:sub;&#34;&gt;N&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;P：&lt;code&gt;产生式&lt;/code&gt; 集合(有限)，每个产生式形式为  P 定 义 为 P→ α , P ∈ V&lt;span style=&#34;vertical-align:sub;&#34;&gt;N&lt;/span&gt; ,  α ∈ ( V&lt;span style=&#34;vertical-align:sub;&#34;&gt;T&lt;/span&gt; ⋃ V&lt;span style=&#34;vertical-align:sub;&#34;&gt;N&lt;/span&gt; ) *&lt;/li&gt;
+&lt;li&gt;开始符 S 至少必须在某个产生式的左部出现一次&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;eg: 定义只含  +, ∗ 的算术表达式的文法  G = &amp;lt; { i , + , ∗ , ( , ) } ， { E } ， E ， P &amp;gt; ，其中，P 由下列产生式组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;E → i&lt;/li&gt;
+&lt;li&gt;E → E + E&lt;/li&gt;
+&lt;li&gt;E → E ∗ E&lt;/li&gt;
+&lt;li&gt;E → ( E )&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;巴科斯范式bnf&#34;&gt;巴科斯范式（BNF）
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;“ → ” 用 “ : : =” 表示。&lt;/li&gt;
+&lt;li&gt;约定  { P → α 1 P → α 2 … p → α n 可 缩 写 为 ⟹ p → α 1 ∣ α 2 ∣ ⋯ ∣ α n \begin{cases} P \to \alpha_1 \\ P \to \alpha_2 \\ \ldots \\ p \to \alpha_ n \end{cases} 可缩写为\implies p \to \alpha_1 | \alpha_2 | \cdots | \alpha_n ⎩⎪⎪⎪⎨⎪⎪⎪⎧​P→α1​P→α2​…p→αn​​可缩写为⟹p→α1​∣α2​∣⋯∣αn​ 其中 “ ∣ | ∣” 读成 ”或“ ，称  α i \alpha_i αi​ 为  P P P 的一个候选式， 故给出一个文法时将只给出 &lt;code&gt;开始符号&lt;/code&gt; 和 &lt;code&gt;产生式&lt;/code&gt; :如图：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/02e3eb95f59e5ea8ab8ec0a890c8f629.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;巴科斯范式&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;G ( E ) 里的  E 是指开始符号。&lt;/p&gt;
+&lt;h3 id=&#34;32-文法与语言&#34;&gt;3.2 文法与语言
+&lt;/h3&gt;&lt;h4 id=&#34;推导&#34;&gt;推导
+&lt;/h4&gt;&lt;p&gt;定义： 称  α A β \alpha A \beta αAβ直接推出  α γ β αγβ αγβ，即  α A β ⟹ α γ β α \color{#F08}{A} \color{black}{β} \implies α \color{#F08}{γ} \color{black}{β} αAβ⟹αγβ 仅当  A → γ \color{#F08}{A→γ} A→γ 是一个产生式，且  α ， β ∈ ( V T ∪ V N ) ∗ α，β∈(V_T ∪V_N)^* α，β∈(VT​∪VN​)∗。&lt;/p&gt;
+&lt;p&gt;如果  α 1 ⟹ α 2 ⟹ ⋯ ⟹ α n α_1 \implies α_2 \implies \cdots \implies α_n α1​⟹α2​⟹⋯⟹αn​，则我们称这个序列是 从α1到αn的一个 &lt;code&gt;推导&lt;/code&gt; 。若存在一个从  α 1 α_1 α1​ 到  α n α_n αn​ 的 推导，则称  α 1 α_1 α1​ 可以 &lt;code&gt;推导&lt;/code&gt; 出  α n α_n αn​。&lt;/p&gt;
+&lt;p&gt;对文法  G ( E ) ： E → i ∣ E + E ∣ E ∗ E ∣ ( E ) G(E)：E →i| E+E | E*E | (E) G(E)：E→i∣E+E∣E∗E∣(E)&lt;br&gt;
+E ⟹ ( E ) ⟹ ( E + E ) ⟹ ( i + E ) ⟹ E ( i + i ) E \implies (E) \implies (E+E) \implies(i+E) \implies E(i+i) E⟹(E)⟹(E+E)⟹(i+E)⟹E(i+i)&lt;/p&gt;
+&lt;h4 id=&#34;句型句子和语言&#34;&gt;句型、句子和语言
+&lt;/h4&gt;&lt;p&gt;我们定义：&lt;br&gt;
+α 1 ⇒ ∗ α n \alpha_1 ⇒^* \alpha_n α1​⇒∗αn​ 从  α 1 α_1 α1​ 出发，经过0步或若干步推出  α n α_n αn​&lt;br&gt;
+α 1 ⇒ + α n \alpha_1 ⇒^+ \alpha_n α1​⇒+αn​ 从  α 1 α_1 α1​ 出发，经过1步或若干步推出  α n α_n αn​&lt;br&gt;
+因此，  α ⇒ ∗ β \alpha ⇒^* \beta α⇒∗β 即为  α = β \alpha = \beta α=β 以及  α ⇒ + β \alpha ⇒^+ \beta α⇒+β&lt;br&gt;
+(这里的  + ∗ + * +∗ 都是在  ⇒ ⇒ ⇒ 的上面）&lt;/p&gt;
+&lt;p&gt;所以可以得到这样的关系，（理解一下即可）：&lt;br&gt;
+&amp;lt; 句 子 &amp;gt; ⇒ ∗ He gave me a book &amp;lt; 句子&amp;gt;⇒^* \text{He gave me a book} &amp;lt;句子&amp;gt;⇒∗He gave me a book&lt;br&gt;
+&amp;lt; 句 子 &amp;gt; ⇒ + He gave me a book &amp;lt; 句子&amp;gt; ⇒^+ \text{He gave me a book} &amp;lt;句子&amp;gt;⇒+He gave me a book&lt;br&gt;
+He gave &amp;lt; 间接宾语&amp;gt;&amp;lt;直接宾语&amp;gt; ⇒ + He gave me &amp;lt;冠词&amp;gt;&amp;lt;名词&amp;gt; \text{He gave &amp;lt; 间接宾语&amp;gt;&amp;lt;直接宾语&amp;gt;} ⇒^+ \text{He gave me &amp;lt;冠词&amp;gt;&amp;lt;名词&amp;gt;} He gave &amp;lt; 间接宾语&amp;gt;&amp;lt;直接宾语&amp;gt;⇒+He gave me &amp;lt;冠词&amp;gt;&amp;lt;名词&amp;gt;&lt;/p&gt;
+&lt;p&gt;由以上定义可以得出句型、句子和语言的定义：&lt;/p&gt;
+&lt;p&gt;假定G是一个文法，S 是它的开始符号。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果  S ⇒ ∗ α S⇒^* \alpha S⇒∗α，则称  α α α 是一个 &lt;code&gt;句型&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;仅含终结符号的句型是一个 &lt;code&gt;句子&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;文法G所产生的句子的全体是一个 &lt;code&gt;语言&lt;/code&gt;，记为  L ( G ) : L ( G ) = { α ∣ S ⇒ + α , α ∈ V T ∗ } L(G): L(G) = \{ \alpha | S ⇒^+ \alpha , \alpha \in V_T^* \} L(G):L(G)={α∣S⇒+α,α∈VT∗​}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;句型和句子练习&#34;&gt;句型和句子练习
+&lt;/h4&gt;&lt;p&gt;（这里为了排版更加的整齐（其实是打公式太懒）就贴图片了）：&lt;/p&gt;
+&lt;p&gt;代换思想：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/c9dbb0095297f5bd4f2d66ecae65fcd7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;证明某个句子是某个文法的句子&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;从文法到语言&#34;&gt;从文法到语言
+&lt;/h5&gt;&lt;p&gt;给定文法判断所产生的语言是什么，其实就是一个递归的思想：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/56d1c72593434f626b1ba320c23a88c1.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;给定文法判断所产生的语言是什么，其实就是一个递归的思想&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/16002f6b485e76b632b76a49a3009e3e.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;判断文法产生的语言&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;从语言到文法&#34;&gt;从语言到文法
+&lt;/h5&gt;&lt;p&gt;请给出产生语言为  { a n b n ∣ n ≥ 1 } \{a^nb^n|n≥1\} {anbn∣n≥1} 的文法:&lt;/p&gt;
+&lt;p&gt;G 3 ( S ) ： G3(S)： G3(S)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;S → a S b S →aSb S→aSb&lt;/li&gt;
+&lt;li&gt;S → a b S →ab S→ab&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/aaae257cb0dea4e86b5f9984f12b3142.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;语言到文法&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;33-语法树与二义性&#34;&gt;3.3 语法树与二义性
+&lt;/h3&gt;&lt;h4 id=&#34;推导与语法树&#34;&gt;推导与语法树
+&lt;/h4&gt;&lt;h5 id=&#34;左推导和右推导&#34;&gt;左推导和右推导
+&lt;/h5&gt;&lt;p&gt;从一个句型到另一个句型的推导往往不唯一，从推导的方向看有两种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最左推导：任何一步  α ⇒ β α⇒β α⇒β 都是对  α α α 中的中的左非 终结符进行替换&lt;/li&gt;
+&lt;li&gt;最右推导：任何一步  α ⇒ β α⇒β α⇒β 都是对  α α α 中的中的右非 终结符进行替换&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;语法树&#34;&gt;语法树
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;用一张图表示一个句型的推导,称为 &lt;code&gt;语法树&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;一棵语法树是不同推导过程的共性抽象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/fb62dfabae563c919025443bbe0b4c7d.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;最左推导语法树，如果用最有推导语法树会不同&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;树中间，父子结点 &lt;code&gt;可以同名&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;语法树不反应结点的产生先后顺序，只反映语法符号的定义或者说是构成关系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;二义性ambiguity&#34;&gt;二义性(ambiguity)
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;文法的二义性&lt;/code&gt; ：如果一个 &lt;strong&gt;文法&lt;/strong&gt; 存在 &lt;strong&gt;某个句子&lt;/strong&gt; 对应 &lt;strong&gt;两棵不同的语法树&lt;/strong&gt; ，则说这个文法是二义的  G ( E ) ： E → i ∣ E + E ∣ E ∗ E ∣ ( E ) G(E)：E →i|E+E|E*E|(E) G(E)：E→i∣E+E∣E∗E∣(E) 是二义文法&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;语言的二义性&lt;/code&gt; ：一个语言是二义的，如果（那么） &lt;strong&gt;对它不存在无二义的文法&lt;/strong&gt; 。对于语言L，可能存在G和G’，使得  L ( G ) = L ( G ’ ) = L L(G)=L(G’)=L L(G)=L(G’)=L ，有可能其中一个文法为二义的， 另一个为无二义的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/e709dc27625a6fc7b511ffe105cc331c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;两种文法&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;二义性问题是 &lt;strong&gt;不可判定问题&lt;/strong&gt; ，即不存在一个算法，它能在有限步骤内，确切地判定一个文法&lt;br&gt;
+对于是否是二义的 ，可以找到一组无二义文法的充分条件&lt;/p&gt;
+&lt;h3 id=&#34;34-形式语言鸟瞰&#34;&gt;3.4 形式语言鸟瞰
+&lt;/h3&gt;&lt;p&gt;乔姆斯基于1956年建立形式语言体系，他把文 法分成四种类型：0，1，2，3型 。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;0型(短语文法，图灵机)：产生式形如： α → β α→β α→β ，其中： α ∈ ( V T ∪ V N ) ∗ α∈(V_T∪V_N)^* α∈(VT​∪VN​)∗且 &lt;strong&gt;至少含有一个非终结符&lt;/strong&gt; ； β ∈ ( V T ∪ V N ) ∗ β∈ (V_T∪V_N)^* β∈(VT​∪VN​)∗&lt;/li&gt;
+&lt;li&gt;1型(上下文有关文法，线性界限自动机) ：产生式形如： α → β α→β α→β ，其中：  ∣ α ∣ ≤ ∣ β ∣ |α| ≤|β| ∣α∣≤∣β∣ ，仅  S → ε S→ε S→ε 例外&lt;/li&gt;
+&lt;li&gt;2型(上下文无关文法，非确定下推自动机) ： 产生式形如： A → β A →β A→β ,其中：  A ∈ V N ； β ∈ ( V T ∪ V N ) ∗ A∈V_N；β∈(V_T∪V_N)^* A∈VN​；β∈(VT​∪VN​)∗ （可以利用栈分析）&lt;/li&gt;
+&lt;li&gt;3型(正规文法，有限自动机)： 产生式形如： A → α B A →αB A→αB 或  A → α A →α A→α （右线性文法）其中：α∈VT*；A，B∈VN ；（左线性文法：产生式形如： A → B α A →Bα A→Bα 或  A → α A →α A→α ）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;四种类型文法描述能力比较&#34;&gt;四种类型文法描述能力比较
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/504b01348158d60800f8973fc904945e.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;文法描述能力比较&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;上下文无关文法-2&#34;&gt;上下文无关文法
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/f2c01cc1a67bb5f4c79e5ba76f293894.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;可以用上下文无关法产生的文法&#34;
+	
+	
+&gt;&lt;br&gt;
+（自嵌套语言仅能由上下文无关文法产生）&lt;/p&gt;
+&lt;h4 id=&#34;上下文有关文法&#34;&gt;上下文有关文法
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/a9570b97e422ef05ca8c983fec225ce8.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;上下文有关文法&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;0型语言&#34;&gt;0型语言
+&lt;/h4&gt;&lt;p&gt;程序设计语言不是上下文无关语言，甚至不是上下文有关语言，只能由0型语言产生，如：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/df12d8649706c0351b9d6eed4dee8fec.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;0型语言&#34;
+	
+	
+&gt;&lt;br&gt;
+对于无法利用上下文无关法分析的部分一般交由语义分析处理。&lt;/p&gt;
+&lt;h2 id=&#34;习题&#34;&gt;习题
+&lt;/h2&gt;&lt;p&gt;课后习题，题干和过程就引用&lt;a class=&#34;link&#34; href=&#34;https://wenku.baidu.com/view/73c26dada1c7aa00b42acb1a.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;网上的资料&lt;/a&gt;了&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/192ab63a566cfa0a91ecb4b14496aa87.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;习题1&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/c0c18e937053b5c80ef3557b01fb28da.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;习题2&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/f013ae9ba25a315e31ee09df66a4ab60.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;习题3&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/418e135dc72d247a98e7eec7c64a1c74.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;习题4&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/e9bca5604f4faec5c71065662622ab7d.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;习题5&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;（end)&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>编译原理-属性文法和语法制导翻译</title>
+        <link>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/</link>
+        <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/</guid>
+        <description>&lt;h1 id=&#34;编译原理-第1415章-属性文法和语法制导翻译&#34;&gt;编译原理-第14、15章-属性文法和语法制导翻译
+&lt;/h1&gt;&lt;h2 id=&#34;第14讲-属性文法和语法制导翻译1&#34;&gt;第14讲 属性文法和语法制导翻译1
+&lt;/h2&gt;&lt;h3 id=&#34;141-属性文法&#34;&gt;14.1 属性文法
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;属性文法,也称属性翻译文法&lt;/li&gt;
+&lt;li&gt;Knuth在1968年提出&lt;/li&gt;
+&lt;li&gt;以上下文无关文法为基础
+&lt;ul&gt;
+&lt;li&gt;为每个文法符号（终结符或非终结符）配备若干相 关的“值”（称为 &lt;code&gt;属性&lt;/code&gt; ），代表与文法符号相关信 息，如类型、值、代码序列、符号表内容等&lt;/li&gt;
+&lt;li&gt;对于文法的每个产生式都配备了一组属性的 &lt;code&gt;语义规则&lt;/code&gt; ，对属性进行计算和传递&lt;/li&gt;
+&lt;li&gt;文法的属性分为 &lt;code&gt;综合属性&lt;/code&gt; 和 &lt;code&gt;继承属性&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1411-综合属性&#34;&gt;14.1.1 综合属性
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;自下而上传递信息&lt;/li&gt;
+&lt;li&gt;语法规则：根据右 部候选式中的符号的属性计算左部被定义符号的 &lt;code&gt;综合属性&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;语法树：根据子结点的属性和父结点自身的属性计算父节点的 &lt;code&gt;综合属性&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如这样一个文法的，.val就是一个综合属性：每一个节点的综合属性val的值都由其一些子节点的值组成&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/03a70afeb4a37cb23945f00e9fef6085.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1412-继承属性&#34;&gt;14.1.2 继承属性
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;自上而下传递信息&lt;/li&gt;
+&lt;li&gt;语法规则：根据右部候选式中的符号的属性和左部被定义符号的属性计算右部候选式中的符号的 &lt;code&gt;继承属性&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;语法树：根据父结点和兄弟节点的属性计算子结点的 &lt;code&gt;继承属性&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如下面的文法的type属性，对于id的type的值是由其父节点继承而来的，这样描述了一个声明语句：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/cb424041df70294d5373ef37b4830e45.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1413-属性依赖&#34;&gt;14.1.3 属性依赖
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;对应于每个产生式  A → α A→α A→α 都有一 套与之相关联的 &lt;code&gt;语义规则&lt;/code&gt; ，每条规则的形式为(f是一个函数)：  b : = f ( c 1 , c 2 , … , c k ) b:=f(c_1,c_2,…,c_k) b:=f(c1​,c2​,…,ck​)&lt;/li&gt;
+&lt;li&gt;属性b &lt;code&gt;依赖&lt;/code&gt; 于属性  c 1 , c 2 , … , c k c_1,c_2,…,c_k c1​,c2​,…,ck​
+&lt;ul&gt;
+&lt;li&gt;b是A的一个 &lt;code&gt;综合属性&lt;/code&gt; 并且  c 1 , c 2 , … , c k c_1,c_2,…,c_k c1​,c2​,…,ck​ 是产生式右边文法符号的属性，或者&lt;/li&gt;
+&lt;li&gt;b是产生式右边某个文法符 号的一个 &lt;code&gt;继承属性&lt;/code&gt; 并且  c 1 , c 2 , … , c k c_1,c_2,…,c_k c1​,c2​,…,ck​ 是A或产生式右边任何文法符号的属性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;终结符只有 &lt;code&gt;综合属性&lt;/code&gt; ，由词法分析器提供&lt;/li&gt;
+&lt;li&gt;非终结符既可有 &lt;code&gt;综合属性&lt;/code&gt; 也可有 &lt;code&gt;继承属性&lt;/code&gt; ，文 法开始符号的所有继承属性作为属性计算前的 初始值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1414-语义规则&#34;&gt;14.1.4 语义规则
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;对出现在 &lt;code&gt;产生式右边的继承属性&lt;/code&gt; 和 &lt;code&gt;出现在产生式左边的综合属性&lt;/code&gt; 都必须提供一个计算规则。 属性计算规则中只能使用相应 产生式中的文法符号的属性。&lt;/li&gt;
+&lt;li&gt;出现在 &lt;code&gt;产生式左边的继承属性&lt;/code&gt; 和 &lt;code&gt;出现在产生式右边的综合属性&lt;/code&gt; 不由所给的产生式的属性计 算规则进行计算，由其它产生 式的属性规则计算或者由属性 计算器的参数提供。&lt;/li&gt;
+&lt;li&gt;语义规则所描述的工作可以包括属性计算、静态语义检查、符号表操作、代码生成等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;测试：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/bf4bf735a2d07d99b9304a469e2c53ed.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1415-带注释的语法树&#34;&gt;14.1.5 带注释的语法树
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;在语法树中，一个结点的 &lt;code&gt;综合属性&lt;/code&gt; 的值由 &lt;code&gt;其子结点&lt;/code&gt; 和 &lt;code&gt;它本身&lt;/code&gt; 的属性值确定&lt;/li&gt;
+&lt;li&gt;使用自底向上的方法在每一个结点处使用语义规则计算综合属性的值&lt;/li&gt;
+&lt;li&gt;仅使用综合属性的属性文法称S－属性文法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/72b369f8cb7e22ee4369f9fdef2e6175.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在语法树中，一个结点的 &lt;code&gt;继承属性&lt;/code&gt; 由 &lt;code&gt;其父结点、 其兄弟结点&lt;/code&gt; 和 &lt;code&gt;其本身&lt;/code&gt; 的某些属性确定&lt;/li&gt;
+&lt;li&gt;用 &lt;code&gt;继承属性&lt;/code&gt; 来表示程序设计语言结构中的上下 文依赖关系很方便&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/5bbfb908691c414c1e546937a803e433.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;142-属性计算&#34;&gt;14.2 属性计算
+&lt;/h3&gt;&lt;h4 id=&#34;1421-基于属性文法的处理方法&#34;&gt;14.2.1 基于属性文法的处理方法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;语义规则的计算：1、产生代码；2、在符号表中存放信息；3、给出错误信息；4、执行任何其它动作&lt;/li&gt;
+&lt;li&gt;对输入串的 &lt;code&gt;翻译&lt;/code&gt; 就是根据 &lt;code&gt;语义规则&lt;/code&gt; 进行 &lt;code&gt;计算&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;由源程序的语法结构所驱动的处理办法就是 &lt;code&gt;语法制导翻译法&lt;/code&gt; 输 入 串 → 语 法 树 → 按 照 语 义 规 则 计 算 属 性 输入串 \to 语法树 \to 按照语义规则计算属性 输入串→语法树→按照语义规则计算属性&lt;/li&gt;
+&lt;li&gt;依赖图 、树遍历 、一遍扫描&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1422-依赖图&#34;&gt;14.2.2 依赖图
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;在一棵语法树中的结点的继承属性和综合属性 之间的相互依赖关系可以由依赖图(有向图)来描述。&lt;/li&gt;
+&lt;li&gt;为每一个包含过程调用的语义规则引入一个 &lt;code&gt;虚综合属性b&lt;/code&gt; ，这样把每一个语义规则都写成  b : = f ( c 1 , c 2 , … , c k ) b:=f(c_1,c_2,…,c_k) b:=f(c1​,c2​,…,ck​) 的形式。&lt;/li&gt;
+&lt;li&gt;依赖图中为每一个属性设置一个结点，如果属 性b依赖于属性c，则从属性c的结点有一条有向 边连到属性b的结点。&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/22881ad13333522f078077a623c0e2ed.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;依赖图的构建算法&#34;&gt;依赖图的构建算法
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/4fc7f06731ff91f0bd3c678b8d60fb62.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;依赖图示例&#34;&gt;依赖图示例
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/708593fc367062f195191f702053a1be.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1423-良定义的属性文法&#34;&gt;14.2.3 良定义的属性文法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;如果一属性文法不存在属性之间的循环依赖关系，则称该文法为良定义的&lt;/li&gt;
+&lt;li&gt;一个依赖图的任何拓扑排序都给出一个语法树中结点的语义规则计算的有效顺序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1424-属性的计算次序&#34;&gt;14.2.4 属性的计算次序
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;基础文法用于建立输入符号串的语法分析树&lt;/li&gt;
+&lt;li&gt;根据语义规则建立依赖图&lt;/li&gt;
+&lt;li&gt;根据依赖图的拓扑排序，得到计算语义规则的顺序  输 入 串 → 语 法 树 → 依 赖 图 → 语 义 规 则 计 算 次 序 输入串 \to 语法树 \to 依赖图 \to 语义规则计算次序 输入串→语法树→依赖图→语义规则计算次序&lt;/li&gt;
+&lt;li&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/3c993e38717e69acbce7eba8266c1526.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1425-树遍历&#34;&gt;14.2.5 树遍历
+&lt;/h4&gt;&lt;h5 id=&#34;树遍历的属性计算方法&#34;&gt;树遍历的属性计算方法
+&lt;/h5&gt;&lt;p&gt;通过树遍历的方法计算属性的值:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;假设语法树已建立，且树中已带有开始符号的继承 属性和终结符的综合属性&lt;/li&gt;
+&lt;li&gt;以某种次序遍历语法树，直至计算出所有属性&lt;/li&gt;
+&lt;li&gt;深度优先，从左到右的遍历:  输 入 串 → 语 法 树 → 遍 历 语 法 树 计 算 属 性 输入串 \to 语法树 \to \frac{遍历语法树}{计算属性} 输入串→语法树→计算属性遍历语法树​&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;树遍历算法&#34;&gt;树遍历算法
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/2768cbdced763f34387c47a4b70d9761.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;树遍历算法示例&#34;&gt;树遍历算法示例
+&lt;/h5&gt;&lt;p&gt;考虑属性的文法G(S)，其中:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;S有继承属性a，综合属性b&lt;/li&gt;
+&lt;li&gt;X有继承属性c、综合属性d&lt;/li&gt;
+&lt;li&gt;Y有继承属性e、综合属性f&lt;/li&gt;
+&lt;li&gt;Z有继承属性h、综合属性g&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/9fed89c67e8d3683e4b009e93bcab4e0.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;树遍历示例&#34;&gt;树遍历示例
+&lt;/h5&gt;&lt;p&gt;不断的用上一规则，检查每一个节点是否有为计算的属性：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/47b7537bdee545dffbf76d0b6ae294a7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1426-一遍扫描&#34;&gt;14.2.6 一遍扫描
+&lt;/h4&gt;&lt;h5 id=&#34;一遍扫描的处理方法&#34;&gt;一遍扫描的处理方法
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;在语法分析的同时计算属性值 ：所采用的语法分析方法 会影响 属性的计算次序&lt;/li&gt;
+&lt;li&gt;所谓 &lt;code&gt;语法制导翻译法&lt;/code&gt; ，直观上说就是为文法中每个 产生式配上一组语义规则，并且在语法分析的同时 执行这些语义规则&lt;/li&gt;
+&lt;li&gt;语义规则被计算的时机
+&lt;ul&gt;
+&lt;li&gt;自上而下分析，一个产生式匹配输入串成功时&lt;/li&gt;
+&lt;li&gt;自下而上分析，一个产生式被用于进行归约时&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1427-抽象语法树&#34;&gt;14.2.7 抽象语法树
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;抽象语法树(Abstract Syntax Tree，AST)&lt;/code&gt; ，在 语法树中去掉那些对翻译不必要的信息，从而 获得更有效的源程序中间表示&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/cea216a14b2fa30c789e75aef9317e68.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;建立表达式的抽象语法树&#34;&gt;建立表达式的抽象语法树
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;mknode(op,left,right)&lt;/code&gt; 建立一个运算符号结点，标号是op，两个域left和right分别指向左子树和右子树&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mkleaf(id,entry)&lt;/code&gt; 建立一个标识符结点，标号为id，一个域entry指向标识符在符号表中的入口&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mkleaf(num,val)&lt;/code&gt; 建立一个数结点，标号为 num，一个域val用于存放数的值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;建立抽象语法树的语义规则&#34;&gt;建立抽象语法树的语义规则
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/de75c8b065a47ab143886a209cd0ecc2.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/3150362ebce45d575dd7e95c61ccb84e.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;第15讲-属性文法和语法制导翻译2&#34;&gt;第15讲 属性文法和语法制导翻译2
+&lt;/h2&gt;&lt;h3 id=&#34;151-151-s-属性文法&#34;&gt;15.1 15.1 S-属性文法
+&lt;/h3&gt;&lt;h4 id=&#34;1511-s-属性文法的自下而上计算&#34;&gt;15.1.1 S-属性文法的自下而上计算
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;S-属性文法&lt;/code&gt; ：只含有综合属性&lt;/li&gt;
+&lt;li&gt;在自下而上的分析器分析输入符号串的同时计算 &lt;code&gt;综合属性&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;分析栈中保存语法符号和有关的综合属性值&lt;/li&gt;
+&lt;li&gt;每当进行归约时，新的语法符号的属性值就由栈中正在归约的产生式右边符号的属性值来计算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;在分析栈中增加附加域存放综合属性值&lt;/li&gt;
+&lt;li&gt;假设产生式  A → X Y Z \color{red}{A→XYZ} A→XYZ 对应的语义规则为  a : = f ( X . x , Y . y , Z . z ) \color{blue}{a:=f(X.x,Y.y,Z.z)} a:=f(X.x,Y.y,Z.z)&lt;br&gt;
+分析栈的变化：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/f25f9486cf3bed4dc6d4fc0d334fab06.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个例子&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/3fca7847346edd927666a721b3aba560.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;152-152-l-属性文法&#34;&gt;15.2 15.2 L-属性文法
+&lt;/h3&gt;&lt;h4 id=&#34;1521-一遍扫描的处理方法&#34;&gt;15.2.1 一遍扫描的处理方法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;S－属性文法适合一遍扫描的自下而上分析&lt;/li&gt;
+&lt;li&gt;L－属性文法适合一遍扫描的自上而下分析&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1522-l-属性文法和自顶向下翻译&#34;&gt;15.2.2 L-属性文法和自顶向下翻译
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;按照深度优先遍历语法树，计算所有属性值&lt;/li&gt;
+&lt;li&gt;与LL(1) 自上而下分析方法结合
+&lt;ul&gt;
+&lt;li&gt;深度优先建立语法树&lt;/li&gt;
+&lt;li&gt;按照语义规则计算属性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1523-l-属性文法&#34;&gt;15.2.3 L-属性文法
+&lt;/h4&gt;&lt;p&gt;一个属性文法称为 &lt;code&gt;L-属性文法&lt;/code&gt; ，如果对于每个产生式  A → X 1 X 2 … X n A→X_1X_2…X_n A→X1​X2​…Xn​ ，其每个语义规则中的每个属性或者是 &lt;code&gt;综合属性&lt;/code&gt; ，或者是  X i ( 1 ≤ i ≤ n ) X_i(1≤i≤n) Xi​(1≤i≤n) 的一个 &lt;code&gt;继承属性&lt;/code&gt; 且这个继承属性仅依赖于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;产生式中  X i X_i Xi​ 左边符号  X 1 ， X 2 ， … ， X i − 1 X_1，X_2，…，X_{i-1} X1​，X2​，…，Xi−1​ 的属性&lt;/li&gt;
+&lt;li&gt;A的继承属性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;S-属性文法一定是L-属性文法&lt;/p&gt;
+&lt;p&gt;例如这样一个文法就不是L-属性文法：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/06610de9383732669a55f7befd7e3795.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;153-翻译模式&#34;&gt;15.3 翻译模式
+&lt;/h3&gt;&lt;h4 id=&#34;1531-翻译模式&#34;&gt;15.3.1 翻译模式
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;语义规则&lt;/code&gt; ：给出了属性计算的定义，没有属性计算的次序等实现细节&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;翻译模式&lt;/code&gt; ：给出使用语义规则进行计算的次序，把实现细节表示出来&lt;/li&gt;
+&lt;li&gt;在翻译模式中，和文法符号相关的属性和语义规则（也称 &lt;code&gt;语义动作&lt;/code&gt; ），用花括号{ }括起来，插入到产生式右部的合适位置上 &lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/fee52d447797ead01d627fdca9e50367.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1532-翻译模式示例&#34;&gt;15.3.2 翻译模式示例
+&lt;/h4&gt;&lt;p&gt;如把带加号和减号的中缀表达式翻译成相应的后缀表达式，对输入串使用上面的文法的处理：9-5+2&lt;br&gt;
+分析如下：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/7992a5195c5769ac896c5d51d1ee7426.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1533-设计翻译模式的原则&#34;&gt;15.3.3 设计翻译模式的原则
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;设计翻译模式时，必须保证当某个动作引用一个属性时它必须是有定义的&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;L-属性文法&lt;/code&gt; 本身就能确保每个动作不会引用尚未计算出来的属性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1534-建立翻译模式&#34;&gt;15.3.4 建立翻译模式
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;当只需要 &lt;code&gt;综合属性&lt;/code&gt; 时：为每一个语义规则建立 一个包含赋值的动作，并把 &lt;code&gt;这个动作放在相应的产生式右边的末尾&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;如果既有 &lt;code&gt;综合属性&lt;/code&gt; 又有 &lt;code&gt;继承属性&lt;/code&gt; ，在建立翻译模式时就必须保证：
+&lt;ul&gt;
+&lt;li&gt;1.产生式右边的符号的继承属性必须在这个符号以前的动作中计算出来&lt;/li&gt;
+&lt;li&gt;2.一个动作不能引用这个动作右边的符号的综合属性&lt;/li&gt;
+&lt;li&gt;3.产生式左边非终结符的 &lt;code&gt;综合属性&lt;/code&gt; 只有在它所引用的所有属性都计算出来以后才能计算。计算这种属性的动作通常可放在产生式右端的 &lt;code&gt;末尾&lt;/code&gt;&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/e9cb4ef08bd15cd35947bc2f9d3d656c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1535-数学格式语言eqn&#34;&gt;15.3.5 数学格式语言EQN
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/45868bea8c68da0759721287a5840632.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/e26caeebd5fe348abbf78596fe22dfb6.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1536-语义动作执行时机统一&#34;&gt;15.3.6 语义动作执行时机统一
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;把所有的语义动作都放在产生式的末尾 :语义动作的执行时机统一&lt;/li&gt;
+&lt;li&gt;转换方法:
+&lt;ul&gt;
+&lt;li&gt;加入新产生式  M → ε M→ε M→ε&lt;/li&gt;
+&lt;li&gt;把嵌入在产生式中的每个语义动作用不同的非终结 符M代替，并把这个动作放在产生式  M → ε M→ε M→ε 的末尾&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/110a0b5c6d65b58b1fe4b06fc4515943.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1537-消除翻译模式中的左递归&#34;&gt;15.3.7 消除翻译模式中的左递归
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;语义动作是在相同位置上的符号被展开（匹配 成功）时执行的&lt;/li&gt;
+&lt;li&gt;为了构造不带回溯的自顶向下语法分析，必须消除文法中的左递归&lt;/li&gt;
+&lt;li&gt;当消除一个翻译模式的基本文法的左递归时同时考虑属性计算 :适合带综合属性的翻译模式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个消除左递归同时构造出新的翻译模式的例子：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/b18cc42b419be29f507a002695cd2be9.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;br&gt;
+此时进行分析时，语法分析和语义分析即可同时进行：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/c2d8ca7a0fcb02ca7aa24917bd738f9b.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;假设有翻译模式：  A → A 1 Y { A . a : = g ( A 1 . a , Y . y ) } A → X { A . a : = f ( X . x ) } A → A_1Y\{A.a:=\color{blue}{g(A_1.a, Y.y)}\color{black}{\}}\\ A → X\{A.a:=\color{red}{f(X.x)}\} A→A1​Y{A.a:=g(A1​.a,Y.y)}A→X{A.a:=f(X.x)} 它的每个文法符号都有一个综合属性，用小写字母表示， g和f是任意函数。&lt;/p&gt;
+&lt;p&gt;在语法的左递归消除中，添加语义的步骤，为R添加两个属性，连接上下文的属性：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/a0ac3665e91f8cbad198fddf538fc10e.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;例如：左为没有消除左递归的翻译模式，右为消除左递归的翻译模式：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/4d4db7b49ab69b7b44ece3a87c1387e6.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;另一个消除的例子：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/18db9bb9b557d58cdd6c88d1a0e4ccb6.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;154-递归下降翻译器的设计&#34;&gt;15.4 递归下降翻译器的设计
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;对每个非终结符A构造一个函数过程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A的属性实现为参数和变量&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;继承属性&lt;/code&gt; ：对A的每个 &lt;code&gt;继承属性&lt;/code&gt; 设置为函数的一个 &lt;code&gt;形式参数&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;综合属性&lt;/code&gt; ：实现为函数的返回值 (若有多个综合属性，打包成作为结构或记录记录返回 为了简单，我们假设每个非终结只有一个综合属性)&lt;/li&gt;
+&lt;li&gt;A的产生式中的每一个文法符号的每一个 &lt;code&gt;属性&lt;/code&gt; ：实现为A对应的函数过程中的 &lt;code&gt;局部变量&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;按照产生式右部从左到右的，对于 &lt;code&gt;单词符号 （终结符）&lt;/code&gt;、&lt;code&gt;非终结符&lt;/code&gt; 和 &lt;code&gt;语义动作&lt;/code&gt; ，分别实现&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对于带有综合属性x的 &lt;code&gt;终结符X&lt;/code&gt; ，把x的值存入为X.x 设置的变量中。然后产生一个匹配X的调用，并继续 读入一个输入符号。&lt;/li&gt;
+&lt;li&gt;对于每个 &lt;code&gt;非终结符B&lt;/code&gt; ，产生一个右边带有函数调用的 赋值语句  c = B ( b 1 , b 2 , … , b k ) c=B(b_1,b_2,…,b_k) c=B(b1​,b2​,…,bk​) ，其中， b 1 , b 2 , … , b k b_1,b_2,…,b_k b1​,b2​,…,bk​ 是为B的 &lt;code&gt;继承属性&lt;/code&gt; 设置的变量，c是为B的 &lt;code&gt;综合属性&lt;/code&gt; 设置的变量。&lt;/li&gt;
+&lt;li&gt;对于 &lt;code&gt;语义动作&lt;/code&gt; ，把动作的代码抄进分析器中，用代 表属性的变量来代替对属性的每一次引用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个例子：&lt;/p&gt;
+&lt;p&gt;R → a d d o p T R ∣ ε R→addopTR|ε R→addopTR∣ε 的递归下降分析过程:&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/e22a7b3f3a74ae7248786b57a266ec8d.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;(end)&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>编译原理-语法分析-自上而下分析</title>
+        <link>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E5%88%86%E6%9E%90/</link>
+        <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E5%88%86%E6%9E%90/</guid>
+        <description>&lt;h1 id=&#34;编译原理-第七八九章-语法分析-自上而下分析&#34;&gt;编译原理-第七、八、九章-语法分析-自上而下分析
+&lt;/h1&gt;&lt;h2 id=&#34;第七章-自上而下分析1&#34;&gt;第七章-自上而下分析1
+&lt;/h2&gt;&lt;h3 id=&#34;自上而下分析的基本问题&#34;&gt;自上而下分析的基本问题
+&lt;/h3&gt;&lt;h4 id=&#34;语法分析的前提&#34;&gt;语法分析的前提
+&lt;/h4&gt;&lt;h5 id=&#34;对语言的语法结构进行描述&#34;&gt;对语言的语法结构进行描述
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;采用 &lt;code&gt;正规式&lt;/code&gt; 和 &lt;code&gt;有限自动机&lt;/code&gt; 描述和识别语言的 单词符号&lt;/li&gt;
+&lt;li&gt;用 &lt;code&gt;上下文无关文法&lt;/code&gt; 来描述语法规则&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;上下文无关文法即第二章的内容：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/75ead6c2dc36b2c4019a5d3945e164b4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;上下文无关文法&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;语法分析的任务&#34;&gt;语法分析的任务
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;语法分析的任务 ：分析一个文法的句子的结构&lt;/li&gt;
+&lt;li&gt;语法分析器的功能 ：按照文法的产生式(语言的语法规则)，识别输入符号 串是否为一个句子(合式程序)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;712语法分析器在编译器中的地位&#34;&gt;7.1.2语法分析器在编译器中的地位
+&lt;/h4&gt;&lt;p&gt;语法分析的过程：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/bc946d2c12651d1085fcf149ef2edc5c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;语法分析的过程&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;713语法分析的方法&#34;&gt;7.1.3语法分析的方法
+&lt;/h4&gt;&lt;p&gt;语法分析的方法有两种：&lt;code&gt;自上而下&lt;/code&gt; 以及 &lt;code&gt;自下而上&lt;/code&gt; :&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;自下而上(Bottom-up)&lt;/th&gt;
+&lt;th&gt;自上而下(Top-down)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;从输入串开始，逐步进行归约，直到文法的开始符号&lt;/td&gt;
+&lt;td&gt;从文法的开始符号出发， 反复使用各种产生式，寻 找&amp;quot;匹配&amp;quot;的推导&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;归约：根据文法的产生式规则，把串中出现的产生 式的右部替换成左部符号&lt;/td&gt;
+&lt;td&gt;推导：根据文法的产生式 规则，把串中出现的产生 式的左部符号替换成右部&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;从树叶节点开始，构造语法树&lt;/td&gt;
+&lt;td&gt;从树的根开始，构造语法树&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;算符优先分析法、LR分析法&lt;/td&gt;
+&lt;td&gt;递归下降分析法、预测分析程序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;714-自上而下分析面临的问题&#34;&gt;7.1.4 自上而下分析面临的问题
+&lt;/h4&gt;&lt;h5 id=&#34;自上而下分析的过程&#34;&gt;自上而下分析的过程
+&lt;/h5&gt;&lt;p&gt;基本思想：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从文法的开始符号出发，向下推导，推出句子&lt;/li&gt;
+&lt;li&gt;针对输入串，试图用一切可能的办法，从文法开始 符号(根结点)出发，自上而下地为输入串建立一棵语法树&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个例子：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/0fe1acbcb7630912cf9484e6f22aebcf.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;自上而下分析的一个例子&#34;
+	
+	
+&gt;&lt;br&gt;
+从上面的例子可以看出：&lt;/p&gt;
+&lt;h5 id=&#34;多个产生式候选带来的问题&#34;&gt;多个产生式候选带来的问题
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;回溯问题：分析过程中，当一个非终结符用某一个候选匹配成 功时，这种匹配可能是暂时的，出错时，不得不“回溯”（一个dfs的过程）&lt;/li&gt;
+&lt;li&gt;文法左递归问题：可能某个终结符可以不断的使用自身来扩展下去，这样在语法树中就是一个不断左递归的过程，一个文法是含有左递归的，如果存在非终结符  P : P → P a P:P \to Pa P:P→Pa ，这样的，会导致死循环：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/77386a2f8bbbd26bea56f124c4d3f2aa.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;文法的左递归问题&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;72-ll1文法消除文法的左递归&#34;&gt;7.2 LL(1)文法——消除文法的左递归
+&lt;/h3&gt;&lt;p&gt;因为直接自上而下分析会有 &lt;strong&gt;回溯&lt;/strong&gt; 和 &lt;strong&gt;左递归&lt;/strong&gt; 问题，所以要先进行 &lt;strong&gt;消除文法的左递归性&lt;/strong&gt; 以及 &lt;strong&gt;消除回溯&lt;/strong&gt; ，以 &lt;strong&gt;构造不带回溯的自上而下分析算法&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;721-直接左递归的消除&#34;&gt;7.2.1 直接左递归的消除
+&lt;/h4&gt;&lt;p&gt;（看图吧，md排版不怎么好。。。）&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/de8ef321a4cbe0d72729b669d0e99217.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;左递归变右递归&#34;
+	
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/7f91062e79d5d42c89f1b86c647ace5f.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;左递归变右递归的一般表达式&#34;
+	
+	
+&gt;&lt;br&gt;
+例如这样的一个文法的消除例子：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/9ea212a7a8884babc4374bc066506358.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;722-间接左递归的消除&#34;&gt;7.2.2 间接左递归的消除
+&lt;/h4&gt;&lt;p&gt;一个文法消除左递归的条件 ：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不含以ε为右部的产生式&lt;/li&gt;
+&lt;li&gt;不含回路，就是不会出现一个非终结符推着推着出现了自己开头的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如对这样一个文法S的间接左递归的消除：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/a1c06f3ecf165688e19fd0c1082c4808.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;左递归消除&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这个过程就是不断的用下层的替换前面出现的，这样一直替换下去最后第一层就只有一个非终结符组成的文法了，最后有直接左递归的就用上一个方法去掉就行了。&lt;/p&gt;
+&lt;p&gt;这个间接左递归的具体消除算法如下：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/0ae6872d6b28c51073ef192d7bf1e681.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;左递归消除算法&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对于上面的那个例子的消除结果就是：&lt;/p&gt;
+&lt;p&gt;{ S → a b c S ′ ∣ b c S ′ ∣ c S ′ S ′ → a b c S ′ ∣ ε \begin{cases} S → abcS&amp;rsquo;| bcS&amp;rsquo;| cS&amp;rsquo; \\ S&amp;rsquo;→ abcS&amp;rsquo;| ε \end{cases} {S→abcS′∣bcS′∣cS′S′→abcS′∣ε​&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;注意，由于对非终结符排序的不同，后所得的文法在形式上可能不一样。但不难证明，它们都是等价的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;73-ll1文法消除回溯&#34;&gt;7.3 LL(1)文法——消除回溯
+&lt;/h3&gt;&lt;h4 id=&#34;731-消除回溯的目的&#34;&gt;7.3.1 消除回溯的目的
+&lt;/h4&gt;&lt;p&gt;为了消除回溯必须保证：对文法的任何非终结符，当要它去匹配输入串时， 能够根据它所面临的输入符号 &lt;strong&gt;准确地&lt;/strong&gt; 指派它的一个候选去执行任务，并且此候选的工作结果应是确信无疑的（将多种可能的搜索变成单一的匹配）。&lt;/p&gt;
+&lt;h4 id=&#34;732-first集合&#34;&gt;7.3.2 FIRST集合
+&lt;/h4&gt;&lt;p&gt;令G是一个不含左递归的文法，对G的所有 &lt;strong&gt;非终结符&lt;/strong&gt; 的每个候选α定义它的终结首符集FIRST(α) 为：&lt;/p&gt;
+&lt;p&gt;F I R S T ( α ) = { a ∣ α ⇒ ∗ a . . . , a ∈ V T } 特 别 的 ， 若 α ⇒ ∗ ε ， 则 规 定 ε ∈ F I R S T ( α ) FIRST(\alpha)=\{a|\alpha⇒^&lt;em&gt;a&amp;hellip;, a \in V_T\} \\ 特别的，若 \alpha ⇒^&lt;/em&gt; ε，则规定 ε \in FIRST(\alpha) FIRST(α)={a∣α⇒∗a&amp;hellip;,a∈VT​}特别的，若α⇒∗ε，则规定ε∈FIRST(α)&lt;/p&gt;
+&lt;p&gt;就是某个非终结符  α \alpha α 其所有的可能推导出的句子的首字符组成的集合。&lt;/p&gt;
+&lt;p&gt;如果非终结符A的所有候选首符集两两不相交， 即A的任何两个不同候选  α i α_i αi​ 和 α j α_j αj​ ：  F I R S T ( α i ) ∩ F I R S T ( α j ) ＝ φ FIRST(α_i)∩FIRST(α_j)＝φ FIRST(αi​)∩FIRST(αj​)＝φ ， 当要求A匹配输入串时，A能根据它所面临的 第一个输入符号a，准确地指派某一个候选去执行任务。这个候选就是那个终结首符集含a的α。 （也就说，只要我们可以使得A下的产生式的First集合两两不相交，这样就可以唯一确定一个字符出现在那个First集合中，这样就可以从该产生式扩展下去，也就达到了消除回溯的目的：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/e2138eeab76b13181315f1b7c1b0ecf4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;而达到这一目的（两两不相交）的方法就是 &lt;strong&gt;提取公共左因子&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;733-提取公共左因子通过大量引入非终结符的方法&#34;&gt;7.3.3 提取公共左因子（通过大量引入非终结符的方法）
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/a7ffcfc4c4f3ec3810f2254266f2c30c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;提取公共左因子&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;734--ε-ε-ε候选&#34;&gt;7.3.4  ε ε ε候选
+&lt;/h4&gt;&lt;p&gt;这样的一个例子：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/dd865c3d4471d57822672b3d95185786.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一个分析的例子&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在进行分析的过程中，对 T‘的推导中使用了  ε ε ε ,这里选用的原因之一就是 T’包含这样的一个句型，所以才使用  ε ε ε 来跳过：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/6653bbc5f4b827b047f1d9517166720f.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;空字问题&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;735-follow集合&#34;&gt;7.3.5 FOLLOW集合
+&lt;/h4&gt;&lt;p&gt;假定S是文法G的开始符号，对于G的任何非终结符A，我们定义A的FOLLOW集合：&lt;/p&gt;
+&lt;p&gt;F O L L O W ( A ) = { a ∣ S ⇒ ∗ . . . A a . . . , a ∈ V T } 特 别 是 ， 若 S ⇒ ∗ . . . A , 则 规 定 # ∈ F O L L O W ( A ) FOLLOW(A)=\{a|S ⇒^* &amp;hellip;Aa&amp;hellip;, a \in V_T\} \\ 特别是，若 S ⇒^* &amp;hellip;A, 则规定 \# \in FOLLOW(A) FOLLOW(A)={a∣S⇒∗&amp;hellip;Aa&amp;hellip;,a∈VT​}特别是，若S⇒∗&amp;hellip;A,则规定#∈FOLLOW(A)&lt;/p&gt;
+&lt;p&gt;（也就是指FOLLOW(A) 为所有可能跟在非终结符A后的终结符的集合）&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/567e40ac517be11f6cc5f25da859d1e9.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;解释&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;736-构造不带回溯的自上而下分析的文法条件&#34;&gt;7.3.6 构造不带回溯的自上而下分析的文法条件
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;文法不含左递归&lt;/li&gt;
+&lt;li&gt;对于文法中每一个非终结符A的各个产生式的候选首符集两两不相交。即，若  A → α 1 ∣ α 2 ∣ … ∣ α n A→α_1|α_2|…|α_n A→α1​∣α2​∣…∣αn​ ，则  F I R S T ( α i ) ∩ F I R S T ( α j ) ＝ φ ( i ≠ j ) FIRST(α_i)∩FIRST(α_j)＝φ(i≠j) FIRST(αi​)∩FIRST(αj​)＝φ(i​=j) （保证了不回溯）&lt;/li&gt;
+&lt;li&gt;对文法中的每个非终结符A，若它存在某个候选首符集包含ε，则 F I R S T ( α i ) ∩ F O L L O W ( A ) = φ ， i = 1 , 2 , . . . , n FIRST(α_i)∩FOLLOW(A)=φ，i=1,2,&amp;hellip;,n FIRST(αi​)∩FOLLOW(A)=φ，i=1,2,&amp;hellip;,n （保证在选取ε时仅选择的是唯一一个产生式）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果一个文法G满足以上条件，则称该文法G为LL(1)文法。 其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一个L： 从左到右扫描输入串&lt;/li&gt;
+&lt;li&gt;第二个L： 最左推导&lt;/li&gt;
+&lt;li&gt;1： 每一步只需向前查看一个符号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;736-ll1分析法&#34;&gt;7.3.6 LL(1)分析法
+&lt;/h4&gt;&lt;p&gt;对于经过处理后的满足上述条件的LL(1)文法，可以对其输入串进行 &lt;strong&gt;有效的&lt;/strong&gt; &lt;strong&gt;无回溯的&lt;/strong&gt; &lt;strong&gt;自上而下分析&lt;/strong&gt; ：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;假设要用非终结符A进行匹配，面临的 &lt;strong&gt;输入符号为a&lt;/strong&gt; ，A 的所有产生式为  A → α 1 ∣ α 2 ∣ … ∣ α n A→α_1 | α_2 | … | α_n A→α1​∣α2​∣…∣αn​&lt;/li&gt;
+&lt;li&gt;1.若  a ∈ F I R S T ( α i ) a∈FIRST(α_i) a∈FIRST(αi​) ，则指派  α i α_i αi​ 执行匹配任务；&lt;/li&gt;
+&lt;li&gt;2.若a不属于任何一个候选首符集，则：
+&lt;ul&gt;
+&lt;li&gt;若  ε ε ε 属于某个  F I R S T ( α i ) FIRST(α_ i) FIRST(αi​) 且  a ∈ F O L L O W ( A ) a∈FOLLOW(A) a∈FOLLOW(A) ，则让 A与  ε ε ε 自动匹配。&lt;/li&gt;
+&lt;li&gt;否则，a的出现是一种语法错误&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;74-first和follow集合的构造&#34;&gt;7.4 FIRST和FOLLOW集合的构造
+&lt;/h3&gt;&lt;h4 id=&#34;741-构造--f-i-r-s-t--α--firstα-firstα&#34;&gt;7.4.1 构造  F I R S T ( α ) FIRST(α) FIRST(α)
+&lt;/h4&gt;&lt;p&gt;F I R S T ( α ) = { a ∣ α ⇒ ∗ a . . . , a ∈ V T } FIRST(\alpha)=\{a|\alpha ⇒^* a&amp;hellip;, a \in V_T\} FIRST(α)={a∣α⇒∗a&amp;hellip;,a∈VT​}&lt;/p&gt;
+&lt;p&gt;对于First集合的构造，可以由易到难进行考虑，首先考虑  α α α 为单个字符的情况，然后推广到任意长度的串：&lt;/p&gt;
+&lt;p&gt;{ α = X ， X ∈ V T ∪ V N (单个文法符号） α = X 1 X 2 … X n ， X i ∈ V T ∪ V N （任何符号串） \begin{cases} α= X，X∈V_T∪V_N &amp;amp; \text{(单个文法符号）}\\ α= X_1X_2…X_n，X_i∈V_T∪V_N &amp;amp; \text{（任何符号串）} \end{cases} {α=X，X∈VT​∪VN​α=X1​X2​…Xn​，Xi​∈VT​∪VN​​(单个文法符号）（任何符号串）​&lt;/p&gt;
+&lt;h5 id=&#34;构造每个文法符号的first集合&#34;&gt;构造每个文法符号的FIRST集合
+&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;（思想：将无穷推导转化为对优先产生式的反复扫描）&lt;/strong&gt;&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/3147d30ef206198890c76bf93bdf1089.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;构造每个文法符号的FIRST集合&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;构造任何符号串的first集合&#34;&gt;构造任何符号串的FIRST集合
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/78e19789cc9781c93bf05e170b8296cc.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;构造任何符号串的FIRST集合&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这里的  F I R S T ( X i ) / { ε } FIRST(X_i) / \{ε\} FIRST(Xi​)/{ε} 表示的是除去空字集合。&lt;/p&gt;
+&lt;h4 id=&#34;742-构造followa&#34;&gt;7.4.2 构造FOLLOW(A)
+&lt;/h4&gt;&lt;p&gt;F O L L O W ( A ) = { a ∣ S ⇒ ∗ . . . A a . . . , a ∈ V T } FOLLOW(A)=\{a|S ⇒^* &amp;hellip;Aa&amp;hellip;, a \in V_T\} FOLLOW(A)={a∣S⇒∗&amp;hellip;Aa&amp;hellip;,a∈VT​}&lt;/p&gt;
+&lt;h5 id=&#34;构造每个非终结符的follow集合&#34;&gt;构造每个非终结符的FOLLOW集合
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/ecd2cf6359bf41756a1ea4d0b4366d02.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;构造FOLLOW流程&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对于第2点：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/3be2aef2dab5e9d3ecb85eb733c244b3.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;解释&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对于第3点：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/37b01b9de2fc32fde5ada6741161bf3b.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;解释&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;743-练习&#34;&gt;7.4.3 练习
+&lt;/h4&gt;&lt;p&gt;对于上面的文法G(E):&lt;/p&gt;
+&lt;p&gt;E → T E ′ E ′ → + T E ′ ∣ ε T → F T ′ T ′ → ∗ F T ′ ∣ ε F → ( E ) ∣ i \begin{aligned} &amp;amp;E→TE&amp;rsquo; \\ &amp;amp;E&amp;rsquo;→+TE&amp;rsquo;| ε \\ &amp;amp;T→FT&amp;rsquo; \\ &amp;amp;T&amp;rsquo;→*FT&amp;rsquo;| ε \\ &amp;amp;F→(E) | i \\ \end{aligned} ​E→TE′E′→+TE′∣εT→FT′T′→∗FT′∣εF→(E)∣i​&lt;/p&gt;
+&lt;p&gt;构造每个非终结符的FIRST和FOLLOW集合 :&lt;/p&gt;
+&lt;p&gt;根据前面构造FIRST集合的步骤：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;FIRST&lt;/th&gt;
+&lt;th&gt;第1步&lt;/th&gt;
+&lt;th&gt;第2步&lt;/th&gt;
+&lt;th&gt;第3步&lt;/th&gt;
+&lt;th&gt;第4步&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;F I R S T ( E ) = FIRST(E)= FIRST(E)=&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;{ ( , i \{(,i {(,i&lt;/td&gt;
+&lt;td&gt;{ ( , i } \{(,i\} {(,i}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F I R S T ( E ′ ) = FIRST(E&amp;rsquo;)= FIRST(E′)=&lt;/td&gt;
+&lt;td&gt;{ + , ε \{+, ε {+,ε&lt;/td&gt;
+&lt;td&gt;{ + , ε \{+, ε {+,ε&lt;/td&gt;
+&lt;td&gt;{ + , ε \{+, ε {+,ε&lt;/td&gt;
+&lt;td&gt;{ + , ε } \{+, ε\} {+,ε}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F I R S T ( T ) = FIRST(T)= FIRST(T)=&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;{ ( , i \{(, i {(,i&lt;/td&gt;
+&lt;td&gt;{ ( , i \{(, i {(,i&lt;/td&gt;
+&lt;td&gt;{ ( , i } \{(, i\} {(,i}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F I R S T ( T ′ ) = FIRST(T&amp;rsquo;)= FIRST(T′)=&lt;/td&gt;
+&lt;td&gt;{ ∗ , ε \{*, ε {∗,ε&lt;/td&gt;
+&lt;td&gt;{ ∗ , ε \{*, ε {∗,ε&lt;/td&gt;
+&lt;td&gt;{ ∗ , ε \{*, ε {∗,ε&lt;/td&gt;
+&lt;td&gt;{ ∗ , ε } \{*, ε\} {∗,ε}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F I R S T ( F ) = FIRST(F)= FIRST(F)=&lt;/td&gt;
+&lt;td&gt;{ ( , i \{(, i {(,i&lt;/td&gt;
+&lt;td&gt;{ ( , i \{(, i {(,i&lt;/td&gt;
+&lt;td&gt;{ ( , i \{(, i {(,i&lt;/td&gt;
+&lt;td&gt;{ ( , i } \{(, i\} {(,i}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;有了FIRST集合，就可以构造FOLLOW集合（注意一个产生式可能有不同的匹配规则匹配）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一次处理时加入  # \# #&lt;/li&gt;
+&lt;li&gt;满足：  A → α B β A\to \alpha B \beta A→αBβ ，将  F I R S T ( β ) / { ε } FIRST(\beta)/\{ε\} FIRST(β)/{ε} 加入到  F O L L O W ( B ) FOLLOW(B) FOLLOW(B)&lt;/li&gt;
+&lt;li&gt;满足：  A → α B β A\to \alpha B \beta A→αBβ ，且  β ⇒ ∗ ε \beta ⇒^*ε β⇒∗ε 将  F O L L O W ( A ) FOLLOW(A) FOLLOW(A) 加入到  F O L L O W ( B ) FOLLOW(B) FOLLOW(B) 中&lt;/li&gt;
+&lt;li&gt;满足：  A → α B A \to \alpha B A→αB ， 将  F O L L O W ( A ) FOLLOW(A) FOLLOW(A) 加入到  F O L L O W ( B ) FOLLOW(B) FOLLOW(B) 中&lt;/li&gt;
+&lt;li&gt;对于  ε ε ε 不处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;FOLLOW&lt;/th&gt;
+&lt;th&gt;第1步对E处理&lt;/th&gt;
+&lt;th&gt;第2步对E’处理&lt;/th&gt;
+&lt;th&gt;第3步对T处理&lt;/th&gt;
+&lt;th&gt;第4步对T’处理&lt;/th&gt;
+&lt;th&gt;第5步对F处理&lt;/th&gt;
+&lt;th&gt;第6步对E再处理&lt;/th&gt;
+&lt;th&gt;第7步对T再处理&lt;/th&gt;
+&lt;th&gt;之后继续几次直到发现各集合大小都不变&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;F O L L O W ( E ) = FOLLOW(E)= FOLLOW(E)=&lt;/td&gt;
+&lt;td&gt;{ # , \{\#, {#,&lt;/td&gt;
+&lt;td&gt;{ # , \{\#, {#,&lt;/td&gt;
+&lt;td&gt;{ # , \{\#, {#,&lt;/td&gt;
+&lt;td&gt;{ # , \{\#, {#,&lt;/td&gt;
+&lt;td&gt;{ # , ) , \{\#,), {#,),&lt;/td&gt;
+&lt;td&gt;{ # , ) , \{\#,), {#,),&lt;/td&gt;
+&lt;td&gt;{ # , ) , \{\#,), {#,),&lt;/td&gt;
+&lt;td&gt;{ # , ) } \{\#,)\} {#,)}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F O L L O W ( E ′ ) = FOLLOW(E&amp;rsquo;)= FOLLOW(E′)=&lt;/td&gt;
+&lt;td&gt;{ # , \{\#, {#,&lt;/td&gt;
+&lt;td&gt;{ # , \{\#, {#,&lt;/td&gt;
+&lt;td&gt;{ # , \{\#, {#,&lt;/td&gt;
+&lt;td&gt;{ # , \{\#, {#,&lt;/td&gt;
+&lt;td&gt;{ # , \{\#, {#,&lt;/td&gt;
+&lt;td&gt;{ # , ) , \{\#,), {#,),&lt;/td&gt;
+&lt;td&gt;{ # , ) , \{\#,), {#,),&lt;/td&gt;
+&lt;td&gt;{ # , ) } \{\#,)\} {#,)}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F O L L O W ( T ) = FOLLOW(T)= FOLLOW(T)=&lt;/td&gt;
+&lt;td&gt;{ + , # , \{+, \#, {+,#,&lt;/td&gt;
+&lt;td&gt;{ + , # , \{+, \#, {+,#,&lt;/td&gt;
+&lt;td&gt;{ + , # , \{+, \#, {+,#,&lt;/td&gt;
+&lt;td&gt;{ + , # , \{+, \#, {+,#,&lt;/td&gt;
+&lt;td&gt;{ + , # , \{+, \#, {+,#,&lt;/td&gt;
+&lt;td&gt;{ + , # , ) , \{+, \#,), {+,#,),&lt;/td&gt;
+&lt;td&gt;{ + , # , ) , \{+, \#,), {+,#,),&lt;/td&gt;
+&lt;td&gt;{ + , # , ) } \{+, \#,)\} {+,#,)}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F O L L O W ( T ′ ) = FOLLOW(T&amp;rsquo;)= FOLLOW(T′)=&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;{ + , # , \{+, \#, {+,#,&lt;/td&gt;
+&lt;td&gt;{ + , # , \{+, \#, {+,#,&lt;/td&gt;
+&lt;td&gt;{ + , # , \{+, \#, {+,#,&lt;/td&gt;
+&lt;td&gt;{ + , # , \{+, \#, {+,#,&lt;/td&gt;
+&lt;td&gt;{ + , # , ) \{+, \#,) {+,#,)&lt;/td&gt;
+&lt;td&gt;{ + , # , ) } \{+, \#,)\} {+,#,)}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;F O L L O W ( F ) = FOLLOW(F)= FOLLOW(F)=&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;{ ∗ , + , # , \{*,+,\#, {∗,+,#,&lt;/td&gt;
+&lt;td&gt;{ ∗ , + , # , \{*,+,\#, {∗,+,#,&lt;/td&gt;
+&lt;td&gt;{ ∗ , + , # , \{*,+,\#, {∗,+,#,&lt;/td&gt;
+&lt;td&gt;{ ∗ , + , # , \{*,+,\#, {∗,+,#,&lt;/td&gt;
+&lt;td&gt;{ ∗ , + , # , ) , \{*,+,\#,), {∗,+,#,),&lt;/td&gt;
+&lt;td&gt;{ ∗ , + , # , ) } \{*,+,\#,)\} {∗,+,#,)}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;第8章-自上而下分析2&#34;&gt;第8章-自上而下分析2
+&lt;/h2&gt;&lt;h3 id=&#34;81-构造递归下降分析器&#34;&gt;8.1 构造递归下降分析器
+&lt;/h3&gt;&lt;h4 id=&#34;811-递归下降分析器&#34;&gt;8.1.1 递归下降分析器
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;分析程序由一组子程序组成，对每一 &lt;strong&gt;语法单位&lt;/strong&gt; (非终结符)构造一个相应的 &lt;strong&gt;子程序&lt;/strong&gt; ，识别对应的 &lt;strong&gt;语法单位&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;通过子程序间的相互调用实现对输入串的识别，例如，A → B c D 就有三个处理A、B、D的子程序&lt;/li&gt;
+&lt;li&gt;文法的定义通常是递归的，通常具有递归结构&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;定义全局过程和变量&#34;&gt;定义全局过程和变量
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ADVANCE&lt;/code&gt; ，把输入串指示器IP指向下一个输入符号， 即读入一个单词符号&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SYM&lt;/code&gt; ，IP当前所指的输入符号&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ERROR&lt;/code&gt; ，出错处理子程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每个非终结符有对应的子程序的定义，在分析 过程中，当需要从某个非终结符出发进行展开 (推导)时，就调用这个非终结符对应的子程序&lt;/p&gt;
+&lt;h4 id=&#34;812-递归下降子程序设计&#34;&gt;8.1.2 递归下降子程序设计
+&lt;/h4&gt;&lt;h5 id=&#34;一个简单的子程序的设计&#34;&gt;一个简单的子程序的设计
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/3d109a71ba1248239a7a57d0da119137.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;简单个一个子程序设计&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;框内的代码不简化可以写成这样:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ELSE IF SYM ∈ FOLLOW(A) THEN
+	BEGIN END
+ELSE ERROR
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/be4875174b608831b294b7b4b83d2b6c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一个例子&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;82-扩充的巴科斯范式和语法图&#34;&gt;8.2 扩充的巴科斯范式和语法图
+&lt;/h3&gt;&lt;h4 id=&#34;821-扩充的巴科斯范式&#34;&gt;8.2.1 扩充的巴科斯范式
+&lt;/h4&gt;&lt;p&gt;在元符号“→”或“::=”和“|”的基础上，扩 充几个元语言符号：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用花括号  α {α} α 表示闭包运算  α ∗ α^* α∗ 。&lt;/li&gt;
+&lt;li&gt;用表示  α 0 n {α}_0^n α0n​ 可任意重复0次至n次。&lt;/li&gt;
+&lt;li&gt;用方括号  [ α ] [α] [α] 表示  { α } 0 1 \{α\}_0^1 {α}01​，即表示  α α α 的出现可有可无(等 价于  α ∣ ε α|ε α∣ε )。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如，通常的“实数”可定义为：&lt;/p&gt;
+&lt;p&gt;D e c i m a l → [ S i g n ] I n t e g e r . { d i g i t } [ E x p o n e n t ] E x p o n e n t → E [ S i g n ] I n t e g e r I n t e g e r → d i g i t { d i g i t } S i g n → + ∣ − \begin{aligned} &amp;amp; Decimal→[Sign]Integer.\{digit\}[Exponent] \\ &amp;amp; Exponent→E[Sign]Integer \\ &amp;amp; Integer→digit\{digit\} \\ &amp;amp; Sign→ + |- \\ \end{aligned} ​Decimal→[Sign]Integer.{digit}[Exponent]Exponent→E[Sign]IntegerInteger→digit{digit}Sign→+∣−​&lt;/p&gt;
+&lt;p&gt;用扩充的巴科斯范式来描述语法，直观易懂， 便于表示左递归消去和因子提取。&lt;/p&gt;
+&lt;h4 id=&#34;822-语法图&#34;&gt;8.2.2 语法图
+&lt;/h4&gt;&lt;p&gt;可以将最上面的文法转化为扩充巴科斯范式以及对应的语法图:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/f069e9c7a732d10437ec511ac6776c0c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;语法图&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;这样转化后的文法对应的递归子程序可以写成:&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/b6dea755d2e8fcfd79b6f0cf1e4062ad.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;递归子程序&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;83-javacc简介&#34;&gt;8.3 JavaCC简介
+&lt;/h3&gt;&lt;p&gt;一个语法分析的小工具:&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/1bbad3981e6efc245211c16ad540ddf8.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Java CC&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;第9讲-语法分析自上而下分析3&#34;&gt;第9讲 语法分析——自上而下分析3
+&lt;/h2&gt;&lt;h3 id=&#34;91-预测分析程序&#34;&gt;9.1 预测分析程序
+&lt;/h3&gt;&lt;h4 id=&#34;911-预测分析程序的工作原理&#34;&gt;9.1.1 预测分析程序的工作原理
+&lt;/h4&gt;&lt;h5 id=&#34;预测分析程序构成&#34;&gt;预测分析程序构成
+&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;总控程序&lt;/code&gt;，根据现行栈顶符号和当前输入符号， 执行动作&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;分析表M[A， a]矩阵&lt;/code&gt; ， A ∈ V N ， a ∈ V T A ∈V_N，a ∈V_T A∈VN​，a∈VT​ 是终 结符或  ′ # ′ &amp;lsquo;\#&amp;rsquo; ′#′&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;分析栈STACK&lt;/code&gt; 用于存放文法符号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/3281942125283eef75c45956a6a796d2.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;预测分析程序的构成&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;预测分析过程&#34;&gt;预测分析过程
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/0dcf70143b573e913fa87997fe8cdacb.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;分析开始&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;总控程序根据当前栈顶符号X和输入符号a，执行下列三动作之一：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/861e146da0143983053500c8a049d803.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;分析过程&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若X＝a＝‘＃’，则宣布分析成功，停止分析。&lt;/li&gt;
+&lt;li&gt;若X＝a ≠‘＃’，则把X从STACK栈顶逐出，让a指向 下一个输入符号。&lt;/li&gt;
+&lt;li&gt;若X是一个非终结符，则查看分析表M。
+&lt;ul&gt;
+&lt;li&gt;若M[X，a]中存放着关于X的一个产生式，把X逐出 STACK栈顶，把产生式的右部符号串按反序一一推进 STACK栈(若右部符号为ε，则意味不推什么东西进栈)。&lt;/li&gt;
+&lt;li&gt;若M[X，a]中存放着“出错标志”，则调用出错诊察程序ERROR。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;总控程序实现&#34;&gt;总控程序实现
+&lt;/h5&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/665aaff0e04752be21d79e553a83cecc.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;总控程序实现&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h5 id=&#34;预测分析示例&#34;&gt;预测分析示例
+&lt;/h5&gt;&lt;p&gt;对于上面的文法的一个预测分析的过程，其中分析表的构造看下一讲：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/03e8fcf825662cc84984f213f217c98b.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;预测分析的实例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;92-预测分析表的构造&#34;&gt;9.2 预测分析表的构造
+&lt;/h3&gt;&lt;h4 id=&#34;921-分析表maa的构造&#34;&gt;9.2.1 分析表M[A，a]的构造
+&lt;/h4&gt;&lt;p&gt;构造分析表前，首先要构造FIRST(α)和FOLLOW(A)&lt;/p&gt;
+&lt;h5 id=&#34;分析表maa的构造算法&#34;&gt;分析表M[A，a]的构造算法
+&lt;/h5&gt;&lt;p&gt;构造G的分析表  M [ A ， a ] M[A，a] M[A，a] ，确定每个产生式  A → α A→α A→α 在表中的位置：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1 对文法G的每个产生式  A → α A→α A→α 执行第2步和第3步；&lt;/li&gt;
+&lt;li&gt;2 对每个终结符  a ∈ F I R S T ( α ) a ∈FIRST(α) a∈FIRST(α) ，把  A → α A→α A→α 加至  M [ A ， a ] M[A， a] M[A，a] 中；&lt;/li&gt;
+&lt;li&gt;3 若  ε ∈ F I R S T ( α ) ε∈FIRST(α) ε∈FIRST(α) ，则对任何  b ∈ F O L L O W ( A ) b∈FOLLOW(A) b∈FOLLOW(A) 把  A → α A→α A→α 加至  M [ A ， b ] M[A，b] M[A，b] 中。&lt;/li&gt;
+&lt;li&gt;4 把所有无定义的  M [ A ， a ] M[A，a] M[A，a] 标上“出错标志”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/468fb12cf0faa54361ea9078b083da52.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一个例子&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;922-ll1文法与二义性&#34;&gt;9.2.2 LL(1)文法与二义性
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;如果G是左递归或二义的，那么，M至少含有 一个多重定义入口。因此，消除左递归和提取 左因子将有助于获得无多重定义的分析表M。&lt;/li&gt;
+&lt;li&gt;可以证明，一个文法G的预测分析表M不含多 重定义入口，当且仅当该文法为LL(1)的。&lt;/li&gt;
+&lt;li&gt;LL(1)文法不是二义的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例如这样一个实现 ifelse 语句的文法就是二义性的，解决方法是人为的确定一个ifelse 语法，如就近匹配选择  S ′ → e S S&amp;rsquo;\to eS S′→eS&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/4017e297b14fd48753bfe42468dfbe6d.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;二义性&#34;
+	
+	
+&gt;&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/00a21b3901be61518849eb7858be3aa7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;习题&#34;
+	
+	
+&gt;&lt;br&gt;
+（end)&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/pi31415926535x/article/details/105163345&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.csdn.net/pi31415926535x/article/details/105163345&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>编译原理-语法分析-自下而上分析</title>
+        <link>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/</link>
+        <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
+        
+        <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/</guid>
+        <description>&lt;h1 id=&#34;笔记-编译原理-第十十一十二章十三章-语法分析-自下而上分析&#34;&gt;笔记-编译原理-第十、十一、十二章、十三章-语法分析-自下而上分析
+&lt;/h1&gt;&lt;h2 id=&#34;自下而上分析1&#34;&gt;自下而上分析1
+&lt;/h2&gt;&lt;h3 id=&#34;自下而上分析&#34;&gt;自下而上分析
+&lt;/h3&gt;&lt;h4 id=&#34;自下而上分析的一个示例&#34;&gt;自下而上分析的一个示例
+&lt;/h4&gt;&lt;p&gt;可以看出自下而上分析的主要步骤是不断的用文法来“规约”，最后找到一种句型的表示&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/396360e90620a02b1bfc0701948f38f9.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1012-自下而上分析的基本思想&#34;&gt;10.1.2 自下而上分析的基本思想
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;采用 &lt;code&gt;“移进－归约”&lt;/code&gt; 思想进行自下而上分析&lt;/li&gt;
+&lt;li&gt;基本思想: 用一个寄存符号的先进后出栈，把输入符号一个一 个地移进到栈里，当栈顶形成某个产生式的候选式 时，即把栈顶的这一部分替换成(归约为)该产生式的 左部符号。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1013-移进归约分析示例&#34;&gt;10.1.3 移进－归约分析示例
+&lt;/h4&gt;&lt;p&gt;其中每一步的操作都可以构成语法树（分析树）的一部分。&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/ec2cf4d1ef1e93deb290ceb5005d2dcb.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/172eeda07995c94c58e6e27382b3b729.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;问题&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;什么是可归约串：短语&lt;/p&gt;
+&lt;h3 id=&#34;102-短语与直接短语&#34;&gt;10.2 短语与直接短语
+&lt;/h3&gt;&lt;h4 id=&#34;1021-短语&#34;&gt;10.2.1 短语
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;定义：令G是一个文法，S是文法的开始符号， 假定  α β δ αβδ αβδ 是文法G的一个句型，如果有  S ⇒ ∗ α A δ 且 A ⇒ + β S⇒^∗αAδ且A⇒^+β S⇒∗αAδ且A⇒+β 则 β称是句型  α β δ αβδ αβδ 相对于非终结符A的短&lt;/li&gt;
+&lt;li&gt;如果有  A ⇒ β A⇒β A⇒β ,则称  β β β 是句型  α β δ αβδ αβδ 相对于规则  A → β A→β A→β 的 &lt;code&gt;直接短语&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1022-测试短语和直接短语&#34;&gt;10.2.2 测试：短语和直接短语
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/79cb0bbf02732bfc4539e2a00323ab04.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;直接短语与短语&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;103-分析过程描述&#34;&gt;10.3 分析过程描述
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/ea9330e4f2a9c199fbf2d214b65be6f6.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;一个分析过程描述&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;104-算符优先文法&#34;&gt;10.4 算符优先文法
+&lt;/h3&gt;&lt;h4 id=&#34;1041-算符优先文法&#34;&gt;10.4.1 算符优先文法
+&lt;/h4&gt;&lt;p&gt;算符优先分析法:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按照算符的优先关系和结合性质进行语法分析&lt;/li&gt;
+&lt;li&gt;适合分析表达式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;LR分析法:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;规范归约：句柄作为可归约串&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1042-运算的优先级&#34;&gt;10.4.2 运算的优先级
+&lt;/h4&gt;&lt;p&gt;四则运算的优先规则: 先乘除后加减，同级从左到右&lt;/p&gt;
+&lt;p&gt;考虑文法G’(E)： E →i| E+E | E-E | E*E | E/E | (E) : &lt;code&gt;句子i+i-i*(i+i)有几种不同的归约&lt;/code&gt; :&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/ed5ebafba8014819f7a5217ca8cf091b.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;不同的规约得到的分析树&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;归约顺序不同，计算的顺序也不 同，结果也不一样；归约顺序不同，计算的顺序也不 同，结果也不一样。&lt;/p&gt;
+&lt;p&gt;句子i+i-i*(i+i)的归约过程：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/851fa580743d204477d7701f7ae42b61.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;规约过程&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1043-优先关系&#34;&gt;10.4.3 优先关系
+&lt;/h4&gt;&lt;p&gt;任何两个可能相继出现的终结符a与b可能三种 优先关系 ：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a ⋖ b a \lessdot b a⋖b a的优先级低于b&lt;/li&gt;
+&lt;li&gt;a ≐ b a \doteq b a≐b a的优先级等于b （这里的点是在等号中间的，找不到对应的latex了，就用在上面的表示了，有知道的告诉我一下，谢谢啦）&lt;/li&gt;
+&lt;li&gt;a ⋗ b a \gtrdot b a⋗b a的优先级高于b&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;算符优先关系与数学上的&amp;lt;&amp;gt;=不同 :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;+ ⋖ + + \lessdot + +⋖+&lt;/li&gt;
+&lt;li&gt;a ⋖ b a \lessdot b a⋖b 并不意味着  b ⋗ a b \gtrdot a b⋗a 如  ( ⋖ + 和 + ⋖ ( ( \lessdot + 和 + \lessdot ( (⋖+和+⋖(&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1044-算符文法&#34;&gt;10.4.4 算符文法
+&lt;/h4&gt;&lt;p&gt;一个文法，如果它的任一产生式的右部都不含 两个相继(并列)的非终结符，即不含  … Q R … …QR… …QR… 形式的产生式右部，则我们称该文法为算符文法。&lt;/p&gt;
+&lt;p&gt;约定：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a、b代表任意终结符&lt;/li&gt;
+&lt;li&gt;P、Q、R代表任意非终结符&lt;/li&gt;
+&lt;li&gt;‘…’代表由终结符和非终结符组成的任意序列，包括空字&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1045-算符优先文法&#34;&gt;10.4.5 算符优先文法
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/e3b63c6e28dfc8b44d5a4d7d2a30baea.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;算符优先文法&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;示例：算符优先文法：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/3633c550224e6c1dc6779b1725ce7c5c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对应的优先关系表：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/55ff980c9d04efa67532a601433c6600.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;优先关系表&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;105-构造优先关系表&#34;&gt;10.5 构造优先关系表
+&lt;/h3&gt;&lt;h4 id=&#34;1051-构造优先关系表的算法firstvt和lastvt集合&#34;&gt;10.5.1 构造优先关系表的算法——FIRSTVT和LASTVT集合
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/ecf3923c00f130800e967b5027dd39f4.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;定义&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;根据FIRSTVT和LASTVT集合，检查每个产生式 的候选式，确定满足关系  ⋖ \lessdot ⋖ 和  ⋗ \gtrdot ⋗ 的所有终结符对 ：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;假定有个产生式的一个候选形为…aP…，那么，对 任何  b ∈ F I R S T V T ( P ) b∈FIRSTVT(P) b∈FIRSTVT(P) ，有  a ⋖ b a \lessdot b a⋖b&lt;/li&gt;
+&lt;li&gt;假定有个产生式的一个候选形为…Pb…，那么，对 任何  a ∈ L A S T V T ( P ) a∈LASTVT(P) a∈LASTVT(P) ，有  a ⋗ b a \gtrdot b a⋗b&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1052-构造集合firstvt的算法&#34;&gt;10.5.2 构造集合FIRSTVT§的算法
+&lt;/h4&gt;&lt;p&gt;反复使用下面两条规则构造集合  F I R S T V T ( P ) FIRSTVT(P) FIRSTVT(P) :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若有产生式  P → a … P→a… P→a… 或  P → Q a … P→Qa… P→Qa… ，则  a ∈ F I R S T V T ( P ) a∈FIRSTVT(P) a∈FIRSTVT(P)&lt;/li&gt;
+&lt;li&gt;若  a ∈ F I R S T V T ( Q ) a∈FIRSTVT(Q) a∈FIRSTVT(Q) ，且有产生式  P → Q … P→Q… P→Q… ，则  a ∈ F I R S T V T ( P ) a∈FIRSTVT(P) a∈FIRSTVT(P)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;算法的一种实现:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;布尔数组F[P，a]&lt;/code&gt; ，使得F[P，a]为真的条件是，当且 仅当a∈FIRSTVT§。开始时，按上述的规则1对每 个数组元素F[P，a]赋初值。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;栈STACK&lt;/code&gt; ，把所有初值为真的数组元素F[P，a]的符 号对(P，a)全都放在STACK之中。&lt;/li&gt;
+&lt;li&gt;若栈STACK不空，就将栈顶项弹出，记此项为 &lt;code&gt;(Q， a)&lt;/code&gt; 。对于每个形如 &lt;code&gt;P→Q…&lt;/code&gt; 的产生式，若F[P，a]为假， 则变其值为真且将 &lt;code&gt;(P，a)&lt;/code&gt; 推进STACK栈。&lt;/li&gt;
+&lt;li&gt;上述过程一直重复，直至栈STACK为空为止。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/268c143f3f369f8c16c33c6a08f82a26.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;实现&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;算法的工作结果得到一个二维数组F，从它可得 任何非终结符P的FIRSTVT  F I R S T V T ( P ) ＝ { a ∣ F [ P ， a ] = T R U E } FIRSTVT(P)＝\{a | F[P，a]=TRUE\} FIRSTVT(P)＝{a∣F[P，a]=TRUE}&lt;/p&gt;
+&lt;h4 id=&#34;1053-构造集合lastvt的算法&#34;&gt;10.5.3 构造集合LASTVT§的算法
+&lt;/h4&gt;&lt;p&gt;同样的思想：&lt;/p&gt;
+&lt;p&gt;反复使用下面两条规则构造集合LASTVT§&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若有产生式  P → … a P→… a P→…a 或  P → … a Q P→ … aQ P→…aQ ，则  a ∈ L A S T V T ( P ) a∈LASTVT(P) a∈LASTVT(P)&lt;/li&gt;
+&lt;li&gt;若  a ∈ L A S T V T ( Q ) a∈LASTVT(Q) a∈LASTVT(Q) ，且有产生式  P → … Q P→… Q P→…Q，则  a ∈ L A S T V T ( P ) a∈LASTVT(P) a∈LASTVT(P)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1054-firstvt和lastvt集合计算示例&#34;&gt;10.5.4 FIRSTVT和LASTVT集合计算示例
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/39d3f83032f93a84af6c372b4818ebf9.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1055-构造优先关系表的算法&#34;&gt;10.5.5 构造优先关系表的算法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;通过检查G的每个产生式的每个候选式，可找 出所有满足  a ≐ b a \doteq b a≐b 的终结符对。&lt;/li&gt;
+&lt;li&gt;根据FIRSTVT和LASTVT集合，检查每个产生式 的候选式，确定满足关系  ⋖ \lessdot ⋖ 和  ⋗ \gtrdot ⋗ 的所有终结符对
+&lt;ul&gt;
+&lt;li&gt;假定有个产生式的一个候选形为  … a P … …aP… …aP… ，那么，对 任何  b ∈ F I R S T V T ( P ) b∈FIRSTVT(P) b∈FIRSTVT(P) ，有  a ⋖ b a \lessdot b a⋖b&lt;/li&gt;
+&lt;li&gt;假定有个产生式的一个候选形为  … P b … …Pb… …Pb… ，那么，对 任何  a ∈ L A S T V T ( P ) a∈LASTVT(P) a∈LASTVT(P) ，有  a ⋗ b a \gtrdot b a⋗b&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/64eee9f957695dd74f6d9ebe858fa302.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;伪码实现&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1056-示例构造优先关系表&#34;&gt;10.5.6 示例：构造优先关系表
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/23fdb68ffc9b7364a03f6f7276416e48.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;br&gt;
+对于#的判断可以通过句型： &lt;code&gt;#E#&lt;/code&gt; 来判断。&lt;/p&gt;
+&lt;p&gt;没有任何两个终结符之间是有多个关系的，所以该文法是一个算符优先文法。&lt;/p&gt;
+&lt;h3 id=&#34;106-算符优先分析算法&#34;&gt;10.6 算符优先分析算法
+&lt;/h3&gt;&lt;h4 id=&#34;1061-最左素短语&#34;&gt;10.6.1 最左素短语
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;可归约串，句型，短语&lt;/li&gt;
+&lt;li&gt;一个文法G的句型的 &lt;code&gt;素短语&lt;/code&gt; 是指这样一个短语， 它至少含有一个终结符，并且，除它自身之外 不再含任何更小的素短语&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;最左素短语&lt;/code&gt; 是指处于句型左边的那个素短语&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/a2758f7b29a57d285c4b59e30fffd340.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1062-最左素短语定理&#34;&gt;10.6.2 最左素短语定理
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;算符优先文法句型(括在两个＃之间)的一般形式：  # N 1 a 1 N 2 a 2 … N n a n N n + 1 # \#N_1a_1N_2a_2…N_na_nN_{n+1}\# #N1​a1​N2​a2​…Nn​an​Nn+1​# 其中，  a i a_i ai​ 都是终结符， N i N_i Ni​ 是可有可无的非终结符。&lt;/li&gt;
+&lt;li&gt;定理：一个算符优先文法G的任何句型的左素短语是 满足如下条件的左子串  N j a j … N i a i N i + 1 N_ja_j…N_ia_iN_{i+1} Nj​aj​…Ni​ai​Ni+1​ ， 且：
+&lt;ul&gt;
+&lt;li&gt;a j − 1 ⋖ a j a_{j-1} \lessdot a_j aj−1​⋖aj​&lt;/li&gt;
+&lt;li&gt;a j ≐ a j + 1 , … , a i − 1 ≐ a i a_j \doteq a_{j+1}, \dots,a_{i-1} \doteq a_i aj​≐aj+1​,…,ai−1​≐ai​&lt;/li&gt;
+&lt;li&gt;a i ⋗ a i + 1 a_i \gtrdot a_{i+1} ai​⋗ai+1​&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/d22843c518f306e8d3c7c644bd47425f.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1063-算符优先分析算法&#34;&gt;10.6.3 算符优先分析算法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;使用一个符号栈S，用它寄存终结符和非终结符， k代表符号栈S的使用深度&lt;/li&gt;
+&lt;li&gt;在正确的情况下，算法工作完毕时，符号栈S应 呈现：# N #&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;整个算法的执行如下：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/ebb8dff679bc4cc100f85e5dc8775d0d.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;算符优先分析算法&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;根据上面的规约那一部分的算法可知：对于文法的句子来说，它的算符优先分析的结果 &lt;strong&gt;不一定&lt;/strong&gt; 就是语法树，所以语法树和分析树要分开指代，这章一开始便已强调：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/827d72cdbc21f5913d3af65289997bf3.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1064-算符优先分析程序构成&#34;&gt;10.6.4 算符优先分析程序构成
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;总控程序&lt;/code&gt; ，根据现行栈顶符号和当前输入符号， 执行动作&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;优先关系表&lt;/code&gt; ，用于指导总控程序进行移进-归约&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;分析栈STACK&lt;/code&gt; ，用于存放文法符号&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/e31fdf8f2444a5c6bb9eba5e26ec33ce.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;程序&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1065-算符优先分析法&#34;&gt;10.6.5 算符优先分析法
+&lt;/h4&gt;&lt;p&gt;特点:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点: 简单，快速&lt;/li&gt;
+&lt;li&gt;缺点: 可能错误接受非法句子&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用广泛,用于分析各类表达式 如，ALGOL 60&lt;/p&gt;
+&lt;h2 id=&#34;第11章-自下而上分析2&#34;&gt;第11章 自下而上分析2
+&lt;/h2&gt;&lt;h3 id=&#34;111-lr分析法概述&#34;&gt;11.1 LR分析法概述
+&lt;/h3&gt;&lt;h4 id=&#34;1111-lr分析法&#34;&gt;11.1.1 LR分析法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;1965年由Knuth提出&lt;/li&gt;
+&lt;li&gt;L：从左到右扫描输入串&lt;/li&gt;
+&lt;li&gt;R：自下而上进行归约&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1112-工作框架&#34;&gt;11.1.2 工作框架
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/51306f7fdc1f1ce59e4d21e62d2eeaf3.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;工作框架&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;112-句柄和规范归约&#34;&gt;11.2 句柄和规范归约
+&lt;/h3&gt;&lt;h4 id=&#34;1121-短语直接短语和句柄&#34;&gt;11.2.1 短语、直接短语和句柄
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;短语&lt;/code&gt; :定义：令G是一个文法，S是文法的开始符号， 假定αβδ是文法G的一个句型，如果有  S ⇒ ∗ α A δ 且 A ⇒ + β S⇒^*αAδ且A⇒^+β S⇒∗αAδ且A⇒+β ，则称  β β β 是句型  α β δ αβδ αβδ 相对于非终结符A的短语。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;直接短语&lt;/code&gt; : 如果有  A ⇒ β A⇒β A⇒β ,则称β是句型  α β δ αβδ αβδ 相对于规则  A → β A→β A→β 的直接短语。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;句柄&lt;/code&gt; :一个句型的左直接短语称为该句型的句柄。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/d28e676cf920935bd3ca9e2315c51734.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1122-用句柄归约&#34;&gt;11.2.2 用句柄归约
+&lt;/h4&gt;&lt;p&gt;可用句柄来对句子进行归约:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/e8e79c4fd9c568e501c24fd5e652b240.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1123-规范归约&#34;&gt;11.2.3 规范归约
+&lt;/h4&gt;&lt;p&gt;定义：假定  α α α 是文法G的一个句子，我们称序列  α n ， α n − 1 ， … ， α_n，α_{n-1}，…， αn​，αn−1​，…， α 0 α_0 α0​ 是  α α α 的一个规范归约，如果此序列满足：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;α n = α α_n= α αn​=α&lt;/li&gt;
+&lt;li&gt;α 0 α_0 α0​ 为文法的开始符号，即  α 0 = S α_0=S α0​=S&lt;/li&gt;
+&lt;li&gt;对任何i， 0 ≤ i ≤ n 0≤i≤n 0≤i≤n ， α i − 1 α_{i-1} αi−1​是从  α i α_i αi​ 经把句柄替换成为相应产生式左部符号而得到的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1124-算符优先分析vs-规范归约&#34;&gt;11.2.4 算符优先分析vs. 规范归约
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/6d74f85dfcc508e64dcae284c4358966.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1125-规范句型&#34;&gt;11.2.5 规范句型
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;规范归约&lt;/code&gt; 是最左归约&lt;/li&gt;
+&lt;li&gt;规范归约的逆过程就是右推导  S ⇒ a A c B e ⇒ a A c d e ⇒ a A b c d e ⇒ a b b c d e S⇒aAcBe⇒aAcde⇒aAbcde⇒abbcde S⇒aAcBe⇒aAcde⇒aAbcde⇒abbcde&lt;/li&gt;
+&lt;li&gt;右推导也称为 &lt;code&gt;规范推导&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;由规范推导推出的句型称为 &lt;code&gt;规范句型&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;113-lr分析法&#34;&gt;11.3 LR分析法
+&lt;/h3&gt;&lt;h4 id=&#34;1131-规约的关键&#34;&gt;11.3.1 规约的关键
+&lt;/h4&gt;&lt;p&gt;规范归约的关键问题是寻找句柄.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;历史&lt;/code&gt; ：已移入符号栈的内容&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;展望&lt;/code&gt; ：根据产生式推测未来可能遇到的输入符号&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;现实&lt;/code&gt; ：当前的输入符号&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/65405eaf6b625d72470cef9c9ac463bf.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1132-lr分析器的结构&#34;&gt;11.3.2 LR分析器的结构
+&lt;/h4&gt;&lt;p&gt;LR分析方法：把 &lt;code&gt;&amp;quot;历史&amp;quot;&lt;/code&gt; 及 &lt;code&gt;&amp;quot;展望&amp;quot;&lt;/code&gt; 综合抽象成&lt;code&gt;状态&lt;/code&gt; ；由栈顶的 &lt;code&gt;状态&lt;/code&gt; 和 &lt;code&gt;现行的输入符号&lt;/code&gt; 唯一确定每一步工作:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/7e2f4770d8e9a7ac1a36795d13160857.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1133-lr分析表&#34;&gt;11.3.3 LR分析表
+&lt;/h4&gt;&lt;p&gt;LR分析器的核心是一张分析表:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ACTION[s，a]&lt;/code&gt; ：当状态s面临输入符号a时，应采取什么动作.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;GOTO[s，X]&lt;/code&gt; ：状态s面对文法符号X时，下一状态是什么&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/e88b3a8b427fb78eeb0173b5f7b874b7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;LR分析表&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1134-lr分析过程&#34;&gt;11.3.4 LR分析过程
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;分析开始时：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;状态栈&lt;/th&gt;
+&lt;th&gt;符号栈&lt;/th&gt;
+&lt;th&gt;输入串&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;( s 0 , (s_0, (s0​,&lt;/td&gt;
+&lt;td&gt;# , \#, #,&lt;/td&gt;
+&lt;td&gt;a 1 a 2 … a n # ) a_1a_2 …a_n\#) a1​a2​…an​#)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;以后每步的结果可以表示为:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;状态栈&lt;/th&gt;
+&lt;th&gt;符号栈&lt;/th&gt;
+&lt;th&gt;输入串&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;( s 0 s 1 … s m , (s_0s_1…s_m, (s0​s1​…sm​,&lt;/td&gt;
+&lt;td&gt;# X 1 … X m , \# X_1…X_m, #X1​…Xm​,&lt;/td&gt;
+&lt;td&gt;a i a i + 1 … a n # ) a_ia_{i+1} …a_n\#) ai​ai+1​…an​#)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/5bda0be5c2d6b98daf576b7849fb2c99.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;分析过程&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1135-lr分析示例&#34;&gt;11.3.5 LR分析示例
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/5f9e3fc510353fa8d3fa8fc59281073b.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1136-lr分析器的性质&#34;&gt;11.3.6 LR分析器的性质
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;栈内的符号串和扫描剩下的输入符号串构成了一个规范句型&lt;/li&gt;
+&lt;li&gt;一旦栈的顶部出现可归约串(句柄)，则进行规约&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于句子，在规范归约过程中，栈内的符号串 和扫描剩下的输入符号串构成了一个规范句型， 下面哪种格局不会出现：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/a9deb5c7dda167f99ea4735fb5d527be.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;114-lr文法&#34;&gt;11.4 LR文法
+&lt;/h3&gt;&lt;h4 id=&#34;1141-lr文法&#34;&gt;11.4.1 LR文法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;定义：对于一个文法，如果能够构造一张分析表，使得它的每个入口均是唯一确定的，则这 个文法就称为 &lt;code&gt;LR文法&lt;/code&gt; 。&lt;/li&gt;
+&lt;li&gt;定义：一个文法，如果能用一个每步顶多向前检查k个输入符号的LR分析器进行分析，则这 个文法就称为 &lt;code&gt;LR(k)文法&lt;/code&gt; 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1142-lr文法与二义文法&#34;&gt;11.4.2 LR文法与二义文法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;LR文法不是二义的，二义文法肯定不会是LR的&lt;/li&gt;
+&lt;li&gt;LR文法⊂无二义文法&lt;/li&gt;
+&lt;li&gt;非LR结构:&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/b3232c8baf9998ddc536a6a843156947.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;第12章-自下而上分析3&#34;&gt;第12章 自下而上分析3
+&lt;/h2&gt;&lt;h3 id=&#34;121-活前缀&#34;&gt;12.1 活前缀
+&lt;/h3&gt;&lt;h4 id=&#34;1211-字的前缀活前缀&#34;&gt;12.1.1 字的前缀、活前缀
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;字的前缀&lt;/code&gt; ：是指字的任意首部，如字 abc 的前缀 有ε， a ， ab ， abc&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;活前缀&lt;/code&gt; ：是指 &lt;code&gt;规范句型&lt;/code&gt; 的一个前缀，这种前缀不含 &lt;code&gt;句柄&lt;/code&gt; 之后的任何符号。即，对于规范句型  α β δ αβδ αβδ ， β β β 为句柄，如果  α β = u 1 u 2 … u r αβ=u_1u_2…u_r αβ=u1​u2​…ur​，则符号串  u 1 u 2 … u i ( 1 ≤ i ≤ r ) u_1u_2…u_i(1≤i≤r) u1​u2​…ui​(1≤i≤r) 是  α β δ αβδ αβδ 的 &lt;code&gt;活前缀&lt;/code&gt; 。(  δ δ δ 必为终结符串)&lt;/li&gt;
+&lt;li&gt;规范归约过程中，保证分析栈中总是 &lt;code&gt;活前缀&lt;/code&gt; ， 就说明分析采取的移进/归约动作是正确的&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于一个文法G, 可以构造一个DFA,它能识别G 的所有活前缀。&lt;/p&gt;
+&lt;h3 id=&#34;122-构造识别活前缀的dfa&#34;&gt;12.2 构造识别活前缀的DFA
+&lt;/h3&gt;&lt;h4 id=&#34;1221-文法的拓广&#34;&gt;12.2.1 文法的拓广
+&lt;/h4&gt;&lt;p&gt;将文法  G ( S ) G(S) G(S) 拓广为  G ′ ( S ) G&amp;rsquo;(S) G′(S) :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;构造文法  G ′ G&amp;rsquo; G′ ，它包含了整个  G G G ，并引进不出现在  G G G 中的非终结符  S ′ S&amp;rsquo; S′ 、以及产生式  S ′ → S S&amp;rsquo;→S S′→S ， S ′ S&amp;rsquo; S′ 是  G ′ G&amp;rsquo; G′ 的开始符号&lt;/li&gt;
+&lt;li&gt;称  G ′ G&amp;rsquo; G′ 是  G G G 的拓广文法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1222-lr0项目&#34;&gt;12.2.2 LR(0)项目
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;LR(0)项目: 在每个产生式的右部添加一个圆点，表示我们在分析过程中看到了产生式多大部分&lt;/li&gt;
+&lt;li&gt;例如：  A → X Y Z A→XYZ A→XYZ 有四个项目： A → • X Y Z A → X • Y Z A → X Y • Z A → X Y Z • A→•XYZ \ A→X•YZ \ A→XY•Z \ A→XYZ• A→•XYZ A→X•YZ A→XY•Z A→XYZ•&lt;/li&gt;
+&lt;li&gt;A → α • A→α• A→α• 称为 &lt;code&gt;&amp;quot;归约项目&amp;quot;&lt;/code&gt; （把点看成识别的指针，识别到产生的末表示可以用这个产生式的左部代替）&lt;/li&gt;
+&lt;li&gt;归约项目  S ′ → α • S&amp;rsquo;→α• S′→α• 称为 &lt;code&gt;&amp;quot;接受项目&amp;quot;&lt;/code&gt;（表示识别到文法的拓广文法的开始，也就是当前读入的单词被识别到了）&lt;/li&gt;
+&lt;li&gt;A → α • a β ( a ∈ V T ) A→α•aβ(a∈VT) A→α•aβ(a∈VT) 称为 &lt;code&gt;&amp;quot;移进项目&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;A → α • B β ( B ∈ V N ) A→α•Bβ(B∈VN) A→α•Bβ(B∈VN) 称为 &lt;code&gt;&amp;quot;待约项目&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;示例：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/f947f362bc989cadf9610ebb3cf46bc9.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1223-构造识别文法所有活前缀的dfa&#34;&gt;12.2.3 构造识别文法所有活前缀的DFA
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/88d5863b0db354e832888de91ebc7afb.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对于上面那个文法的一个NFA就是：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/65fac2bf3f7190568a92f3e5e8103b17.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;NFA&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;然后按照前面的套路将NFA变为DFA：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/a0915c7c43d1fc6c100cdfbddf658e3d.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;DFA&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1224-lr0项目集规范族&#34;&gt;12.2.4 LR(0)项目集规范族
+&lt;/h4&gt;&lt;p&gt;构成识别一个文法活前缀的DFA的项目集(状 态)的全体称为文法的 &lt;code&gt;LR(0)项目集规范族&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;如上图中的每一个状态中的一些项目组成的集合就是一个个 项目集规范族：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/ab82b78feed7954888cf3c1c2921b039.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;123-通过计算项目集规范族构造识别活前缀的dfa&#34;&gt;12.3 通过计算项目集规范族构造识别活前缀的DFA
+&lt;/h3&gt;&lt;h4 id=&#34;1231-有效项目&#34;&gt;12.3.1 有效项目
+&lt;/h4&gt;&lt;p&gt;项目  A → β 1 • β 2 A→β_1•β_2 A→β1​•β2​ 对活前缀  α β 1 αβ_1 αβ1​ 是有效的，其条件是存在规范推导：  S ′ ⇒ R ∗ α A ω ⇒ R ∗ α β 1 β 2 ω S&amp;rsquo; ⇒^&lt;em&gt;_R αAω⇒^&lt;/em&gt;_Rα \beta_1 \beta_2ω S′⇒R∗​αAω⇒R∗​αβ1​β2​ω&lt;/p&gt;
+&lt;p&gt;在任何时候，分析栈中的活前缀  X 1 X 2 … X m X_1X_2… X_m X1​X2​…Xm​ 的有效项目集正是从 识别活前缀的DFA的 初态出发，读出  X 1 X 2 … X m X_1X_2… X_m X1​X2​…Xm​ 后到达的那个项目集(状态)。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;（应该可以理解为当一个活前缀的后缀是某个项目的前缀时，就称这个项目是这个活前缀的一个有效项目，因为只要当活前缀的后缀加上一定的后续的读入就可以规约到这个项目的左部）&lt;/del&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1232-有效项目的性质&#34;&gt;12.3.2 有效项目的性质
+&lt;/h4&gt;&lt;p&gt;若项目  A → α • B β A→α•Bβ A→α•Bβ 对活前缀  η = δ α η=δα η=δα 是有效的且  B → γ B→γ B→γ 是一个产生式，则项目  B → • γ B →•γ B→•γ 对  η = δ α η=δα η=δα 也是有效的。&lt;/p&gt;
+&lt;p&gt;证明：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/538d9b8388a71296f389b4c24e596847.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;证明&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/daca11b479896c593845ed4ba28399a7.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1233-lr0项目集规范族的构造&#34;&gt;12.3.3 LR(0)项目集规范族的构造
+&lt;/h4&gt;&lt;p&gt;将文法G(S)拓广为G′(S′)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;构造文法G′，它包含了整个G，并引进不出现在G中 的非终结符S′、以及产生式S′→S，S′是G′的开始符 号&lt;/li&gt;
+&lt;li&gt;G′唯一的“接受”态：仅含项目S′→S•的状态&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1234-项目集的闭包closure&#34;&gt;12.3.4 项目集的闭包CLOSURE
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/7bdce5941656056fabaac492f4f13691.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1235-状态转换函数&#34;&gt;12.3.5 状态转换函数
+&lt;/h4&gt;&lt;p&gt;为了识别活前缀，我们定义一个状态转换函数GO。I是一个项目集，X是 一个文法符号。函数值GO(I，X)定义为：  G O ( I ， X ) ＝ C L O S U R E ( J ) GO(I，X)＝CLOSURE(J) GO(I，X)＝CLOSURE(J) 其中  J ＝ { 任 何 形 如 A → α X • β 的 项 目 ∣ A → α • X β 属 于 I } J＝\{任何形如A→αX•β的项目| A→α•Xβ属于I\} J＝{任何形如A→αX•β的项目∣A→α•Xβ属于I}。&lt;/p&gt;
+&lt;p&gt;直观上说，若  I I I 是对某个活前缀  γ γ γ 有效的项目集， 那么， G O ( I ， X ) GO(I，X) GO(I，X) 便是对  γ X γX γX 有效的项目集&lt;/p&gt;
+&lt;h4 id=&#34;1236-示例项目集的转移函数计算&#34;&gt;12.3.6 示例：项目集的转移函数计算
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/edad42e22dcb706cbbc4d277cfa6689f.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1237-lr0项目集规范族的构造算法&#34;&gt;12.3.7 LR(0)项目集规范族的构造算法
+&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;PROCEDURE ITEMSETS(G′)； 
+BEGIN 
+	C:={CLOSURE({S′→•S})}；
+	REPEAT 
+		 FOR C中每个项目集I和G′的每个符号X DO 
+		 	IF GO(I，X)非空且不属于C THEN 
+		 		把GO(I，X)放入C族中; 
+	UNTIL C不再增大
+END
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;1238-两种构造识别活前缀的dfa的方法&#34;&gt;12.3.8 两种构造识别活前缀的DFA的方法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;1.项目→ NFA → DFA&lt;/li&gt;
+&lt;li&gt;2.Closure → GO → DFA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;124-构造lr0分析表&#34;&gt;12.4 构造LR(0)分析表
+&lt;/h3&gt;&lt;h4 id=&#34;1241-lr0分析表的构造&#34;&gt;12.4.1 LR(0)分析表的构造
+&lt;/h4&gt;&lt;p&gt;假若一个文法G的拓广文法G′的活前缀识别自 动机中的每个状态(项目集)不存在下述情况：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;既含移进项目又含归约项目；&lt;/li&gt;
+&lt;li&gt;含有多个归约项目&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;则称G是一个LR(0)文法。&lt;/p&gt;
+&lt;h4 id=&#34;1242-构造lr0分析表的算法&#34;&gt;12.4.2 构造LR(0)分析表的算法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;令每个项目集  I k I_k Ik​ 的下标  k k k 作为分析器的状态，包含项目  S ′ → • S S&amp;rsquo;→•S S′→•S 的集合  I k I_k Ik​ 的下标  k k k 为分析器的初态。&lt;/li&gt;
+&lt;li&gt;构造  L R ( 0 ) LR(0) LR(0) 分析表的  A C T I O N ACTION ACTION 和  G O T O GOTO GOTO 子表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1243-lr0分析表的action和goto子表构造&#34;&gt;12.4.3 LR(0)分析表的ACTION和GOTO子表构造
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;1.若项目  A → α • a β A→α•aβ A→α•aβ 属于  I k I_k Ik​且  G O ( I k , a ) ＝ I j GO(I_k, a)＝I_j GO(Ik​,a)＝Ij​ ， a a a为终结符，则置  A C T I O N [ k , a ] ACTION[k, a] ACTION[k,a] 为“  s j s_j sj​ ”。&lt;/li&gt;
+&lt;li&gt;2.若项目  A → α • A→α• A→α• 属于  I k I_k Ik​ ，那么，对 &lt;code&gt;任何终结符a(或结束符#)&lt;/code&gt; ， 置  A C T I O N [ k , a ] ACTION[k, a] ACTION[k,a] 为“  r j r_j rj​ ”(假定产生式  A → α A→α A→α 是文法  G ′ G&amp;rsquo; G′ 的第  j j j 个产生式)。&lt;/li&gt;
+&lt;li&gt;3.若项目  S ′ → S • S&amp;rsquo;→S• S′→S• 属于  I k I_k Ik​ ，则置  A C T I O N [ k , # ] ACTION[k,\#] ACTION[k,#] 为“  a c c acc acc ”。&lt;/li&gt;
+&lt;li&gt;4.若  G O ( I k , A ) ＝ I j GO(I_k, A)＝I_j GO(Ik​,A)＝Ij​ ， A A A 为非终结符，则置  G O T O [ k , A ] = j GOTO[k, A]=j GOTO[k,A]=j 。&lt;/li&gt;
+&lt;li&gt;5.分析表中凡不能用规则1至4填入信息的空白格均置上 “报错标志”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1244-示例lr0分析表的构造&#34;&gt;12.4.4 示例：LR(0)分析表的构造
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/4243d9091cf2e71e5b3d4096d2cccc6c.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1245-lr0分析示例&#34;&gt;12.4.5 LR(0)分析示例
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/a52f02f447d95fb1e53db8bcf6b5d57f.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;示例&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;第13章-自下而上分析4&#34;&gt;第13章 自下而上分析4
+&lt;/h2&gt;&lt;h3 id=&#34;131-slr1分析法&#34;&gt;13.1 SLR(1)分析法
+&lt;/h3&gt;&lt;h4 id=&#34;1311-一个非lr0文法&#34;&gt;13.1.1 一个非LR(0)文法
+&lt;/h4&gt;&lt;p&gt;从这个文法的DFA可以看出，某些状态既是规约态，也是移进态，这样就是一个非LR(0)文法：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/8a3e75269ae196ac1027e8232abc0993.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;I1、I2和I9都含有“移进－归约”冲突，可以看出冲突的项目集中的项目的 FOLLOW集合是相交的。&lt;/p&gt;
+&lt;h4 id=&#34;1312-冲突解决办法&#34;&gt;13.1.2 冲突解决办法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;假定一个LR(0)规范族含有如下的一个项目集 (状态)  I ＝ { X → α • b β ， A → α • ， B → α • } I＝\{\color{blue}{X→α•bβ}，\color{red}{A→α•}，\color{fuchsia}{B→α•}\color{black}{\}} I＝{X→α•bβ，A→α•，B→α•}&lt;/li&gt;
+&lt;li&gt;F O L L O W ( A ) \color{red}{FOLLOW(A)} FOLLOW(A) 和  F O L L O W ( B ) \color{fuchsia}{FOLLOW(B)} FOLLOW(B) 的交集为  ∅ ∅ ∅ ，且不包含  b \color{blue}{b} b&lt;/li&gt;
+&lt;li&gt;当状态  I I I 面临任何输入符号  a a a 时，可以:
+&lt;ul&gt;
+&lt;li&gt;1. 若 a = b ， 则 移 进 ； \color{blue}{1.若a=b，则移进；} 1.若a=b，则移进；&lt;/li&gt;
+&lt;li&gt;2. 若 a ∈ F O L L O W ( A ) ， 用 产 生 式 A → α 进 行 归 约 ； \color{red}{2.若a∈FOLLOW(A)，用产生式A→α进行归约； } 2.若a∈FOLLOW(A)，用产生式A→α进行归约；&lt;/li&gt;
+&lt;li&gt;3. 若 a ∈ F O L L O W ( B ) ， 用 产 生 式 B → α 进 行 归 约 ； \color{fuchsia}{3.若a∈FOLLOW(B)，用产生式B→α进行归约； } 3.若a∈FOLLOW(B)，用产生式B→α进行归约；&lt;/li&gt;
+&lt;li&gt;4.此外，报错。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1313-slr1冲突解决办法&#34;&gt;13.1.3 SLR(1)冲突解决办法
+&lt;/h4&gt;&lt;p&gt;假定LR(0)规范族的一个项目集  I = { A 1 → α • a 1 β 1 ， A 2 → α • a 2 β 2 ， … ， A m → α • a m β m ， B 1 → α • ， B 2 → α • ， … ， B n → α • } I=\{\color{blue}{A_1→α•a_1β_1， A2→α•a_2β_2，…，A_m→α•a_mβ_m}，\color{red}{B_1→α•，B_2→α•，…， B_n→α•} \color{black}{\}} I={A1​→α•a1​β1​，A2→α•a2​β2​，…，Am​→α•am​βm​，B1​→α•，B2​→α•，…，Bn​→α•} 如果集合  { a 1 ， … ， a m } \color{blue}{\{a_1，…，a_m}\} {a1​，…，am​}， F O L L O W ( B 1 ) ， … ， F O L L O W ( B n ) \color{red}{FOLLOW(B_1)，…， FOLLOW(B_n)} FOLLOW(B1​)，…，FOLLOW(Bn​)两两不相交(包括不得有两个FOLLOW集 合有#)，则当状态I面临任何输入符号a时：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1. 若 a 是 某 个 a i ， i = 1 , 2 , … , m ， 则 移 进 ； \color{blue}{1. 若a是某个ai，i=1,2,…,m，则移进；} 1.若a是某个ai，i=1,2,…,m，则移进；&lt;/li&gt;
+&lt;li&gt;2. 若 a ∈ F O L L O W ( B i ) ， i = 1 , 2 , … , n ， 则 用 产 生 式 B i → α 进 行 归 约 ； \color{red}{2. 若a∈FOLLOW(B_i)，i=1,2,…,n，则用产生式Bi→α 进行归约； } 2.若a∈FOLLOW(Bi​)，i=1,2,…,n，则用产生式Bi→α进行归约；&lt;/li&gt;
+&lt;li&gt;3. 此 外 ， 报 错 。 \color{black}{3. 此外，报错。 } 3.此外，报错。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;SLR(1)解决办法：S-Simple，1-最多向前看一个单词&lt;/p&gt;
+&lt;h4 id=&#34;1314-构造slr1分析表的方法&#34;&gt;13.1.4 构造SLR(1)分析表的方法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;把G拓广为G′&lt;/li&gt;
+&lt;li&gt;对G′构造
+&lt;ul&gt;
+&lt;li&gt;LR(0)项目集规范族C&lt;/li&gt;
+&lt;li&gt;活前缀识别自动机的状态转换函数GO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;使用C和GO，构造SLR分析表
+&lt;ul&gt;
+&lt;li&gt;令每个项目集Ik的下标k作为分析器的状态，包含项 目S′→•S的集合Ik的下标k为分析器的初态。&lt;/li&gt;
+&lt;li&gt;构造分析表的ACTION和GOTO子表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1315-slr1分析表的action和goto子表构造&#34;&gt;13.1.5 SLR(1)分析表的ACTION和GOTO子表构造
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;1.若项目  A → α • a β A→α•aβ A→α•aβ 属于  I k I_k Ik​ 且  G O ( I k , a ) = I j GO(I_k,a)=I_j GO(Ik​,a)=Ij​ ， a a a 为终结符，则置&lt;br&gt;
+A C T I O N [ k , a ] = s j ACTION[k,a] = s_j ACTION[k,a]=sj​；&lt;/li&gt;
+&lt;li&gt;2.若项目  A → α • A→α• A→α• 属于  I k I_k Ik​ ，那么，对任何终结符  a ∈ F O L L O W ( A ) \color{red}{a∈FOLLOW(A)} a∈FOLLOW(A) ，置  A C T I O N [ k , a ] ACTION[k,a] ACTION[k,a] 为“  r j r_j rj​ ”；其中，假定  A → α A→α A→α 为文法  G ′ G&amp;rsquo; G′ 的第  j j j 个产生式；&lt;/li&gt;
+&lt;li&gt;3.若项目  S ′ → S • S&amp;rsquo;→S• S′→S• 属于  I k I_k Ik​ ，则置  A C T I O N [ k , # ] 为 “ a c c ” ACTION[k,\#]为“acc” ACTION[k,#]为“acc”;&lt;/li&gt;
+&lt;li&gt;4.若  G O ( I k , A ) ＝ I j GO(I_k,A)＝I_j GO(Ik​,A)＝Ij​ ， A A A 为非终结符，则置  G O T O [ k , A ] = j GOTO[k,A]=j GOTO[k,A]=j；&lt;/li&gt;
+&lt;li&gt;5.分析表中凡不能用规则1至4填入信息的空白格均置上 “报错标志” 。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1316-slr1和lr0分析表构造方法的对比&#34;&gt;13.1.6 SLR(1)和LR(0)分析表构造方法的对比
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/7759eb111e6611bba357666affe9712f.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以看出，SLR处理冲突的解决方法就是将以前分析表中规约的一行缩小成为FOLLOW的字符，减少冲突的可能（显然这样也不是最优的，也可能产生冲突的）&lt;/p&gt;
+&lt;h4 id=&#34;1317-slr1文法&#34;&gt;13.1.7 SLR(1)文法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;按上述方法构造出的ACTION与GOTO表如果 不含多重入口，则称该文法为SLR(1)文法。&lt;/li&gt;
+&lt;li&gt;使用SLR表的分析器叫做一个SLR分析器。&lt;/li&gt;
+&lt;li&gt;每个SLR(1)文法都是无二义的。但也存在许多 无二义文法不是SLR(1)的。&lt;/li&gt;
+&lt;li&gt;L R ( 0 ) ⊂ S L R ( 1 ) ⊂ 无 二 义 文 法 LR(0) ⊂SLR(1) ⊂无二义文法 LR(0)⊂SLR(1)⊂无二义文法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1318-slr1分析表构造示例&#34;&gt;13.1.8 SLR(1)分析表构造示例
+&lt;/h4&gt;&lt;p&gt;对于上面那个会产生冲突的LR(0)文法，更改其中产生 &lt;strong&gt;规约&lt;/strong&gt; 步骤的分析表产生规则，使用FOLLOW来代替：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/bd4486fa7a6b6eca25858e5804837d22.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1319-一个非slr1文法&#34;&gt;13.1.9 一个非SLR(1)文法
+&lt;/h4&gt;&lt;p&gt;对于这样一个文法，它的SLR分析表是会产生冲突的：&lt;br&gt;
+&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/18ba02891536526593776f0e9f0a11f6.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;13110-slr冲突消解存在的问题&#34;&gt;13.1.10 SLR冲突消解存在的问题
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;SLR在方法中，如果项目集  I i I_i Ii​ 含项目  A → α • \color{#08f}{A→α•} A→α• 而且下一输入符号  a ∈ F O L L O W ( A ) \color{#08f}{a∈FOLLOW(A)} a∈FOLLOW(A) ，则状态  i i i 面临  a a a 时，可选用“用  A → α A→α A→α 归约”动作&lt;/li&gt;
+&lt;li&gt;但在有些情况下，当状态i显现于栈顶时，当前单词是a， 栈里的 &lt;code&gt;活前缀&lt;/code&gt; β α \color{#08f}{β}\color{purple}{α} βα 未必允许把  α \color{purple}{α} α 归约为  A \color{purple}{A} A ，因为可能根本 就不存在一个形如“  β A a \color{#08f}{β}\color{purple}{A}\color{#0f5}{a} βAa ”的规范句型&lt;/li&gt;
+&lt;li&gt;在这种情况下，用“A→α”归约不一定合适&lt;/li&gt;
+&lt;li&gt;原因是： &lt;code&gt;FOLLOW集合提供的信息太泛&lt;/code&gt; F O L L O W ( A ) = { α ∣ S ⇒ ∗ … A α … , α ∈ V T } FOLLOW(A)=\{\alpha|S⇒^*…A\alpha \dots, \alpha∈V_T\} FOLLOW(A)={α∣S⇒∗…Aα…,α∈VT​}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;132-lr1分析表的构造&#34;&gt;13.2 LR(1)分析表的构造
+&lt;/h3&gt;&lt;h4 id=&#34;1321-构造lr1分析表的方法&#34;&gt;13.2.1 构造LR(1)分析表的方法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;把G拓广为G′&lt;/li&gt;
+&lt;li&gt;对G′构造LR(1)项目集规范族C和活前缀识别自 动机的状态转换函数GO&lt;/li&gt;
+&lt;li&gt;使用C和GO，构造LR(1)分析表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1322-lrk项目&#34;&gt;13.2.2 LR(k)项目
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;LR(k)项目&lt;/code&gt; ：扩展LR(0)项目，附带有k个终结符  [ A → α • β , a 1 a 2 … a k ] [A→α•β, a_1a_2…a_k] [A→α•β,a1​a2​…ak​] a 1 a 2 … a k a_1a_2…a_k a1​a2​…ak​ 称为 &lt;code&gt;向前搜索符串(或展望串)&lt;/code&gt; 。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;归约项目&lt;/code&gt; [ A → α • ， a 1 a 2 … a k ] [A→α•，a_1a_2…a_k] [A→α•，a1​a2​…ak​] 的意义：当它所属的状态呈现在栈顶且后续的k个输入符号为  a 1 a 2 … a k a_1a_2…a_k a1​a2​…ak​ 时，才可以把栈顶上的α归约为A&lt;/li&gt;
+&lt;li&gt;对于任何 &lt;code&gt;移进&lt;/code&gt; 或 &lt;code&gt;待约项目&lt;/code&gt; [ A → α • β , a 1 a 2 … a k ] , β ≠ ε [A→α•β, a_1a_2…a_k] , β≠ε [A→α•β,a1​a2​…ak​],β​=ε ，搜索符串  a 1 a 2 … a k a_1a_2…a_k a1​a2​…ak​ 没有直接作用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1323-有效项目&#34;&gt;13.2.3 有效项目
+&lt;/h4&gt;&lt;p&gt;形式上我们说一个LR(1)项目  [ A → α • β , a ] [\color{red}{A}→\color{#08f}{α}•\color{#0f8}{β} \color{black}{,} \color{purple}{a}] [A→α•β,a] 对于活前缀  γ \color{#08f}{γ} γ 是 &lt;code&gt;有效的&lt;/code&gt; ，如果存在规范推导 :  S ′ ⇒ R ∗ δ A ω ⇒ R ∗ δ α β ω S&amp;rsquo;⇒^&lt;em&gt;_R \color{#08f}{\delta} \color{red}{A} \color{purple}{\omega} \color{black}{⇒^&lt;/em&gt;_R} \color{#08f}{\delta} \color{#08f}{α} \color{#0f8}{β} \color{purple}{\omega} S′⇒R∗​δAω⇒R∗​δαβω&lt;br&gt;
+其中，1)  γ ＝ δ α \color{#08f}{γ＝δα} γ＝δα ；2)  a \color{purple}{a} a 是  ω \color{purple}{ω} ω 的第一个符号，或者  a \color{purple}{a} a 为#而  ω \color{purple}{ω} ω 为ε。&lt;/p&gt;
+&lt;h4 id=&#34;1324-有效项目的性质&#34;&gt;13.2.4 有效项目的性质
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/ea2a146c827e744f02c1e351670c4cbf.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1325-lr1项目集规范族&#34;&gt;13.2.5 LR(1)项目集规范族
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;闭包函数CLOSURE&lt;/li&gt;
+&lt;li&gt;转换函数GO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;项目集的闭包closure&#34;&gt;项目集的闭包CLOSURE
+&lt;/h5&gt;&lt;p&gt;假定I是文法G′的任一项目集，定义和构造I的闭 包CLOSURE(I)如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.I的任何项目都属于  C L O S U R E ( I ) CLOSURE(I) CLOSURE(I) 。&lt;/li&gt;
+&lt;li&gt;2.若项目  [ A → α • B β , a ] [A→α•Bβ, a] [A→α•Bβ,a] 属于  C L O S U R E ( I ) CLOSURE(I) CLOSURE(I) ，  B → ξ B→ξ B→ξ 是一个产生式，那么，对于  F I R S T ( β a ) FIRST(βa) FIRST(βa) 中的每个 终结符b，如果  [ B → • ξ , b ] [B→•ξ, b] [B→•ξ,b] 原来不在  C L O S U R E ( I ) CLOSURE(I) CLOSURE(I) 中，则把它加进去。&lt;/li&gt;
+&lt;li&gt;3.重复执行步骤2，直至  C L O S U R E ( I ) CLOSURE(I) CLOSURE(I) 不再增大为止。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;项目集的转换函数go&#34;&gt;项目集的转换函数GO
+&lt;/h5&gt;&lt;p&gt;令I是一个项目集，X是一个文法符号，函数 GO(I，X)定义为：  G O ( I ， X ) ＝ C L O S U R E ( J ) GO(I，X)＝CLOSURE(J) GO(I，X)＝CLOSURE(J) ,其中  J ＝ { 任 何 形 如 [ A → α X • β , a ] 的 项 目 ∣ [ A → α • X β , a ] ∈ I } J＝\{ 任何形如[ A→αX•β, a]的项目 | [ A→α•Xβ, a]∈I \} J＝{任何形如[A→αX•β,a]的项目∣[A→α•Xβ,a]∈I}&lt;/p&gt;
+&lt;h5 id=&#34;lr1项目集规范族的构造算法&#34;&gt;LR(1)项目集规范族的构造算法
+&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;BEGIN 
+	C:={ CLOSURE( { [S′→•S，#] }) }; 
+	REPEAT 
+		FOR C中每个项目集I和G′的每个符号X DO 
+			IF GO(I，X)非空且不属于C，THEN       
+				把GO(I，X)加入C中 
+	UNTIL C不再增大 
+END
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;1326-lr1分析表的构造算法&#34;&gt;13.2.6 LR(1)分析表的构造算法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;把G拓广为G′&lt;/li&gt;
+&lt;li&gt;对G′构造LR(1)项目集规范族C和活前缀识别自 动机的状态转换函数GO&lt;/li&gt;
+&lt;li&gt;使用C和GO，构造LR(1)分析表
+&lt;ul&gt;
+&lt;li&gt;令每个Ik的下标k为分析表的状态，令含有[S′→•S, #] 的Ik的k为分析器的初态&lt;/li&gt;
+&lt;li&gt;构造LR(1)分析表的ACTION和GOTO子表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1327-lr1分析表的action和goto子表构造&#34;&gt;13.2.7 LR(1)分析表的ACTION和GOTO子表构造
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;1.若项目[A→α•aβ, b]属于Ik且GO(Ik, a)＝Ij，a为 终结符，则置ACTION[k, a]为“sj”。&lt;/li&gt;
+&lt;li&gt;2.若项目[A→α•，a]属于Ik，则置ACTION[k, a]为 “rj”；其中假定A→α为文法G′的第j个产生式。&lt;/li&gt;
+&lt;li&gt;3.若项目[S′→S•, #]属于Ik，则置ACTION[k, #]为 “acc”。&lt;/li&gt;
+&lt;li&gt;4.若GO(Ik，A)＝Ij，则置GOTO[k, A]=j。&lt;/li&gt;
+&lt;li&gt;5.分析表中凡不能用规则1至4填入信息的空白栏 均填上“出错标志”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;1328-lr1和slr1分析表构造方法的对比&#34;&gt;13.2.8 LR(1)和SLR(1)分析表构造方法的对比
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/17cc385c04057a6eaed8be16db679c74.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;可以看出，与SLR相比，在规约中更加缩小了可规约的情况，使得冲突减小&lt;/p&gt;
+&lt;h4 id=&#34;1329-lr1分析表和lr1文法&#34;&gt;13.2.9 LR(1)分析表和LR(1)文法
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;按上述算法构造的分析表，若不存在多重定义 的入口(即，动作冲突)的情形，则称它是文法G 的一张规范的LR(1)分析表。&lt;/li&gt;
+&lt;li&gt;具有规范的LR(1)分析表的文法称为一个LR(1)文法。&lt;/li&gt;
+&lt;li&gt;使用LR(1)分析表的分析器叫做一个规范的LR分析器。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LR(1)状态比SLR(1)多&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;L R ( 0 ) ⊂ S L R ( 1 ) ⊂ L R ( 1 ) ⊂ 无 二 义 文 法 LR(0) ⊂SLR(1) ⊂LR(1) ⊂无二义文法 LR(0)⊂SLR(1)⊂LR(1)⊂无二义文法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;13210-lr1分析表构造示例&#34;&gt;13.2.10 LR(1)分析表构造示例
+&lt;/h4&gt;&lt;p&gt;&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/c975aafaf9cac71b025525697b4a0043.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;133-分析器产生工具&#34;&gt;13.3 分析器产生工具
+&lt;/h3&gt;&lt;h4 id=&#34;1331-分析器产生器yacc&#34;&gt;13.3.1 分析器产生器——YACC
+&lt;/h4&gt;&lt;p&gt;YACC——Yet AnotherCompiler Compiler&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LALR(1)分析&lt;/li&gt;
+&lt;li&gt;GNU Bison：基本兼容Yacc，与flex一起使用&lt;/li&gt;
+&lt;li&gt;The Lex &amp;amp; YaccPage &lt;a class=&#34;link&#34; href=&#34;http://dinosaur.compilertools.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://dinosaur.compilertools.net/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/pi31415926535x/article/details/105299131&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blog.csdn.net/pi31415926535x/article/details/105299131&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>编译原理知识汇总</title>
         <link>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/</link>
         <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>

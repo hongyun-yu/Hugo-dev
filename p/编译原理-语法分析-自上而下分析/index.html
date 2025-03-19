@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="编译原理知识点，结合学习的内容进行删改">
+<title>编译原理-语法分析-自上而下分析</title>
+
+<link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E5%88%86%E6%9E%90/'>
+
+<link rel="stylesheet" href="/Hugo-dev/scss/style.min.931ff95f801376156525fd9d531ff3120af79ead784dd3bd6ce58d23d430b394.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+    
+    $(window).scroll(function() {
+    if ($(this).scrollTop()) {
+        $('#back-to-top').fadeIn();
+    } else {
+        $('#back-to-top').fadeOut();
+    }
+    });
+
+    
+    $('#back-to-top').click(function() {
+    $('html, body').animate({scrollTop: 0}, 1000);
+    return false;
+    });
+</script>
+<meta property='og:title' content="编译原理-语法分析-自上而下分析">
+<meta property='og:description' content="编译原理知识点，结合学习的内容进行删改">
+<meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E5%88%86%E6%9E%90/'>
+<meta property='og:site_name' content='羡余'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-19T23:19:20&#43;08:00'/>
+<meta name="twitter:title" content="编译原理-语法分析-自上而下分析">
+<meta name="twitter:description" content="编译原理知识点，结合学习的内容进行删改">
+    <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
+
+  
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended">
+
+
+        <div id="article-toolbar" style="position: sticky;top: 5px;z-index: 1000;">
+            <a href="/Hugo-dev" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>返回</span>
+            </a>
+        </div>
+    
+
+    
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#第七章-自上而下分析1">第七章-自上而下分析1</a>
+      <ol>
+        <li><a href="#自上而下分析的基本问题">自上而下分析的基本问题</a>
+          <ol>
+            <li><a href="#语法分析的前提">语法分析的前提</a></li>
+            <li><a href="#712语法分析器在编译器中的地位">7.1.2语法分析器在编译器中的地位</a></li>
+            <li><a href="#713语法分析的方法">7.1.3语法分析的方法</a></li>
+            <li><a href="#714-自上而下分析面临的问题">7.1.4 自上而下分析面临的问题</a></li>
+          </ol>
+        </li>
+        <li><a href="#72-ll1文法消除文法的左递归">7.2 LL(1)文法——消除文法的左递归</a>
+          <ol>
+            <li><a href="#721-直接左递归的消除">7.2.1 直接左递归的消除</a></li>
+            <li><a href="#722-间接左递归的消除">7.2.2 间接左递归的消除</a></li>
+          </ol>
+        </li>
+        <li><a href="#73-ll1文法消除回溯">7.3 LL(1)文法——消除回溯</a>
+          <ol>
+            <li><a href="#731-消除回溯的目的">7.3.1 消除回溯的目的</a></li>
+            <li><a href="#732-first集合">7.3.2 FIRST集合</a></li>
+            <li><a href="#733-提取公共左因子通过大量引入非终结符的方法">7.3.3 提取公共左因子（通过大量引入非终结符的方法）</a></li>
+            <li><a href="#734--ε-ε-ε候选">7.3.4  ε ε ε候选</a></li>
+            <li><a href="#735-follow集合">7.3.5 FOLLOW集合</a></li>
+            <li><a href="#736-构造不带回溯的自上而下分析的文法条件">7.3.6 构造不带回溯的自上而下分析的文法条件</a></li>
+            <li><a href="#736-ll1分析法">7.3.6 LL(1)分析法</a></li>
+          </ol>
+        </li>
+        <li><a href="#74-first和follow集合的构造">7.4 FIRST和FOLLOW集合的构造</a>
+          <ol>
+            <li><a href="#741-构造--f-i-r-s-t--α--firstα-firstα">7.4.1 构造  F I R S T ( α ) FIRST(α) FIRST(α)</a></li>
+            <li><a href="#742-构造followa">7.4.2 构造FOLLOW(A)</a></li>
+            <li><a href="#743-练习">7.4.3 练习</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#第8章-自上而下分析2">第8章-自上而下分析2</a>
+      <ol>
+        <li><a href="#81-构造递归下降分析器">8.1 构造递归下降分析器</a>
+          <ol>
+            <li><a href="#811-递归下降分析器">8.1.1 递归下降分析器</a></li>
+            <li><a href="#812-递归下降子程序设计">8.1.2 递归下降子程序设计</a></li>
+          </ol>
+        </li>
+        <li><a href="#82-扩充的巴科斯范式和语法图">8.2 扩充的巴科斯范式和语法图</a>
+          <ol>
+            <li><a href="#821-扩充的巴科斯范式">8.2.1 扩充的巴科斯范式</a></li>
+            <li><a href="#822-语法图">8.2.2 语法图</a></li>
+          </ol>
+        </li>
+        <li><a href="#83-javacc简介">8.3 JavaCC简介</a></li>
+      </ol>
+    </li>
+    <li><a href="#第9讲-语法分析自上而下分析3">第9讲 语法分析——自上而下分析3</a>
+      <ol>
+        <li><a href="#91-预测分析程序">9.1 预测分析程序</a>
+          <ol>
+            <li><a href="#911-预测分析程序的工作原理">9.1.1 预测分析程序的工作原理</a></li>
+          </ol>
+        </li>
+        <li><a href="#92-预测分析表的构造">9.2 预测分析表的构造</a>
+          <ol>
+            <li><a href="#921-分析表maa的构造">9.2.1 分析表M[A，a]的构造</a></li>
+            <li><a href="#922-ll1文法与二义性">9.2.2 LL(1)文法与二义性</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/Hugo-dev/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" >
+                编译原理
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E5%88%86%E6%9E%90/">编译原理-语法分析-自上而下分析</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            编译原理知识点，结合学习的内容进行删改
+        </h3>
+        
+    </div>
+
+    
+        <footer class="article-time">
+            
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                    <time class="article-time--published">2025-03-19</time>
+                </div>
+            
+
+            
+            
+                        最后修改:
+                        <time class="article-time--updated" datetime="2025-03-19 23:19:20 &#43;0800 CST" title="2025-03-19 23:19:20 &#43;0800 CST">
+                            2025-03-19
+                        </time>
+
+            
+
+            
+            <div id="viewCount">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+                <time class="article-time--reading">
+                    
+                    <span id="vercount_value_page_pv">loading... </span>次
+                </time>
+            </div>
+        </footer>
+    
+
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="编译原理-第七八九章-语法分析-自上而下分析">编译原理-第七、八、九章-语法分析-自上而下分析
+</h1><h2 id="第七章-自上而下分析1">第七章-自上而下分析1
+</h2><h3 id="自上而下分析的基本问题">自上而下分析的基本问题
+</h3><h4 id="语法分析的前提">语法分析的前提
+</h4><h5 id="对语言的语法结构进行描述">对语言的语法结构进行描述
+</h5><ul>
+<li>采用 <code>正规式</code> 和 <code>有限自动机</code> 描述和识别语言的 单词符号</li>
+<li>用 <code>上下文无关文法</code> 来描述语法规则</li>
+</ul>
+<p>上下文无关文法即第二章的内容：<img src="https://i-blog.csdnimg.cn/blog_migrate/75ead6c2dc36b2c4019a5d3945e164b4.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="上下文无关文法"
+	
+	
+></p>
+<h5 id="语法分析的任务">语法分析的任务
+</h5><ul>
+<li>语法分析的任务 ：分析一个文法的句子的结构</li>
+<li>语法分析器的功能 ：按照文法的产生式(语言的语法规则)，识别输入符号 串是否为一个句子(合式程序)</li>
+</ul>
+<h4 id="712语法分析器在编译器中的地位">7.1.2语法分析器在编译器中的地位
+</h4><p>语法分析的过程：<img src="https://i-blog.csdnimg.cn/blog_migrate/bc946d2c12651d1085fcf149ef2edc5c.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="语法分析的过程"
+	
+	
+></p>
+<h4 id="713语法分析的方法">7.1.3语法分析的方法
+</h4><p>语法分析的方法有两种：<code>自上而下</code> 以及 <code>自下而上</code> :</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>自下而上(Bottom-up)</th>
+<th>自上而下(Top-down)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>从输入串开始，逐步进行归约，直到文法的开始符号</td>
+<td>从文法的开始符号出发， 反复使用各种产生式，寻 找&quot;匹配&quot;的推导</td>
+</tr>
+<tr>
+<td>归约：根据文法的产生式规则，把串中出现的产生 式的右部替换成左部符号</td>
+<td>推导：根据文法的产生式 规则，把串中出现的产生 式的左部符号替换成右部</td>
+</tr>
+<tr>
+<td>从树叶节点开始，构造语法树</td>
+<td>从树的根开始，构造语法树</td>
+</tr>
+<tr>
+<td>算符优先分析法、LR分析法</td>
+<td>递归下降分析法、预测分析程序</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="714-自上而下分析面临的问题">7.1.4 自上而下分析面临的问题
+</h4><h5 id="自上而下分析的过程">自上而下分析的过程
+</h5><p>基本思想：</p>
+<ul>
+<li>从文法的开始符号出发，向下推导，推出句子</li>
+<li>针对输入串，试图用一切可能的办法，从文法开始 符号(根结点)出发，自上而下地为输入串建立一棵语法树</li>
+</ul>
+<p>一个例子：<img src="https://i-blog.csdnimg.cn/blog_migrate/0fe1acbcb7630912cf9484e6f22aebcf.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="自上而下分析的一个例子"
+	
+	
+><br>
+从上面的例子可以看出：</p>
+<h5 id="多个产生式候选带来的问题">多个产生式候选带来的问题
+</h5><ul>
+<li>回溯问题：分析过程中，当一个非终结符用某一个候选匹配成 功时，这种匹配可能是暂时的，出错时，不得不“回溯”（一个dfs的过程）</li>
+<li>文法左递归问题：可能某个终结符可以不断的使用自身来扩展下去，这样在语法树中就是一个不断左递归的过程，一个文法是含有左递归的，如果存在非终结符  P : P → P a P:P \to Pa P:P→Pa ，这样的，会导致死循环：<img src="https://i-blog.csdnimg.cn/blog_migrate/77386a2f8bbbd26bea56f124c4d3f2aa.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="文法的左递归问题"
+	
+	
+></li>
+</ul>
+<h3 id="72-ll1文法消除文法的左递归">7.2 LL(1)文法——消除文法的左递归
+</h3><p>因为直接自上而下分析会有 <strong>回溯</strong> 和 <strong>左递归</strong> 问题，所以要先进行 <strong>消除文法的左递归性</strong> 以及 <strong>消除回溯</strong> ，以 <strong>构造不带回溯的自上而下分析算法</strong></p>
+<h4 id="721-直接左递归的消除">7.2.1 直接左递归的消除
+</h4><p>（看图吧，md排版不怎么好。。。）<br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/de8ef321a4cbe0d72729b669d0e99217.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="左递归变右递归"
+	
+	
+><br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/7f91062e79d5d42c89f1b86c647ace5f.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="左递归变右递归的一般表达式"
+	
+	
+><br>
+例如这样的一个文法的消除例子：<img src="https://i-blog.csdnimg.cn/blog_migrate/9ea212a7a8884babc4374bc066506358.png"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<h4 id="722-间接左递归的消除">7.2.2 间接左递归的消除
+</h4><p>一个文法消除左递归的条件 ：</p>
+<ul>
+<li>不含以ε为右部的产生式</li>
+<li>不含回路，就是不会出现一个非终结符推着推着出现了自己开头的</li>
+</ul>
+<p>例如对这样一个文法S的间接左递归的消除：<br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/a1c06f3ecf165688e19fd0c1082c4808.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="左递归消除"
+	
+	
+></p>
+<p>这个过程就是不断的用下层的替换前面出现的，这样一直替换下去最后第一层就只有一个非终结符组成的文法了，最后有直接左递归的就用上一个方法去掉就行了。</p>
+<p>这个间接左递归的具体消除算法如下：<br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/0ae6872d6b28c51073ef192d7bf1e681.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="左递归消除算法"
+	
+	
+></p>
+<p>对于上面的那个例子的消除结果就是：</p>
+<p>{ S → a b c S ′ ∣ b c S ′ ∣ c S ′ S ′ → a b c S ′ ∣ ε \begin{cases} S → abcS&rsquo;| bcS&rsquo;| cS&rsquo; \\ S&rsquo;→ abcS&rsquo;| ε \end{cases} {S→abcS′∣bcS′∣cS′S′→abcS′∣ε​</p>
+<ul>
+<li>注意，由于对非终结符排序的不同，后所得的文法在形式上可能不一样。但不难证明，它们都是等价的。</li>
+</ul>
+<h3 id="73-ll1文法消除回溯">7.3 LL(1)文法——消除回溯
+</h3><h4 id="731-消除回溯的目的">7.3.1 消除回溯的目的
+</h4><p>为了消除回溯必须保证：对文法的任何非终结符，当要它去匹配输入串时， 能够根据它所面临的输入符号 <strong>准确地</strong> 指派它的一个候选去执行任务，并且此候选的工作结果应是确信无疑的（将多种可能的搜索变成单一的匹配）。</p>
+<h4 id="732-first集合">7.3.2 FIRST集合
+</h4><p>令G是一个不含左递归的文法，对G的所有 <strong>非终结符</strong> 的每个候选α定义它的终结首符集FIRST(α) 为：</p>
+<p>F I R S T ( α ) = { a ∣ α ⇒ ∗ a . . . , a ∈ V T } 特 别 的 ， 若 α ⇒ ∗ ε ， 则 规 定 ε ∈ F I R S T ( α ) FIRST(\alpha)=\{a|\alpha⇒^<em>a&hellip;, a \in V_T\} \\ 特别的，若 \alpha ⇒^</em> ε，则规定 ε \in FIRST(\alpha) FIRST(α)={a∣α⇒∗a&hellip;,a∈VT​}特别的，若α⇒∗ε，则规定ε∈FIRST(α)</p>
+<p>就是某个非终结符  α \alpha α 其所有的可能推导出的句子的首字符组成的集合。</p>
+<p>如果非终结符A的所有候选首符集两两不相交， 即A的任何两个不同候选  α i α_i αi​ 和 α j α_j αj​ ：  F I R S T ( α i ) ∩ F I R S T ( α j ) ＝ φ FIRST(α_i)∩FIRST(α_j)＝φ FIRST(αi​)∩FIRST(αj​)＝φ ， 当要求A匹配输入串时，A能根据它所面临的 第一个输入符号a，准确地指派某一个候选去执行任务。这个候选就是那个终结首符集含a的α。 （也就说，只要我们可以使得A下的产生式的First集合两两不相交，这样就可以唯一确定一个字符出现在那个First集合中，这样就可以从该产生式扩展下去，也就达到了消除回溯的目的：<img src="https://i-blog.csdnimg.cn/blog_migrate/e2138eeab76b13181315f1b7c1b0ecf4.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="示例"
+	
+	
+></p>
+<p>而达到这一目的（两两不相交）的方法就是 <strong>提取公共左因子</strong></p>
+<h4 id="733-提取公共左因子通过大量引入非终结符的方法">7.3.3 提取公共左因子（通过大量引入非终结符的方法）
+</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/a7ffcfc4c4f3ec3810f2254266f2c30c.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="提取公共左因子"
+	
+	
+></p>
+<h4 id="734--ε-ε-ε候选">7.3.4  ε ε ε候选
+</h4><p>这样的一个例子：<img src="https://i-blog.csdnimg.cn/blog_migrate/dd865c3d4471d57822672b3d95185786.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="一个分析的例子"
+	
+	
+></p>
+<p>在进行分析的过程中，对 T‘的推导中使用了  ε ε ε ,这里选用的原因之一就是 T’包含这样的一个句型，所以才使用  ε ε ε 来跳过：<img src="https://i-blog.csdnimg.cn/blog_migrate/6653bbc5f4b827b047f1d9517166720f.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="空字问题"
+	
+	
+></p>
+<h4 id="735-follow集合">7.3.5 FOLLOW集合
+</h4><p>假定S是文法G的开始符号，对于G的任何非终结符A，我们定义A的FOLLOW集合：</p>
+<p>F O L L O W ( A ) = { a ∣ S ⇒ ∗ . . . A a . . . , a ∈ V T } 特 别 是 ， 若 S ⇒ ∗ . . . A , 则 规 定 # ∈ F O L L O W ( A ) FOLLOW(A)=\{a|S ⇒^* &hellip;Aa&hellip;, a \in V_T\} \\ 特别是，若 S ⇒^* &hellip;A, 则规定 \# \in FOLLOW(A) FOLLOW(A)={a∣S⇒∗&hellip;Aa&hellip;,a∈VT​}特别是，若S⇒∗&hellip;A,则规定#∈FOLLOW(A)</p>
+<p>（也就是指FOLLOW(A) 为所有可能跟在非终结符A后的终结符的集合）<br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/567e40ac517be11f6cc5f25da859d1e9.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="解释"
+	
+	
+></p>
+<h4 id="736-构造不带回溯的自上而下分析的文法条件">7.3.6 构造不带回溯的自上而下分析的文法条件
+</h4><ul>
+<li>文法不含左递归</li>
+<li>对于文法中每一个非终结符A的各个产生式的候选首符集两两不相交。即，若  A → α 1 ∣ α 2 ∣ … ∣ α n A→α_1|α_2|…|α_n A→α1​∣α2​∣…∣αn​ ，则  F I R S T ( α i ) ∩ F I R S T ( α j ) ＝ φ ( i ≠ j ) FIRST(α_i)∩FIRST(α_j)＝φ(i≠j) FIRST(αi​)∩FIRST(αj​)＝φ(i​=j) （保证了不回溯）</li>
+<li>对文法中的每个非终结符A，若它存在某个候选首符集包含ε，则 F I R S T ( α i ) ∩ F O L L O W ( A ) = φ ， i = 1 , 2 , . . . , n FIRST(α_i)∩FOLLOW(A)=φ，i=1,2,&hellip;,n FIRST(αi​)∩FOLLOW(A)=φ，i=1,2,&hellip;,n （保证在选取ε时仅选择的是唯一一个产生式）</li>
+</ul>
+<p>如果一个文法G满足以上条件，则称该文法G为LL(1)文法。 其中：</p>
+<ul>
+<li>第一个L： 从左到右扫描输入串</li>
+<li>第二个L： 最左推导</li>
+<li>1： 每一步只需向前查看一个符号</li>
+</ul>
+<h4 id="736-ll1分析法">7.3.6 LL(1)分析法
+</h4><p>对于经过处理后的满足上述条件的LL(1)文法，可以对其输入串进行 <strong>有效的</strong> <strong>无回溯的</strong> <strong>自上而下分析</strong> ：</p>
+<ul>
+<li>假设要用非终结符A进行匹配，面临的 <strong>输入符号为a</strong> ，A 的所有产生式为  A → α 1 ∣ α 2 ∣ … ∣ α n A→α_1 | α_2 | … | α_n A→α1​∣α2​∣…∣αn​</li>
+<li>1.若  a ∈ F I R S T ( α i ) a∈FIRST(α_i) a∈FIRST(αi​) ，则指派  α i α_i αi​ 执行匹配任务；</li>
+<li>2.若a不属于任何一个候选首符集，则：
+<ul>
+<li>若  ε ε ε 属于某个  F I R S T ( α i ) FIRST(α_ i) FIRST(αi​) 且  a ∈ F O L L O W ( A ) a∈FOLLOW(A) a∈FOLLOW(A) ，则让 A与  ε ε ε 自动匹配。</li>
+<li>否则，a的出现是一种语法错误</li>
+</ul>
+</li>
+</ul>
+<h3 id="74-first和follow集合的构造">7.4 FIRST和FOLLOW集合的构造
+</h3><h4 id="741-构造--f-i-r-s-t--α--firstα-firstα">7.4.1 构造  F I R S T ( α ) FIRST(α) FIRST(α)
+</h4><p>F I R S T ( α ) = { a ∣ α ⇒ ∗ a . . . , a ∈ V T } FIRST(\alpha)=\{a|\alpha ⇒^* a&hellip;, a \in V_T\} FIRST(α)={a∣α⇒∗a&hellip;,a∈VT​}</p>
+<p>对于First集合的构造，可以由易到难进行考虑，首先考虑  α α α 为单个字符的情况，然后推广到任意长度的串：</p>
+<p>{ α = X ， X ∈ V T ∪ V N (单个文法符号） α = X 1 X 2 … X n ， X i ∈ V T ∪ V N （任何符号串） \begin{cases} α= X，X∈V_T∪V_N &amp; \text{(单个文法符号）}\\ α= X_1X_2…X_n，X_i∈V_T∪V_N &amp; \text{（任何符号串）} \end{cases} {α=X，X∈VT​∪VN​α=X1​X2​…Xn​，Xi​∈VT​∪VN​​(单个文法符号）（任何符号串）​</p>
+<h5 id="构造每个文法符号的first集合">构造每个文法符号的FIRST集合
+</h5><p><strong>（思想：将无穷推导转化为对优先产生式的反复扫描）</strong><br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/3147d30ef206198890c76bf93bdf1089.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="构造每个文法符号的FIRST集合"
+	
+	
+></p>
+<h5 id="构造任何符号串的first集合">构造任何符号串的FIRST集合
+</h5><p><img src="https://i-blog.csdnimg.cn/blog_migrate/78e19789cc9781c93bf05e170b8296cc.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="构造任何符号串的FIRST集合"
+	
+	
+></p>
+<p>这里的  F I R S T ( X i ) / { ε } FIRST(X_i) / \{ε\} FIRST(Xi​)/{ε} 表示的是除去空字集合。</p>
+<h4 id="742-构造followa">7.4.2 构造FOLLOW(A)
+</h4><p>F O L L O W ( A ) = { a ∣ S ⇒ ∗ . . . A a . . . , a ∈ V T } FOLLOW(A)=\{a|S ⇒^* &hellip;Aa&hellip;, a \in V_T\} FOLLOW(A)={a∣S⇒∗&hellip;Aa&hellip;,a∈VT​}</p>
+<h5 id="构造每个非终结符的follow集合">构造每个非终结符的FOLLOW集合
+</h5><p><img src="https://i-blog.csdnimg.cn/blog_migrate/ecd2cf6359bf41756a1ea4d0b4366d02.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="构造FOLLOW流程"
+	
+	
+></p>
+<p>对于第2点：<img src="https://i-blog.csdnimg.cn/blog_migrate/3be2aef2dab5e9d3ecb85eb733c244b3.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="解释"
+	
+	
+></p>
+<p>对于第3点：<img src="https://i-blog.csdnimg.cn/blog_migrate/37b01b9de2fc32fde5ada6741161bf3b.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="解释"
+	
+	
+></p>
+<h4 id="743-练习">7.4.3 练习
+</h4><p>对于上面的文法G(E):</p>
+<p>E → T E ′ E ′ → + T E ′ ∣ ε T → F T ′ T ′ → ∗ F T ′ ∣ ε F → ( E ) ∣ i \begin{aligned} &amp;E→TE&rsquo; \\ &amp;E&rsquo;→+TE&rsquo;| ε \\ &amp;T→FT&rsquo; \\ &amp;T&rsquo;→*FT&rsquo;| ε \\ &amp;F→(E) | i \\ \end{aligned} ​E→TE′E′→+TE′∣εT→FT′T′→∗FT′∣εF→(E)∣i​</p>
+<p>构造每个非终结符的FIRST和FOLLOW集合 :</p>
+<p>根据前面构造FIRST集合的步骤：</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>FIRST</th>
+<th>第1步</th>
+<th>第2步</th>
+<th>第3步</th>
+<th>第4步</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F I R S T ( E ) = FIRST(E)= FIRST(E)=</td>
+<td></td>
+<td></td>
+<td>{ ( , i \{(,i {(,i</td>
+<td>{ ( , i } \{(,i\} {(,i}</td>
+</tr>
+<tr>
+<td>F I R S T ( E ′ ) = FIRST(E&rsquo;)= FIRST(E′)=</td>
+<td>{ + , ε \{+, ε {+,ε</td>
+<td>{ + , ε \{+, ε {+,ε</td>
+<td>{ + , ε \{+, ε {+,ε</td>
+<td>{ + , ε } \{+, ε\} {+,ε}</td>
+</tr>
+<tr>
+<td>F I R S T ( T ) = FIRST(T)= FIRST(T)=</td>
+<td></td>
+<td>{ ( , i \{(, i {(,i</td>
+<td>{ ( , i \{(, i {(,i</td>
+<td>{ ( , i } \{(, i\} {(,i}</td>
+</tr>
+<tr>
+<td>F I R S T ( T ′ ) = FIRST(T&rsquo;)= FIRST(T′)=</td>
+<td>{ ∗ , ε \{*, ε {∗,ε</td>
+<td>{ ∗ , ε \{*, ε {∗,ε</td>
+<td>{ ∗ , ε \{*, ε {∗,ε</td>
+<td>{ ∗ , ε } \{*, ε\} {∗,ε}</td>
+</tr>
+<tr>
+<td>F I R S T ( F ) = FIRST(F)= FIRST(F)=</td>
+<td>{ ( , i \{(, i {(,i</td>
+<td>{ ( , i \{(, i {(,i</td>
+<td>{ ( , i \{(, i {(,i</td>
+<td>{ ( , i } \{(, i\} {(,i}</td>
+</tr>
+</tbody>
+</table></div>
+<p>有了FIRST集合，就可以构造FOLLOW集合（注意一个产生式可能有不同的匹配规则匹配）：</p>
+<ul>
+<li>第一次处理时加入  # \# #</li>
+<li>满足：  A → α B β A\to \alpha B \beta A→αBβ ，将  F I R S T ( β ) / { ε } FIRST(\beta)/\{ε\} FIRST(β)/{ε} 加入到  F O L L O W ( B ) FOLLOW(B) FOLLOW(B)</li>
+<li>满足：  A → α B β A\to \alpha B \beta A→αBβ ，且  β ⇒ ∗ ε \beta ⇒^*ε β⇒∗ε 将  F O L L O W ( A ) FOLLOW(A) FOLLOW(A) 加入到  F O L L O W ( B ) FOLLOW(B) FOLLOW(B) 中</li>
+<li>满足：  A → α B A \to \alpha B A→αB ， 将  F O L L O W ( A ) FOLLOW(A) FOLLOW(A) 加入到  F O L L O W ( B ) FOLLOW(B) FOLLOW(B) 中</li>
+<li>对于  ε ε ε 不处理</li>
+</ul>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>FOLLOW</th>
+<th>第1步对E处理</th>
+<th>第2步对E’处理</th>
+<th>第3步对T处理</th>
+<th>第4步对T’处理</th>
+<th>第5步对F处理</th>
+<th>第6步对E再处理</th>
+<th>第7步对T再处理</th>
+<th>之后继续几次直到发现各集合大小都不变</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F O L L O W ( E ) = FOLLOW(E)= FOLLOW(E)=</td>
+<td>{ # , \{\#, {#,</td>
+<td>{ # , \{\#, {#,</td>
+<td>{ # , \{\#, {#,</td>
+<td>{ # , \{\#, {#,</td>
+<td>{ # , ) , \{\#,), {#,),</td>
+<td>{ # , ) , \{\#,), {#,),</td>
+<td>{ # , ) , \{\#,), {#,),</td>
+<td>{ # , ) } \{\#,)\} {#,)}</td>
+</tr>
+<tr>
+<td>F O L L O W ( E ′ ) = FOLLOW(E&rsquo;)= FOLLOW(E′)=</td>
+<td>{ # , \{\#, {#,</td>
+<td>{ # , \{\#, {#,</td>
+<td>{ # , \{\#, {#,</td>
+<td>{ # , \{\#, {#,</td>
+<td>{ # , \{\#, {#,</td>
+<td>{ # , ) , \{\#,), {#,),</td>
+<td>{ # , ) , \{\#,), {#,),</td>
+<td>{ # , ) } \{\#,)\} {#,)}</td>
+</tr>
+<tr>
+<td>F O L L O W ( T ) = FOLLOW(T)= FOLLOW(T)=</td>
+<td>{ + , # , \{+, \#, {+,#,</td>
+<td>{ + , # , \{+, \#, {+,#,</td>
+<td>{ + , # , \{+, \#, {+,#,</td>
+<td>{ + , # , \{+, \#, {+,#,</td>
+<td>{ + , # , \{+, \#, {+,#,</td>
+<td>{ + , # , ) , \{+, \#,), {+,#,),</td>
+<td>{ + , # , ) , \{+, \#,), {+,#,),</td>
+<td>{ + , # , ) } \{+, \#,)\} {+,#,)}</td>
+</tr>
+<tr>
+<td>F O L L O W ( T ′ ) = FOLLOW(T&rsquo;)= FOLLOW(T′)=</td>
+<td></td>
+<td></td>
+<td>{ + , # , \{+, \#, {+,#,</td>
+<td>{ + , # , \{+, \#, {+,#,</td>
+<td>{ + , # , \{+, \#, {+,#,</td>
+<td>{ + , # , \{+, \#, {+,#,</td>
+<td>{ + , # , ) \{+, \#,) {+,#,)</td>
+<td>{ + , # , ) } \{+, \#,)\} {+,#,)}</td>
+</tr>
+<tr>
+<td>F O L L O W ( F ) = FOLLOW(F)= FOLLOW(F)=</td>
+<td></td>
+<td></td>
+<td>{ ∗ , + , # , \{*,+,\#, {∗,+,#,</td>
+<td>{ ∗ , + , # , \{*,+,\#, {∗,+,#,</td>
+<td>{ ∗ , + , # , \{*,+,\#, {∗,+,#,</td>
+<td>{ ∗ , + , # , \{*,+,\#, {∗,+,#,</td>
+<td>{ ∗ , + , # , ) , \{*,+,\#,), {∗,+,#,),</td>
+<td>{ ∗ , + , # , ) } \{*,+,\#,)\} {∗,+,#,)}</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="第8章-自上而下分析2">第8章-自上而下分析2
+</h2><h3 id="81-构造递归下降分析器">8.1 构造递归下降分析器
+</h3><h4 id="811-递归下降分析器">8.1.1 递归下降分析器
+</h4><ul>
+<li>分析程序由一组子程序组成，对每一 <strong>语法单位</strong> (非终结符)构造一个相应的 <strong>子程序</strong> ，识别对应的 <strong>语法单位</strong></li>
+<li>通过子程序间的相互调用实现对输入串的识别，例如，A → B c D 就有三个处理A、B、D的子程序</li>
+<li>文法的定义通常是递归的，通常具有递归结构</li>
+</ul>
+<h5 id="定义全局过程和变量">定义全局过程和变量
+</h5><ul>
+<li><code>ADVANCE</code> ，把输入串指示器IP指向下一个输入符号， 即读入一个单词符号</li>
+<li><code>SYM</code> ，IP当前所指的输入符号</li>
+<li><code>ERROR</code> ，出错处理子程序</li>
+</ul>
+<p>每个非终结符有对应的子程序的定义，在分析 过程中，当需要从某个非终结符出发进行展开 (推导)时，就调用这个非终结符对应的子程序</p>
+<h4 id="812-递归下降子程序设计">8.1.2 递归下降子程序设计
+</h4><h5 id="一个简单的子程序的设计">一个简单的子程序的设计
+</h5><p><img src="https://i-blog.csdnimg.cn/blog_migrate/3d109a71ba1248239a7a57d0da119137.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="简单个一个子程序设计"
+	
+	
+></p>
+<p>框内的代码不简化可以写成这样:</p>
+<pre><code>ELSE IF SYM ∈ FOLLOW(A) THEN
+	BEGIN END
+ELSE ERROR
+</code></pre>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/be4875174b608831b294b7b4b83d2b6c.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="一个例子"
+	
+	
+></p>
+<h3 id="82-扩充的巴科斯范式和语法图">8.2 扩充的巴科斯范式和语法图
+</h3><h4 id="821-扩充的巴科斯范式">8.2.1 扩充的巴科斯范式
+</h4><p>在元符号“→”或“::=”和“|”的基础上，扩 充几个元语言符号：</p>
+<ul>
+<li>用花括号  α {α} α 表示闭包运算  α ∗ α^* α∗ 。</li>
+<li>用表示  α 0 n {α}_0^n α0n​ 可任意重复0次至n次。</li>
+<li>用方括号  [ α ] [α] [α] 表示  { α } 0 1 \{α\}_0^1 {α}01​，即表示  α α α 的出现可有可无(等 价于  α ∣ ε α|ε α∣ε )。</li>
+</ul>
+<p>例如，通常的“实数”可定义为：</p>
+<p>D e c i m a l → [ S i g n ] I n t e g e r . { d i g i t } [ E x p o n e n t ] E x p o n e n t → E [ S i g n ] I n t e g e r I n t e g e r → d i g i t { d i g i t } S i g n → + ∣ − \begin{aligned} &amp; Decimal→[Sign]Integer.\{digit\}[Exponent] \\ &amp; Exponent→E[Sign]Integer \\ &amp; Integer→digit\{digit\} \\ &amp; Sign→ + |- \\ \end{aligned} ​Decimal→[Sign]Integer.{digit}[Exponent]Exponent→E[Sign]IntegerInteger→digit{digit}Sign→+∣−​</p>
+<p>用扩充的巴科斯范式来描述语法，直观易懂， 便于表示左递归消去和因子提取。</p>
+<h4 id="822-语法图">8.2.2 语法图
+</h4><p>可以将最上面的文法转化为扩充巴科斯范式以及对应的语法图:</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/f069e9c7a732d10437ec511ac6776c0c.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="语法图"
+	
+	
+></p>
+<p>这样转化后的文法对应的递归子程序可以写成:<br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/b6dea755d2e8fcfd79b6f0cf1e4062ad.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="递归子程序"
+	
+	
+></p>
+<h3 id="83-javacc简介">8.3 JavaCC简介
+</h3><p>一个语法分析的小工具:<br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/1bbad3981e6efc245211c16ad540ddf8.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="Java CC"
+	
+	
+></p>
+<h2 id="第9讲-语法分析自上而下分析3">第9讲 语法分析——自上而下分析3
+</h2><h3 id="91-预测分析程序">9.1 预测分析程序
+</h3><h4 id="911-预测分析程序的工作原理">9.1.1 预测分析程序的工作原理
+</h4><h5 id="预测分析程序构成">预测分析程序构成
+</h5><ul>
+<li><code>总控程序</code>，根据现行栈顶符号和当前输入符号， 执行动作</li>
+<li><code>分析表M[A， a]矩阵</code> ， A ∈ V N ， a ∈ V T A ∈V_N，a ∈V_T A∈VN​，a∈VT​ 是终 结符或  ′ # ′ &lsquo;\#&rsquo; ′#′</li>
+<li><code>分析栈STACK</code> 用于存放文法符号</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/3281942125283eef75c45956a6a796d2.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="预测分析程序的构成"
+	
+	
+></p>
+<h5 id="预测分析过程">预测分析过程
+</h5><p><img src="https://i-blog.csdnimg.cn/blog_migrate/0dcf70143b573e913fa87997fe8cdacb.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="分析开始"
+	
+	
+></p>
+<p>总控程序根据当前栈顶符号X和输入符号a，执行下列三动作之一：<br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/861e146da0143983053500c8a049d803.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="分析过程"
+	
+	
+></p>
+<ul>
+<li>若X＝a＝‘＃’，则宣布分析成功，停止分析。</li>
+<li>若X＝a ≠‘＃’，则把X从STACK栈顶逐出，让a指向 下一个输入符号。</li>
+<li>若X是一个非终结符，则查看分析表M。
+<ul>
+<li>若M[X，a]中存放着关于X的一个产生式，把X逐出 STACK栈顶，把产生式的右部符号串按反序一一推进 STACK栈(若右部符号为ε，则意味不推什么东西进栈)。</li>
+<li>若M[X，a]中存放着“出错标志”，则调用出错诊察程序ERROR。</li>
+</ul>
+</li>
+</ul>
+<h5 id="总控程序实现">总控程序实现
+</h5><p><img src="https://i-blog.csdnimg.cn/blog_migrate/665aaff0e04752be21d79e553a83cecc.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="总控程序实现"
+	
+	
+></p>
+<h5 id="预测分析示例">预测分析示例
+</h5><p>对于上面的文法的一个预测分析的过程，其中分析表的构造看下一讲：<br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/03e8fcf825662cc84984f213f217c98b.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="预测分析的实例"
+	
+	
+></p>
+<h3 id="92-预测分析表的构造">9.2 预测分析表的构造
+</h3><h4 id="921-分析表maa的构造">9.2.1 分析表M[A，a]的构造
+</h4><p>构造分析表前，首先要构造FIRST(α)和FOLLOW(A)</p>
+<h5 id="分析表maa的构造算法">分析表M[A，a]的构造算法
+</h5><p>构造G的分析表  M [ A ， a ] M[A，a] M[A，a] ，确定每个产生式  A → α A→α A→α 在表中的位置：</p>
+<ul>
+<li>1 对文法G的每个产生式  A → α A→α A→α 执行第2步和第3步；</li>
+<li>2 对每个终结符  a ∈ F I R S T ( α ) a ∈FIRST(α) a∈FIRST(α) ，把  A → α A→α A→α 加至  M [ A ， a ] M[A， a] M[A，a] 中；</li>
+<li>3 若  ε ∈ F I R S T ( α ) ε∈FIRST(α) ε∈FIRST(α) ，则对任何  b ∈ F O L L O W ( A ) b∈FOLLOW(A) b∈FOLLOW(A) 把  A → α A→α A→α 加至  M [ A ， b ] M[A，b] M[A，b] 中。</li>
+<li>4 把所有无定义的  M [ A ， a ] M[A，a] M[A，a] 标上“出错标志”。</li>
+</ul>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/468fb12cf0faa54361ea9078b083da52.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="一个例子"
+	
+	
+></p>
+<h4 id="922-ll1文法与二义性">9.2.2 LL(1)文法与二义性
+</h4><ul>
+<li>如果G是左递归或二义的，那么，M至少含有 一个多重定义入口。因此，消除左递归和提取 左因子将有助于获得无多重定义的分析表M。</li>
+<li>可以证明，一个文法G的预测分析表M不含多 重定义入口，当且仅当该文法为LL(1)的。</li>
+<li>LL(1)文法不是二义的。</li>
+</ul>
+<p>例如这样一个实现 ifelse 语句的文法就是二义性的，解决方法是人为的确定一个ifelse 语法，如就近匹配选择  S ′ → e S S&rsquo;\to eS S′→eS</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/4017e297b14fd48753bfe42468dfbe6d.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="二义性"
+	
+	
+><br>
+<img src="https://i-blog.csdnimg.cn/blog_migrate/00a21b3901be61518849eb7858be3aa7.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="习题"
+	
+	
+><br>
+（end)<br>
+<a class="link" href="https://blog.csdn.net/pi31415926535x/article/details/105163345"  target="_blank" rel="noopener"
+    >https://blog.csdn.net/pi31415926535x/article/details/105163345</a></p>
+
+</section>
+
+
+
+    <footer class="article-footer">
+    
+
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            最后更新于 2025-03-19
+        </span>
+    </section></footer>
+
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E5%AF%BC%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">编译原理-导学</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E5%B1%9E%E6%80%A7%E6%96%87%E6%B3%95%E5%92%8C%E8%AF%AD%E6%B3%95%E5%88%B6%E5%AF%BC%E7%BF%BB%E8%AF%91/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">编译原理-属性文法和语法制导翻译</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">编译原理-词法分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">编译原理-语法分析-自下而上分析</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">编译原理知识汇总</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script
+    src="https://giscus.app/client.js"
+    data-repo="hongyun-yu/Hugo-dev"
+    data-repo-id="R_kgDONs2V_A"
+    data-category="Announcements"
+    data-category-id="DIC_kwDONs2V_M4CmzPf"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="light"
+    data-lang="en"
+    crossorigin="anonymous"
+    async
+></script>
+<script>
+    function setGiscusTheme(theme) {
+        let giscus = document.querySelector("iframe.giscus-frame");
+        if (giscus) {
+            giscus.contentWindow.postMessage(
+                {
+                    giscus: {
+                        setConfig: {
+                            theme: theme,
+                        },
+                    },
+                },
+                "https://giscus.app"
+            );
+        }
+    }
+
+    (function () {
+        addEventListener("message", (e) => {
+            if (event.origin !== "https://giscus.app") return;
+            handler();
+        });
+        window.addEventListener("onColorSchemeChange", handler);
+
+        function handler() {
+            if (document.documentElement.dataset.scheme === "light") {
+                setGiscusTheme('light');
+            } else {
+                setGiscusTheme('dark_dimmed');
+            }
+        }
+    })();
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2025 Hongyun
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+
+    
+    <section class="running-time">
+    本博客已稳定运行
+    <span id="runningdays" class="running-days"></span>
+    </section>
+    
+    
+    <section class="totalcount">
+    
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+    发表了11篇文章 · 
+    总计66.90k字
+</section>
+
+</footer>
+
+
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/Hugo-dev/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+ 
+<script src="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.css" crossorigin="anonymous" />
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
+
+<style>
+  #TableOfContents > ul, ol {
+      ul, ol {
+          display: none;
+      }
+      .open {
+          display: block;
+      }
+  }
+</style>
+
+<script>
+  function initTocHide() {
+      
+      let toc = document.querySelector(".widget--toc");
+      if (!toc) {
+          return;
+      }
+      
+      window.addEventListener('scroll', function() {
+          
+          let openUl = document.querySelectorAll(".open");
+          if (openUl.length > 0) {
+            openUl.forEach((ul) => {
+              ul.classList.remove("open")
+            })
+          }
+          
+          let currentLi = document.querySelector(".active-class");
+          if (!currentLi) {
+              return
+          }
+          
+          if (currentLi.children.length > 1) {
+              currentLi.children[1].classList.add("open")
+          }
+          
+          let ul = currentLi.parentElement;
+          do {
+              ul.classList.add("open");
+              ul = ul.parentElement.parentElement;
+          } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+      });
+  }
+  initTocHide()
+</script>
+
+
+<style>
+  #backTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      z-index: 99;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      background-image: url(https://hongyun-yu.github.io/Hugo-dev/icons/backTop.svg);
+  }
+</style>
+
+<script>
+  
+
+  function initScrollTop() {
+      let rightSideBar = document.querySelector(".right-sidebar");
+      if (!rightSideBar) {
+          return;
+      }
+      
+      let btn = document.createElement("div");
+      btn.id = "backTopBtn";
+      btn.onclick = backToTop
+      rightSideBar.appendChild(btn)
+      
+      window.onscroll = function() {
+          
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              btn.style.display = "block";
+          } else {
+              btn.style.display = "none";
+          }
+      };
+  }
+
+  
+
+  function backToTop(){
+      window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
+  initScrollTop();
+</script>
+
+
+
+<script>
+    let s1 = '2025-1-20'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let result = days + "天" + hours + "小时" + minutes + "分钟";
+    document.getElementById('runningdays').innerHTML = result;
+</script>
+
+
+<script defer src="https://cn.vercount.one/js"></script>
+<script>
+    function showHideView() {
+        
+        let viewCounts = document.querySelectorAll("#viewCount");
+        if (viewCounts) {
+            
+            let article =  document.querySelector(".article-page");
+            if (!article) {
+                viewCounts.forEach(ele => {
+                    ele.style.display = 'none';
+                });
+            }
+        }
+    }
+    showHideView();
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+
+<meting-js
+	server="netease"
+	type="playlist"
+	fixed="true"
+    order="random"
+    list-max-height="1500px"
+	id="13187846602">
+</meting-js>
+
+<script>
+    ap = null
+    Object.defineProperty(document.querySelector('meting-js'),"aplayer",{
+        set: function(aplayer) {
+            ap = aplayer
+            ready();
+        }
+    });
+    isRecover = false;
+    function ready(){
+        ap.on('canplay', function () {
+            if(!isRecover){
+                if(localStorage.getItem("musicIndex") != null){
+                    musicIndex = localStorage.getItem("musicIndex");
+                    musicTime = localStorage.getItem("musicTime");
+                    if(ap.list.index != musicIndex){
+                        ap.list.switch(musicIndex);
+                    }else{
+                        ap.seek(musicTime);
+                        ap.play();
+                        localStorage.clear();
+                        isRecover = true;
+                    }
+                }else{
+                    isRecover = true;
+                }
+            }
+        });
+    }
+    window.onbeforeunload = function(event) {
+        if(!ap.audio.paused){
+            musicIndex = ap.list.index;
+            musicTime = ap.audio.currentTime;
+            localStorage.setItem("musicIndex",musicIndex);
+            localStorage.setItem("musicTime",musicTime);
+        }
+    };
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script>
+<script>
+	var pjax = new Pjax({
+	  selectors: [
+	    ".main-container"
+	  ]
+	})
+
+	
+	pjax._handleResponse = pjax.handleResponse;
+    pjax.handleResponse = function(responseText, request, href, options) {
+        if (request.responseText.match("<html")) {
+            
+            let newDom = new DOMParser().parseFromString(responseText, 'text/html');
+            
+            let bodyClass = newDom.body.className;
+            document.body.setAttribute("class", bodyClass)
+            
+            pjax._handleResponse(responseText, request, href, options);
+        } else {
+            
+        }
+    }
+
+	
+	document.addEventListener('pjax:complete', () => {
+        
+        window.Stack.init();
+    })
+
+</script>
+
+
+
+
+<div id="particles-js"></div>
+<script src=https://hongyun-yu.github.io/Hugo-dev/background/particles.min.js></script>
+<script>
+  particlesJS.load('particles-js', "https://hongyun-yu.github.io/Hugo-dev/background/particlesjs-config.json", function() {
+    console.log('particles.js loaded - callback');
+  });
+</script>
+
+<style>
+  #particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+</style>
+
+
+
+
+<style>
+    @font-face {
+      font-family: 'LXGWWenKai';
+      src: url(https://hongyun-yu.github.io/Hugo-dev/font/LXGWWenKai-Medium.ttf) format('truetype');
+    }
+  
+    :root {
+      --base-font-family: 'LXGWWenKai';
+      --code-font-family: 'LXGWWenKai';
+    }
+  </style>
+  
+    </body>
+</html>
+
+<body>
+    <button class="btn" onclick="smoothScrollTop()" id="goTopBtn" title="Go to top">TOP</button>
+  </body>
