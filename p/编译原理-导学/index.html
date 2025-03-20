@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="编译原理知识点，结合学习的内容进行删改">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="编译原理第一章-第三章知识点，主要内容来自CSDN pi31415926535x ，结合学习的内容进行删改">
 <title>编译原理-导学</title>
 
 <link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E5%AF%BC%E5%AD%A6/'>
@@ -25,12 +25,12 @@
     });
 </script>
 <meta property='og:title' content="编译原理-导学">
-<meta property='og:description' content="编译原理知识点，结合学习的内容进行删改">
+<meta property='og:description' content="编译原理第一章-第三章知识点，主要内容来自CSDN pi31415926535x ，结合学习的内容进行删改">
 <meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E5%AF%BC%E5%AD%A6/'>
 <meta property='og:site_name' content='羡余'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-19T23:19:20&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-20T16:30:03&#43;08:00'/>
 <meta name="twitter:title" content="编译原理-导学">
-<meta name="twitter:description" content="编译原理知识点，结合学习的内容进行删改">
+<meta name="twitter:description" content="编译原理第一章-第三章知识点，主要内容来自CSDN pi31415926535x ，结合学习的内容进行删改">
     <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
 
   
@@ -160,16 +160,6 @@
             <li><a href="#程序语言成分的逻辑和实现意义">程序语言成分的逻辑和实现意义</a></li>
           </ol>
         </li>
-        <li><a href="#高级程序设计语言的一般特性">高级程序设计语言的一般特性</a>
-          <ol>
-            <li><a href="#高级语言的分类">高级语言的分类</a></li>
-            <li><a href="#程序结构">程序结构</a></li>
-            <li><a href="#数据结构与操作">数据结构与操作</a></li>
-            <li><a href="#标识符与名字">标识符与名字</a></li>
-            <li><a href="#数据结构">数据结构</a></li>
-            <li><a href="#语句与控制结构">语句与控制结构</a></li>
-          </ol>
-        </li>
       </ol>
     </li>
     <li><a href="#第三章-高级程序设计语言的语法描述">第三章 高级程序设计语言的语法描述</a>
@@ -205,6 +195,7 @@
       </ol>
     </li>
     <li><a href="#习题">习题</a></li>
+    <li><a href="#参考">参考</a></li>
   </ol>
 </nav>
         </div>
@@ -237,7 +228,7 @@
     
         
         <h3 class="article-subtitle">
-            编译原理知识点，结合学习的内容进行删改
+            编译原理第一章-第三章知识点，主要内容来自CSDN pi31415926535x ，结合学习的内容进行删改
         </h3>
         
     </div>
@@ -262,8 +253,8 @@
             
             
                         最后修改:
-                        <time class="article-time--updated" datetime="2025-03-19 23:19:20 &#43;0800 CST" title="2025-03-19 23:19:20 &#43;0800 CST">
-                            2025-03-19
+                        <time class="article-time--updated" datetime="2025-03-20 16:30:03 &#43;0800 CST" title="2025-03-20 16:30:03 &#43;0800 CST">
+                            2025-03-20
                         </time>
 
             
@@ -368,7 +359,7 @@
 </ul>
 <h4 id="编译前端与后端">编译前端与后端
 </h4><img src="images/06.png" alt="编译前端和后端" style="zoom:50%;" />
-**编译前端**：与源语言有关，如词法分析，语法分析，语义分析与中间代码产生，与机器无关的优化
+<p><strong>编译前端</strong>：与源语言有关，如词法分析，语法分析，语义分析与中间代码产生，与机器无关的优化</p>
 <p><strong>编译后端</strong>：与目标机有关，与目标机有关的优化，目标代码产生</p>
 <p>带来的好处</p>
 <ul>
@@ -413,7 +404,7 @@
 </ul>
 <h3 id="程序设计语言的定义">程序设计语言的定义
 </h3><p><strong>标识符是语法概念，名字是语义概念</strong></p>
-<p>程序语言的定义： <strong>语法 、语义 、语用</strong></p>
+<p>程序语言的定义： **语法 、语义 **</p>
 <h4 id="语法">语法
 </h4><p><strong>程序</strong>本质上是一定字符集上的<strong>字符串</strong></p>
 <p><strong>语法</strong> ：一组规则，用它可以形成和产生一个 <strong>合式(well-formed)</strong> 的程序。</p>
@@ -446,101 +437,6 @@
 </h4><ul>
 <li>抽象的逻辑的意义：数学意义</li>
 <li>计算机实现的意义：具体实现</li>
-</ul>
-<h3 id="高级程序设计语言的一般特性">高级程序设计语言的一般特性
-</h3><h4 id="高级语言的分类">高级语言的分类
-</h4><ul>
-<li>强制式语言(Imperative Languge)/过程式语言：命令驱动，面向语句，C、Pascal</li>
-<li>应用式语言(Applicative Language)： 注重程序所表示的功能，而不是一个语句接一个语 句地执行 LISP、ML</li>
-<li>基于规则的语言( Rule-based Language)： 检查一定的条件，当它满足值，则执行适当的动作 Prolog</li>
-<li>面向对象语言(Object-Oriented Language)： 封装、继承和多态性 Smalltalk，C++，Java</li>
-</ul>
-<h4 id="程序结构">程序结构
-</h4><ul>
-<li>FORTRAN ： 主程序段+辅程序段、没有嵌套和递归==&gt; 模块化的特点</li>
-<li>PASCAL ：程序本身可以看成是一个操作系统调用的过 程，过程可以嵌套和递归</li>
-<li>作用域：一个名字能被使用的区域范围。</li>
-<li>名字作用域规则—— <strong>&ldquo;最近嵌套原则&rdquo;</strong></li>
-<li>JAVA ：面向对象</li>
-</ul>
-<h4 id="数据结构与操作">数据结构与操作
-</h4><p><strong>数据类型</strong> 通常包括三要素：</p>
-<ul>
-<li>用于区别这种类型数据对象的 <strong>属性</strong></li>
-<li>这种类型的数据对象可以具有的 <strong>值</strong></li>
-<li>可以作用于这种类型的数据对象的 <strong>操作</strong></li>
-</ul>
-<p>初等数据类型 ： 数值类型 、逻辑类型 、字符类型、指针类型。</p>
-<h4 id="标识符与名字">标识符与名字
-</h4><p><strong>标识符是语法概念，名字是语义概念</strong></p>
-<ul>
-<li>标识符：以字母开头的，由字母数字组成的字符串</li>
-<li>名字：标识程序中的对象</li>
-</ul>
-<img src="images/13.png" alt="标识符绑定成名字" style="zoom: 67%;" />
-<p>名字的意义和属性 ：</p>
-<ul>
-<li>值：单元中的内容</li>
-<li>属性：类型和作用域</li>
-</ul>
-<p>名字的说明方式：</p>
-<ul>
-<li>由说明语句来明确规定的</li>
-<li>隐含说明</li>
-<li>动态确定</li>
-</ul>
-<h4 id="数据结构">数据结构
-</h4><h5 id="数组">数组
-</h5><p>n维矩形结构、长度可变和不可变、存放方式：按行存放、案列存放</p>
-<p><strong>数组元素地址计算</strong> ：</p>
-<img src="images/14.png" alt="数组地址计算通项" style="zoom:50%;" />  
-编译器程序会维护一个这样的向量：
-<img src="images/15.png" alt="内情向量" style="zoom:50%;" />
-<h5 id="记录">记录
-</h5><p>由已知类型的数据组合在一起的一种结构 （就是结构体。。。）</p>
-<p>其中内部的元素也称为 域（field）</p>
-<h5 id="字符串表格栈">字符串、表格、栈
-</h5><h5 id="抽象数据类型">抽象数据类型
-</h5><p>其内容包括：</p>
-<ul>
-<li>数据对象集合</li>
-<li>作用于这些数据对象的抽象运算的集合</li>
-<li>这种类型对象的封装，即，除了使用类型中所定义 的运算外，用户不能对这些对象进行操作</li>
-</ul>
-<p>程序设计语言对抽象数据类型的支持</p>
-<h4 id="语句与控制结构">语句与控制结构
-</h4><h5 id="表达式">表达式
-</h5><ul>
-<li>表达式由 <strong>运算量（也称操作数，即数据引用或函数 调用）</strong> 和 <strong>算符（运算符，操作符）</strong> 组成 。</li>
-<li>形式：中缀、前缀、后缀</li>
-<li>表达式形成规则</li>
-</ul>
-<h5 id="算符的优先次序">算符的优先次序
-</h5><p>一般的规定 ：</p>
-<ul>
-<li>PASCAL：左结合A+B+C=(A+B)+C</li>
-<li>FORTRAN： 对于满足左、右结合的算符可任取一种</li>
-</ul>
-<p>注意：</p>
-<ul>
-<li>代数性质能引用到什么程度视具体的语言而定</li>
-<li>在数学上成立的代数性质在计算机上未必完全成立（多个函数间的返回值的运算）</li>
-</ul>
-<h5 id="语句">语句
-</h5><ul>
-<li>赋值语句： <strong>左值- &gt;地址、右值-&gt;内容</strong></li>
-<li>控制语句 ：无条件转移语句、条件语句 、循环语句、过程调用语句 、返回语句</li>
-</ul>
-<p>语句的分类：</p>
-<p>1.按功能：</p>
-<ul>
-<li>执行语句：描述程序的动作</li>
-<li>说明语句：定义各种不同数据类型的变量或运算， 定义名字的性质</li>
-</ul>
-<p>2.按形式 ：</p>
-<ul>
-<li>简单句：不包含其他语句成分的基本句</li>
-<li>复合句：句中有句的语句</li>
 </ul>
 <h2 id="第三章-高级程序设计语言的语法描述">第三章 高级程序设计语言的语法描述
 </h2><h3 id="上下文无关文法">上下文无关文法
@@ -583,117 +479,56 @@
 <h4 id="巴科斯范式bnf">巴科斯范式（BNF）
 </h4><ul>
 <li>“ → ” 用 “ : : =” 表示。</li>
-<li>约定  { P → α 1 P → α 2 … p → α n 可 缩 写 为 ⟹ p → α 1 ∣ α 2 ∣ ⋯ ∣ α n \begin{cases} P \to \alpha_1 \\ P \to \alpha_2 \\ \ldots \\ p \to \alpha_ n \end{cases} 可缩写为\implies p \to \alpha_1 | \alpha_2 | \cdots | \alpha_n ⎩⎪⎪⎪⎨⎪⎪⎪⎧​P→α1​P→α2​…p→αn​​可缩写为⟹p→α1​∣α2​∣⋯∣αn​ 其中 “ ∣ | ∣” 读成 ”或“ ，称  α i \alpha_i αi​ 为  P P P 的一个候选式， 故给出一个文法时将只给出 <code>开始符号</code> 和 <code>产生式</code> :如图：</li>
+<li>约定  { P → α<span style="vertical-align:sub;">1</span>  P → α<span style="vertical-align:sub;">2</span> … p → α<span style="vertical-align:sub;">n</span>  }  可 缩 写 为 ⟹ P → α<span style="vertical-align:sub;">1 </span>∣ α<span style="vertical-align:sub;">2</span> ∣ ⋯ ∣ α<span style="vertical-align:sub;">n</span> ,  其中 “  ∣ ” 读成 ”或“ ，称  α <span style="vertical-align:sub;">i</span>为  P 的一个候选式， 故给出一个文法时将只给出 <code>开始符号</code> 和 <code>产生式</code> , 如图：</li>
 </ul>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/02e3eb95f59e5ea8ab8ec0a890c8f629.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="巴科斯范式"
-	
-	
-></p>
+<img src="images/17.png" alt="巴科斯范式" style="zoom:50%;" />
 <p>G ( E ) 里的  E 是指开始符号。</p>
 <h3 id="32-文法与语言">3.2 文法与语言
 </h3><h4 id="推导">推导
-</h4><p>定义： 称  α A β \alpha A \beta αAβ直接推出  α γ β αγβ αγβ，即  α A β ⟹ α γ β α \color{#F08}{A} \color{black}{β} \implies α \color{#F08}{γ} \color{black}{β} αAβ⟹αγβ 仅当  A → γ \color{#F08}{A→γ} A→γ 是一个产生式，且  α ， β ∈ ( V T ∪ V N ) ∗ α，β∈(V_T ∪V_N)^* α，β∈(VT​∪VN​)∗。</p>
-<p>如果  α 1 ⟹ α 2 ⟹ ⋯ ⟹ α n α_1 \implies α_2 \implies \cdots \implies α_n α1​⟹α2​⟹⋯⟹αn​，则我们称这个序列是 从α1到αn的一个 <code>推导</code> 。若存在一个从  α 1 α_1 α1​ 到  α n α_n αn​ 的 推导，则称  α 1 α_1 α1​ 可以 <code>推导</code> 出  α n α_n αn​。</p>
-<p>对文法  G ( E ) ： E → i ∣ E + E ∣ E ∗ E ∣ ( E ) G(E)：E →i| E+E | E*E | (E) G(E)：E→i∣E+E∣E∗E∣(E)<br>
-E ⟹ ( E ) ⟹ ( E + E ) ⟹ ( i + E ) ⟹ E ( i + i ) E \implies (E) \implies (E+E) \implies(i+E) \implies E(i+i) E⟹(E)⟹(E+E)⟹(i+E)⟹E(i+i)</p>
+</h4><p>定义： 称 αAβ 直接推出 αγβ，即  αAβ ⟹ αγβ , 仅当  A → γ 是一个产生式，且α，β∈(V<span style="vertical-align:sub;">T</span> ∪ V<span style="vertical-align:sub;">N</span>)* 。</p>
+<p>如果  α<span style="vertical-align:sub;">1 </span>⟹ α<span style="vertical-align:sub;">2</span> ⟹ ⋯ ⟹ α<span style="vertical-align:sub;">n</span> ，则我们称这个序列是 从 α<span style="vertical-align:sub;">1 </span>到 α<span style="vertical-align:sub;">n</span> 的一个 <code>推导</code> 。若存在一个从   α<span style="vertical-align:sub;">1 </span>到 α<span style="vertical-align:sub;">n</span>  的 推导，则称   α<span style="vertical-align:sub;">1 </span>可以推导出 α<span style="vertical-align:sub;">n</span> 。</p>
+<p>对文法  G ( E ) ： E → i ∣ E + E ∣ E ∗ E ∣ ( E )</p>
+<p>E ⟹ ( E ) ⟹ ( E + E ) ⟹ ( i + E ) ⟹ E ( i + i )</p>
 <h4 id="句型句子和语言">句型、句子和语言
-</h4><p>我们定义：<br>
-α 1 ⇒ ∗ α n \alpha_1 ⇒^* \alpha_n α1​⇒∗αn​ 从  α 1 α_1 α1​ 出发，经过0步或若干步推出  α n α_n αn​<br>
-α 1 ⇒ + α n \alpha_1 ⇒^+ \alpha_n α1​⇒+αn​ 从  α 1 α_1 α1​ 出发，经过1步或若干步推出  α n α_n αn​<br>
-因此，  α ⇒ ∗ β \alpha ⇒^* \beta α⇒∗β 即为  α = β \alpha = \beta α=β 以及  α ⇒ + β \alpha ⇒^+ \beta α⇒+β<br>
-(这里的  + ∗ + * +∗ 都是在  ⇒ ⇒ ⇒ 的上面）</p>
-<p>所以可以得到这样的关系，（理解一下即可）：<br>
-&lt; 句 子 &gt; ⇒ ∗ He gave me a book &lt; 句子&gt;⇒^* \text{He gave me a book} &lt;句子&gt;⇒∗He gave me a book<br>
-&lt; 句 子 &gt; ⇒ + He gave me a book &lt; 句子&gt; ⇒^+ \text{He gave me a book} &lt;句子&gt;⇒+He gave me a book<br>
-He gave &lt; 间接宾语&gt;&lt;直接宾语&gt; ⇒ + He gave me &lt;冠词&gt;&lt;名词&gt; \text{He gave &lt; 间接宾语&gt;&lt;直接宾语&gt;} ⇒^+ \text{He gave me &lt;冠词&gt;&lt;名词&gt;} He gave &lt; 间接宾语&gt;&lt;直接宾语&gt;⇒+He gave me &lt;冠词&gt;&lt;名词&gt;</p>
+</h4><p>我们定义：α<span style = "vertical-align:sub; ">1</span> =∗⇒  α<span style="vertical-align:sub;">n</span> ,  α<span style="vertical-align:sub;">1</span> 出发，经过 0 步或若干步推出 α<span style="vertical-align:sub;">n</span> ;</p>
+<p>α<span style = "vertical-align:sub; ">1</span> =+⇒  α<span style="vertical-align:sub;">n</span> ,  α<span style="vertical-align:sub;">1</span> 出发，经过 1 步或若干步推出 α<span style="vertical-align:sub;">n</span> 。</p>
+<p>因此，  α =∗⇒  β 即为  α = β 以及  α =+⇒   β   (这里的  + 、* 都是在 ⇒ 的上面）</p>
 <p>由以上定义可以得出句型、句子和语言的定义：</p>
 <p>假定G是一个文法，S 是它的开始符号。</p>
 <ul>
-<li>如果  S ⇒ ∗ α S⇒^* \alpha S⇒∗α，则称  α α α 是一个 <code>句型</code></li>
+<li>如果  S=∗⇒  α，则称  α 是一个 <code>句型</code></li>
 <li>仅含终结符号的句型是一个 <code>句子</code>。</li>
-<li>文法G所产生的句子的全体是一个 <code>语言</code>，记为  L ( G ) : L ( G ) = { α ∣ S ⇒ + α , α ∈ V T ∗ } L(G): L(G) = \{ \alpha | S ⇒^+ \alpha , \alpha \in V_T^* \} L(G):L(G)={α∣S⇒+α,α∈VT∗​}</li>
+<li>文法G所产生的句子的全体是一个 <code>语言</code>，记为  L ( G ) : L ( G ) = { α ∣ S =+⇒ α , α ∈ V <span style="vertical-align:sub;">T </span><span style="vertical-align:super;">∗</span> }</li>
 </ul>
 <h4 id="句型和句子练习">句型和句子练习
-</h4><p>（这里为了排版更加的整齐（其实是打公式太懒）就贴图片了）：</p>
-<p>代换思想：<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/c9dbb0095297f5bd4f2d66ecae65fcd7.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="证明某个句子是某个文法的句子"
-	
-	
-></p>
+</h4><p>代换思想：</p>
+<img src="images/18.png" alt="证明某个句子是某个文法的句子" style="zoom: 40%;" />
 <h5 id="从文法到语言">从文法到语言
-</h5><p>给定文法判断所产生的语言是什么，其实就是一个递归的思想：<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/56d1c72593434f626b1ba320c23a88c1.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="给定文法判断所产生的语言是什么，其实就是一个递归的思想"
-	
-	
-></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/16002f6b485e76b632b76a49a3009e3e.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="判断文法产生的语言"
-	
-	
-></p>
+</h5><p>给定文法判断所产生的语言是什么，其实就是一个递归的思想：</p>
+<img src="images/19.png" alt="给定文法判断所产生的语言是什么，其实就是一个递归的思想" style="zoom:50%;" />
+<img src="images/20.png" alt="判断文法产生的语言" style="zoom:50%;" />
 <h5 id="从语言到文法">从语言到文法
-</h5><p>请给出产生语言为  { a n b n ∣ n ≥ 1 } \{a^nb^n|n≥1\} {anbn∣n≥1} 的文法:</p>
-<p>G 3 ( S ) ： G3(S)： G3(S)：</p>
+</h5><p>请给出产生语言为  { a<span style="vertical-align:super;">n</span> b<span style="vertical-align:super;">n</span> ∣ n ≥ 1 }  的文法:</p>
+<p>G 3 ( S ) ：</p>
 <ul>
-<li>S → a S b S →aSb S→aSb</li>
-<li>S → a b S →ab S→ab</li>
+<li>S → a S b</li>
+<li>S → a b</li>
 </ul>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/aaae257cb0dea4e86b5f9984f12b3142.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="语言到文法"
-	
-	
-></p>
+<img src="images/21.png" alt="语言到文法" style="zoom:50%;" />
 <h3 id="33-语法树与二义性">3.3 语法树与二义性
 </h3><h4 id="推导与语法树">推导与语法树
 </h4><h5 id="左推导和右推导">左推导和右推导
 </h5><p>从一个句型到另一个句型的推导往往不唯一，从推导的方向看有两种：</p>
 <ul>
-<li>最左推导：任何一步  α ⇒ β α⇒β α⇒β 都是对  α α α 中的中的左非 终结符进行替换</li>
-<li>最右推导：任何一步  α ⇒ β α⇒β α⇒β 都是对  α α α 中的中的右非 终结符进行替换</li>
+<li><strong>最左推导</strong>：任何一步  α ⇒ β  都是对  α 中的中的 <strong>左非终结符</strong> 进行替换</li>
+<li><strong>最右推导</strong> ( 规范推导 ) ：任何一步  α ⇒ β 都是对  α 中的中的<strong>右非终结符</strong>进行替换</li>
 </ul>
 <h5 id="语法树">语法树
 </h5><ul>
-<li>用一张图表示一个句型的推导,称为 <code>语法树</code></li>
+<li>用一张图表示一个句型的推导, 称为 <code>语法树</code></li>
 <li>一棵语法树是不同推导过程的共性抽象</li>
 </ul>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/fb62dfabae563c919025443bbe0b4c7d.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="最左推导语法树，如果用最有推导语法树会不同"
-	
-	
-></p>
+<img src="images/22.png" alt="最左推导语法树，如果用最有推导语法树会不同" style="zoom:50%;" />
 <p>注意：</p>
 <ul>
 <li>树中间，父子结点 <code>可以同名</code></li>
@@ -701,130 +536,47 @@ He gave &lt; 间接宾语&gt;&lt;直接宾语&gt; ⇒ + He gave me &lt;冠词&gt
 </ul>
 <h5 id="二义性ambiguity">二义性(ambiguity)
 </h5><ul>
-<li><code>文法的二义性</code> ：如果一个 <strong>文法</strong> 存在 <strong>某个句子</strong> 对应 <strong>两棵不同的语法树</strong> ，则说这个文法是二义的  G ( E ) ： E → i ∣ E + E ∣ E ∗ E ∣ ( E ) G(E)：E →i|E+E|E*E|(E) G(E)：E→i∣E+E∣E∗E∣(E) 是二义文法</li>
-<li><code>语言的二义性</code> ：一个语言是二义的，如果（那么） <strong>对它不存在无二义的文法</strong> 。对于语言L，可能存在G和G’，使得  L ( G ) = L ( G ’ ) = L L(G)=L(G’)=L L(G)=L(G’)=L ，有可能其中一个文法为二义的， 另一个为无二义的</li>
+<li><code>文法的二义性</code> ：如果一个 <strong>文法</strong> 存在 <strong>某个句子</strong> 对应 <strong>两棵不同的语法树</strong> ，则说这个文法是二义的  G ( E ) ： E → i ∣ E + E ∣ E ∗ E ∣ ( E )  是二义文法</li>
+<li><code>语言的二义性</code> ：一个语言是二义的，如果（那么） <strong>对它不存在无二义的文法</strong> 。对于语言L，可能存在G和G’，使得  L ( G ) = L ( G ’ ) = L ，有可能其中一个文法为二义的， 另一个为无二义的</li>
 </ul>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e709dc27625a6fc7b511ffe105cc331c.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="两种文法"
-	
-	
-></p>
+<img src="images/23.png" alt="两种文法" style="zoom:50%;" />
 <p>二义性问题是 <strong>不可判定问题</strong> ，即不存在一个算法，它能在有限步骤内，确切地判定一个文法<br>
 对于是否是二义的 ，可以找到一组无二义文法的充分条件</p>
 <h3 id="34-形式语言鸟瞰">3.4 形式语言鸟瞰
 </h3><p>乔姆斯基于1956年建立形式语言体系，他把文 法分成四种类型：0，1，2，3型 。</p>
 <ul>
-<li>0型(短语文法，图灵机)：产生式形如： α → β α→β α→β ，其中： α ∈ ( V T ∪ V N ) ∗ α∈(V_T∪V_N)^* α∈(VT​∪VN​)∗且 <strong>至少含有一个非终结符</strong> ； β ∈ ( V T ∪ V N ) ∗ β∈ (V_T∪V_N)^* β∈(VT​∪VN​)∗</li>
-<li>1型(上下文有关文法，线性界限自动机) ：产生式形如： α → β α→β α→β ，其中：  ∣ α ∣ ≤ ∣ β ∣ |α| ≤|β| ∣α∣≤∣β∣ ，仅  S → ε S→ε S→ε 例外</li>
-<li>2型(上下文无关文法，非确定下推自动机) ： 产生式形如： A → β A →β A→β ,其中：  A ∈ V N ； β ∈ ( V T ∪ V N ) ∗ A∈V_N；β∈(V_T∪V_N)^* A∈VN​；β∈(VT​∪VN​)∗ （可以利用栈分析）</li>
-<li>3型(正规文法，有限自动机)： 产生式形如： A → α B A →αB A→αB 或  A → α A →α A→α （右线性文法）其中：α∈VT*；A，B∈VN ；（左线性文法：产生式形如： A → B α A →Bα A→Bα 或  A → α A →α A→α ）</li>
+<li>0型(短语文法，图灵机)：产生式形如： α → β ，其中： α ∈ ( V<span style="vertical-align:sub;">T</span> ∪ V<span style="vertical-align:sub;">N</span> ) * 且 <strong>至少含有一个非终结符</strong> ; β ∈ ( V<span style="vertical-align:sub;">T</span> ∪ V<span style="vertical-align:sub;">N</span> ) *</li>
+<li>1型(上下文有关文法，线性界限自动机) ：产生式形如： α → β  ，其中： ∣ α ∣ ≤ ∣ β ∣ ，仅  S → ε 例外</li>
+<li>2型(上下文无关文法，非确定下推自动机) ： 产生式形如： A → β , 其中： A ∈ V<span style="vertical-align:sub;">N</span> ； β ∈ ( V<span style="vertical-align:sub;">T</span> ∪ V<span style="vertical-align:sub;">N</span> ) * （可以利用栈分析）</li>
+<li>3型(正规文法，有限自动机)： 产生式形如： A → αB 或  A → α （右线性文法）其中：α∈V<span style="vertical-align:sub;">T</span>*；A，B∈V<span style="vertical-align:sub;">N</span> ；（左线性文法：产生式形如： A → Bα  或  A → α ）</li>
 </ul>
 <h4 id="四种类型文法描述能力比较">四种类型文法描述能力比较
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/504b01348158d60800f8973fc904945e.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="文法描述能力比较"
-	
-	
-></p>
+</h4><img src="images/24.png" alt="文法描述能力比较" style="zoom: 67%;" />
 <h4 id="上下文无关文法-2">上下文无关文法
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/f2c01cc1a67bb5f4c79e5ba76f293894.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="可以用上下文无关法产生的文法"
-	
-	
-><br>
-（自嵌套语言仅能由上下文无关文法产生）</p>
+</h4><img src="images/25.png" alt="可以用上下文无关法产生的文法" style="zoom:50%;" />
+<p>（自嵌套语言仅能由上下文无关文法产生)</p>
 <h4 id="上下文有关文法">上下文有关文法
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/a9570b97e422ef05ca8c983fec225ce8.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="上下文有关文法"
-	
-	
-></p>
+</h4><img src="images/26.png" alt="上下文有关文法" style="zoom:50%;" />
 <h4 id="0型语言">0型语言
 </h4><p>程序设计语言不是上下文无关语言，甚至不是上下文有关语言，只能由0型语言产生，如：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/df12d8649706c0351b9d6eed4dee8fec.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="0型语言"
-	
-	
-><br>
-对于无法利用上下文无关法分析的部分一般交由语义分析处理。</p>
+<img src="images/27.png" alt="0型语言" style="zoom:50%;" />
+<p>对于无法利用上下文无关法分析的部分一般交由语义分析处理。</p>
 <h2 id="习题">习题
-</h2><p>课后习题，题干和过程就引用<a class="link" href="https://wenku.baidu.com/view/73c26dada1c7aa00b42acb1a.html"  target="_blank" rel="noopener"
-    >网上的资料</a>了<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/192ab63a566cfa0a91ecb4b14496aa87.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="习题1"
-	
-	
-></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/c0c18e937053b5c80ef3557b01fb28da.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="习题2"
-	
-	
-></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/f013ae9ba25a315e31ee09df66a4ab60.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="习题3"
-	
-	
-></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/418e135dc72d247a98e7eec7c64a1c74.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="习题4"
-	
-	
-></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e9bca5604f4faec5c71065662622ab7d.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="习题5"
-	
-	
-></p>
+</h2><p>课后习题，题干和过程引用<a class="link" href="https://wenku.baidu.com/view/73c26dada1c7aa00b42acb1a.html"  target="_blank" rel="noopener"
+    >网上的资料</a>了</p>
+<img src="images/28.png" alt="习题1" style="zoom:50%;" />
+<img src="images/29.png" alt="习题2" style="zoom:50%;" />
+<img src="images/30.png" alt="习题3" style="zoom:50%;" />
+<img src="images/31.png" alt="习题4" style="zoom:50%;" />
+<img src="images/32.png" alt="习题5" style="zoom:50%;" />
 <p>（end)</p>
+<hr>
+<h2 id="参考">参考
+</h2><ul>
+<li>学习所用，转自<a class="link" href="https://blog.csdn.net/pi31415926535x/article/details/104426642"  target="_blank" rel="noopener"
+    >CSDN pi31415926535x</a></li>
+<li>《高级程序设计语言编译原理》</li>
+</ul>
 
 </section>
 
@@ -843,7 +595,7 @@ He gave &lt; 间接宾语&gt;&lt;直接宾语&gt; ⇒ + He gave me &lt;冠词&gt
 
 
         <span>
-            最后更新于 2025-03-19
+            最后更新于 2025-03-20
         </span>
     </section></footer>
 
@@ -1062,7 +814,7 @@ He gave &lt; 间接宾语&gt;&lt;直接宾语&gt; ⇒ + He gave me &lt;冠词&gt
         
     
     发表了11篇文章 · 
-    总计66.90k字
+    总计64.29k字
 </section>
 
 </footer>

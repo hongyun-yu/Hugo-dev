@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="编译原理知识点，结合学习的内容进行删改">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="编译原理第四、五、六章 词法分析 知识点, 主要内容来自CSDN pi31415926535x, 结合学习的内容进行删改">
 <title>编译原理-词法分析</title>
 
 <link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/'>
@@ -25,12 +25,12 @@
     });
 </script>
 <meta property='og:title' content="编译原理-词法分析">
-<meta property='og:description' content="编译原理知识点，结合学习的内容进行删改">
+<meta property='og:description' content="编译原理第四、五、六章 词法分析 知识点, 主要内容来自CSDN pi31415926535x, 结合学习的内容进行删改">
 <meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/'>
 <meta property='og:site_name' content='羡余'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-19T23:19:20&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-20T16:30:03&#43;08:00'/>
 <meta name="twitter:title" content="编译原理-词法分析">
-<meta name="twitter:description" content="编译原理知识点，结合学习的内容进行删改">
+<meta name="twitter:description" content="编译原理第四、五、六章 词法分析 知识点, 主要内容来自CSDN pi31415926535x, 结合学习的内容进行删改">
     <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
 
   
@@ -205,7 +205,7 @@
     
         
         <h3 class="article-subtitle">
-            编译原理知识点，结合学习的内容进行删改
+            编译原理第四、五、六章 词法分析 知识点, 主要内容来自CSDN pi31415926535x, 结合学习的内容进行删改
         </h3>
         
     </div>
@@ -230,8 +230,8 @@
             
             
                         最后修改:
-                        <time class="article-time--updated" datetime="2025-03-19 23:19:20 &#43;0800 CST" title="2025-03-19 23:19:20 &#43;0800 CST">
-                            2025-03-19
+                        <time class="article-time--updated" datetime="2025-03-20 16:30:03 &#43;0800 CST" title="2025-03-20 16:30:03 &#43;0800 CST">
+                            2025-03-20
                         </time>
 
             
@@ -259,7 +259,7 @@
 </h2><h3 id="词法分析概述">词法分析概述
 </h3><h4 id="词法分析的任务">词法分析的任务
 </h4><ul>
-<li><code>词法分析</code> 的任务：从左至右逐个字符地对源程序进行扫描，产生一个 个单词符号</li>
+<li><code>词法分析</code> 的任务：从左至右逐个字符地对源程序进行扫描，产生一个个单词符号</li>
 <li><code>词法分析器(Lexical Analyzer)</code>又称 <code>扫描器(Scanner)</code> ：执行词法分析的程序</li>
 </ul>
 <h4 id="词法分析器的功能">词法分析器的功能
@@ -289,39 +289,12 @@
 <li>词法分析作为一个独立的 <code>阶段</code> ：结构简洁、清晰和条理化，有利于集中考虑词法分 析一些枝节问题</li>
 <li>但不一定不作为单独的一 <code>遍</code> ：而是将其处理为一个子程序， <strong>由语法分析驱动词法分析</strong></li>
 </ul>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/1977714d5be6d7041d4c4e0bfcd0221e.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="词法分析器和语法分析器的地位"
-	
-	
-></p>
+<img src="images/01.png" alt="词法分析器和语法分析器的地位" style="zoom:50%;" />
 <h3 id="42-词法分析器的设计">4.2 词法分析器的设计
 </h3><h4 id="词法分析器的结构">词法分析器的结构
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/8af6e151aa2b21ae29892561d16e506b.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="此法分析器的结构"
-	
-	
-></p>
+</h4><img src="images/02.png" alt="此法分析器的结构" style="zoom:50%;" />
 <h4 id="扫描缓冲区">扫描缓冲区
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/1b11430a0ad5b63f6450c9cbdcae008b.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="扫描缓冲区"
-	
-	
-></p>
+</h4><img src="images/03.png" alt="扫描缓冲区" style="zoom:50%;" />
 <p>这里的扫描缓冲区使用两个半区互补使用， <strong>半区的长度即为单词的最大长度</strong></p>
 <h4 id="单词符号的识别超前搜索">单词符号的识别:超前搜索
 </h4><ul>
@@ -346,83 +319,29 @@
 </ul>
 <p>状态转换图可用于识别(或接受)一定的字符串：</p>
 <ul>
-<li>若存在一条从初态到某一终态的道路，且这条路上所 有弧上的标记符连接成的字等于α，则称α被该状态 转换图所识别(接受)</li>
+<li>若存在一条从初态到某一终态的道路，且这条路上所有弧上的标记符连接成的字等于α，则称α被该状态转换图所识别(接受)</li>
 </ul>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d822fce112c406b5c8172a90282f13f7.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="一个识别整常数的状态转换图"
-	
-	
-></p>
+<img src="images/04.png" alt="一个识别整常数的状态转换图" style="zoom:50%;" />
 <h4 id="词法分析器的设计示例-理解即可">词法分析器的设计示例 （理解即可）
 </h4><p>例如这样的一个单词表对应这样的一个状态转换图：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/512a0ae5cfc161e8cc2a70aad0d077a5.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="设计状态转换图"
-	
-	
-></p>
+<img src="images/05.png" alt="设计状态转换图" style="zoom:50%;" />
 <ul>
 <li>不含回路的分叉结点：可用一个 <code>CASE</code> 语句或一组 <code>IF-THEN-ELSE</code> 语句实现</li>
 <li>含回路的状态结点：对应一段由 <code>WHILE</code> 结构和 <code>IF</code> 语句构成的程序</li>
 <li>终态结点：表示识别出某种单词符号，对应 <code>返回</code> 语句（此处的返回值是一个二元组（种别，自身值））</li>
 </ul>
 <p>定义：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/ca0496f5cc366ecbb0cd892bd743c020.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="全局变量"
-	
-	
-></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d0f660313fee2fb359b926bf16176afe.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="变量及过程"
-	
-	
-></p>
+<img src="images/06.png" alt="全局变量" style="zoom:50%;" />
+<img src="images/07.png" alt="变量及过程" style="zoom:50%;" />
 <p>对于其中一个分支就可以写出如下的代码：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/51086d7ac3f8f419c96e45cde53f7800.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="示例"
-	
-	
-></p>
+<img src="images/08.png" alt="示例" style="zoom:50%;" />
 <h4 id="将状态图的代码一般化">将状态图的代码一般化
 </h4><ul>
 <li>变量 <code>curState</code> 用于保存现有的状态</li>
 <li>用二维数组表示状态图：<code>stateTrans[state][ch]</code></li>
 </ul>
 <p>这样的一个一般化的框架就如下：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/24ef3b6e202d2f1732dd17a51d267fd6.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="一般化"
-	
-	
-></p>
+<img src="images/09.png" alt="一般化" style="zoom:50%;" />
 <p>这里的返回值要根据具体的处理过程进行细节的处理，如关键字的处理、单词的处理、标识符的处理等等。</p>
 <h2 id="第五章-词法分析二">第五章 词法分析（二）
 </h2><h3 id="词法规则形式化-正规集和正规式">词法规则形式化-正规集和正规式
@@ -434,108 +353,65 @@
 </ul>
 <p>正规集是一类字的集合，程序语言的定义的合法单词的集合</p>
 <h4 id="正规式和正规集的递归定义">正规式和正规集的递归定义
-</h4><p>对给定的字母表  Σ Σ Σ :</p>
+</h4><p>对给定的字母表  Σ :</p>
 <ul>
-<li>ε ε ε 和  ∅ ∅ ∅ 都是  Σ Σ Σ 上的正规式，它们所表示的正规集为  { ε } \{ε\} {ε} 和  ∅ ∅ ∅ ;</li>
-<li>任何  a ∈ Σ a∈Σ a∈Σ ， a a a 是  Σ Σ Σ 上的正规式，它所表示的正规集为  { a } \{a\} {a} ;</li>
-<li>假定  e 1 e1 e1 和  e 2 e2 e2 都是  Σ Σ Σ 上的正规式，它们所表示 的正规集为  L ( e 1 ) L(e_1) L(e1​) 和  L ( e 2 ) L(e_2) L(e2​) ，则
+<li>ε 和  ∅ 都是  Σ Σ Σ 上的正规式，它们所表示的正规集为  { ε } 和  ∅ ;</li>
+<li>任何  a ∈ Σ ， a 是  Σ 上的正规式，它所表示的正规集为  { a } ;</li>
+<li>假定 e<span style="vertical-align:sub;">1</span> 和  e<span style="vertical-align:sub;">2</span> 都是  Σ 上的正规式，它们所表示 的正规集为  L ( e 1 )和  L ( e 2 )  ，则
 <ul>
-<li>( e 1 ∣ e 2 ) (e_1|e_2) (e1​∣e2​) 为正规式，它所表示的正规集为  L ( e 1 ) ∪ L ( e 2 ) L(e_1)∪L(e_2) L(e1​)∪L(e2​)</li>
-<li>( e 1 . e 2 ) (e_1.e_2) (e1​.e2​) 为正规式，它所表示的正规集为  L ( e 1 ) L ( e 2 ) L(e_1)L(e_2) L(e1​)L(e2​)</li>
-<li>( e 1 ) ∗ (e_1)* (e1​)∗ 为正规式，它所表示的正规集为  ( L ( e 1 ) ) ∗ (L(e_1))^* (L(e1​))∗</li>
+<li>( e 1 ∣ e 2 )  为正规式，它所表示的正规集为  L ( e 1 ) ∪ L ( e 2 )</li>
+<li>( e 1 . e 2 ) 为正规式，它所表示的正规集为  L ( e 1 ) L ( e 2 )</li>
+<li>( e<span style="vertical-align:sub;">1</span> )*为正规式，它所表示的正规集为  ( L ( e<span style="vertical-align:sub;">1</span> ) ) *</li>
 </ul>
 </li>
 </ul>
-<p>仅由 <code>有限次</code> 使用上述三步骤而定义的表达式才 是Σ上的正规式，仅由这些正规式表示的字 集才是Σ上的正规集。</p>
+<p>仅由 <code>有限次</code> 使用上述三步骤而定义的表达式才是 Σ 上的正规式，仅由这些正规式表示的字 集才是 Σ上的正规集。</p>
 <p>由以上规则可得：</p>
 <ul>
-<li>ε ε ε 是： 字 或 正规式</li>
-<li>∅ ∅ ∅ 是： 集合 或 正规式</li>
-<li>a ( a ∈ Σ ) a (a ∈Σ) a(a∈Σ) 是： 字符 或 字 或 正规式</li>
+<li>ε 是： 字 或 正规式</li>
+<li>∅ 是： 集合 或 正规式</li>
+<li>a ( a ∈ Σ ) 是： 字符 或 字 或 正规式</li>
 </ul>
 <h4 id="正规式的等价性">正规式的等价性
-</h4><p>若两个正规式所表示的正规集相同，则称这两 个正规式等价。如  b ( a b ) ∗ = ( b a ) ∗ b b(ab)^*=(ba)^*b b(ab)∗=(ba)∗b</p>
-<p>证明：<img src="https://i-blog.csdnimg.cn/blog_migrate/e224b9e71d6daa2b53beab521239f555.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="等价性的证明"
-	
-	
-></p>
-<p>利用正规式与正规集的对应关系，证明  ( a ∗ b ∗ ) ∗ = ( a ∣ b ) ∗ = ( a ∗ ∣ b ∗ ) ∗ (a^<em>b^</em>)^<em>=(a|b)^</em>=(a^<em>|b^</em>)^* (a∗b∗)∗=(a∣b)∗=(a∗∣b∗)∗ ：可以看出每一个正规式表示的都是由 ab组成的所有串的集合，所以是等价的 <del>（证明过程？！null）</del></p>
+</h4><p>若两个正规式所表示的正规集相同，则称这两 个正规式等价。如  b ( ab )* = ( ba )* b</p>
+<p>证明：</p>
+<img src="images/10.png" alt="等价性的证明" style="zoom:50%;" />
+<p>利用正规式与正规集的对应关系，证明  ( a* b* ) *  = ( a ∣ b )*  = ( a* ∣ b* )*  ：可以看出每一个正规式表示的都是由 ab组成的所有串的集合，所以是等价的</p>
 <h4 id="正规式的性质">正规式的性质
 </h4><p>对正规式，下列等价成立：</p>
 <ul>
-<li>e 1 ∣ e 2 = e 2 ∣ e 1 e_1|e_2 = e_2|e_1 e1​∣e2​=e2​∣e1​ 交换律</li>
-<li>e 1 ∣ ( e 2 ∣ e 3 ) = ( e 1 ∣ e 2 ) ∣ e 3 e_1 |(e_2|e_3) = (e_1|e_2)|e_3 e1​∣(e2​∣e3​)=(e1​∣e2​)∣e3​ 结合律</li>
-<li>e 1 ( e 2 e 3 ) = ( e 1 e 2 ) e 3 e_1(e_2e_3) = (e_1e_2)e_3 e1​(e2​e3​)=(e1​e2​)e3​ 结合律</li>
-<li>e 1 ( e 2 ∣ e 3 ) = e 1 e 2 ∣ e 1 e 3 e_1(e_2|e_3) = e_1e_2|e_1e_3 e1​(e2​∣e3​)=e1​e2​∣e1​e3​ 分配律</li>
-<li>( e 2 ∣ e 3 ) e 1 = e 2 e 1 ∣ e 3 e 1 (e_2|e_3)e_1 = e_2e_1|e_3e_1 (e2​∣e3​)e1​=e2​e1​∣e3​e1​ 分配律</li>
-<li>e ε = ε e = e eε= εe=e eε=εe=e</li>
-<li><strong>注意乘么的交换律 e 1 e 2 &lt; &gt; e 2 e 1 e_1e_2 &lt;&gt; e_2e_1 e1​e2​&lt;&gt;e2​e1​</strong></li>
+<li>e<span style="vertical-align:sub;">1 </span>∣ e<span style="vertical-align:sub;">2</span> = e<span style="vertical-align:sub;">2</span> ∣ e<span style="vertical-align:sub;">1</span>    交换律</li>
+<li>e<span style="vertical-align:sub;">1</span> ∣ ( e2 ∣ e3 ) = ( e1 ∣ e2 ) ∣ e 3 结合律</li>
+<li>e1 ( e<span style="vertical-align:sub;">2</span> e<span style="vertical-align:sub;">3</span> ) = ( e<span style="vertical-align:sub;">1</span> e<span style="vertical-align:sub;">2</span> ) e<span style="vertical-align:sub;">3</span>  结合律</li>
+<li>e<span style="vertical-align:sub;">1</span> ( e<span style="vertical-align:sub;">2</span> ∣ e<span style="vertical-align:sub;">3</span> ) = e<span style="vertical-align:sub;">1</span> e<span style="vertical-align:sub;">2</span> ∣ e<span style="vertical-align:sub;">1</span> e<span style="vertical-align:sub;">3</span>  分配律</li>
+<li>( e<span style="vertical-align:sub;">2</span> ∣ e<span style="vertical-align:sub;">3</span> ) e<span style="vertical-align:sub;">1 </span>= e<span style="vertical-align:sub;">2</span> e<span style="vertical-align:sub;">1</span> ∣ e<span style="vertical-align:sub;">3 </span>e<span style="vertical-align:sub;">1</span>  分配律</li>
+<li>e ε = ε e = e</li>
+<li>**注意乘么的交换律 e<span style="vertical-align:sub;">1</span> e<span style="vertical-align:sub;">2</span> &lt; &gt; e<span style="vertical-align:sub;">2</span> e<span style="vertical-align:sub;">1</span> **</li>
 </ul>
 <p>证明过程：转化为集合运算来证明即可</p>
 <h3 id="52-确定有限自动机dfa">5.2 确定有限自动机(DFA)
 </h3><h4 id="对状态图进行形式化定义">对状态图进行形式化定义
-</h4><p><code>确定有限自动机(DeterministicFiniteAutomata， DFA)</code> M M M 是一个五元式  M = ( S , Σ , f , S 0 , F ) M=(S,Σ,f,S_0,F) M=(S,Σ,f,S0​,F) ，其中：</p>
+</h4><p><code>确定有限自动机(DeterministicFiniteAutomata， DFA)</code> M M M 是一个五元式  M = ( S , Σ , f , S<span style="vertical-align:sub;">0</span> , F ) , 其中：</p>
 <ul>
-<li>S S S :有穷 <code>状态集</code></li>
-<li>Σ Σ Σ ：输入 <code>字母表</code> (有穷)</li>
-<li>f f f : <code>状态转换函数</code> ，为  S × Σ → S S×Σ→S S×Σ→S 的 <code>单值部分映射</code> ，  f ( s ， a ) = s ′ f(s， a)=s&rsquo; f(s，a)=s′ 表示：当现行状态为  s s s ，输入字符为  a a a 时，将状态转换到下一状态  s ′ s&rsquo; s′ ，  s ′ s&rsquo; s′ 称为  s s s 的一个后继状态</li>
-<li>S 0 ∈ S S_0∈S S0​∈S 是<code>唯一</code> 的一个 <code>初态</code></li>
-<li>F ⊆ S F⊆S F⊆S ：<code>终态集</code>(可空)</li>
+<li>S :有穷 <code>状态集</code></li>
+<li>Σ ：输入 <code>字母表</code> (有穷)</li>
+<li>f : <code>状态转换函数</code> ，为  S × Σ → S 的 <code>单值部分映射</code> ，  f ( s ， a ) = s ′ 表示：当现行状态为 s ，输入字符为 a 时，将状态转换到下一状态 s′ ，s′ 称为 s 的一个后继状态</li>
+<li>S<span style="vertical-align:sub;">0</span> ∈ S  是<code>唯一</code> 的一个 <code>初态</code></li>
+<li>F ⊆ S ：<code>终态集</code>(可空)</li>
 </ul>
 <h4 id="dfa表示为状态转换图">DFA表示为状态转换图
-</h4><p>假定DFA M含有 <code>m个状态</code> 和 <code>n个输入字符</code> ，则对应的状态转换图含有 <code>m个状态结点</code> ，每个结点顶 多含有 <code>n条箭弧射出</code> ，且每条箭弧用Σ上的不同的输 入字符来作标记</p>
+</h4><p>假定 DFA M 含有 <code>m个状态</code> 和 <code>n个输入字符</code> ，则对应的状态转换图含有 <code>m个状态结点</code> ，每个结点顶多含有 <code>n条箭弧射出</code> ，且每条箭弧用 Σ 上的不同的输 入字符来作标记</p>
 <h4 id="dfa识别字符串的定义">DFA识别字符串的定义
 </h4><ul>
-<li>对于  Σ ∗ Σ^* Σ∗ 中的任何字  α α α ，若存在一条从初态到某一 终态的道路，且这条路上所有弧上的标记符连 接成的字等于  α α α ，则称  α α α 为DFA M所 <code>识别(接收)</code></li>
-<li>DFA M所识别的字的全体记为  L ( M ) L(M) L(M)</li>
+<li>对于 Σ* 中的任何字 α ，若存在一条从初态到某一 终态的道路，且这条路上所有弧上的标记符连接成的字等于  α ，则称 α 为 DFA M 所 <code>识别(接收)</code></li>
+<li>DFA M 所识别的字的全体记为  L ( M )</li>
 </ul>
-<p>例如一个识别以00结尾的字符串的DFA：<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/6b7d407beb2f5bfcf41e56641ce77a0b.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="一个识别亿00结尾的字符串"
-	
-	
-></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a49720cf0d564624c7c6f5a7616c2196.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="一个识别含有aa或bb的字符串的DFA"
-	
-	
-></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/3e9e606438e3b5c8b84b5c1568afb5fe.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="两个特殊的DFA"
-	
-	
-></p>
-<p>将DFA中的各个状态函数写成矩阵的形式，也就是状态矩阵，这样就可以利用前面的词法分析程序：<img src="https://i-blog.csdnimg.cn/blog_migrate/6b47972b7d35f30a2958164154c57552.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="词法分析程序"
-	
-	
-></p>
+<p>例如一个识别以 00 结尾的字符串的DFA：</p>
+<img src="images/11.png" alt="一个识别亿00结尾的字符串" style="zoom:50%;" />
+<img src="images/12.png" alt="一个识别含有aa或bb的字符串的DFA" style="zoom:50%;" />
+<img src="images/13.png" alt="两个特殊的DFA" style="zoom:50%;" />
+<p>将DFA中的各个状态函数写成矩阵的形式，也就是状态矩阵，这样就可以利用前面的词法分析程序：</p>
+<img src="images/14.png" alt="词法分析程序" style="zoom:50%;" />
 <h3 id="53-非确定有限自动机nfa">5.3 非确定有限自动机（NFA）
 </h3><h4 id="非确定有限自动机nfa的定义">非确定有限自动机（NFA）的定义
 </h4><p>一个简单的NFA状态图： <img src="https://i-blog.csdnimg.cn/blog_migrate/d35cf749746c64e2e9f88b606452a46f.png"
@@ -1025,7 +901,7 @@
 
 
         <span>
-            最后更新于 2025-03-19
+            最后更新于 2025-03-20
         </span>
     </section></footer>
 
@@ -1244,7 +1120,7 @@
         
     
     发表了11篇文章 · 
-    总计66.90k字
+    总计64.29k字
 </section>
 
 </footer>
