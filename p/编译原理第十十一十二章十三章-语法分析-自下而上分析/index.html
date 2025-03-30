@@ -2,9 +2,9 @@
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="编译原理知识点，结合学习的内容进行删改">
-<title>编译原理-语法分析-自下而上分析</title>
+<title>编译原理第十、十一、十二章、十三章-语法分析-自下而上分析</title>
 
-<link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/'>
+<link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/'>
 
 <link rel="stylesheet" href="/Hugo-dev/scss/style.min.931ff95f801376156525fd9d531ff3120af79ead784dd3bd6ce58d23d430b394.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -24,12 +24,12 @@
     return false;
     });
 </script>
-<meta property='og:title' content="编译原理-语法分析-自下而上分析">
+<meta property='og:title' content="编译原理第十、十一、十二章、十三章-语法分析-自下而上分析">
 <meta property='og:description' content="编译原理知识点，结合学习的内容进行删改">
-<meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/'>
+<meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/'>
 <meta property='og:site_name' content='羡余'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-19T23:19:20&#43;08:00'/>
-<meta name="twitter:title" content="编译原理-语法分析-自下而上分析">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-30T23:42:26&#43;08:00'/>
+<meta name="twitter:title" content="编译原理第十、十一、十二章、十三章-语法分析-自下而上分析">
 <meta name="twitter:description" content="编译原理知识点，结合学习的内容进行删改">
     <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
 
@@ -103,47 +103,47 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#自下而上分析1">自下而上分析1</a>
+    <li><a href="#自下而上分析-1">自下而上分析 1</a>
       <ol>
         <li><a href="#自下而上分析">自下而上分析</a>
           <ol>
             <li><a href="#自下而上分析的一个示例">自下而上分析的一个示例</a></li>
-            <li><a href="#1012-自下而上分析的基本思想">10.1.2 自下而上分析的基本思想</a></li>
+            <li><a href="#自下而上分析的基本思想">自下而上分析的基本思想</a></li>
             <li><a href="#1013-移进归约分析示例">10.1.3 移进－归约分析示例</a></li>
           </ol>
         </li>
-        <li><a href="#102-短语与直接短语">10.2 短语与直接短语</a>
+        <li><a href="#短语与直接短语">短语与直接短语</a>
           <ol>
-            <li><a href="#1021-短语">10.2.1 短语</a></li>
-            <li><a href="#1022-测试短语和直接短语">10.2.2 测试：短语和直接短语</a></li>
+            <li><a href="#短语">短语</a></li>
+            <li><a href="#测试短语和直接短语">测试：短语和直接短语</a></li>
           </ol>
         </li>
         <li><a href="#103-分析过程描述">10.3 分析过程描述</a></li>
-        <li><a href="#104-算符优先文法">10.4 算符优先文法</a>
+        <li><a href="#算符优先文法">算符优先文法</a>
           <ol>
-            <li><a href="#1041-算符优先文法">10.4.1 算符优先文法</a></li>
-            <li><a href="#1042-运算的优先级">10.4.2 运算的优先级</a></li>
-            <li><a href="#1043-优先关系">10.4.3 优先关系</a></li>
-            <li><a href="#1044-算符文法">10.4.4 算符文法</a></li>
-            <li><a href="#1045-算符优先文法">10.4.5 算符优先文法</a></li>
+            <li><a href="#算符优先文法-1">算符优先文法</a></li>
+            <li><a href="#运算的优先级">运算的优先级</a></li>
+            <li><a href="#优先关系">优先关系</a></li>
+            <li><a href="#算符文法">算符文法</a></li>
+            <li><a href="#算符优先文法-2">算符优先文法</a></li>
           </ol>
         </li>
-        <li><a href="#105-构造优先关系表">10.5 构造优先关系表</a>
+        <li><a href="#构造优先关系表">构造优先关系表</a>
           <ol>
-            <li><a href="#1051-构造优先关系表的算法firstvt和lastvt集合">10.5.1 构造优先关系表的算法——FIRSTVT和LASTVT集合</a></li>
-            <li><a href="#1052-构造集合firstvt的算法">10.5.2 构造集合FIRSTVT§的算法</a></li>
-            <li><a href="#1053-构造集合lastvt的算法">10.5.3 构造集合LASTVT§的算法</a></li>
-            <li><a href="#1054-firstvt和lastvt集合计算示例">10.5.4 FIRSTVT和LASTVT集合计算示例</a></li>
-            <li><a href="#1055-构造优先关系表的算法">10.5.5 构造优先关系表的算法</a></li>
-            <li><a href="#1056-示例构造优先关系表">10.5.6 示例：构造优先关系表</a></li>
+            <li><a href="#构造优先关系表的算法firstvt和lastvt集合">构造优先关系表的算法——FIRSTVT和LASTVT集合</a></li>
+            <li><a href="#构造集合firstvt的算法">构造集合FIRSTVT的算法</a></li>
+            <li><a href="#1053-构造集合lastvt的算法">10.5.3 构造集合LASTVT的算法</a></li>
+            <li><a href="#firstvt和lastvt集合计算示例">FIRSTVT和LASTVT集合计算示例</a></li>
+            <li><a href="#构造优先关系表的算法">构造优先关系表的算法</a></li>
+            <li><a href="#示例构造优先关系表">示例：构造优先关系表</a></li>
           </ol>
         </li>
-        <li><a href="#106-算符优先分析算法">10.6 算符优先分析算法</a>
+        <li><a href="#算符优先分析算法">算符优先分析算法</a>
           <ol>
-            <li><a href="#1061-最左素短语">10.6.1 最左素短语</a></li>
-            <li><a href="#1062-最左素短语定理">10.6.2 最左素短语定理</a></li>
-            <li><a href="#1063-算符优先分析算法">10.6.3 算符优先分析算法</a></li>
-            <li><a href="#1064-算符优先分析程序构成">10.6.4 算符优先分析程序构成</a></li>
+            <li><a href="#最左素短语">最左素短语</a></li>
+            <li><a href="#最左素短语定理">最左素短语定理</a></li>
+            <li><a href="#算符优先分析算法-1">算符优先分析算法</a></li>
+            <li><a href="#算符优先分析程序构成">算符优先分析程序构成</a></li>
             <li><a href="#1065-算符优先分析法">10.6.5 算符优先分析法</a></li>
           </ol>
         </li>
@@ -151,58 +151,58 @@
     </li>
     <li><a href="#第11章-自下而上分析2">第11章 自下而上分析2</a>
       <ol>
-        <li><a href="#111-lr分析法概述">11.1 LR分析法概述</a>
+        <li><a href="#lr分析法概述">LR分析法概述</a>
           <ol>
-            <li><a href="#1111-lr分析法">11.1.1 LR分析法</a></li>
-            <li><a href="#1112-工作框架">11.1.2 工作框架</a></li>
+            <li><a href="#lr分析法">LR分析法</a></li>
+            <li><a href="#工作框架">工作框架</a></li>
           </ol>
         </li>
-        <li><a href="#112-句柄和规范归约">11.2 句柄和规范归约</a>
+        <li><a href="#句柄和规范归约">句柄和规范归约</a>
           <ol>
-            <li><a href="#1121-短语直接短语和句柄">11.2.1 短语、直接短语和句柄</a></li>
-            <li><a href="#1122-用句柄归约">11.2.2 用句柄归约</a></li>
-            <li><a href="#1123-规范归约">11.2.3 规范归约</a></li>
-            <li><a href="#1124-算符优先分析vs-规范归约">11.2.4 算符优先分析vs. 规范归约</a></li>
+            <li><a href="#短语直接短语和句柄">短语、直接短语和句柄</a></li>
+            <li><a href="#用句柄归约">用句柄归约</a></li>
+            <li><a href="#规范归约">规范归约</a></li>
+            <li><a href="#算符优先分析vs-规范归约">算符优先分析vs. 规范归约</a></li>
             <li><a href="#1125-规范句型">11.2.5 规范句型</a></li>
           </ol>
         </li>
-        <li><a href="#113-lr分析法">11.3 LR分析法</a>
+        <li><a href="#lr分析法-1">LR分析法</a>
           <ol>
-            <li><a href="#1131-规约的关键">11.3.1 规约的关键</a></li>
-            <li><a href="#1132-lr分析器的结构">11.3.2 LR分析器的结构</a></li>
-            <li><a href="#1133-lr分析表">11.3.3 LR分析表</a></li>
+            <li><a href="#规约的关键">规约的关键</a></li>
+            <li><a href="#lr分析器的结构">LR分析器的结构</a></li>
+            <li><a href="#lr分析表">LR分析表</a></li>
             <li><a href="#1134-lr分析过程">11.3.4 LR分析过程</a></li>
-            <li><a href="#1135-lr分析示例">11.3.5 LR分析示例</a></li>
-            <li><a href="#1136-lr分析器的性质">11.3.6 LR分析器的性质</a></li>
+            <li><a href="#lr分析示例">LR分析示例</a></li>
+            <li><a href="#lr分析器的性质">LR分析器的性质</a></li>
           </ol>
         </li>
-        <li><a href="#114-lr文法">11.4 LR文法</a>
+        <li><a href="#lr文法">LR文法</a>
           <ol>
-            <li><a href="#1141-lr文法">11.4.1 LR文法</a></li>
-            <li><a href="#1142-lr文法与二义文法">11.4.2 LR文法与二义文法</a></li>
+            <li><a href="#lr文法-1">LR文法</a></li>
+            <li><a href="#lr文法与二义文法">LR文法与二义文法</a></li>
           </ol>
         </li>
       </ol>
     </li>
     <li><a href="#第12章-自下而上分析3">第12章 自下而上分析3</a>
       <ol>
-        <li><a href="#121-活前缀">12.1 活前缀</a>
+        <li><a href="#活前缀">活前缀</a>
           <ol>
-            <li><a href="#1211-字的前缀活前缀">12.1.1 字的前缀、活前缀</a></li>
+            <li><a href="#字的前缀活前缀">字的前缀、活前缀</a></li>
           </ol>
         </li>
-        <li><a href="#122-构造识别活前缀的dfa">12.2 构造识别活前缀的DFA</a>
+        <li><a href="#构造识别活前缀的dfa">构造识别活前缀的DFA</a>
           <ol>
-            <li><a href="#1221-文法的拓广">12.2.1 文法的拓广</a></li>
-            <li><a href="#1222-lr0项目">12.2.2 LR(0)项目</a></li>
-            <li><a href="#1223-构造识别文法所有活前缀的dfa">12.2.3 构造识别文法所有活前缀的DFA</a></li>
-            <li><a href="#1224-lr0项目集规范族">12.2.4 LR(0)项目集规范族</a></li>
+            <li><a href="#文法的拓广">文法的拓广</a></li>
+            <li><a href="#lr0项目">LR(0)项目</a></li>
+            <li><a href="#构造识别文法所有活前缀的dfa">构造识别文法所有活前缀的DFA</a></li>
+            <li><a href="#lr0项目集规范族">LR(0)项目集规范族</a></li>
           </ol>
         </li>
-        <li><a href="#123-通过计算项目集规范族构造识别活前缀的dfa">12.3 通过计算项目集规范族构造识别活前缀的DFA</a>
+        <li><a href="#通过计算项目集规范族构造识别活前缀的dfa">通过计算项目集规范族构造识别活前缀的DFA</a>
           <ol>
-            <li><a href="#1231-有效项目">12.3.1 有效项目</a></li>
-            <li><a href="#1232-有效项目的性质">12.3.2 有效项目的性质</a></li>
+            <li><a href="#有效项目">有效项目</a></li>
+            <li><a href="#有效项目的性质">有效项目的性质</a></li>
             <li><a href="#1233-lr0项目集规范族的构造">12.3.3 LR(0)项目集规范族的构造</a></li>
             <li><a href="#1234-项目集的闭包closure">12.3.4 项目集的闭包CLOSURE</a></li>
             <li><a href="#1235-状态转换函数">12.3.5 状态转换函数</a></li>
@@ -286,7 +286,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/">编译原理-语法分析-自下而上分析</a>
+            <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/">编译原理第十、十一、十二章、十三章-语法分析-自下而上分析</a>
         </h2>
     
         
@@ -316,8 +316,8 @@
             
             
                         最后修改:
-                        <time class="article-time--updated" datetime="2025-03-19 23:19:20 &#43;0800 CST" title="2025-03-19 23:19:20 &#43;0800 CST">
-                            2025-03-19
+                        <time class="article-time--updated" datetime="2025-03-30 23:42:26 &#43;0800 CST" title="2025-03-30 23:42:26 &#43;0800 CST">
+                            2025-03-30
                         </time>
 
             
@@ -340,79 +340,34 @@
     <section class="article-content">
     
     
-    <h1 id="笔记-编译原理-第十十一十二章十三章-语法分析-自下而上分析">笔记-编译原理-第十、十一、十二章、十三章-语法分析-自下而上分析
-</h1><h2 id="自下而上分析1">自下而上分析1
+    <h1 id="编译原理-第十十一十二章十三章-语法分析-自下而上分析">编译原理-第十、十一、十二章、十三章-语法分析-自下而上分析
+</h1><h2 id="自下而上分析-1">自下而上分析 1
 </h2><h3 id="自下而上分析">自下而上分析
 </h3><h4 id="自下而上分析的一个示例">自下而上分析的一个示例
-</h4><p>可以看出自下而上分析的主要步骤是不断的用文法来“规约”，最后找到一种句型的表示<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/396360e90620a02b1bfc0701948f38f9.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="示例"
-	
-	
-></p>
-<h4 id="1012-自下而上分析的基本思想">10.1.2 自下而上分析的基本思想
+</h4><p>可以看出自下而上分析的主要步骤是不断的用文法来“规约”，最后找到一种句型的表示</p>
+<img src="images/01.png" alt="示例" style="zoom:50%;" />
+<h4 id="自下而上分析的基本思想">自下而上分析的基本思想
 </h4><ul>
 <li>采用 <code>“移进－归约”</code> 思想进行自下而上分析</li>
-<li>基本思想: 用一个寄存符号的先进后出栈，把输入符号一个一 个地移进到栈里，当栈顶形成某个产生式的候选式 时，即把栈顶的这一部分替换成(归约为)该产生式的 左部符号。</li>
+<li>基本思想: 用一个寄存符号的先进后出栈，把输入符号一个一个地移进到栈里，当<strong>栈顶形成</strong>某个<strong>产生式的候选式</strong>时，即把栈顶的这一部分替换成(<strong>归约为</strong>)该产生式的<strong>左部符号</strong>。</li>
 </ul>
 <h4 id="1013-移进归约分析示例">10.1.3 移进－归约分析示例
-</h4><p>其中每一步的操作都可以构成语法树（分析树）的一部分。<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/ec2cf4d1ef1e93deb290ceb5005d2dcb.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="示例"
-	
-	
-></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/172eeda07995c94c58e6e27382b3b729.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="问题"
-	
-	
-></p>
-<p>什么是可归约串：短语</p>
-<h3 id="102-短语与直接短语">10.2 短语与直接短语
-</h3><h4 id="1021-短语">10.2.1 短语
+</h4><p>其中每一步的操作都可以构成语法树（分析树）的一部分。</p>
+<img src="images/02.png" alt="示例" style="zoom:50%;" />
+<img src="images/03.png" alt="问题" style="zoom:50%;" />
+<p><strong>可归约串：短语</strong></p>
+<h3 id="短语与直接短语">短语与直接短语
+</h3><h4 id="短语">短语
 </h4><ul>
-<li>定义：令G是一个文法，S是文法的开始符号， 假定  α β δ αβδ αβδ 是文法G的一个句型，如果有  S ⇒ ∗ α A δ 且 A ⇒ + β S⇒^∗αAδ且A⇒^+β S⇒∗αAδ且A⇒+β 则 β称是句型  α β δ αβδ αβδ 相对于非终结符A的短</li>
-<li>如果有  A ⇒ β A⇒β A⇒β ,则称  β β β 是句型  α β δ αβδ αβδ 相对于规则  A → β A→β A→β 的 <code>直接短语</code>。</li>
+<li>定义：令G是一个文法，S是文法的开始符号， 假定  α β δ 是文法G的一个句型，如果有  S =*=&gt;  α A δ 且 A =+=&gt; β 则称 β 是句型  α β δ 相对于非终结符A的短语</li>
+<li>如果有  A ⇒ β , 则称  β 是句型  α β δ 相对于规则  A → β 的 <code>直接短语</code>。</li>
 </ul>
-<h4 id="1022-测试短语和直接短语">10.2.2 测试：短语和直接短语
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/79cb0bbf02732bfc4539e2a00323ab04.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="直接短语与短语"
-	
-	
-></p>
+<h4 id="测试短语和直接短语">测试：短语和直接短语
+</h4><img src="images/04.png" alt="直接短语与短语" style="zoom:50%;" />
 <h3 id="103-分析过程描述">10.3 分析过程描述
-</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/ea9330e4f2a9c199fbf2d214b65be6f6.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="一个分析过程描述"
-	
-	
-></p>
-<h3 id="104-算符优先文法">10.4 算符优先文法
-</h3><h4 id="1041-算符优先文法">10.4.1 算符优先文法
+</h3><img src="images/05.png" alt="一个分析过程描述" style="zoom:50%;" />
+<h3 id="算符优先文法">算符优先文法
+</h3><h4 id="算符优先文法-1">算符优先文法
 </h4><p>算符优先分析法:</p>
 <ul>
 <li>按照算符的优先关系和结合性质进行语法分析</li>
@@ -422,254 +377,145 @@
 <ul>
 <li>规范归约：句柄作为可归约串</li>
 </ul>
-<h4 id="1042-运算的优先级">10.4.2 运算的优先级
-</h4><p>四则运算的优先规则: 先乘除后加减，同级从左到右</p>
-<p>考虑文法G’(E)： E →i| E+E | E-E | E*E | E/E | (E) : <code>句子i+i-i*(i+i)有几种不同的归约</code> :<img src="https://i-blog.csdnimg.cn/blog_migrate/ed5ebafba8014819f7a5217ca8cf091b.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="不同的规约得到的分析树"
-	
-	
-></p>
-<p>归约顺序不同，计算的顺序也不 同，结果也不一样；归约顺序不同，计算的顺序也不 同，结果也不一样。</p>
-<p>句子i+i-i*(i+i)的归约过程：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/851fa580743d204477d7701f7ae42b61.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="规约过程"
-	
-	
-></p>
-<h4 id="1043-优先关系">10.4.3 优先关系
+<h4 id="运算的优先级">运算的优先级
+</h4><p>四则运算的优先规则: 先乘除后加减, 同级从左到右</p>
+<p>考虑文法G’(E)： E → i| E + E | E - E | E * E | E / E | ( E ) : <code>句子 i+i-i*(i+i) 有几种不同的归约</code> :</p>
+<img src="images/06.png" alt="不同的规约得到的分析树" style="zoom: 67%;" />
+<p>归约顺序不同，计算的顺序也不同，结果也不一样。</p>
+<p>句子 i + i - i * ( i + i ) 的归约过程：</p>
+<img src="images/07.png" alt="规约过程" style="zoom: 67%;" />
+<h4 id="优先关系">优先关系
 </h4><p>任何两个可能相继出现的终结符a与b可能三种 优先关系 ：</p>
 <ul>
-<li>a ⋖ b a \lessdot b a⋖b a的优先级低于b</li>
-<li>a ≐ b a \doteq b a≐b a的优先级等于b （这里的点是在等号中间的，找不到对应的latex了，就用在上面的表示了，有知道的告诉我一下，谢谢啦）</li>
-<li>a ⋗ b a \gtrdot b a⋗b a的优先级高于b</li>
+<li>a ⋖ b  a的优先级低于b</li>
+<li>a ≐ b  a的优先级等于b （这里的点是在等号中间）</li>
+<li>a ⋗ b a的优先级高于b</li>
 </ul>
-<p>算符优先关系与数学上的&lt;&gt;=不同 :</p>
+<p>算符优先关系与数学上的 &lt;&gt;= 不同 :</p>
 <ul>
-<li>+ ⋖ + + \lessdot + +⋖+</li>
-<li>a ⋖ b a \lessdot b a⋖b 并不意味着  b ⋗ a b \gtrdot a b⋗a 如  ( ⋖ + 和 + ⋖ ( ( \lessdot + 和 + \lessdot ( (⋖+和+⋖(</li>
+<li>+ ⋖ +</li>
+<li>a ⋖ b  并不意味着  b ⋗ a 如  ( ⋖ + 和 + ⋖ (</li>
 </ul>
-<h4 id="1044-算符文法">10.4.4 算符文法
-</h4><p>一个文法，如果它的任一产生式的右部都不含 两个相继(并列)的非终结符，即不含  … Q R … …QR… …QR… 形式的产生式右部，则我们称该文法为算符文法。</p>
+<h4 id="算符文法">算符文法
+</h4><p>一个文法，如果它的任一产生式的右部都<strong>不含两个相继(并列)的非终结符</strong>，即不含  … Q R … 形式的产生式右部，则我们称该文法为<strong>算符文法</strong>。</p>
 <p>约定：</p>
 <ul>
 <li>a、b代表任意终结符</li>
 <li>P、Q、R代表任意非终结符</li>
-<li>‘…’代表由终结符和非终结符组成的任意序列，包括空字</li>
+<li>‘ … ’代表由终结符和非终结符组成的任意序列，包括空字</li>
 </ul>
-<h4 id="1045-算符优先文法">10.4.5 算符优先文法
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/e3b63c6e28dfc8b44d5a4d7d2a30baea.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="算符优先文法"
-	
-	
-></p>
-<p>示例：算符优先文法：<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/3633c550224e6c1dc6779b1725ce7c5c.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="示例"
-	
-	
-></p>
-<p>对应的优先关系表：<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/55ff980c9d04efa67532a601433c6600.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="优先关系表"
-	
-	
-></p>
-<h3 id="105-构造优先关系表">10.5 构造优先关系表
-</h3><h4 id="1051-构造优先关系表的算法firstvt和lastvt集合">10.5.1 构造优先关系表的算法——FIRSTVT和LASTVT集合
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/ecf3923c00f130800e967b5027dd39f4.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="定义"
-	
-	
-></p>
-<p>根据FIRSTVT和LASTVT集合，检查每个产生式 的候选式，确定满足关系  ⋖ \lessdot ⋖ 和  ⋗ \gtrdot ⋗ 的所有终结符对 ：</p>
+<h4 id="算符优先文法-2">算符优先文法
+</h4><img src="images/08.png" alt="算符优先文法" style="zoom: 67%;" />
+<p>示例：算符优先文法：</p>
+<img src="images/09.png" alt="示例" style="zoom:67%;" />
+<p>对应的优先关系表：</p>
+<img src="images/10.png" alt="优先关系表" style="zoom:67%;" />
+<h3 id="构造优先关系表">构造优先关系表
+</h3><h4 id="构造优先关系表的算法firstvt和lastvt集合">构造优先关系表的算法——FIRSTVT和LASTVT集合
+</h4><img src="images/11.png" alt="定义" style="zoom:67%;" />
+<p>根据FIRSTVT和LASTVT集合，检查每个产生式的候选式，确定满足关系  ⋖  和  ⋗ 的所有终结符对 ：</p>
 <ul>
-<li>假定有个产生式的一个候选形为…aP…，那么，对 任何  b ∈ F I R S T V T ( P ) b∈FIRSTVT(P) b∈FIRSTVT(P) ，有  a ⋖ b a \lessdot b a⋖b</li>
-<li>假定有个产生式的一个候选形为…Pb…，那么，对 任何  a ∈ L A S T V T ( P ) a∈LASTVT(P) a∈LASTVT(P) ，有  a ⋗ b a \gtrdot b a⋗b</li>
+<li>假定有个产生式的一个候选形为…aP…，那么，对 任何  b ∈ FIRSTVT( P ) ，有  a ⋖ b</li>
+<li>假定有个产生式的一个候选形为…Pb…，那么，对 任何  a ∈ LASTVT ( P ) ，有  a ⋗ b</li>
 </ul>
-<h4 id="1052-构造集合firstvt的算法">10.5.2 构造集合FIRSTVT§的算法
-</h4><p>反复使用下面两条规则构造集合  F I R S T V T ( P ) FIRSTVT(P) FIRSTVT(P) :</p>
+<h4 id="构造集合firstvt的算法">构造集合FIRSTVT的算法
+</h4><p>反复使用下面两条规则构造集合 FIRSTVT( P ) :</p>
 <ul>
-<li>若有产生式  P → a … P→a… P→a… 或  P → Q a … P→Qa… P→Qa… ，则  a ∈ F I R S T V T ( P ) a∈FIRSTVT(P) a∈FIRSTVT(P)</li>
-<li>若  a ∈ F I R S T V T ( Q ) a∈FIRSTVT(Q) a∈FIRSTVT(Q) ，且有产生式  P → Q … P→Q… P→Q… ，则  a ∈ F I R S T V T ( P ) a∈FIRSTVT(P) a∈FIRSTVT(P)</li>
+<li>若有产生式  P → a … 或  P → Q a … ，则 a ∈ FIRSTVT( P )</li>
+<li>若  a ∈ FIRSTVT(Q) ，且有产生式  P → Q … ，则 a ∈ FIRSTVT( P )</li>
 </ul>
 <p>算法的一种实现:</p>
 <ul>
-<li><code>布尔数组F[P，a]</code> ，使得F[P，a]为真的条件是，当且 仅当a∈FIRSTVT§。开始时，按上述的规则1对每 个数组元素F[P，a]赋初值。</li>
+<li><code>布尔数组F[P，a]</code> ，使得F[P，a]为真的条件是，当且 仅当 a ∈ FIRSTVT。开始时，按上述的规则1对每个数组元素F[P，a]赋初值。</li>
 <li><code>栈STACK</code> ，把所有初值为真的数组元素F[P，a]的符 号对(P，a)全都放在STACK之中。</li>
-<li>若栈STACK不空，就将栈顶项弹出，记此项为 <code>(Q， a)</code> 。对于每个形如 <code>P→Q…</code> 的产生式，若F[P，a]为假， 则变其值为真且将 <code>(P，a)</code> 推进STACK栈。</li>
+<li>若栈STACK不空，就将栈顶项弹出，记此项为 <code>(Q， a)</code> 。对于每个形如 <code>P → Q…</code> 的产生式，若F[P，a]为假， 则变其值为真且将 <code>(P， a)</code> 推进STACK栈。</li>
 <li>上述过程一直重复，直至栈STACK为空为止。</li>
 </ul>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/268c143f3f369f8c16c33c6a08f82a26.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="实现"
-	
-	
-></p>
-<p>算法的工作结果得到一个二维数组F，从它可得 任何非终结符P的FIRSTVT  F I R S T V T ( P ) ＝ { a ∣ F [ P ， a ] = T R U E } FIRSTVT(P)＝\{a | F[P，a]=TRUE\} FIRSTVT(P)＝{a∣F[P，a]=TRUE}</p>
-<h4 id="1053-构造集合lastvt的算法">10.5.3 构造集合LASTVT§的算法
+<img src="images/12.png" alt="实现" style="zoom:67%;" />
+<p>算法的工作结果得到一个二维数组F，从它可得 任何非终结符 P 的FIRSTVT FIRSTVT( P ) ＝ { a ∣ F[P，a] = TRUE }</p>
+<h4 id="1053-构造集合lastvt的算法">10.5.3 构造集合LASTVT的算法
 </h4><p>同样的思想：</p>
-<p>反复使用下面两条规则构造集合LASTVT§</p>
+<p>反复使用下面两条规则构造集合LASTVT</p>
 <ul>
-<li>若有产生式  P → … a P→… a P→…a 或  P → … a Q P→ … aQ P→…aQ ，则  a ∈ L A S T V T ( P ) a∈LASTVT(P) a∈LASTVT(P)</li>
-<li>若  a ∈ L A S T V T ( Q ) a∈LASTVT(Q) a∈LASTVT(Q) ，且有产生式  P → … Q P→… Q P→…Q，则  a ∈ L A S T V T ( P ) a∈LASTVT(P) a∈LASTVT(P)</li>
+<li>若有产生式  P → … a 或  P → … a Q ，则  a ∈ LASTVT( P )</li>
+<li>若 a ∈ LASTVT( Q ) ，且有产生式 P→…Q，则 a ∈ LASTVT( P )</li>
 </ul>
-<h4 id="1054-firstvt和lastvt集合计算示例">10.5.4 FIRSTVT和LASTVT集合计算示例
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/39d3f83032f93a84af6c372b4818ebf9.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="示例"
-	
-	
-></p>
-<h4 id="1055-构造优先关系表的算法">10.5.5 构造优先关系表的算法
+<h4 id="firstvt和lastvt集合计算示例">FIRSTVT和LASTVT集合计算示例
+</h4><img src="images/13.png" alt="示例" style="zoom: 50%;" />
+<h4 id="构造优先关系表的算法">构造优先关系表的算法
 </h4><ul>
-<li>通过检查G的每个产生式的每个候选式，可找 出所有满足  a ≐ b a \doteq b a≐b 的终结符对。</li>
-<li>根据FIRSTVT和LASTVT集合，检查每个产生式 的候选式，确定满足关系  ⋖ \lessdot ⋖ 和  ⋗ \gtrdot ⋗ 的所有终结符对
+<li>通过检查G的每个产生式的每个候选式，可找 出所有满足a ≐ b 的终结符对。</li>
+<li>根据 FIRSTVT 和 LASTVT 集合，检查每个产生式 的候选式，确定满足关系 ⋖ 和  ⋗ 的所有终结符对
 <ul>
-<li>假定有个产生式的一个候选形为  … a P … …aP… …aP… ，那么，对 任何  b ∈ F I R S T V T ( P ) b∈FIRSTVT(P) b∈FIRSTVT(P) ，有  a ⋖ b a \lessdot b a⋖b</li>
-<li>假定有个产生式的一个候选形为  … P b … …Pb… …Pb… ，那么，对 任何  a ∈ L A S T V T ( P ) a∈LASTVT(P) a∈LASTVT(P) ，有  a ⋗ b a \gtrdot b a⋗b</li>
+<li>假定有个产生式的一个候选形为  … a P … ，那么，对任何 b ∈ FIRSTVT( P ) ，有 a⋖b</li>
+<li>假定有个产生式的一个候选形为  … P b … ，那么，对任何 a ∈ LASTVT( P ) ，有  a ⋗ b</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/64eee9f957695dd74f6d9ebe858fa302.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="伪码实现"
-	
-	
-></p>
-<h4 id="1056-示例构造优先关系表">10.5.6 示例：构造优先关系表
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/23fdb68ffc9b7364a03f6f7276416e48.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="示例"
-	
-	
-><br>
-对于#的判断可以通过句型： <code>#E#</code> 来判断。</p>
+<img src="images/14.png" alt="伪码实现" style="zoom:67%;" />
+<h4 id="示例构造优先关系表">示例：构造优先关系表
+</h4><img src="images/15.png" alt="示例" style="zoom: 50%;" />  
+对于#的判断可以通过句型： `#E#` 来判断。
 <p>没有任何两个终结符之间是有多个关系的，所以该文法是一个算符优先文法。</p>
-<h3 id="106-算符优先分析算法">10.6 算符优先分析算法
-</h3><h4 id="1061-最左素短语">10.6.1 最左素短语
+<h3 id="算符优先分析算法">算符优先分析算法
+</h3><h4 id="最左素短语">最左素短语
 </h4><ul>
 <li>可归约串，句型，短语</li>
-<li>一个文法G的句型的 <code>素短语</code> 是指这样一个短语， 它至少含有一个终结符，并且，除它自身之外 不再含任何更小的素短语</li>
+<li>一个文法G的句型的 <code>素短语</code> 是指这样一个短语， 它至少含有一个终结符，并且，除它自身之外不再含任何更小的素短语</li>
 <li><code>最左素短语</code> 是指处于句型左边的那个素短语<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/a2758f7b29a57d285c4b59e30fffd340.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="示例"
-	
-	
-></li>
+<img src="images/16.png" alt="示例" style="zoom: 50%;" /></li>
 </ul>
-<h4 id="1062-最左素短语定理">10.6.2 最左素短语定理
+<h4 id="最左素短语定理">最左素短语定理
 </h4><ul>
-<li>算符优先文法句型(括在两个＃之间)的一般形式：  # N 1 a 1 N 2 a 2 … N n a n N n + 1 # \#N_1a_1N_2a_2…N_na_nN_{n+1}\# #N1​a1​N2​a2​…Nn​an​Nn+1​# 其中，  a i a_i ai​ 都是终结符， N i N_i Ni​ 是可有可无的非终结符。</li>
-<li>定理：一个算符优先文法G的任何句型的左素短语是 满足如下条件的左子串  N j a j … N i a i N i + 1 N_ja_j…N_ia_iN_{i+1} Nj​aj​…Ni​ai​Ni+1​ ， 且：
+<li>算符优先文法句型(括在两个＃之间)的一般形式: # N1 a1 N2 a2 … Nn an Nn+1 # 其中，ai 都是终结符， Ni 是可有可无的非终结符。</li>
+<li>定理：一个算符优先文法G的任何句型的左素短语是满足如下条件的左子串  Nj aj … Ni ai Ni+1 ，且：
 <ul>
-<li>a j − 1 ⋖ a j a_{j-1} \lessdot a_j aj−1​⋖aj​</li>
-<li>a j ≐ a j + 1 , … , a i − 1 ≐ a i a_j \doteq a_{j+1}, \dots,a_{i-1} \doteq a_i aj​≐aj+1​,…,ai−1​≐ai​</li>
-<li>a i ⋗ a i + 1 a_i \gtrdot a_{i+1} ai​⋗ai+1​<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/d22843c518f306e8d3c7c644bd47425f.png"
-	
-	
-	
+<li>aj−1 ⋖ aj</li>
+<li>aj ≐ aj+1 , … , ai−1 ≐ ai</li>
+<li>ai ⋗ a i+1<img src="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/17.png"
+	width="1173"
+	height="83"
+	srcset="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/17_hu12041762843210410023.png 480w, /Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/17_hu2754469671330357255.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="1413"
+		data-flex-basis="3391px"
 	
 ></li>
 </ul>
 </li>
 </ul>
-<h4 id="1063-算符优先分析算法">10.6.3 算符优先分析算法
+<h4 id="算符优先分析算法-1">算符优先分析算法
 </h4><ul>
 <li>使用一个符号栈S，用它寄存终结符和非终结符， k代表符号栈S的使用深度</li>
 <li>在正确的情况下，算法工作完毕时，符号栈S应 呈现：# N #</li>
 </ul>
 <p>整个算法的执行如下：<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/ebb8dff679bc4cc100f85e5dc8775d0d.png"
-	
-	
-	
+<img src="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/18.png"
+	width="2145"
+	height="1659"
+	srcset="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/18_hu4699451663395058850.png 480w, /Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/18_hu9481015405006522399.png 1024w"
 	loading="lazy"
 	
 		alt="算符优先分析算法"
 	
 	
-></p>
-<p>根据上面的规约那一部分的算法可知：对于文法的句子来说，它的算符优先分析的结果 <strong>不一定</strong> 就是语法树，所以语法树和分析树要分开指代，这章一开始便已强调：<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/827d72cdbc21f5913d3af65289997bf3.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="示例"
-	
+		class="gallery-image" 
+		data-flex-grow="129"
+		data-flex-basis="310px"
 	
 ></p>
-<h4 id="1064-算符优先分析程序构成">10.6.4 算符优先分析程序构成
+<p>根据上面的规约那一部分的算法可知：对于文法的句子来说，它的算符优先分析的结果 <strong>不一定</strong> 就是语法树，所以语法树和分析树要分开指代，这章一开始便已强调：</p>
+<img src="images/19.png" alt="示例" style="zoom: 50%;" />
+<h4 id="算符优先分析程序构成">算符优先分析程序构成
 </h4><ul>
 <li><code>总控程序</code> ，根据现行栈顶符号和当前输入符号， 执行动作</li>
 <li><code>优先关系表</code> ，用于指导总控程序进行移进-归约</li>
-<li><code>分析栈STACK</code> ，用于存放文法符号<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/e31fdf8f2444a5c6bb9eba5e26ec33ce.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="程序"
-	
-	
-></li>
+<li><code>分析栈STACK</code> ，用于存放文法符号</li>
 </ul>
+<img src="images/20.png" alt="程序" style="zoom:50%;" />
 <h4 id="1065-算符优先分析法">10.6.5 算符优先分析法
 </h4><p>特点:</p>
 <ul>
@@ -678,118 +524,61 @@
 </ul>
 <p>使用广泛,用于分析各类表达式 如，ALGOL 60</p>
 <h2 id="第11章-自下而上分析2">第11章 自下而上分析2
-</h2><h3 id="111-lr分析法概述">11.1 LR分析法概述
-</h3><h4 id="1111-lr分析法">11.1.1 LR分析法
+</h2><h3 id="lr分析法概述">LR分析法概述
+</h3><h4 id="lr分析法">LR分析法
 </h4><ul>
 <li>1965年由Knuth提出</li>
 <li>L：从左到右扫描输入串</li>
 <li>R：自下而上进行归约</li>
 </ul>
-<h4 id="1112-工作框架">11.1.2 工作框架
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/51306f7fdc1f1ce59e4d21e62d2eeaf3.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="工作框架"
-	
-	
-></p>
-<h3 id="112-句柄和规范归约">11.2 句柄和规范归约
-</h3><h4 id="1121-短语直接短语和句柄">11.2.1 短语、直接短语和句柄
+<h4 id="工作框架">工作框架
+</h4><img src="images/21.png" alt="工作框架" style="zoom:67%;" />
+<h3 id="句柄和规范归约">句柄和规范归约
+</h3><h4 id="短语直接短语和句柄">短语、直接短语和句柄
 </h4><ul>
-<li><code>短语</code> :定义：令G是一个文法，S是文法的开始符号， 假定αβδ是文法G的一个句型，如果有  S ⇒ ∗ α A δ 且 A ⇒ + β S⇒^*αAδ且A⇒^+β S⇒∗αAδ且A⇒+β ，则称  β β β 是句型  α β δ αβδ αβδ 相对于非终结符A的短语。</li>
-<li><code>直接短语</code> : 如果有  A ⇒ β A⇒β A⇒β ,则称β是句型  α β δ αβδ αβδ 相对于规则  A → β A→β A→β 的直接短语。</li>
+<li><code>短语</code></li>
+<li><code>直接短语</code></li>
 <li><code>句柄</code> :一个句型的左直接短语称为该句型的句柄。</li>
 </ul>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d28e676cf920935bd3ca9e2315c51734.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="示例"
-	
-	
-></p>
-<h4 id="1122-用句柄归约">11.2.2 用句柄归约
+<img src="images/22.png" alt="示例" style="zoom:50%;" />
+<h4 id="用句柄归约">用句柄归约
 </h4><p>可用句柄来对句子进行归约:</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e8e79c4fd9c568e501c24fd5e652b240.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="示例"
-	
-	
-></p>
-<h4 id="1123-规范归约">11.2.3 规范归约
-</h4><p>定义：假定  α α α 是文法G的一个句子，我们称序列  α n ， α n − 1 ， … ， α_n，α_{n-1}，…， αn​，αn−1​，…， α 0 α_0 α0​ 是  α α α 的一个规范归约，如果此序列满足：</p>
+<img src="images/23.png" alt="示例" style="zoom: 50%;" />
+<h4 id="规范归约">规范归约
+</h4><p>定义：假定  α 是文法G的一个句子，我们称序列  αn​，αn−1​，…，α0 是  α 的一个规范归约，如果此序列满足：</p>
 <ul>
-<li>α n = α α_n= α αn​=α</li>
-<li>α 0 α_0 α0​ 为文法的开始符号，即  α 0 = S α_0=S α0​=S</li>
-<li>对任何i， 0 ≤ i ≤ n 0≤i≤n 0≤i≤n ， α i − 1 α_{i-1} αi−1​是从  α i α_i αi​ 经把句柄替换成为相应产生式左部符号而得到的</li>
+<li>αn ​= α</li>
+<li>α0​ 为文法的开始符号，即 α0 ​= S</li>
+<li>对任何 i ， 0 ≤ i ≤ n ， αi−1是从 αi​ 经把句柄替换成为相应产生式左部符号而得到的</li>
 </ul>
-<h4 id="1124-算符优先分析vs-规范归约">11.2.4 算符优先分析vs. 规范归约
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/6d74f85dfcc508e64dcae284c4358966.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
+<h4 id="算符优先分析vs-规范归约">算符优先分析vs. 规范归约
+</h4><img src="images/24.png" style="zoom:50%;" />
 <h4 id="1125-规范句型">11.2.5 规范句型
 </h4><ul>
 <li><code>规范归约</code> 是最左归约</li>
-<li>规范归约的逆过程就是右推导  S ⇒ a A c B e ⇒ a A c d e ⇒ a A b c d e ⇒ a b b c d e S⇒aAcBe⇒aAcde⇒aAbcde⇒abbcde S⇒aAcBe⇒aAcde⇒aAbcde⇒abbcde</li>
+<li>规范归约的逆过程就是右推导  S ⇒ aAcBe ⇒ aAcde ⇒ aAbcde ⇒ abbcde</li>
 <li>右推导也称为 <code>规范推导</code></li>
 <li>由规范推导推出的句型称为 <code>规范句型</code></li>
 </ul>
-<h3 id="113-lr分析法">11.3 LR分析法
-</h3><h4 id="1131-规约的关键">11.3.1 规约的关键
+<h3 id="lr分析法-1">LR分析法
+</h3><h4 id="规约的关键">规约的关键
 </h4><p>规范归约的关键问题是寻找句柄.</p>
 <ul>
 <li><code>历史</code> ：已移入符号栈的内容</li>
 <li><code>展望</code> ：根据产生式推测未来可能遇到的输入符号</li>
 <li><code>现实</code> ：当前的输入符号</li>
 </ul>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/65405eaf6b625d72470cef9c9ac463bf.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<h4 id="1132-lr分析器的结构">11.3.2 LR分析器的结构
+<img src="images/25.png" style="zoom:50%;" />
+<h4 id="lr分析器的结构">LR分析器的结构
 </h4><p>LR分析方法：把 <code>&quot;历史&quot;</code> 及 <code>&quot;展望&quot;</code> 综合抽象成<code>状态</code> ；由栈顶的 <code>状态</code> 和 <code>现行的输入符号</code> 唯一确定每一步工作:</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/7e2f4770d8e9a7ac1a36795d13160857.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<h4 id="1133-lr分析表">11.3.3 LR分析表
+<img src="images/26.png" style="zoom:50%;" />
+<h4 id="lr分析表">LR分析表
 </h4><p>LR分析器的核心是一张分析表:</p>
 <ul>
 <li><code>ACTION[s，a]</code> ：当状态s面临输入符号a时，应采取什么动作.</li>
 <li><code>GOTO[s，X]</code> ：状态s面对文法符号X时，下一状态是什么</li>
 </ul>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e88b3a8b427fb78eeb0173b5f7b874b7.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="LR分析表"
-	
-	
-></p>
+<img src="images/27.png" alt="LR分析表" style="zoom:50%;" />
 <h4 id="1134-lr分析过程">11.3.4 LR分析过程
 </h4><ul>
 <li>分析开始时：</li>
@@ -804,9 +593,9 @@
 </thead>
 <tbody>
 <tr>
-<td>( s 0 , (s_0, (s0​,</td>
-<td># , \#, #,</td>
-<td>a 1 a 2 … a n # ) a_1a_2 …a_n\#) a1​a2​…an​#)</td>
+<td>( s0​ ,</td>
+<td># ,</td>
+<td>a1​ a2​ … an​ #)</td>
 </tr>
 </tbody>
 </table></div>
@@ -823,148 +612,98 @@
 </thead>
 <tbody>
 <tr>
-<td>( s 0 s 1 … s m , (s_0s_1…s_m, (s0​s1​…sm​,</td>
-<td># X 1 … X m , \# X_1…X_m, #X1​…Xm​,</td>
-<td>a i a i + 1 … a n # ) a_ia_{i+1} …a_n\#) ai​ai+1​…an​#)</td>
+<td>( s0 ​s1 ​… sm​,</td>
+<td># X1 ​… Xm​ ,</td>
+<td>ai ​ai+1 ​… an ​#)</td>
 </tr>
 </tbody>
 </table></div>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/5bda0be5c2d6b98daf576b7849fb2c99.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="分析过程"
-	
-	
-></p>
-<h4 id="1135-lr分析示例">11.3.5 LR分析示例
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/5f9e3fc510353fa8d3fa8fc59281073b.png"
-	
-	
-	
+<img src="images/28.png" alt="分析过程" style="zoom:50%;" />
+<h4 id="lr分析示例">LR分析示例
+</h4><p><img src="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/29.png"
+	width="2810"
+	height="1052"
+	srcset="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/29_hu10905943389030383615.png 480w, /Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/29_hu14168828511985959934.png 1024w"
 	loading="lazy"
 	
 		alt="示例"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="267"
+		data-flex-basis="641px"
+	
 ></p>
-<h4 id="1136-lr分析器的性质">11.3.6 LR分析器的性质
+<h4 id="lr分析器的性质">LR分析器的性质
 </h4><ul>
 <li>栈内的符号串和扫描剩下的输入符号串构成了一个规范句型</li>
 <li>一旦栈的顶部出现可归约串(句柄)，则进行规约</li>
 </ul>
 <p>对于句子，在规范归约过程中，栈内的符号串 和扫描剩下的输入符号串构成了一个规范句型， 下面哪种格局不会出现：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a9deb5c7dda167f99ea4735fb5d527be.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<h3 id="114-lr文法">11.4 LR文法
-</h3><h4 id="1141-lr文法">11.4.1 LR文法
+<img src="images/30.png" style="zoom:50%;" />
+<h3 id="lr文法">LR文法
+</h3><h4 id="lr文法-1">LR文法
 </h4><ul>
 <li>定义：对于一个文法，如果能够构造一张分析表，使得它的每个入口均是唯一确定的，则这 个文法就称为 <code>LR文法</code> 。</li>
 <li>定义：一个文法，如果能用一个每步顶多向前检查k个输入符号的LR分析器进行分析，则这 个文法就称为 <code>LR(k)文法</code> 。</li>
 </ul>
-<h4 id="1142-lr文法与二义文法">11.4.2 LR文法与二义文法
+<h4 id="lr文法与二义文法">LR文法与二义文法
 </h4><ul>
-<li>LR文法不是二义的，二义文法肯定不会是LR的</li>
-<li>LR文法⊂无二义文法</li>
-<li>非LR结构:<img src="https://i-blog.csdnimg.cn/blog_migrate/b3232c8baf9998ddc536a6a843156947.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></li>
+<li>
+<p>LR文法不是二义的，二义文法肯定不会是LR的</p>
+</li>
+<li>
+<p>LR文法⊂无二义文法</p>
+</li>
+<li>
+<p>非LR结构:</p>
+<img src="images/31.png" style="zoom: 67%;" />
+</li>
 </ul>
 <h2 id="第12章-自下而上分析3">第12章 自下而上分析3
-</h2><h3 id="121-活前缀">12.1 活前缀
-</h3><h4 id="1211-字的前缀活前缀">12.1.1 字的前缀、活前缀
+</h2><h3 id="活前缀">活前缀
+</h3><h4 id="字的前缀活前缀">字的前缀、活前缀
 </h4><ul>
-<li><code>字的前缀</code> ：是指字的任意首部，如字 abc 的前缀 有ε， a ， ab ， abc</li>
-<li><code>活前缀</code> ：是指 <code>规范句型</code> 的一个前缀，这种前缀不含 <code>句柄</code> 之后的任何符号。即，对于规范句型  α β δ αβδ αβδ ， β β β 为句柄，如果  α β = u 1 u 2 … u r αβ=u_1u_2…u_r αβ=u1​u2​…ur​，则符号串  u 1 u 2 … u i ( 1 ≤ i ≤ r ) u_1u_2…u_i(1≤i≤r) u1​u2​…ui​(1≤i≤r) 是  α β δ αβδ αβδ 的 <code>活前缀</code> 。(  δ δ δ 必为终结符串)</li>
+<li><code>字的前缀</code> ：是指字的任意首部，如字 abc 的前缀有: ε， a ， ab ， abc</li>
+<li><code>活前缀</code> ：是指 <code>规范句型</code> 的一个前缀，这种前缀不含 <code>句柄</code> 之后的任何符号。即，对于规范句型  α β δ  ，β 为句柄，如果  αβ = u1 ​u2​ … ur​，则符号串   u1 ​u2 ​… ui ​(1≤i≤r)  是  α β δ 的 <code>活前缀</code> 。(  δ 必为终结符串)</li>
 <li>规范归约过程中，保证分析栈中总是 <code>活前缀</code> ， 就说明分析采取的移进/归约动作是正确的</li>
 </ul>
-<p>对于一个文法G, 可以构造一个DFA,它能识别G 的所有活前缀。</p>
-<h3 id="122-构造识别活前缀的dfa">12.2 构造识别活前缀的DFA
-</h3><h4 id="1221-文法的拓广">12.2.1 文法的拓广
-</h4><p>将文法  G ( S ) G(S) G(S) 拓广为  G ′ ( S ) G&rsquo;(S) G′(S) :</p>
+<p>对于一个文法G, 可以构造一个DFA, 它能识别G 的所有活前缀。</p>
+<h3 id="构造识别活前缀的dfa">构造识别活前缀的DFA
+</h3><h4 id="文法的拓广">文法的拓广
+</h4><p>将文法G( S ) 拓广为  G′ ( S ) :</p>
 <ul>
-<li>构造文法  G ′ G&rsquo; G′ ，它包含了整个  G G G ，并引进不出现在  G G G 中的非终结符  S ′ S&rsquo; S′ 、以及产生式  S ′ → S S&rsquo;→S S′→S ， S ′ S&rsquo; S′ 是  G ′ G&rsquo; G′ 的开始符号</li>
-<li>称  G ′ G&rsquo; G′ 是  G G G 的拓广文法</li>
+<li>构造文法 G′ ，它包含了整个 G ，并引进不出现在 G 中的非终结符 S′ 、以及产生式 S′ → S ,  S′ 是  G′ 的开始符号</li>
+<li>称 G′ 是  G 的拓广文法</li>
 </ul>
-<h4 id="1222-lr0项目">12.2.2 LR(0)项目
+<h4 id="lr0项目">LR(0)项目
 </h4><ul>
-<li>LR(0)项目: 在每个产生式的右部添加一个圆点，表示我们在分析过程中看到了产生式多大部分</li>
-<li>例如：  A → X Y Z A→XYZ A→XYZ 有四个项目： A → • X Y Z A → X • Y Z A → X Y • Z A → X Y Z • A→•XYZ \ A→X•YZ \ A→XY•Z \ A→XYZ• A→•XYZ A→X•YZ A→XY•Z A→XYZ•</li>
-<li>A → α • A→α• A→α• 称为 <code>&quot;归约项目&quot;</code> （把点看成识别的指针，识别到产生的末表示可以用这个产生式的左部代替）</li>
-<li>归约项目  S ′ → α • S&rsquo;→α• S′→α• 称为 <code>&quot;接受项目&quot;</code>（表示识别到文法的拓广文法的开始，也就是当前读入的单词被识别到了）</li>
-<li>A → α • a β ( a ∈ V T ) A→α•aβ(a∈VT) A→α•aβ(a∈VT) 称为 <code>&quot;移进项目&quot;</code></li>
-<li>A → α • B β ( B ∈ V N ) A→α•Bβ(B∈VN) A→α•Bβ(B∈VN) 称为 <code>&quot;待约项目&quot;</code></li>
+<li>LR( 0 )项目:  在每个产生式的右部添加一个圆点，表示我们在分析过程中看到了产生式多大部分</li>
+<li>例如：  A → XYZ 有四个项目：A → •XYZ ,  A → X•YZ ,  A → XY•Z ,  A → XYZ•</li>
+<li>A → α• 称为 <code>&quot;归约项目&quot;</code> （把点看成识别的指针，识别到产生的末表示可以用这个产生式的左部代替）</li>
+<li>归约项目  S′ → α•  称为 <code>&quot;接受项目&quot;</code>（表示识别到文法的拓广文法的开始，也就是当前读入的单词被识别到）</li>
+<li>A → α • a β ( a ∈ VT )  称为 <code>&quot;移进项目&quot;</code></li>
+<li>A → α • B β ( B ∈ VN ) 称为 <code>&quot;待约项目&quot;</code></li>
 </ul>
-<p>示例：<img src="https://i-blog.csdnimg.cn/blog_migrate/f947f362bc989cadf9610ebb3cf46bc9.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="示例"
-	
-	
-></p>
-<h4 id="1223-构造识别文法所有活前缀的dfa">12.2.3 构造识别文法所有活前缀的DFA
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/88d5863b0db354e832888de91ebc7afb.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<p>对于上面那个文法的一个NFA就是：<img src="https://i-blog.csdnimg.cn/blog_migrate/65fac2bf3f7190568a92f3e5e8103b17.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="NFA"
-	
-	
-></p>
-<p>然后按照前面的套路将NFA变为DFA：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a0915c7c43d1fc6c100cdfbddf658e3d.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="DFA"
-	
-	
-></p>
-<h4 id="1224-lr0项目集规范族">12.2.4 LR(0)项目集规范族
-</h4><p>构成识别一个文法活前缀的DFA的项目集(状 态)的全体称为文法的 <code>LR(0)项目集规范族</code> 。</p>
-<p>如上图中的每一个状态中的一些项目组成的集合就是一个个 项目集规范族：<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/ab82b78feed7954888cf3c1c2921b039.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<h3 id="123-通过计算项目集规范族构造识别活前缀的dfa">12.3 通过计算项目集规范族构造识别活前缀的DFA
-</h3><h4 id="1231-有效项目">12.3.1 有效项目
-</h4><p>项目  A → β 1 • β 2 A→β_1•β_2 A→β1​•β2​ 对活前缀  α β 1 αβ_1 αβ1​ 是有效的，其条件是存在规范推导：  S ′ ⇒ R ∗ α A ω ⇒ R ∗ α β 1 β 2 ω S&rsquo; ⇒^<em>_R αAω⇒^</em>_Rα \beta_1 \beta_2ω S′⇒R∗​αAω⇒R∗​αβ1​β2​ω</p>
+<p>示例：</p>
+<img src="images/32.png" alt="示例" style="zoom:80%;" />
+<h4 id="构造识别文法所有活前缀的dfa">构造识别文法所有活前缀的DFA
+</h4><img src="images/33.png" style="zoom:67%;" />
+<p>对于上面那个文法的一个 NFA 就是：</p>
+<img src="images/34.png" alt="NFA" style="zoom: 50%;" />
+<p>然后按照前面的套路将 NFA 变为 DFA ：</p>
+<img src="images/35.png" alt="DFA" />
+<h4 id="lr0项目集规范族">LR(0)项目集规范族
+</h4><p>构成识别一个文法活前缀的 DFA 的项目集(状 态)的全体称为文法的 <code>LR(0)项目集规范族</code> 。</p>
+<p>如上图中的每一个状态中的一些项目组成的集合就是一个个项目集规范族：</p>
+<img src="images/36.png" style="zoom:50%;" />
+<h3 id="通过计算项目集规范族构造识别活前缀的dfa">通过计算项目集规范族构造识别活前缀的DFA
+</h3><h4 id="有效项目">有效项目
+</h4><hr>
+<p>项目  A → β1 • β2 对活前缀  αβ1 是有效的，其条件是存在规范推导：  S ′ ⇒ R ∗ α A ω ⇒ R ∗ α β 1 β 2 ω S&rsquo; ⇒^<em>_R αAω⇒^</em>_Rα \beta_1 \beta_2ω S′⇒R∗​αAω⇒R∗​αβ1​β2​ω</p>
 <p>在任何时候，分析栈中的活前缀  X 1 X 2 … X m X_1X_2… X_m X1​X2​…Xm​ 的有效项目集正是从 识别活前缀的DFA的 初态出发，读出  X 1 X 2 … X m X_1X_2… X_m X1​X2​…Xm​ 后到达的那个项目集(状态)。</p>
 <p><del>（应该可以理解为当一个活前缀的后缀是某个项目的前缀时，就称这个项目是这个活前缀的一个有效项目，因为只要当活前缀的后缀加上一定的后续的读入就可以规约到这个项目的左部）</del></p>
-<h4 id="1232-有效项目的性质">12.3.2 有效项目的性质
+<h4 id="有效项目的性质">有效项目的性质
 </h4><p>若项目  A → α • B β A→α•Bβ A→α•Bβ 对活前缀  η = δ α η=δα η=δα 是有效的且  B → γ B→γ B→γ 是一个产生式，则项目  B → • γ B →•γ B→•γ 对  η = δ α η=δα η=δα 也是有效的。</p>
 <p>证明：<img src="https://i-blog.csdnimg.cn/blog_migrate/538d9b8388a71296f389b4c24e596847.png"
 	
@@ -1298,7 +1037,7 @@ END
 
 
         <span>
-            最后更新于 2025-03-19
+            最后更新于 2025-03-30
         </span>
     </section></footer>
 
@@ -1517,7 +1256,7 @@ END
         
     
     发表了11篇文章 · 
-    总计64.54k字
+    总计62.95k字
 </section>
 
 </footer>
