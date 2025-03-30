@@ -28,7 +28,7 @@
 <meta property='og:description' content="编译原理第四、五、六章 词法分析 知识点, 主要内容来自CSDN pi31415926535x, 结合学习的内容进行删改">
 <meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/'>
 <meta property='og:site_name' content='羡余'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-20T16:30:03&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-30T22:10:11&#43;08:00'/>
 <meta name="twitter:title" content="编译原理-词法分析">
 <meta name="twitter:description" content="编译原理第四、五、六章 词法分析 知识点, 主要内容来自CSDN pi31415926535x, 结合学习的内容进行删改">
     <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
@@ -143,7 +143,7 @@
             <li><a href="#dfa识别字符串的定义">DFA识别字符串的定义</a></li>
           </ol>
         </li>
-        <li><a href="#53-非确定有限自动机nfa">5.3 非确定有限自动机（NFA）</a>
+        <li><a href="#非确定有限自动机nfa">非确定有限自动机（NFA）</a>
           <ol>
             <li><a href="#非确定有限自动机nfa的定义">非确定有限自动机（NFA）的定义</a></li>
             <li><a href="#从状态图看nfa和dfa的区别">从状态图看NFA和DFA的区别</a></li>
@@ -155,7 +155,7 @@
     </li>
     <li><a href="#第六章-词法分析三">第六章 词法分析（三）</a>
       <ol>
-        <li><a href="#61-有限自动机的等价性">6.1 有限自动机的等价性</a>
+        <li><a href="#有限自动机的等价性">有限自动机的等价性</a>
           <ol>
             <li><a href="#dfa与nfa的等价性">DFA与NFA的等价性</a></li>
             <li><a href="#dfa与nfa的等价性证明">DFA与NFA的等价性证明</a></li>
@@ -173,6 +173,7 @@
       </ol>
     </li>
     <li><a href="#习题">习题</a></li>
+    <li><a href="#参考">参考</a></li>
   </ol>
 </nav>
         </div>
@@ -230,8 +231,8 @@
             
             
                         最后修改:
-                        <time class="article-time--updated" datetime="2025-03-20 16:30:03 &#43;0800 CST" title="2025-03-20 16:30:03 &#43;0800 CST">
-                            2025-03-20
+                        <time class="article-time--updated" datetime="2025-03-30 22:10:11 &#43;0800 CST" title="2025-03-30 22:10:11 &#43;0800 CST">
+                            2025-03-30
                         </time>
 
             
@@ -254,7 +255,8 @@
     <section class="article-content">
     
     
-    <h1 id="编译原理-第四五六章-词法分析">编译原理-第四、五、六章-词法分析
+    <img src="images/小鸟游六花.png" alt="小鸟游六花" style="zoom: 50%;" />
+<h1 id="编译原理-第四五六章-词法分析">编译原理-第四、五、六章-词法分析
 </h1><h2 id="第四章-词法分析一">第四章 词法分析（一）
 </h2><h3 id="词法分析概述">词法分析概述
 </h3><h4 id="词法分析的任务">词法分析的任务
@@ -355,12 +357,12 @@
 <h4 id="正规式和正规集的递归定义">正规式和正规集的递归定义
 </h4><p>对给定的字母表  Σ :</p>
 <ul>
-<li>ε 和  ∅ 都是  Σ Σ Σ 上的正规式，它们所表示的正规集为  { ε } 和  ∅ ;</li>
+<li>ε 和  ∅ 都是  Σ 上的正规式，它们所表示的正规集为  { ε } 和  ∅ ;</li>
 <li>任何  a ∈ Σ ， a 是  Σ 上的正规式，它所表示的正规集为  { a } ;</li>
-<li>假定 e<span style="vertical-align:sub;">1</span> 和  e<span style="vertical-align:sub;">2</span> 都是  Σ 上的正规式，它们所表示 的正规集为  L ( e 1 )和  L ( e 2 )  ，则
+<li>假定 e<span style="vertical-align:sub;">1</span> 和  e<span style="vertical-align:sub;">2</span> 都是  Σ 上的正规式，它们所表示 的正规集为  L ( e<span style="vertical-align:sub;">1</span> )和  L ( e<span style="vertical-align:sub;">2</span> )  ，则
 <ul>
-<li>( e 1 ∣ e 2 )  为正规式，它所表示的正规集为  L ( e 1 ) ∪ L ( e 2 )</li>
-<li>( e 1 . e 2 ) 为正规式，它所表示的正规集为  L ( e 1 ) L ( e 2 )</li>
+<li>( e<span style="vertical-align:sub;">1</span> ∣ e<span style="vertical-align:sub;">2</span> )  为正规式，它所表示的正规集为  L ( e<span style="vertical-align:sub;">1</span> ) ∪ L ( e<span style="vertical-align:sub;">2</span> )</li>
+<li>( e<span style="vertical-align:sub;">1</span> · e<span style="vertical-align:sub;">2</span> ) 为正规式，它所表示的正规集为  L ( e<span style="vertical-align:sub;">1</span> ) L ( e<span style="vertical-align:sub;">2</span> )</li>
 <li>( e<span style="vertical-align:sub;">1</span> )*为正规式，它所表示的正规集为  ( L ( e<span style="vertical-align:sub;">1</span> ) ) *</li>
 </ul>
 </li>
@@ -412,83 +414,50 @@
 <img src="images/13.png" alt="两个特殊的DFA" style="zoom:50%;" />
 <p>将DFA中的各个状态函数写成矩阵的形式，也就是状态矩阵，这样就可以利用前面的词法分析程序：</p>
 <img src="images/14.png" alt="词法分析程序" style="zoom:50%;" />
-<h3 id="53-非确定有限自动机nfa">5.3 非确定有限自动机（NFA）
+<h3 id="非确定有限自动机nfa">非确定有限自动机（NFA）
 </h3><h4 id="非确定有限自动机nfa的定义">非确定有限自动机（NFA）的定义
-</h4><p>一个简单的NFA状态图： <img src="https://i-blog.csdnimg.cn/blog_migrate/d35cf749746c64e2e9f88b606452a46f.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="NFA状态图"
-	
-	
-></p>
+</h4><p>一个简单的NFA状态图：</p>
+<img src="images/15.png" alt="NFA状态图" style="zoom:50%;" />
 <p>（大部分定义与DFA一致）</p>
-<p>一个 <code>非确定有限自动机 (Nondeterministic Finite Automata，NFA)</code> M M M 是一个五元式  M = ( S , Σ , f , S 0 , F ) M=(S, Σ, f, S_0, F) M=(S,Σ,f,S0​,F) ，其中：</p>
+<p>一个 <code>非确定有限自动机 (Nondeterministic Finite Automata，NFA)</code> M 是一个五元式  M = ( S , Σ , f , S<span style="vertical-align:sub;">0</span> , F ) ，其中：</p>
 <ul>
-<li>S S S :有穷 <code>状态集</code></li>
-<li>Σ Σ Σ ：输入 <code>字母表</code> (有穷)</li>
-<li>f f f : <code>状态转换函数</code>，为  S × Σ ∗ → 2 S \color{#0CF}{S×Σ^*→2^S} S×Σ∗→2S 的部分映射 <strong>这里的 2 S 2^S 2S 指的是  S S S 的幂级，即  S S S 所有的子集的集合</strong> ，这样就表明从一个状态出发可能有多个不同的状态，体现非确定这一特点</li>
-<li>S 0 ⊆ S \color{#0CF}{S_0⊆S} S0​⊆S 是非空的 <code>初态集</code> ，这里与 DFA 不同，DFA处的  S 0 S_0 S0​ 的定义是 <strong>属于</strong> 某个状态集合，而这里是某一 <strong>些</strong> 集合作为自动机的初态，这也体现着非确定这一特点</li>
-<li>F ⊆ S F⊆S F⊆S ：<code>终态集</code> (可空)</li>
+<li>S :有穷 <code>状态集</code></li>
+<li>Σ ：输入 <code>字母表</code> (有穷)</li>
+<li>f : <code>状态转换函数</code>，为  S × Σ<span style="vertical-align:super;">∗</span> → 2<span style="vertical-align:super;">S</span> 的部分映射。这里的 2<span style="vertical-align:super;">S</span> 指的是 S 的幂级，即 S 所有的子集的集合，这样就表明从一个状态出发可能有多个不同的状态，体现非确定这一特点</li>
+<li>S<span style="vertical-align:sub;">0</span> ⊆ S 是非空的 <code>初态集</code> ，这里与 DFA 不同，DFA处的 S<span style="vertical-align:sub;">0</span> 的定义是 <strong>属于</strong> 某个状态集合，而这里是某一 <strong>些</strong> 集合作为自动机的初态，这也体现着非确定这一特点</li>
+<li>F ⊆ S：<code>终态集</code> (可空)</li>
 </ul>
-<p>（个人理解：可以将自动机看作一幅图（网络），每个节点代表一种状态，边权为符合某一值时表示联通，DFA每个节点出发的边的限制条件不同，且为字符限制，而NFA的每一个节点出发的边的限制条件可以相同，即多个通路，而且是字符串的限制，并且前者仅有一个源点，后者可以有多个源点 <del>（一个不显示的超级源点？？嘿嘿）</del> ）</p>
+<p>（理解：可以将自动机看作一幅图（网络），每个节点代表一种状态，边权为符合某一值时表示联通， DFA 每个节点出发的边的限制条件不同，且为字符限制，而 NFA 的每一个节点出发的边的限制条件可以相同，即多个通路，而且是字符串的限制，并且前者仅有一个源点，后者可以有多个源点 ）</p>
 <h4 id="从状态图看nfa和dfa的区别">从状态图看NFA和DFA的区别
 </h4><ul>
-<li>NFA可以有多个 <code>初态</code></li>
-<li>弧上的标记可以是  Σ ∗ Σ^* Σ∗ 中的一个 <code>字</code> (甚至可以是一个 <code>正规式</code> )，而不 一定是单个字符</li>
+<li>NFA 可以有多个 <code>初态</code></li>
+<li>弧上的标记可以是  Σ* 中的一个 <code>字</code> (甚至可以是一个 <code>正规式</code> )，而不 一定是单个字符</li>
 <li><code>同一个字</code> 可能出现在同状态射出的 <code>多条弧</code> 上</li>
 </ul>
 <p>DFA是NFA的特例</p>
 <h4 id="nfa识别字符串的定义">NFA识别字符串的定义
 </h4><ul>
-<li>对于  Σ ∗ Σ^* Σ∗ 中的任何字  α α α ，若存在一条从初态到某一终态的道路，且这条路上所有弧上的标记字连 接成的字等于  α α α (忽略那些标记为  ε ε ε 的弧)，则称  α α α为NFAM所 <code>识别(接收)</code></li>
-<li>NFA M所识别的字的全体记为  L ( M ) L(M) L(M)</li>
+<li>对于  Σ* 中的任何字 α ，若存在一条从初态到某一终态的道路，且这条路上所有弧上的标记字连 接成的字等于 α (忽略那些标记为 ε 的弧)，则称 α 为 NFA  M 所 <code>识别(接收)</code></li>
+<li>NFA M 所识别的字的全体记为  L ( M )</li>
 </ul>
-<p>一个识别含有aa或bb的字符串的NFA：<img src="https://i-blog.csdnimg.cn/blog_migrate/1ccbbc30bad135154fbfd396ddf8fbc7.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="识别含有aa或bb的NFA"
-	
-	
-></p>
+<p>一个识别含有aa或bb的字符串的NFA：</p>
+<img src="images/16.png" alt="识别含有aa或bb的NFA" style="zoom:50%;" />
 <p>可以看出左图的DFA也可以完成相同的功能；</p>
-<p>一个识别特定语言的NFA：<br>
-<img src="https://i-blog.csdnimg.cn/blog_migrate/bd562759f2f6d7e4650f967fb3acf1da.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="一个识别特定语言的NFA"
-	
-	
-></p>
+<p>一个识别特定语言的NFA：</p>
+<img src="images/17.png" alt="一个识别特定语言的NFA" style="zoom:50%;" />
 <h4 id="dfa和nfa">DFA和NFA
 </h4><ul>
-<li>定义：对于任何两个有限自动机M和  M ′ M&rsquo; M′ ，如果  L ( M ) = L ( M ′ ) L(M)=L(M&rsquo;) L(M)=L(M′) ，则称  M M M 与 M ′ M&rsquo; M′ <code>等价</code></li>
+<li>定义：对于任何两个有限自动机 M 和 M′ ，如果  L ( M ) = L ( M′ ) ，则称 M 与 M′ <code>等价</code></li>
 <li>自动机理论中一个重要的结论：<code>判定两个自动机等价性的算法是存在的</code></li>
-<li>对于每个NFA M存在一个DFA  M ′ M&rsquo; M′ ，使得  L ( M ) = L ( M ′ ) L(M)=L(M&rsquo;) L(M)=L(M′)</li>
+<li>对于每个 NFA M 存在一个 DFA  M′ ，使得  L ( M ) = L ( M′ )</li>
 <li><code>DFA与NFA识别能力相同!</code> （如上面的那个识别含有aa或bb字符串的自动机）</li>
 </ul>
 <h2 id="第六章-词法分析三">第六章 词法分析（三）
-</h2><h3 id="61-有限自动机的等价性">6.1 有限自动机的等价性
+</h2><h3 id="有限自动机的等价性">有限自动机的等价性
 </h3><h4 id="dfa与nfa的等价性">DFA与NFA的等价性
-</h4><p>对于每个NFA  M M M 存在一个DFA  M ′ M&rsquo; M′，使得  L ( M ) = L ( M ′ ) L(M)=L(M&rsquo;) L(M)=L(M′) ，包括： <em>等价性证明</em> 和 <em>NFA的确定化</em></p>
-<p>可以从 **NFA 和DFA的差别 ** 入手：<img src="https://i-blog.csdnimg.cn/blog_migrate/fb7a6dba0213a8940d1c548ad33eeb9d.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="NFA和DFA的差别"
-	
-	
-></p>
+</h4><p>对于每个NFA  M 存在一个DFA M′，使得  L ( M ) = L ( M ′ ) ，包括： <em>等价性证明</em> 和 <em>NFA的确定化</em></p>
+<p>可以从 **NFA 和DFA的差别 ** 入手：</p>
+<img src="images/18.png" alt="NFA和DFA的差别" style="zoom:50%;" />
 <p>所以只要消除差别就可以实现两者的转化，也就是等价</p>
 <h4 id="dfa与nfa的等价性证明">DFA与NFA的等价性证明
 </h4><h5 id="等价性证明">等价性证明
@@ -883,6 +852,13 @@
 	
 ><br>
 (end)</p>
+<hr>
+<h2 id="参考">参考
+</h2><ul>
+<li>学习所用，转自<a class="link" href="https://blog.csdn.net/pi31415926535x/article/details/104554776?spm=1001.2014.3001.5502"  target="_blank" rel="noopener"
+    >CSDN </a></li>
+<li>《程序设计语言编译原理》</li>
+</ul>
 
 </section>
 
@@ -901,7 +877,7 @@
 
 
         <span>
-            最后更新于 2025-03-20
+            最后更新于 2025-03-30
         </span>
     </section></footer>
 
@@ -1120,7 +1096,7 @@
         
     
     发表了11篇文章 · 
-    总计64.29k字
+    总计64.54k字
 </section>
 
 </footer>

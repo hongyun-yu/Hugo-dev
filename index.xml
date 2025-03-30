@@ -12,7 +12,8 @@
         <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90/</guid>
-        <description>&lt;h1 id=&#34;编译原理-第四五六章-词法分析&#34;&gt;编译原理-第四、五、六章-词法分析
+        <description>&lt;img src=&#34;images/小鸟游六花.png&#34; alt=&#34;小鸟游六花&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;h1 id=&#34;编译原理-第四五六章-词法分析&#34;&gt;编译原理-第四、五、六章-词法分析
 &lt;/h1&gt;&lt;h2 id=&#34;第四章-词法分析一&#34;&gt;第四章 词法分析（一）
 &lt;/h2&gt;&lt;h3 id=&#34;词法分析概述&#34;&gt;词法分析概述
 &lt;/h3&gt;&lt;h4 id=&#34;词法分析的任务&#34;&gt;词法分析的任务
@@ -113,12 +114,12 @@
 &lt;h4 id=&#34;正规式和正规集的递归定义&#34;&gt;正规式和正规集的递归定义
 &lt;/h4&gt;&lt;p&gt;对给定的字母表  Σ :&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;ε 和  ∅ 都是  Σ Σ Σ 上的正规式，它们所表示的正规集为  { ε } 和  ∅ ;&lt;/li&gt;
+&lt;li&gt;ε 和  ∅ 都是  Σ 上的正规式，它们所表示的正规集为  { ε } 和  ∅ ;&lt;/li&gt;
 &lt;li&gt;任何  a ∈ Σ ， a 是  Σ 上的正规式，它所表示的正规集为  { a } ;&lt;/li&gt;
-&lt;li&gt;假定 e&lt;span style=&#34;vertical-align:sub;&#34;&gt;1&lt;/span&gt; 和  e&lt;span style=&#34;vertical-align:sub;&#34;&gt;2&lt;/span&gt; 都是  Σ 上的正规式，它们所表示 的正规集为  L ( e 1 )和  L ( e 2 )  ，则
+&lt;li&gt;假定 e&lt;span style=&#34;vertical-align:sub;&#34;&gt;1&lt;/span&gt; 和  e&lt;span style=&#34;vertical-align:sub;&#34;&gt;2&lt;/span&gt; 都是  Σ 上的正规式，它们所表示 的正规集为  L ( e&lt;span style=&#34;vertical-align:sub;&#34;&gt;1&lt;/span&gt; )和  L ( e&lt;span style=&#34;vertical-align:sub;&#34;&gt;2&lt;/span&gt; )  ，则
 &lt;ul&gt;
-&lt;li&gt;( e 1 ∣ e 2 )  为正规式，它所表示的正规集为  L ( e 1 ) ∪ L ( e 2 )&lt;/li&gt;
-&lt;li&gt;( e 1 . e 2 ) 为正规式，它所表示的正规集为  L ( e 1 ) L ( e 2 )&lt;/li&gt;
+&lt;li&gt;( e&lt;span style=&#34;vertical-align:sub;&#34;&gt;1&lt;/span&gt; ∣ e&lt;span style=&#34;vertical-align:sub;&#34;&gt;2&lt;/span&gt; )  为正规式，它所表示的正规集为  L ( e&lt;span style=&#34;vertical-align:sub;&#34;&gt;1&lt;/span&gt; ) ∪ L ( e&lt;span style=&#34;vertical-align:sub;&#34;&gt;2&lt;/span&gt; )&lt;/li&gt;
+&lt;li&gt;( e&lt;span style=&#34;vertical-align:sub;&#34;&gt;1&lt;/span&gt; · e&lt;span style=&#34;vertical-align:sub;&#34;&gt;2&lt;/span&gt; ) 为正规式，它所表示的正规集为  L ( e&lt;span style=&#34;vertical-align:sub;&#34;&gt;1&lt;/span&gt; ) L ( e&lt;span style=&#34;vertical-align:sub;&#34;&gt;2&lt;/span&gt; )&lt;/li&gt;
 &lt;li&gt;( e&lt;span style=&#34;vertical-align:sub;&#34;&gt;1&lt;/span&gt; )*为正规式，它所表示的正规集为  ( L ( e&lt;span style=&#34;vertical-align:sub;&#34;&gt;1&lt;/span&gt; ) ) *&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -170,83 +171,50 @@
 &lt;img src=&#34;images/13.png&#34; alt=&#34;两个特殊的DFA&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;将DFA中的各个状态函数写成矩阵的形式，也就是状态矩阵，这样就可以利用前面的词法分析程序：&lt;/p&gt;
 &lt;img src=&#34;images/14.png&#34; alt=&#34;词法分析程序&#34; style=&#34;zoom:50%;&#34; /&gt;
-&lt;h3 id=&#34;53-非确定有限自动机nfa&#34;&gt;5.3 非确定有限自动机（NFA）
+&lt;h3 id=&#34;非确定有限自动机nfa&#34;&gt;非确定有限自动机（NFA）
 &lt;/h3&gt;&lt;h4 id=&#34;非确定有限自动机nfa的定义&#34;&gt;非确定有限自动机（NFA）的定义
-&lt;/h4&gt;&lt;p&gt;一个简单的NFA状态图： &lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/d35cf749746c64e2e9f88b606452a46f.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;NFA状态图&#34;
-	
-	
-&gt;&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;一个简单的NFA状态图：&lt;/p&gt;
+&lt;img src=&#34;images/15.png&#34; alt=&#34;NFA状态图&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;（大部分定义与DFA一致）&lt;/p&gt;
-&lt;p&gt;一个 &lt;code&gt;非确定有限自动机 (Nondeterministic Finite Automata，NFA)&lt;/code&gt; M M M 是一个五元式  M = ( S , Σ , f , S 0 , F ) M=(S, Σ, f, S_0, F) M=(S,Σ,f,S0​,F) ，其中：&lt;/p&gt;
+&lt;p&gt;一个 &lt;code&gt;非确定有限自动机 (Nondeterministic Finite Automata，NFA)&lt;/code&gt; M 是一个五元式  M = ( S , Σ , f , S&lt;span style=&#34;vertical-align:sub;&#34;&gt;0&lt;/span&gt; , F ) ，其中：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;S S S :有穷 &lt;code&gt;状态集&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Σ Σ Σ ：输入 &lt;code&gt;字母表&lt;/code&gt; (有穷)&lt;/li&gt;
-&lt;li&gt;f f f : &lt;code&gt;状态转换函数&lt;/code&gt;，为  S × Σ ∗ → 2 S \color{#0CF}{S×Σ^*→2^S} S×Σ∗→2S 的部分映射 &lt;strong&gt;这里的 2 S 2^S 2S 指的是  S S S 的幂级，即  S S S 所有的子集的集合&lt;/strong&gt; ，这样就表明从一个状态出发可能有多个不同的状态，体现非确定这一特点&lt;/li&gt;
-&lt;li&gt;S 0 ⊆ S \color{#0CF}{S_0⊆S} S0​⊆S 是非空的 &lt;code&gt;初态集&lt;/code&gt; ，这里与 DFA 不同，DFA处的  S 0 S_0 S0​ 的定义是 &lt;strong&gt;属于&lt;/strong&gt; 某个状态集合，而这里是某一 &lt;strong&gt;些&lt;/strong&gt; 集合作为自动机的初态，这也体现着非确定这一特点&lt;/li&gt;
-&lt;li&gt;F ⊆ S F⊆S F⊆S ：&lt;code&gt;终态集&lt;/code&gt; (可空)&lt;/li&gt;
+&lt;li&gt;S :有穷 &lt;code&gt;状态集&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Σ ：输入 &lt;code&gt;字母表&lt;/code&gt; (有穷)&lt;/li&gt;
+&lt;li&gt;f : &lt;code&gt;状态转换函数&lt;/code&gt;，为  S × Σ&lt;span style=&#34;vertical-align:super;&#34;&gt;∗&lt;/span&gt; → 2&lt;span style=&#34;vertical-align:super;&#34;&gt;S&lt;/span&gt; 的部分映射。这里的 2&lt;span style=&#34;vertical-align:super;&#34;&gt;S&lt;/span&gt; 指的是 S 的幂级，即 S 所有的子集的集合，这样就表明从一个状态出发可能有多个不同的状态，体现非确定这一特点&lt;/li&gt;
+&lt;li&gt;S&lt;span style=&#34;vertical-align:sub;&#34;&gt;0&lt;/span&gt; ⊆ S 是非空的 &lt;code&gt;初态集&lt;/code&gt; ，这里与 DFA 不同，DFA处的 S&lt;span style=&#34;vertical-align:sub;&#34;&gt;0&lt;/span&gt; 的定义是 &lt;strong&gt;属于&lt;/strong&gt; 某个状态集合，而这里是某一 &lt;strong&gt;些&lt;/strong&gt; 集合作为自动机的初态，这也体现着非确定这一特点&lt;/li&gt;
+&lt;li&gt;F ⊆ S：&lt;code&gt;终态集&lt;/code&gt; (可空)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;（个人理解：可以将自动机看作一幅图（网络），每个节点代表一种状态，边权为符合某一值时表示联通，DFA每个节点出发的边的限制条件不同，且为字符限制，而NFA的每一个节点出发的边的限制条件可以相同，即多个通路，而且是字符串的限制，并且前者仅有一个源点，后者可以有多个源点 &lt;del&gt;（一个不显示的超级源点？？嘿嘿）&lt;/del&gt; ）&lt;/p&gt;
+&lt;p&gt;（理解：可以将自动机看作一幅图（网络），每个节点代表一种状态，边权为符合某一值时表示联通， DFA 每个节点出发的边的限制条件不同，且为字符限制，而 NFA 的每一个节点出发的边的限制条件可以相同，即多个通路，而且是字符串的限制，并且前者仅有一个源点，后者可以有多个源点 ）&lt;/p&gt;
 &lt;h4 id=&#34;从状态图看nfa和dfa的区别&#34;&gt;从状态图看NFA和DFA的区别
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;NFA可以有多个 &lt;code&gt;初态&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;弧上的标记可以是  Σ ∗ Σ^* Σ∗ 中的一个 &lt;code&gt;字&lt;/code&gt; (甚至可以是一个 &lt;code&gt;正规式&lt;/code&gt; )，而不 一定是单个字符&lt;/li&gt;
+&lt;li&gt;NFA 可以有多个 &lt;code&gt;初态&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;弧上的标记可以是  Σ* 中的一个 &lt;code&gt;字&lt;/code&gt; (甚至可以是一个 &lt;code&gt;正规式&lt;/code&gt; )，而不 一定是单个字符&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;同一个字&lt;/code&gt; 可能出现在同状态射出的 &lt;code&gt;多条弧&lt;/code&gt; 上&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;DFA是NFA的特例&lt;/p&gt;
 &lt;h4 id=&#34;nfa识别字符串的定义&#34;&gt;NFA识别字符串的定义
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;对于  Σ ∗ Σ^* Σ∗ 中的任何字  α α α ，若存在一条从初态到某一终态的道路，且这条路上所有弧上的标记字连 接成的字等于  α α α (忽略那些标记为  ε ε ε 的弧)，则称  α α α为NFAM所 &lt;code&gt;识别(接收)&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;NFA M所识别的字的全体记为  L ( M ) L(M) L(M)&lt;/li&gt;
+&lt;li&gt;对于  Σ* 中的任何字 α ，若存在一条从初态到某一终态的道路，且这条路上所有弧上的标记字连 接成的字等于 α (忽略那些标记为 ε 的弧)，则称 α 为 NFA  M 所 &lt;code&gt;识别(接收)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;NFA M 所识别的字的全体记为  L ( M )&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;一个识别含有aa或bb的字符串的NFA：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/1ccbbc30bad135154fbfd396ddf8fbc7.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;识别含有aa或bb的NFA&#34;
-	
-	
-&gt;&lt;/p&gt;
+&lt;p&gt;一个识别含有aa或bb的字符串的NFA：&lt;/p&gt;
+&lt;img src=&#34;images/16.png&#34; alt=&#34;识别含有aa或bb的NFA&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;可以看出左图的DFA也可以完成相同的功能；&lt;/p&gt;
-&lt;p&gt;一个识别特定语言的NFA：&lt;br&gt;
-&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/bd562759f2f6d7e4650f967fb3acf1da.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;一个识别特定语言的NFA&#34;
-	
-	
-&gt;&lt;/p&gt;
+&lt;p&gt;一个识别特定语言的NFA：&lt;/p&gt;
+&lt;img src=&#34;images/17.png&#34; alt=&#34;一个识别特定语言的NFA&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;h4 id=&#34;dfa和nfa&#34;&gt;DFA和NFA
 &lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;定义：对于任何两个有限自动机M和  M ′ M&amp;rsquo; M′ ，如果  L ( M ) = L ( M ′ ) L(M)=L(M&amp;rsquo;) L(M)=L(M′) ，则称  M M M 与 M ′ M&amp;rsquo; M′ &lt;code&gt;等价&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;定义：对于任何两个有限自动机 M 和 M′ ，如果  L ( M ) = L ( M′ ) ，则称 M 与 M′ &lt;code&gt;等价&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;自动机理论中一个重要的结论：&lt;code&gt;判定两个自动机等价性的算法是存在的&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;对于每个NFA M存在一个DFA  M ′ M&amp;rsquo; M′ ，使得  L ( M ) = L ( M ′ ) L(M)=L(M&amp;rsquo;) L(M)=L(M′)&lt;/li&gt;
+&lt;li&gt;对于每个 NFA M 存在一个 DFA  M′ ，使得  L ( M ) = L ( M′ )&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;DFA与NFA识别能力相同!&lt;/code&gt; （如上面的那个识别含有aa或bb字符串的自动机）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;第六章-词法分析三&#34;&gt;第六章 词法分析（三）
-&lt;/h2&gt;&lt;h3 id=&#34;61-有限自动机的等价性&#34;&gt;6.1 有限自动机的等价性
+&lt;/h2&gt;&lt;h3 id=&#34;有限自动机的等价性&#34;&gt;有限自动机的等价性
 &lt;/h3&gt;&lt;h4 id=&#34;dfa与nfa的等价性&#34;&gt;DFA与NFA的等价性
-&lt;/h4&gt;&lt;p&gt;对于每个NFA  M M M 存在一个DFA  M ′ M&amp;rsquo; M′，使得  L ( M ) = L ( M ′ ) L(M)=L(M&amp;rsquo;) L(M)=L(M′) ，包括： &lt;em&gt;等价性证明&lt;/em&gt; 和 &lt;em&gt;NFA的确定化&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;可以从 **NFA 和DFA的差别 ** 入手：&lt;img src=&#34;https://i-blog.csdnimg.cn/blog_migrate/fb7a6dba0213a8940d1c548ad33eeb9d.png&#34;
-	
-	
-	
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;NFA和DFA的差别&#34;
-	
-	
-&gt;&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;对于每个NFA  M 存在一个DFA M′，使得  L ( M ) = L ( M ′ ) ，包括： &lt;em&gt;等价性证明&lt;/em&gt; 和 &lt;em&gt;NFA的确定化&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;可以从 **NFA 和DFA的差别 ** 入手：&lt;/p&gt;
+&lt;img src=&#34;images/18.png&#34; alt=&#34;NFA和DFA的差别&#34; style=&#34;zoom:50%;&#34; /&gt;
 &lt;p&gt;所以只要消除差别就可以实现两者的转化，也就是等价&lt;/p&gt;
 &lt;h4 id=&#34;dfa与nfa的等价性证明&#34;&gt;DFA与NFA的等价性证明
 &lt;/h4&gt;&lt;h5 id=&#34;等价性证明&#34;&gt;等价性证明
@@ -641,6 +609,13 @@
 	
 &gt;&lt;br&gt;
 (end)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;学习所用，转自&lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/pi31415926535x/article/details/104554776?spm=1001.2014.3001.5502&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;CSDN &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;《程序设计语言编译原理》&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
@@ -649,7 +624,8 @@
         <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
         
         <guid>https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E5%AF%BC%E5%AD%A6/</guid>
-        <description>&lt;h1 id=&#34;编译原理-第一章-第三章&#34;&gt;编译原理-第一章-第三章
+        <description>&lt;img src=&#34;images/小鸟游六花.png&#34; alt=&#34;小鸟游六花&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;h1 id=&#34;编译原理-第一章-第三章&#34;&gt;编译原理-第一章-第三章
 &lt;/h1&gt;&lt;h2 id=&#34;第一章-引论&#34;&gt;第一章 引论
 &lt;/h2&gt;&lt;p&gt;课程内容： 介绍程序设计语言 &lt;strong&gt;编译程序构造&lt;/strong&gt; 的 &lt;strong&gt;基本原理&lt;/strong&gt; 和 &lt;strong&gt;基本实现技术&lt;/strong&gt; 。&lt;/p&gt;
 &lt;h3 id=&#34;什么是编译程序&#34;&gt;什么是编译程序
@@ -3080,15 +3056,33 @@ END
 &lt;h3 id=&#34;剧情简介-1&#34;&gt;剧情简介
 &lt;/h3&gt;&lt;p&gt;&lt;span style=&#34;font-size:1.5em;&#34;&gt;	&lt;strong&gt;&lt;span style=&#34;font-size:0.8em;&#34;&gt;“两人的距离日渐缩短，慢慢建立起兄妹以上却与家人有所不同的关系”&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;由于父亲再婚，高中生&lt;strong&gt;浅村悠太&lt;/strong&gt;和学年第一美少女&lt;strong&gt;绫濑沙季&lt;/strong&gt;成为同住一个屋檐下的兄妹。
-都见过双亲感情破裂的两人对男女之间的关系慎重看待，约好要保持适度的距离，既不接近也不对立。
-沙季渴望亲情而一直独自努力，因此不懂得如何依赖别人，悠太也不晓得该怎么以哥哥的身份与她相处。
-某些地方十分相似的两人，逐渐感受到与对方生活是多么惬意&amp;hellip;&amp;hellip;
-这是一个可能会发展成恋爱的故事。
-原本素昧平生的男女，一点一点地接近、彼此关系渐渐改变的——恋爱生活小说。&lt;/p&gt;
+都见过双亲感情破裂的两人对男女之间的关系慎重看待，约好要保持适度的距离，既不接近也不对立。&lt;/p&gt;
+&lt;p&gt;沙季渴望亲情而一直独自努力，因此不懂得如何依赖别人，悠太也不晓得该怎么以哥哥的身份与她相处。&lt;/p&gt;
+&lt;p&gt;某些地方十分相似的两人，逐渐感受到与对方生活是多么惬意&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;这是一个可能会发展成恋爱的故事。&lt;/p&gt;
+&lt;p&gt;原本素昧平生的男女，一点一点地接近、彼此关系渐渐改变的——恋爱生活小说。&lt;/p&gt;
 &lt;p&gt;以上来自&lt;a class=&#34;link&#34; href=&#34;https://mzh.moegirl.org.cn/%E4%B9%89%E5%A6%B9%E7%94%9F%E6%B4%BB&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;&lt;strong&gt;萌娘百科&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;2025-03-15&lt;/p&gt;
+&lt;h2 id=&#34;bang-dream-ave_mujica&#34;&gt;BanG Dream! Ave_Mujica
+&lt;/h2&gt;&lt;img src=&#34;images/Ave_Mujica_MainVisual.jpg&#34; alt=&#34;Ave_Mujica_MainVisual&#34; style=&#34;zoom: 67%;&#34; /&gt;
+&lt;h3 id=&#34;背景&#34;&gt;背景
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;《BanG Dream! Ave_Mujica》&lt;/strong&gt;（bilibili方面译名：《颂乐人偶》）是少女乐团企划《BanG Dream!》旗下的，以Ave Mujica为主角的TV动画。&lt;/p&gt;
+&lt;p&gt;本动画为《BanG Dream! It&amp;rsquo;s MyGO!!!!!》的续篇。2023年9月14日，即前篇完结之日宣布制作决定，当日为新月。&lt;/p&gt;
+&lt;p&gt;2024年1月6日，在“Bushiroad新春大发表会2024”上宣布动画于2025年1月播出。2024年10月17日，公开PV2，宣布动画于2025年1月2日播出，并从2024年12月1日起在全球多地举办先行上映会。&lt;/p&gt;
+&lt;p&gt;以上来自&lt;a class=&#34;link&#34; href=&#34;https://mzh.moegirl.org.cn/BanG_Dream!_Ave_Mujica&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;萌娘百科&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;剧情介绍&#34;&gt;剧情介绍
+&lt;/h3&gt;&lt;p&gt;​          			      &lt;span style=&#34;font-size:1.4em;&#34;&gt;**“    我不是说了吗？请把你剩余的人生交给我 ” **&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;由丰川祥子招募成员的乐队Ave Mujica，
+通过现场演出和媒体曝光灯，取得了商业上的成功。&lt;/p&gt;
+&lt;p&gt;她失去了发誓一生在一起的伙伴，和自己出生长大的家。
+她究竟是为了什么而背负别人的一生，继续维系着乐队？&lt;/p&gt;
+&lt;p&gt;她用面具掩盖过往和真实的自我，今晚也降临在完美的箱庭中。
+——接下来将为您呈现的是，怀揣着秘密的，她的故事。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;2025-03-28&lt;/p&gt;
 </description>
         </item>
         <item>
