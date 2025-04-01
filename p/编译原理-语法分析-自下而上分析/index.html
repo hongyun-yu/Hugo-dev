@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="编译原理知识点，结合学习的内容进行删改">
-<title>编译原理第十、十一、十二章、十三章-语法分析-自下而上分析</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="编译原理第十、十一、十二章、十三章知识点语法分析，主要内容来自CSDN pi31415926535x，结合学习的内容进行删改">
+<title>编译原理-语法分析-自下而上分析</title>
 
-<link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/'>
+<link rel='canonical' href='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/'>
 
 <link rel="stylesheet" href="/Hugo-dev/scss/style.min.931ff95f801376156525fd9d531ff3120af79ead784dd3bd6ce58d23d430b394.css"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
@@ -24,13 +24,13 @@
     return false;
     });
 </script>
-<meta property='og:title' content="编译原理第十、十一、十二章、十三章-语法分析-自下而上分析">
-<meta property='og:description' content="编译原理知识点，结合学习的内容进行删改">
-<meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/'>
+<meta property='og:title' content="编译原理-语法分析-自下而上分析">
+<meta property='og:description' content="编译原理第十、十一、十二章、十三章知识点语法分析，主要内容来自CSDN pi31415926535x，结合学习的内容进行删改">
+<meta property='og:url' content='https://hongyun-yu.github.io/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/'>
 <meta property='og:site_name' content='羡余'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-03-30T23:42:26&#43;08:00'/>
-<meta name="twitter:title" content="编译原理第十、十一、十二章、十三章-语法分析-自下而上分析">
-<meta name="twitter:description" content="编译原理知识点，结合学习的内容进行删改">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-03-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-04-01T17:29:57&#43;08:00'/>
+<meta name="twitter:title" content="编译原理-语法分析-自下而上分析">
+<meta name="twitter:description" content="编译原理第十、十一、十二章、十三章知识点语法分析，主要内容来自CSDN pi31415926535x，结合学习的内容进行删改">
     <link rel="shortcut icon" href="/Hugo-dev/fish.svg" />
 
   
@@ -203,62 +203,63 @@
           <ol>
             <li><a href="#有效项目">有效项目</a></li>
             <li><a href="#有效项目的性质">有效项目的性质</a></li>
-            <li><a href="#1233-lr0项目集规范族的构造">12.3.3 LR(0)项目集规范族的构造</a></li>
-            <li><a href="#1234-项目集的闭包closure">12.3.4 项目集的闭包CLOSURE</a></li>
-            <li><a href="#1235-状态转换函数">12.3.5 状态转换函数</a></li>
-            <li><a href="#1236-示例项目集的转移函数计算">12.3.6 示例：项目集的转移函数计算</a></li>
-            <li><a href="#1237-lr0项目集规范族的构造算法">12.3.7 LR(0)项目集规范族的构造算法</a></li>
-            <li><a href="#1238-两种构造识别活前缀的dfa的方法">12.3.8 两种构造识别活前缀的DFA的方法</a></li>
+            <li><a href="#lr0项目集规范族的构造">LR(0)项目集规范族的构造</a></li>
+            <li><a href="#项目集的闭包closure">项目集的闭包CLOSURE</a></li>
+            <li><a href="#状态转换函数">状态转换函数</a></li>
+            <li><a href="#示例项目集的转移函数计算">示例：项目集的转移函数计算</a></li>
+            <li><a href="#lr0项目集规范族的构造算法">LR(0)项目集规范族的构造算法</a></li>
+            <li><a href="#两种构造识别活前缀的dfa的方法">两种构造识别活前缀的DFA的方法</a></li>
           </ol>
         </li>
-        <li><a href="#124-构造lr0分析表">12.4 构造LR(0)分析表</a>
+        <li><a href="#构造lr0分析表">构造LR(0)分析表</a>
           <ol>
-            <li><a href="#1241-lr0分析表的构造">12.4.1 LR(0)分析表的构造</a></li>
-            <li><a href="#1242-构造lr0分析表的算法">12.4.2 构造LR(0)分析表的算法</a></li>
-            <li><a href="#1243-lr0分析表的action和goto子表构造">12.4.3 LR(0)分析表的ACTION和GOTO子表构造</a></li>
-            <li><a href="#1244-示例lr0分析表的构造">12.4.4 示例：LR(0)分析表的构造</a></li>
-            <li><a href="#1245-lr0分析示例">12.4.5 LR(0)分析示例</a></li>
+            <li><a href="#lr0分析表的构造">LR(0)分析表的构造</a></li>
+            <li><a href="#构造lr0分析表的算法">构造LR(0)分析表的算法</a></li>
+            <li><a href="#lr0分析表的action和goto子表构造">LR(0)分析表的ACTION和GOTO子表构造</a></li>
+            <li><a href="#示例lr0分析表的构造">示例：LR(0)分析表的构造</a></li>
+            <li><a href="#lr0分析示例">LR(0)分析示例</a></li>
           </ol>
         </li>
       </ol>
     </li>
     <li><a href="#第13章-自下而上分析4">第13章 自下而上分析4</a>
       <ol>
-        <li><a href="#131-slr1分析法">13.1 SLR(1)分析法</a>
+        <li><a href="#slr1分析法">SLR(1)分析法</a>
           <ol>
-            <li><a href="#1311-一个非lr0文法">13.1.1 一个非LR(0)文法</a></li>
-            <li><a href="#1312-冲突解决办法">13.1.2 冲突解决办法</a></li>
-            <li><a href="#1313-slr1冲突解决办法">13.1.3 SLR(1)冲突解决办法</a></li>
-            <li><a href="#1314-构造slr1分析表的方法">13.1.4 构造SLR(1)分析表的方法</a></li>
-            <li><a href="#1315-slr1分析表的action和goto子表构造">13.1.5 SLR(1)分析表的ACTION和GOTO子表构造</a></li>
-            <li><a href="#1316-slr1和lr0分析表构造方法的对比">13.1.6 SLR(1)和LR(0)分析表构造方法的对比</a></li>
-            <li><a href="#1317-slr1文法">13.1.7 SLR(1)文法</a></li>
-            <li><a href="#1318-slr1分析表构造示例">13.1.8 SLR(1)分析表构造示例</a></li>
-            <li><a href="#1319-一个非slr1文法">13.1.9 一个非SLR(1)文法</a></li>
-            <li><a href="#13110-slr冲突消解存在的问题">13.1.10 SLR冲突消解存在的问题</a></li>
+            <li><a href="#一个非lr0文法">一个非LR(0)文法</a></li>
+            <li><a href="#冲突解决办法">冲突解决办法</a></li>
+            <li><a href="#slr1冲突解决办法">SLR(1)冲突解决办法</a></li>
+            <li><a href="#构造slr1分析表的方法">构造SLR(1)分析表的方法</a></li>
+            <li><a href="#slr1分析表的action和goto子表构造">SLR(1)分析表的ACTION和GOTO子表构造</a></li>
+            <li><a href="#slr1和lr0分析表构造方法的对比">SLR(1)和LR(0)分析表构造方法的对比</a></li>
+            <li><a href="#slr1文法">SLR(1)文法</a></li>
+            <li><a href="#slr1分析表构造示例">SLR(1)分析表构造示例</a></li>
+            <li><a href="#一个非slr1文法">一个非SLR(1)文法</a></li>
+            <li><a href="#slr冲突消解存在的问题">SLR冲突消解存在的问题</a></li>
           </ol>
         </li>
-        <li><a href="#132-lr1分析表的构造">13.2 LR(1)分析表的构造</a>
+        <li><a href="#lr1分析表的构造">LR(1)分析表的构造</a>
           <ol>
-            <li><a href="#1321-构造lr1分析表的方法">13.2.1 构造LR(1)分析表的方法</a></li>
-            <li><a href="#1322-lrk项目">13.2.2 LR(k)项目</a></li>
-            <li><a href="#1323-有效项目">13.2.3 有效项目</a></li>
-            <li><a href="#1324-有效项目的性质">13.2.4 有效项目的性质</a></li>
-            <li><a href="#1325-lr1项目集规范族">13.2.5 LR(1)项目集规范族</a></li>
-            <li><a href="#1326-lr1分析表的构造算法">13.2.6 LR(1)分析表的构造算法</a></li>
-            <li><a href="#1327-lr1分析表的action和goto子表构造">13.2.7 LR(1)分析表的ACTION和GOTO子表构造</a></li>
-            <li><a href="#1328-lr1和slr1分析表构造方法的对比">13.2.8 LR(1)和SLR(1)分析表构造方法的对比</a></li>
-            <li><a href="#1329-lr1分析表和lr1文法">13.2.9 LR(1)分析表和LR(1)文法</a></li>
-            <li><a href="#13210-lr1分析表构造示例">13.2.10 LR(1)分析表构造示例</a></li>
+            <li><a href="#构造lr1分析表的方法">构造LR(1)分析表的方法</a></li>
+            <li><a href="#lrk项目">LR(k)项目</a></li>
+            <li><a href="#有效项目-1">有效项目</a></li>
+            <li><a href="#有效项目的性质-1">有效项目的性质</a></li>
+            <li><a href="#lr1项目集规范族">LR(1)项目集规范族</a></li>
+            <li><a href="#lr1分析表的构造算法">LR(1)分析表的构造算法</a></li>
+            <li><a href="#lr1分析表的action和goto子表构造">LR(1)分析表的ACTION和GOTO子表构造</a></li>
+            <li><a href="#lr1和slr1分析表构造方法的对比">LR(1)和SLR(1)分析表构造方法的对比</a></li>
+            <li><a href="#lr1分析表和lr1文法">LR(1)分析表和LR(1)文法</a></li>
+            <li><a href="#lr1分析表构造示例">LR(1)分析表构造示例</a></li>
           </ol>
         </li>
-        <li><a href="#133-分析器产生工具">13.3 分析器产生工具</a>
+        <li><a href="#分析器产生工具">分析器产生工具</a>
           <ol>
-            <li><a href="#1331-分析器产生器yacc">13.3.1 分析器产生器——YACC</a></li>
+            <li><a href="#分析器产生器yacc">分析器产生器——YACC</a></li>
           </ol>
         </li>
       </ol>
     </li>
+    <li><a href="#参考">参考</a></li>
   </ol>
 </nav>
         </div>
@@ -286,12 +287,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/">编译原理第十、十一、十二章、十三章-语法分析-自下而上分析</a>
+            <a href="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/">编译原理-语法分析-自下而上分析</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            编译原理知识点，结合学习的内容进行删改
+            编译原理第十、十一、十二章、十三章知识点语法分析，主要内容来自CSDN pi31415926535x，结合学习的内容进行删改
         </h3>
         
     </div>
@@ -316,8 +317,8 @@
             
             
                         最后修改:
-                        <time class="article-time--updated" datetime="2025-03-30 23:42:26 &#43;0800 CST" title="2025-03-30 23:42:26 &#43;0800 CST">
-                            2025-03-30
+                        <time class="article-time--updated" datetime="2025-04-01 17:29:57 &#43;0800 CST" title="2025-04-01 17:29:57 &#43;0800 CST">
+                            2025-04-01
                         </time>
 
             
@@ -340,7 +341,7 @@
     <section class="article-content">
     
     
-    <h1 id="编译原理-第十十一十二章十三章-语法分析-自下而上分析">编译原理-第十、十一、十二章、十三章-语法分析-自下而上分析
+    <h1 id="编译原理-语法分析-自下而上分析">编译原理-语法分析-自下而上分析
 </h1><h2 id="自下而上分析-1">自下而上分析 1
 </h2><h3 id="自下而上分析">自下而上分析
 </h3><h4 id="自下而上分析的一个示例">自下而上分析的一个示例
@@ -472,10 +473,10 @@
 <ul>
 <li>aj−1 ⋖ aj</li>
 <li>aj ≐ aj+1 , … , ai−1 ≐ ai</li>
-<li>ai ⋗ a i+1<img src="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/17.png"
+<li>ai ⋗ a i+1<img src="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/17.png"
 	width="1173"
 	height="83"
-	srcset="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/17_hu12041762843210410023.png 480w, /Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/17_hu2754469671330357255.png 1024w"
+	srcset="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/17_hu12041762843210410023.png 480w, /Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/17_hu2754469671330357255.png 1024w"
 	loading="lazy"
 	
 	
@@ -493,10 +494,10 @@
 <li>在正确的情况下，算法工作完毕时，符号栈S应 呈现：# N #</li>
 </ul>
 <p>整个算法的执行如下：<br>
-<img src="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/18.png"
+<img src="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/18.png"
 	width="2145"
 	height="1659"
-	srcset="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/18_hu4699451663395058850.png 480w, /Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/18_hu9481015405006522399.png 1024w"
+	srcset="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/18_hu4699451663395058850.png 480w, /Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/18_hu9481015405006522399.png 1024w"
 	loading="lazy"
 	
 		alt="算符优先分析算法"
@@ -620,10 +621,10 @@
 </table></div>
 <img src="images/28.png" alt="分析过程" style="zoom:50%;" />
 <h4 id="lr分析示例">LR分析示例
-</h4><p><img src="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/29.png"
+</h4><p><img src="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/29.png"
 	width="2810"
 	height="1052"
-	srcset="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/29_hu10905943389030383615.png 480w, /Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%AC%AC%E5%8D%81%E5%8D%81%E4%B8%80%E5%8D%81%E4%BA%8C%E7%AB%A0%E5%8D%81%E4%B8%89%E7%AB%A0-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/29_hu14168828511985959934.png 1024w"
+	srcset="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/29_hu10905943389030383615.png 480w, /Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/29_hu14168828511985959934.png 1024w"
 	loading="lazy"
 	
 		alt="示例"
@@ -699,60 +700,28 @@
 <img src="images/36.png" style="zoom:50%;" />
 <h3 id="通过计算项目集规范族构造识别活前缀的dfa">通过计算项目集规范族构造识别活前缀的DFA
 </h3><h4 id="有效项目">有效项目
-</h4><hr>
-<p>项目  A → β1 • β2 对活前缀  αβ1 是有效的，其条件是存在规范推导：  S ′ ⇒ R ∗ α A ω ⇒ R ∗ α β 1 β 2 ω S&rsquo; ⇒^<em>_R αAω⇒^</em>_Rα \beta_1 \beta_2ω S′⇒R∗​αAω⇒R∗​αβ1​β2​ω</p>
-<p>在任何时候，分析栈中的活前缀  X 1 X 2 … X m X_1X_2… X_m X1​X2​…Xm​ 的有效项目集正是从 识别活前缀的DFA的 初态出发，读出  X 1 X 2 … X m X_1X_2… X_m X1​X2​…Xm​ 后到达的那个项目集(状态)。</p>
+</h4><p>项目  A → β1 • β2 对活前缀  αβ1 是有效的，其条件是存在规范推导:  S′=*=&gt;R ​αAω=*=&gt;R​αβ1​β2​ω</p>
+<p>在任何时候，分析栈中的活前缀  X1 ​X2 ​… Xm​ 的有效项目集正是从识别活前缀的 DFA 的初态出发，读出 X1 ​X2 ​… Xm​ 后到达的那个项目集(状态)。</p>
 <p><del>（应该可以理解为当一个活前缀的后缀是某个项目的前缀时，就称这个项目是这个活前缀的一个有效项目，因为只要当活前缀的后缀加上一定的后续的读入就可以规约到这个项目的左部）</del></p>
 <h4 id="有效项目的性质">有效项目的性质
-</h4><p>若项目  A → α • B β A→α•Bβ A→α•Bβ 对活前缀  η = δ α η=δα η=δα 是有效的且  B → γ B→γ B→γ 是一个产生式，则项目  B → • γ B →•γ B→•γ 对  η = δ α η=δα η=δα 也是有效的。</p>
-<p>证明：<img src="https://i-blog.csdnimg.cn/blog_migrate/538d9b8388a71296f389b4c24e596847.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="证明"
-	
-	
-></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/daca11b479896c593845ed4ba28399a7.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="示例"
-	
-	
-></p>
-<h4 id="1233-lr0项目集规范族的构造">12.3.3 LR(0)项目集规范族的构造
-</h4><p>将文法G(S)拓广为G′(S′)：</p>
+</h4><p>若项目 A→α•Bβ 对活前缀 η = δα 是有效的且 B→γ 是一个产生式，则项目 B→•γ 对 η = δα 也是有效的。</p>
+<p>证明：</p>
+<img src="images/37.png" alt="证明" style="zoom:50%;" />
+<img src="images/38.png" alt="示例" style="zoom:50%;" />
+<h4 id="lr0项目集规范族的构造">LR(0)项目集规范族的构造
+</h4><p>将文法G(S)<strong>拓广</strong>为G′(S′)：</p>
 <ul>
-<li>构造文法G′，它包含了整个G，并引进不出现在G中 的非终结符S′、以及产生式S′→S，S′是G′的开始符 号</li>
-<li>G′唯一的“接受”态：仅含项目S′→S•的状态</li>
+<li>构造文法G′ ，它包含了整个G，并引进不出现在G中的非终结符S′，以及产生式 S′→S ，S′ 是 G′ 的开始符号</li>
+<li>G′ 唯一的“接受”态：仅含项目S′→S•的状态</li>
 </ul>
-<h4 id="1234-项目集的闭包closure">12.3.4 项目集的闭包CLOSURE
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/7bdce5941656056fabaac492f4f13691.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<h4 id="1235-状态转换函数">12.3.5 状态转换函数
-</h4><p>为了识别活前缀，我们定义一个状态转换函数GO。I是一个项目集，X是 一个文法符号。函数值GO(I，X)定义为：  G O ( I ， X ) ＝ C L O S U R E ( J ) GO(I，X)＝CLOSURE(J) GO(I，X)＝CLOSURE(J) 其中  J ＝ { 任 何 形 如 A → α X • β 的 项 目 ∣ A → α • X β 属 于 I } J＝\{任何形如A→αX•β的项目| A→α•Xβ属于I\} J＝{任何形如A→αX•β的项目∣A→α•Xβ属于I}。</p>
-<p>直观上说，若  I I I 是对某个活前缀  γ γ γ 有效的项目集， 那么， G O ( I ， X ) GO(I，X) GO(I，X) 便是对  γ X γX γX 有效的项目集</p>
-<h4 id="1236-示例项目集的转移函数计算">12.3.6 示例：项目集的转移函数计算
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/edad42e22dcb706cbbc4d277cfa6689f.png"
-	
-	
-	
-	loading="lazy"
-	
-	
-></p>
-<h4 id="1237-lr0项目集规范族的构造算法">12.3.7 LR(0)项目集规范族的构造算法
+<h4 id="项目集的闭包closure">项目集的闭包CLOSURE
+</h4><img src="images/39.png" style="zoom: 40%;" />
+<h4 id="状态转换函数">状态转换函数
+</h4><p>为了识别活前缀，我们定义一个状态转换函数GO。I 是一个项目集，X 是 一个文法符号。函数值 GO(I，X) 定义为：GO(I，X) ＝ CLOSURE( J ) 其中  J ＝ { 任 何 形 如 A → α X • β 的 项 目 ∣ A → α • X β 属 于 I } 。</p>
+<p>直观上说，若 I 是对某个活前缀 γ 有效的项目集， 那么，GO(I，X) 便是对  γX 有效的项目集</p>
+<h4 id="示例项目集的转移函数计算">示例：项目集的转移函数计算
+</h4><img src="images/40.png" style="zoom:67%;" />
+<h4 id="lr0项目集规范族的构造算法">LR(0)项目集规范族的构造算法
 </h4><pre><code>PROCEDURE ITEMSETS(G′)； 
 BEGIN 
 	C:={CLOSURE({S′→•S})}；
@@ -763,57 +732,63 @@ BEGIN
 	UNTIL C不再增大
 END
 </code></pre>
-<h4 id="1238-两种构造识别活前缀的dfa的方法">12.3.8 两种构造识别活前缀的DFA的方法
+<h4 id="两种构造识别活前缀的dfa的方法">两种构造识别活前缀的DFA的方法
 </h4><ul>
 <li>1.项目→ NFA → DFA</li>
 <li>2.Closure → GO → DFA</li>
 </ul>
-<h3 id="124-构造lr0分析表">12.4 构造LR(0)分析表
-</h3><h4 id="1241-lr0分析表的构造">12.4.1 LR(0)分析表的构造
-</h4><p>假若一个文法G的拓广文法G′的活前缀识别自 动机中的每个状态(项目集)不存在下述情况：</p>
+<h3 id="构造lr0分析表">构造LR(0)分析表
+</h3><h4 id="lr0分析表的构造">LR(0)分析表的构造
+</h4><p>假若一个文法G的拓广文法G′的活前缀识别自动机中的每个状态(项目集)不存在下述情况：</p>
 <ul>
 <li>既含移进项目又含归约项目；</li>
 <li>含有多个归约项目</li>
 </ul>
 <p>则称G是一个LR(0)文法。</p>
-<h4 id="1242-构造lr0分析表的算法">12.4.2 构造LR(0)分析表的算法
+<h4 id="构造lr0分析表的算法">构造LR(0)分析表的算法
 </h4><ul>
-<li>令每个项目集  I k I_k Ik​ 的下标  k k k 作为分析器的状态，包含项目  S ′ → • S S&rsquo;→•S S′→•S 的集合  I k I_k Ik​ 的下标  k k k 为分析器的初态。</li>
-<li>构造  L R ( 0 ) LR(0) LR(0) 分析表的  A C T I O N ACTION ACTION 和  G O T O GOTO GOTO 子表</li>
+<li>令每个项目集 Ik​ 的下标 k 作为分析器的状态，包含项目 S′→•S 的集合 Ik​ 的下标 k 为分析器的初态。</li>
+<li>构造 LR(0) 分析表的 ACTION 和 GOTO 子表</li>
 </ul>
-<h4 id="1243-lr0分析表的action和goto子表构造">12.4.3 LR(0)分析表的ACTION和GOTO子表构造
-</h4><ul>
-<li>1.若项目  A → α • a β A→α•aβ A→α•aβ 属于  I k I_k Ik​且  G O ( I k , a ) ＝ I j GO(I_k, a)＝I_j GO(Ik​,a)＝Ij​ ， a a a为终结符，则置  A C T I O N [ k , a ] ACTION[k, a] ACTION[k,a] 为“  s j s_j sj​ ”。</li>
-<li>2.若项目  A → α • A→α• A→α• 属于  I k I_k Ik​ ，那么，对 <code>任何终结符a(或结束符#)</code> ， 置  A C T I O N [ k , a ] ACTION[k, a] ACTION[k,a] 为“  r j r_j rj​ ”(假定产生式  A → α A→α A→α 是文法  G ′ G&rsquo; G′ 的第  j j j 个产生式)。</li>
-<li>3.若项目  S ′ → S • S&rsquo;→S• S′→S• 属于  I k I_k Ik​ ，则置  A C T I O N [ k , # ] ACTION[k,\#] ACTION[k,#] 为“  a c c acc acc ”。</li>
-<li>4.若  G O ( I k , A ) ＝ I j GO(I_k, A)＝I_j GO(Ik​,A)＝Ij​ ， A A A 为非终结符，则置  G O T O [ k , A ] = j GOTO[k, A]=j GOTO[k,A]=j 。</li>
-<li>5.分析表中凡不能用规则1至4填入信息的空白格均置上 “报错标志”。</li>
-</ul>
-<h4 id="1244-示例lr0分析表的构造">12.4.4 示例：LR(0)分析表的构造
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/4243d9091cf2e71e5b3d4096d2cccc6c.png"
-	
-	
-	
+<h4 id="lr0分析表的action和goto子表构造">LR(0)分析表的ACTION和GOTO子表构造
+</h4><ol>
+<li>
+<p>若项目 A→α•aβ 属于 Ik ​且 GO( Ik ​, a ) ＝ Ij​ ，a为终结符，则置 ACTION[ k , a ] 为“  sj​ ”。</p>
+</li>
+<li>
+<p>若项目 A→α• 属于 Ik​ ，那么，对 <code>任何终结符a(或结束符#)</code> ， 置 ACTION[ k , a ]  为“rj​ ”(假定产生式A→α 是文法 G′ 的第  j 个产生式)。</p>
+</li>
+<li>
+<p>若项目 S′→S• 属于 Ik​ ，则置  ACTION[k,#]  为 “ acc ”。</p>
+</li>
+<li>
+<p>若 GO( Ik​ , A )＝ Ij ​，A 为非终结符，则置 GOTO[ k , A ] = j 。</p>
+</li>
+<li>
+<p>分析表中凡不能用规则 1 至 4 填入信息的空白格均置上 “报错标志”。</p>
+</li>
+</ol>
+<h4 id="示例lr0分析表的构造">示例：LR(0)分析表的构造
+</h4><p><img src="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/41.png"
+	width="1171"
+	height="861"
+	srcset="/Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/41_hu16291206474756742620.png 480w, /Hugo-dev/p/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86-%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90-%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%88%86%E6%9E%90/images/41_hu3261293200579938863.png 1024w"
 	loading="lazy"
 	
 		alt="示例"
 	
 	
-></p>
-<h4 id="1245-lr0分析示例">12.4.5 LR(0)分析示例
-</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/a52f02f447d95fb1e53db8bcf6b5d57f.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="示例"
-	
+		class="gallery-image" 
+		data-flex-grow="136"
+		data-flex-basis="326px"
 	
 ></p>
+<h4 id="lr0分析示例">LR(0)分析示例
+</h4><img src="images/42.png" alt="示例" style="zoom:50%;" />
+<hr>
 <h2 id="第13章-自下而上分析4">第13章 自下而上分析4
-</h2><h3 id="131-slr1分析法">13.1 SLR(1)分析法
-</h3><h4 id="1311-一个非lr0文法">13.1.1 一个非LR(0)文法
+</h2><h3 id="slr1分析法">SLR(1)分析法
+</h3><h4 id="一个非lr0文法">一个非LR(0)文法
 </h4><p>从这个文法的DFA可以看出，某些状态既是规约态，也是移进态，这样就是一个非LR(0)文法：<br>
 <img src="https://i-blog.csdnimg.cn/blog_migrate/8a3e75269ae196ac1027e8232abc0993.png"
 	
@@ -824,7 +799,7 @@ END
 	
 ></p>
 <p>I1、I2和I9都含有“移进－归约”冲突，可以看出冲突的项目集中的项目的 FOLLOW集合是相交的。</p>
-<h4 id="1312-冲突解决办法">13.1.2 冲突解决办法
+<h4 id="冲突解决办法">冲突解决办法
 </h4><ul>
 <li>假定一个LR(0)规范族含有如下的一个项目集 (状态)  I ＝ { X → α • b β ， A → α • ， B → α • } I＝\{\color{blue}{X→α•bβ}，\color{red}{A→α•}，\color{fuchsia}{B→α•}\color{black}{\}} I＝{X→α•bβ，A→α•，B→α•}</li>
 <li>F O L L O W ( A ) \color{red}{FOLLOW(A)} FOLLOW(A) 和  F O L L O W ( B ) \color{fuchsia}{FOLLOW(B)} FOLLOW(B) 的交集为  ∅ ∅ ∅ ，且不包含  b \color{blue}{b} b</li>
@@ -837,7 +812,7 @@ END
 </ul>
 </li>
 </ul>
-<h4 id="1313-slr1冲突解决办法">13.1.3 SLR(1)冲突解决办法
+<h4 id="slr1冲突解决办法">SLR(1)冲突解决办法
 </h4><p>假定LR(0)规范族的一个项目集  I = { A 1 → α • a 1 β 1 ， A 2 → α • a 2 β 2 ， … ， A m → α • a m β m ， B 1 → α • ， B 2 → α • ， … ， B n → α • } I=\{\color{blue}{A_1→α•a_1β_1， A2→α•a_2β_2，…，A_m→α•a_mβ_m}，\color{red}{B_1→α•，B_2→α•，…， B_n→α•} \color{black}{\}} I={A1​→α•a1​β1​，A2→α•a2​β2​，…，Am​→α•am​βm​，B1​→α•，B2​→α•，…，Bn​→α•} 如果集合  { a 1 ， … ， a m } \color{blue}{\{a_1，…，a_m}\} {a1​，…，am​}， F O L L O W ( B 1 ) ， … ， F O L L O W ( B n ) \color{red}{FOLLOW(B_1)，…， FOLLOW(B_n)} FOLLOW(B1​)，…，FOLLOW(Bn​)两两不相交(包括不得有两个FOLLOW集 合有#)，则当状态I面临任何输入符号a时：</p>
 <ul>
 <li>1. 若 a 是 某 个 a i ， i = 1 , 2 , … , m ， 则 移 进 ； \color{blue}{1. 若a是某个ai，i=1,2,…,m，则移进；} 1.若a是某个ai，i=1,2,…,m，则移进；</li>
@@ -845,7 +820,7 @@ END
 <li>3. 此 外 ， 报 错 。 \color{black}{3. 此外，报错。 } 3.此外，报错。</li>
 </ul>
 <p>SLR(1)解决办法：S-Simple，1-最多向前看一个单词</p>
-<h4 id="1314-构造slr1分析表的方法">13.1.4 构造SLR(1)分析表的方法
+<h4 id="构造slr1分析表的方法">构造SLR(1)分析表的方法
 </h4><ul>
 <li>把G拓广为G′</li>
 <li>对G′构造
@@ -861,7 +836,7 @@ END
 </ul>
 </li>
 </ul>
-<h4 id="1315-slr1分析表的action和goto子表构造">13.1.5 SLR(1)分析表的ACTION和GOTO子表构造
+<h4 id="slr1分析表的action和goto子表构造">SLR(1)分析表的ACTION和GOTO子表构造
 </h4><ul>
 <li>1.若项目  A → α • a β A→α•aβ A→α•aβ 属于  I k I_k Ik​ 且  G O ( I k , a ) = I j GO(I_k,a)=I_j GO(Ik​,a)=Ij​ ， a a a 为终结符，则置<br>
 A C T I O N [ k , a ] = s j ACTION[k,a] = s_j ACTION[k,a]=sj​；</li>
@@ -870,7 +845,7 @@ A C T I O N [ k , a ] = s j ACTION[k,a] = s_j ACTION[k,a]=sj​；</li>
 <li>4.若  G O ( I k , A ) ＝ I j GO(I_k,A)＝I_j GO(Ik​,A)＝Ij​ ， A A A 为非终结符，则置  G O T O [ k , A ] = j GOTO[k,A]=j GOTO[k,A]=j；</li>
 <li>5.分析表中凡不能用规则1至4填入信息的空白格均置上 “报错标志” 。</li>
 </ul>
-<h4 id="1316-slr1和lr0分析表构造方法的对比">13.1.6 SLR(1)和LR(0)分析表构造方法的对比
+<h4 id="slr1和lr0分析表构造方法的对比">SLR(1)和LR(0)分析表构造方法的对比
 </h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/7759eb111e6611bba357666affe9712f.png"
 	
 	
@@ -880,14 +855,14 @@ A C T I O N [ k , a ] = s j ACTION[k,a] = s_j ACTION[k,a]=sj​；</li>
 	
 ></p>
 <p>可以看出，SLR处理冲突的解决方法就是将以前分析表中规约的一行缩小成为FOLLOW的字符，减少冲突的可能（显然这样也不是最优的，也可能产生冲突的）</p>
-<h4 id="1317-slr1文法">13.1.7 SLR(1)文法
+<h4 id="slr1文法">SLR(1)文法
 </h4><ul>
 <li>按上述方法构造出的ACTION与GOTO表如果 不含多重入口，则称该文法为SLR(1)文法。</li>
 <li>使用SLR表的分析器叫做一个SLR分析器。</li>
 <li>每个SLR(1)文法都是无二义的。但也存在许多 无二义文法不是SLR(1)的。</li>
 <li>L R ( 0 ) ⊂ S L R ( 1 ) ⊂ 无 二 义 文 法 LR(0) ⊂SLR(1) ⊂无二义文法 LR(0)⊂SLR(1)⊂无二义文法</li>
 </ul>
-<h4 id="1318-slr1分析表构造示例">13.1.8 SLR(1)分析表构造示例
+<h4 id="slr1分析表构造示例">SLR(1)分析表构造示例
 </h4><p>对于上面那个会产生冲突的LR(0)文法，更改其中产生 <strong>规约</strong> 步骤的分析表产生规则，使用FOLLOW来代替：<img src="https://i-blog.csdnimg.cn/blog_migrate/bd4486fa7a6b6eca25858e5804837d22.png"
 	
 	
@@ -896,7 +871,7 @@ A C T I O N [ k , a ] = s j ACTION[k,a] = s_j ACTION[k,a]=sj​；</li>
 	
 	
 ></p>
-<h4 id="1319-一个非slr1文法">13.1.9 一个非SLR(1)文法
+<h4 id="一个非slr1文法">一个非SLR(1)文法
 </h4><p>对于这样一个文法，它的SLR分析表是会产生冲突的：<br>
 <img src="https://i-blog.csdnimg.cn/blog_migrate/18ba02891536526593776f0e9f0a11f6.png"
 	
@@ -906,30 +881,30 @@ A C T I O N [ k , a ] = s j ACTION[k,a] = s_j ACTION[k,a]=sj​；</li>
 	
 	
 ></p>
-<h4 id="13110-slr冲突消解存在的问题">13.1.10 SLR冲突消解存在的问题
+<h4 id="slr冲突消解存在的问题">SLR冲突消解存在的问题
 </h4><ul>
 <li>SLR在方法中，如果项目集  I i I_i Ii​ 含项目  A → α • \color{#08f}{A→α•} A→α• 而且下一输入符号  a ∈ F O L L O W ( A ) \color{#08f}{a∈FOLLOW(A)} a∈FOLLOW(A) ，则状态  i i i 面临  a a a 时，可选用“用  A → α A→α A→α 归约”动作</li>
 <li>但在有些情况下，当状态i显现于栈顶时，当前单词是a， 栈里的 <code>活前缀</code> β α \color{#08f}{β}\color{purple}{α} βα 未必允许把  α \color{purple}{α} α 归约为  A \color{purple}{A} A ，因为可能根本 就不存在一个形如“  β A a \color{#08f}{β}\color{purple}{A}\color{#0f5}{a} βAa ”的规范句型</li>
 <li>在这种情况下，用“A→α”归约不一定合适</li>
 <li>原因是： <code>FOLLOW集合提供的信息太泛</code> F O L L O W ( A ) = { α ∣ S ⇒ ∗ … A α … , α ∈ V T } FOLLOW(A)=\{\alpha|S⇒^*…A\alpha \dots, \alpha∈V_T\} FOLLOW(A)={α∣S⇒∗…Aα…,α∈VT​}</li>
 </ul>
-<h3 id="132-lr1分析表的构造">13.2 LR(1)分析表的构造
-</h3><h4 id="1321-构造lr1分析表的方法">13.2.1 构造LR(1)分析表的方法
+<h3 id="lr1分析表的构造">LR(1)分析表的构造
+</h3><h4 id="构造lr1分析表的方法">构造LR(1)分析表的方法
 </h4><ul>
 <li>把G拓广为G′</li>
 <li>对G′构造LR(1)项目集规范族C和活前缀识别自 动机的状态转换函数GO</li>
 <li>使用C和GO，构造LR(1)分析表</li>
 </ul>
-<h4 id="1322-lrk项目">13.2.2 LR(k)项目
+<h4 id="lrk项目">LR(k)项目
 </h4><ul>
 <li><code>LR(k)项目</code> ：扩展LR(0)项目，附带有k个终结符  [ A → α • β , a 1 a 2 … a k ] [A→α•β, a_1a_2…a_k] [A→α•β,a1​a2​…ak​] a 1 a 2 … a k a_1a_2…a_k a1​a2​…ak​ 称为 <code>向前搜索符串(或展望串)</code> 。</li>
 <li><code>归约项目</code> [ A → α • ， a 1 a 2 … a k ] [A→α•，a_1a_2…a_k] [A→α•，a1​a2​…ak​] 的意义：当它所属的状态呈现在栈顶且后续的k个输入符号为  a 1 a 2 … a k a_1a_2…a_k a1​a2​…ak​ 时，才可以把栈顶上的α归约为A</li>
 <li>对于任何 <code>移进</code> 或 <code>待约项目</code> [ A → α • β , a 1 a 2 … a k ] , β ≠ ε [A→α•β, a_1a_2…a_k] , β≠ε [A→α•β,a1​a2​…ak​],β​=ε ，搜索符串  a 1 a 2 … a k a_1a_2…a_k a1​a2​…ak​ 没有直接作用</li>
 </ul>
-<h4 id="1323-有效项目">13.2.3 有效项目
+<h4 id="有效项目-1">有效项目
 </h4><p>形式上我们说一个LR(1)项目  [ A → α • β , a ] [\color{red}{A}→\color{#08f}{α}•\color{#0f8}{β} \color{black}{,} \color{purple}{a}] [A→α•β,a] 对于活前缀  γ \color{#08f}{γ} γ 是 <code>有效的</code> ，如果存在规范推导 :  S ′ ⇒ R ∗ δ A ω ⇒ R ∗ δ α β ω S&rsquo;⇒^<em>_R \color{#08f}{\delta} \color{red}{A} \color{purple}{\omega} \color{black}{⇒^</em>_R} \color{#08f}{\delta} \color{#08f}{α} \color{#0f8}{β} \color{purple}{\omega} S′⇒R∗​δAω⇒R∗​δαβω<br>
 其中，1)  γ ＝ δ α \color{#08f}{γ＝δα} γ＝δα ；2)  a \color{purple}{a} a 是  ω \color{purple}{ω} ω 的第一个符号，或者  a \color{purple}{a} a 为#而  ω \color{purple}{ω} ω 为ε。</p>
-<h4 id="1324-有效项目的性质">13.2.4 有效项目的性质
+<h4 id="有效项目的性质-1">有效项目的性质
 </h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/ea2a146c827e744f02c1e351670c4cbf.png"
 	
 	
@@ -938,12 +913,12 @@ A C T I O N [ k , a ] = s j ACTION[k,a] = s_j ACTION[k,a]=sj​；</li>
 	
 	
 ></p>
-<h4 id="1325-lr1项目集规范族">13.2.5 LR(1)项目集规范族
+<h4 id="lr1项目集规范族">LR(1)项目集规范族
 </h4><ul>
 <li>闭包函数CLOSURE</li>
 <li>转换函数GO</li>
 </ul>
-<h5 id="项目集的闭包closure">项目集的闭包CLOSURE
+<h5 id="项目集的闭包closure-1">项目集的闭包CLOSURE
 </h5><p>假定I是文法G′的任一项目集，定义和构造I的闭 包CLOSURE(I)如下：</p>
 <ul>
 <li>1.I的任何项目都属于  C L O S U R E ( I ) CLOSURE(I) CLOSURE(I) 。</li>
@@ -962,7 +937,7 @@ A C T I O N [ k , a ] = s j ACTION[k,a] = s_j ACTION[k,a]=sj​；</li>
 	UNTIL C不再增大 
 END
 </code></pre>
-<h4 id="1326-lr1分析表的构造算法">13.2.6 LR(1)分析表的构造算法
+<h4 id="lr1分析表的构造算法">LR(1)分析表的构造算法
 </h4><ul>
 <li>把G拓广为G′</li>
 <li>对G′构造LR(1)项目集规范族C和活前缀识别自 动机的状态转换函数GO</li>
@@ -973,7 +948,7 @@ END
 </ul>
 </li>
 </ul>
-<h4 id="1327-lr1分析表的action和goto子表构造">13.2.7 LR(1)分析表的ACTION和GOTO子表构造
+<h4 id="lr1分析表的action和goto子表构造">LR(1)分析表的ACTION和GOTO子表构造
 </h4><ul>
 <li>1.若项目[A→α•aβ, b]属于Ik且GO(Ik, a)＝Ij，a为 终结符，则置ACTION[k, a]为“sj”。</li>
 <li>2.若项目[A→α•，a]属于Ik，则置ACTION[k, a]为 “rj”；其中假定A→α为文法G′的第j个产生式。</li>
@@ -981,7 +956,7 @@ END
 <li>4.若GO(Ik，A)＝Ij，则置GOTO[k, A]=j。</li>
 <li>5.分析表中凡不能用规则1至4填入信息的空白栏 均填上“出错标志”。</li>
 </ul>
-<h4 id="1328-lr1和slr1分析表构造方法的对比">13.2.8 LR(1)和SLR(1)分析表构造方法的对比
+<h4 id="lr1和slr1分析表构造方法的对比">LR(1)和SLR(1)分析表构造方法的对比
 </h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/17cc385c04057a6eaed8be16db679c74.png"
 	
 	
@@ -991,7 +966,7 @@ END
 	
 ></p>
 <p>可以看出，与SLR相比，在规约中更加缩小了可规约的情况，使得冲突减小</p>
-<h4 id="1329-lr1分析表和lr1文法">13.2.9 LR(1)分析表和LR(1)文法
+<h4 id="lr1分析表和lr1文法">LR(1)分析表和LR(1)文法
 </h4><ul>
 <li>按上述算法构造的分析表，若不存在多重定义 的入口(即，动作冲突)的情形，则称它是文法G 的一张规范的LR(1)分析表。</li>
 <li>具有规范的LR(1)分析表的文法称为一个LR(1)文法。</li>
@@ -999,7 +974,7 @@ END
 <li><strong>LR(1)状态比SLR(1)多</strong></li>
 <li>L R ( 0 ) ⊂ S L R ( 1 ) ⊂ L R ( 1 ) ⊂ 无 二 义 文 法 LR(0) ⊂SLR(1) ⊂LR(1) ⊂无二义文法 LR(0)⊂SLR(1)⊂LR(1)⊂无二义文法</li>
 </ul>
-<h4 id="13210-lr1分析表构造示例">13.2.10 LR(1)分析表构造示例
+<h4 id="lr1分析表构造示例">LR(1)分析表构造示例
 </h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/c975aafaf9cac71b025525697b4a0043.png"
 	
 	
@@ -1008,8 +983,8 @@ END
 	
 	
 ></p>
-<h3 id="133-分析器产生工具">13.3 分析器产生工具
-</h3><h4 id="1331-分析器产生器yacc">13.3.1 分析器产生器——YACC
+<h3 id="分析器产生工具">分析器产生工具
+</h3><h4 id="分析器产生器yacc">分析器产生器——YACC
 </h4><p>YACC——Yet AnotherCompiler Compiler</p>
 <ul>
 <li>LALR(1)分析</li>
@@ -1017,8 +992,8 @@ END
 <li>The Lex &amp; YaccPage <a class="link" href="http://dinosaur.compilertools.net/"  target="_blank" rel="noopener"
     >http://dinosaur.compilertools.net/</a></li>
 </ul>
-<p><a class="link" href="https://blog.csdn.net/pi31415926535x/article/details/105299131"  target="_blank" rel="noopener"
-    >https://blog.csdn.net/pi31415926535x/article/details/105299131</a></p>
+<h2 id="参考">参考
+</h2><p>学习所用，参考自[CSDN 博主 pi31415926535x ][https://blog.csdn.net/pi31415926535x/article/details/105299131]</p>
 
 </section>
 
@@ -1037,7 +1012,7 @@ END
 
 
         <span>
-            最后更新于 2025-03-30
+            最后更新于 2025-04-01
         </span>
     </section></footer>
 
@@ -1256,7 +1231,7 @@ END
         
     
     发表了11篇文章 · 
-    总计62.95k字
+    总计62.49k字
 </section>
 
 </footer>
